@@ -44,7 +44,7 @@
 
             {{-- login view --}}
             @yield('loginsection')
-
+            @yield('signuppage')
           </div>
 
 
