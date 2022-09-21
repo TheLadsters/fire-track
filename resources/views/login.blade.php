@@ -24,13 +24,13 @@
         
         <form class="needs-validation">
             <div class="form-group">
-                <input class="form-control" type="text" placeholder="Username" id="usernameInput">
+                <input class="form-control inputForm" type="text" placeholder="Username" id="usernameInput">
                 <div class="invalid-feedback">
                     Please enter your username
                 </div>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" id="passwordInput" placeholder="Password">
+                <input class="form-control inputForm" type="password" id="passwordInput" placeholder="Password">
                 <div class="invalid-feedback">
                     Please enter your password
                 </div>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-group text-center mt-5">
-                Don't have an account? <a href="#">Sign Up</a> here! 
+                Don't have an account? <a href="/signup">Sign Up</a> here! 
             </div>
        
         </form>
