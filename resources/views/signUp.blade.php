@@ -12,6 +12,16 @@
         </div>
         
         <form class="row">
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <a href="/">
+                        <button type="button" class="btn backtologin">
+                            <i class="fa-solid fa-backward"></i> Back to Login
+                        </button>
+                    </a>
+                </div>
+            </div>
+
             <div class="col-md-6 form-group py-1">
                 <input class="form-control inputForm" type="text" placeholder="First Name">
             </div>
