@@ -28,3 +28,9 @@ Route::get('/layout', function () {
 Route::get('/signup', function () {
     return view('signUp');
 });
+
+// sidebar routes
+Route::get('/edit-profile', function () {
+    return view('firefighter/editprofile');
+});
+
