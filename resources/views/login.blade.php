@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <a href="layout"><input id="signInBtn" class="w-100" type="button" value="SIGN IN"></a>
+            <a href="edit-profile"><input id="signInBtn" class="w-100" type="button" value="SIGN IN"></a>
             
             <div class="form-group text-center">
                 <a href="#" id="forgotPassword">
