@@ -1,6 +1,6 @@
 @extends('./layout')
 
 @section('editProfile')
-HELLO!
+This section is for edit profile
 
 @endsection
