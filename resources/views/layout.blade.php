@@ -29,7 +29,7 @@
           <hr class="h-color mx-2">
 
           <ul class="list-unstyled px-2">
-            <li class="active"><a href="#" class="text-decoration-none d-block"><i class="fas fa-user-edit"></i>Edit Profile</a></li>
+            <li class="active"><a href="/edit-profile" class="text-decoration-none d-block"><i class="fas fa-user-edit"></i>Edit Profile</a></li>
             <li class=""><a href="#" class="text-decoration-none d-block"><i class="fas fa-map-marker-alt"></i>Fire Hydrant Map</a></li>
             <li class=""><a href="#" class="text-decoration-none d-block"><i class="fa-solid fa-fire"></i>Fire Alert Map</a></li>
             <li class=""><a href="#" class="text-decoration-none d-block"><i class="fa-regular fa-file"></i>Generate Report</a></li>
@@ -62,6 +62,7 @@
           </nav>
 
           <div class="main-content px-3 pt-4">
+            @yield('editProfile')
           </div>
 
       </div>
