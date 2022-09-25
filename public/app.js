@@ -13,3 +13,18 @@ $('.close-btn').on('click', function(){
     $('.sidebar').removeClass('active');
 });
 // end of code
+
+// forgot password modal start
+$('#forgotPassword').on('click', function () {
+    $('#forgetPasswordModal').modal('show');
+  })
+
+$('#dismissX').on('click', function () {
+    $('#forgetPasswordModal').modal('hide');
+  })
+
+$('#forgotPassword').on('click', function () {
+    $('#forgetPasswordModal').modal('show');
+}) 
+
+// end of forgot password modal code
