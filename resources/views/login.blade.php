@@ -1,19 +1,7 @@
 @extends('signlayout')
 
 @section('loginsection')
-{{-- 
 
-
-            
-
-            <a href="layout">
-                <button type="button" class="btn btn-primary">Sign In</button>
-            </a>
-
-          
-
-                   
-    </form> --}}
 <div class="login-body">
     
     <div class="login">
@@ -52,4 +40,46 @@
     </div>
 
 </div>
+
+
+{{-- start of modal code --}}
+
+<!-- Modal -->
+<div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header forgetPasswordHeader">
+          <h4 class="modal-title" id="forgetPasswordTitle">Reset Your Password</h4>
+          <button type="button" id="dismissX" data-dismiss="modal" aria-label="Close">
+           <b>X</b>
+          </button>
+        </div>
+        <div class="modal-body forgetPasswordArea">
+            <div class="row my-3">
+                <div class="col-md-12 text-center">
+                    <h5>
+                    Please enter your registered email and we will send you an
+                    email request to reset your password.
+                    </h5>
+                </div>
+            </div>
+
+            <div class="row my-3 mb-3">
+                <div class="col-md-12">
+                    <input class="form-control inputForm" type="email" placeholder="Email">
+                </div>
+            </div>
+            
+            <div class="container-md my-2">
+                <div class="row">
+                    <button type="button" id="forgetPasswordSubmit">SUBMIT</button>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{-- end of modal code --}}
 @endsection
