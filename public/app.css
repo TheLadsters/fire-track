@@ -17,7 +17,7 @@ form{
     min-width: 250px;
     max-width: 250px;
     transition: all 0.3s;
-    max-height: 180vh;
+    max-height: 175vh;
 }
 
 .content{
@@ -27,6 +27,11 @@ form{
 
 hr.h-color{
     background: #eee;
+}
+
+.sidebar li:hover{
+    background: #eee;
+    border-radius: 8px;
 }
 
 .sidebar li.active{

@@ -1,8 +1,17 @@
-// code for highlighting when clicking sidebar options
-$('.sidebar ul li').on('click', function(){
-    $(".sidebar ul li.active").removeClass('active');
-    $(this).addClass('active');
-})
+// code for highlighting sidebar from current page
+$(function() {
+    // this will get the full URL at the address bar
+    let url = window.location.href;
+
+    $(".sidebar ul li a").each(function() {
+        // checks if its the same on the address bar
+        if (url == (this.href)) {
+            $(this).closest("li").addClass("active");
+        }
+    });
+}); 
+// end of code
+
 
 // code for open and closing sidebar
 $('.open-btn').on('click', function(){
