@@ -17,10 +17,11 @@ form{
     min-width: 250px;
     max-width: 250px;
     transition: all 0.3s;
+    max-height: 180vh;
 }
 
 .content{
-    min-height: 100vh;
+    min-height: 150vh;
     width: 100%;
 }
 
@@ -58,7 +59,7 @@ hr.h-color{
     #side_nav{
         margin-left: -250px;
         position: fixed;
-        min-height: 100vh;
+        min-height: 150vh;
         z-index: 1;
     }
 
@@ -133,7 +134,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #C0371B;
 }
 
-#dismissX{
+#dismissX, #dismissX2{
     border: none;
 }
 
@@ -145,7 +146,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #F5E09E;
 }
 
-#forgetPasswordSubmit{
+#forgetPasswordSubmit, #resetPasswordBtn{
     background-color: #C0371B;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: white;
@@ -230,3 +231,94 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 }
 /* end of sign up page css */
+
+
+/* start of edit profile css */
+
+.editprofile-body{
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'sans serif'; 
+}
+
+.editprofile {
+    width: 700px;
+    height:120vh;
+    padding: 20px;
+}
+
+#editprofile-title{
+    color: #C0371B;
+}
+
+.editprofile h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.editprofile form {
+    padding: 30px 30px 30px 30px;
+    font-size: 20px;
+    background: #FFFFFF;
+}
+
+.editprofile form .form-group {
+    margin-bottom: 6px;
+}
+
+
+.togglePasswordArea{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    color: #333;
+}
+
+
+.editprofile form input[type="submit"] {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+#forgotPassLink{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#saveProfile, #resetPasswordBtn{
+    background-color: #C0371B;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    color: white;
+    border: none;
+}
+
+.genderSelect{
+    background: #F8F3F3;
+}
+
+@media(max-height: 575px){
+    .editprofile-body{
+        height: 150vh;
+    }
+}
+
+@media(min-height: 200px){
+    #side_nav{
+        height: 180vh;
+    }
+}
+
+@media(max-height: 600px){
+    #side_nav{
+        height: 180vh;
+    }
+}
+
+#imageResult{
+    width: 200px;
+    height: 200px;
+}
+/* end of edit profile css */
