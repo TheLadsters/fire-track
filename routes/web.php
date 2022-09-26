@@ -34,3 +34,11 @@ Route::get('/edit-profile', function () {
     return view('firefighter/editprofile');
 });
 
+Route::get('/fire-hydrant-map', function () {
+    return view('firefighter/firehydrantmap');
+});
+
+Route::get('/fire-alert-map', function () {
+    return view('firefighter/firealertmap');
+});
+
