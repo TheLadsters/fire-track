@@ -1,7 +1,16 @@
 @extends('./layout')
 
 @section('editProfile')
-<div class="editprofile-body">
+
+
+
+Edit profile body
+
+
+
+
+
+{{-- <div class="editprofile-body">
     
     <div class="editprofile">
 
@@ -89,7 +98,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> --}}
 
 {{-- start of modal code --}}
 
@@ -161,41 +170,4 @@
     </div>
 </div>
 
-{{-- modal for forget password --}}
-<div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgetPasswordModalCenter" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header forgetPasswordHeader">
-          <h4 class="modal-title" id="forgetPasswordTitle">Reset Your Password</h4>
-          <button type="button" id="dismissX2" data-dismiss="modal" aria-label="Close">
-           <b>X</b>
-          </button>
-        </div>
-        <div class="modal-body forgetPasswordArea">
-            <div class="row my-3">
-                <div class="col-md-12 text-center">
-                    <h5>
-                    Please enter your registered email and we will send you an
-                    email request to reset your password.
-                    </h5>
-                </div>
-            </div>
-
-            <div class="row my-3 mb-3">
-                <div class="col-md-12">
-                    <input class="form-control inputForm" type="email" placeholder="Email">
-                </div>
-            </div>
-            
-            <div class="container-md my-2">
-                <div class="row">
-                    <button type="button" id="forgetPasswordSubmit">SUBMIT</button>
-                </div>
-            </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-{{-- end of modal code --}}
 @endsection
