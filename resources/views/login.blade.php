@@ -1,51 +1,64 @@
 @extends('signlayout')
 
 @section('loginsection')
-
-<div class="login-body">
+  
+<div class="content-login">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center mb-3">
+              <img src="images/cebuMap.jpg" alt="Map of Cebu" class="img-fluid mapCebu">
+            </div>
+            <div class="col-md-6 contents">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="mb-4">
+                  <h3 id="signIn-title">Sign In</h3>
+                  <p id="signin-info" class="mb-4">Sign in to the FireTrack App and use our services.</p>
+                </div>
+                <form>
+                  <div class="form-group first">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username">
     
-    <div class="login">
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password">
+                    
+                  </div>
+                  
+                  <div class="d-flex mb-4 align-items-center">
+                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                  </div>
+    
+                  {{-- this submit button to be used later --}}
+                  {{-- <input type="submit" value="Log In" class=" btn-submit btn-block"> --}}
 
-        <div class="text-center">
-            <img src="images/signinLogo.png" id="signInLogo"/>
-        </div>
-        
-        <form class="needs-validation">
-            <div class="form-group">
-                <input class="form-control inputForm" type="text" placeholder="Username" id="usernameInput">
-                <div class="invalid-feedback">
-                    Please enter your username
-                </div>
-            </div>
-            <div class="form-group">
-                <input class="form-control inputForm" type="password" id="passwordInput" placeholder="Password">
-                <div class="invalid-feedback">
-                    Please enter your password
-                </div>
-            </div>
+                  {{--  temporary submit button --}}
+                  <button class="btn-submit btn-block">Login</button>
+                      
+                  <div class="no-account-area mt-3">
+                    <a href="#" class="no-account">Don't have an account?</a>
+                  </div>
 
-            <a href="edit-profile"><input id="signInBtn" class="w-100" type="button" value="SIGN IN"></a>
+                  <div class="d-flex justify-content-center mt-5">
+                    <img src="images/fire_track_logo_black.png" alt="firetracklogo" class="img-fluid fireTrackBlack"/>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
             
-            <div class="form-group text-center">
-                <a href="#" id="forgotPassword">
-                    Forgot Password?
-                </a>
-            </div>
-
-            <div class="form-group text-center mt-5">
-                Don't have an account? <a href="/signup">Sign Up</a> here! 
-            </div>
-       
-        </form>
-    </div>
-
+          </div>
+        </div>
 </div>
+
 
 
 {{-- start of modal code --}}
 
 <!-- Modal -->
-<div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgetPasswordModalCenter" aria-hidden="true">
+{{-- <div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgetPasswordModalCenter" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header forgetPasswordHeader">
@@ -79,7 +92,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
 {{-- end of modal code --}}
 @endsection
