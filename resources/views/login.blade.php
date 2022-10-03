@@ -1,4 +1,4 @@
-@extends('signlayout')
+@extends('loginLayout')
 
 @section('loginsection')
   
@@ -38,7 +38,7 @@
                   <button class="btn-submit btn-block">Login</button>
                       
                   <div class="no-account-area mt-3">
-                    <a href="#" class="no-account">Don't have an account?</a>
+                    <a href="/signup" class="no-account">Don't have an account?</a>
                   </div>
 
                   <div class="d-flex justify-content-center mt-5">
