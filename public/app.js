@@ -1,28 +1,94 @@
 // code for highlighting sidebar from current page
+// $(function() {
+//     // this will get the full URL at the address bar
+//     let url = window.location.href;
+
+//     $(".sidebar ul li a").each(function() {
+//         // checks if its the same on the address bar
+//         if (url == (this.href)) {
+//             $(this).closest("li").addClass("active");
+//         }
+//     });
+// }); 
+// end of code
+
+
+
+////////// JS FOR LOGIN PAGE //////////
+
+// code for movement of text for username password in login page
 $(function() {
-    // this will get the full URL at the address bar
-    let url = window.location.href;
+	'use strict';
+	
+  $('.form-control').on('input', function() {
+	  var $field = $(this).closest('.form-group');
+	  if (this.value) {
+	    $field.addClass('field--not-empty');
+	  } else {
+	    $field.removeClass('field--not-empty');
+	  }
+	});
 
-    $(".sidebar ul li a").each(function() {
-        // checks if its the same on the address bar
-        if (url == (this.href)) {
-            $(this).closest("li").addClass("active");
-        }
+});
+// end of code for movement of text for username password in login page
+
+// (temporary) code for login button to redirect to main page
+$('.btn-submit').on('click', function(e){
+    e.preventDefault();
+    window.location.href = "http://127.0.0.1:8000/edit-profile";
+});
+// end of (temporary) code for login button to redirect to main page
+
+
+////////// END OF JS FOR LOGIN PAGE //////////
+
+
+
+
+
+////////// CODE FOR SIDEBAR //////////
+
+document.addEventListener("DOMContentLoaded", function(event) {
+   
+    const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+    const toggle = document.getElementById(toggleId),
+    nav = document.getElementById(navId),
+    bodypd = document.getElementById(bodyId),
+    headerpd = document.getElementById(headerId)
+    
+    // Validate that all variables exist
+    if(toggle && nav && bodypd && headerpd){
+    toggle.addEventListener('click', ()=>{
+    // show navbar
+    nav.classList.toggle('show')
+    // change icon
+    toggle.classList.toggle('bx-x')
+    // add padding to body
+    bodypd.classList.toggle('body-pd')
+    // add padding to header
+    headerpd.classList.toggle('body-pd')
+    })
+    }
+    }
+    
+    showNavbar('header-toggle','nav-bar','body-pd','header')
+    
+    /*===== LINK ACTIVE =====*/
+    const linkColor = document.querySelectorAll('.nav_link')
+    
+    function colorLink(){
+    if(linkColor){
+    linkColor.forEach(l=> l.classList.remove('active'))
+    this.classList.add('active')
+    }
+    }
+    linkColor.forEach(l=> l.addEventListener('click', colorLink))
+    
+     // Your code to run since DOM is loaded and ready
     });
-}); 
-// end of code
 
 
-// code for open and closing sidebar
-$('.open-btn').on('click', function(){
-    $('.sidebar').addClass('active');
-});
-
-$('.close-btn').on('click', function(){
-    $('.sidebar').removeClass('active');
-});
-// end of code
-
+////////// END OF CODE FOR SIDEBAR //////////
 
 
 // forgot password modal start
@@ -40,8 +106,7 @@ $('#forgotPassword').on('click', function () {
 // end of forgot password modal code
 
 
-
-// start of editprofile code
+////////// CODE FOR EDIT PROFILE PAGE //////////
 
 // code for hiding/unhiding passwords
 $(document).ready(function() {
@@ -99,25 +164,25 @@ $(document).ready(function() {
     });
 });
 
-// SHOW UPLOADED IMAGE
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+    // SHOW UPLOADED IMAGE
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $('#imageResult')
-                .attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
-}
 
-$(function () {
-    $('#upload').on('change', function () {
-        readURL(input);
+    $(function () {
+        $('#upload').on('change', function () {
+            readURL(input);
+        });
     });
-});
-// END OF UPLOAD IMG
+    // END OF SHOW UPLOADED IMAGE CODE
 
 $('#resetPasswordBtn').on('click', function () {
     $('#changePasswordModal').modal('show');
@@ -136,7 +201,6 @@ $('#resetPasswordBtn').on('click', function () {
     $('#forgetPasswordModal').modal('show');
   })  
 
-
-// end of editprofile code
+////////// END CODE FOR EDIT PROFILE PAGE //////////
 
 
