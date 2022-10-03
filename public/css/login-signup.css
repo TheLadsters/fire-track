@@ -1,0 +1,190 @@
+/* STARTING CODE FOR LOGIN PAGE */
+#login-body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f8fafb; }
+
+  
+#signin-info {
+    color: #b3b3b3;
+    font-weight: 300; }
+
+#signIn-title{
+  font-family: "Roboto", sans-serif; 
+} 
+
+  .forgot-pass {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease; }
+    .forgot-pass:hover {
+      text-decoration: none !important; }
+  
+  .content-login {
+    padding: 7rem 0; }
+  
+  h2 {
+    font-size: 20px; }
+  
+  @media (max-width: 991.98px) {
+    .content-login .bg {
+      height: 500px; } }
+  
+  .content-login .contents, .content-login .bg {
+    width: 50%; }
+    @media (max-width: 1199.98px) {
+      .content-login .contents, .content-login .bg {
+        width: 100%; } }
+    .content-login .contents .form-group, .content-login .bg .form-group {
+      overflow: hidden;
+      margin-bottom: 0;
+      padding: 15px 15px;
+      border-bottom: none;
+      position: relative;
+      background: #edf2f5;
+      border-bottom: 1px solid #e6edf1; }
+      .content-login .contents .form-group label, .content-login .bg .form-group label {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        transition: .3s all ease; }
+      .content-login .contents .form-group input, .content-login .bg .form-group input {
+        background: transparent; }
+      .content-login .contents .form-group.first, .content-login .bg .form-group.first {
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px; }
+      .content-login .contents .form-group.last, .content-login .bg .form-group.last {
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px; }
+      .content-login .contents .form-group label, .content-login .bg .form-group label {
+        font-size: 12px;
+        display: block;
+        margin-bottom: 0;
+        color: #b3b3b3; }
+      .content-login .contents .form-group.focus, .content-login .bg .form-group.focus {
+        background: #fff; }
+      .content-login .contents .form-group.field--not-empty label, .content-login .bg .form-group.field--not-empty label {
+        margin-top: -20px; }
+    .content-login .contents .form-control, .content-login .bg .form-control {
+      border: none;
+      padding: 0;
+      font-size: 20px;
+      border-radius: 0; }
+      .content-login .contents .form-control:active, .content-login .contents .form-control:focus, .content-login .bg .form-control:active, .content-login .bg .form-control:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none; }
+  
+  .content-login .bg {
+    background-size: cover;
+    background-position: center; }
+  
+  .content-login a {
+    color: #888;
+    text-decoration: underline; }
+  
+  .content-login .btn {
+    height: 54px;
+    padding-left: 30px;
+    padding-right: 30px; }
+  
+  .content-login .forgot-pass {
+    position: relative;
+    top: 2px;
+    font-size: 14px; }
+
+  .mapCebu{
+    width: 95%;
+    height:80%;
+  }
+
+.fireTrackBlack{
+  width: 35%;
+  height:35%;
+}  
+  
+.no-account{
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; 
+}
+
+.no-account:hover {
+    text-decoration: none !important; 
+}
+
+.btn-submit{
+    color:#fff;
+    background-color:#6c63ff;
+    border-color:#6c63ff;
+    border-radius: 5px;
+    }
+
+.btn-submit:hover{
+    color:#fff;
+    background-color:#483dff;
+    border-color:#3c30ff;
+}
+
+.btn-submit.focus,.btn-submit:focus{
+    -webkit-box-shadow:0 0 0 0.2rem rgba(130, 122, 255, 0.5);
+    box-shadow:0 0 0 0.2rem rgba(130, 122, 255, 0.5)
+}
+
+.btn-block{
+    display:block;
+    width:100%;
+    height: 50px;
+}
+/* ENDING CODE FOR LOGIN PAGE */
+
+/* STARTING CODE FOR SIGN UP PAGE*/
+#body-signup{
+  font-family: "Roboto", sans-serif;
+  background-color: #6c63ff;
+}
+
+@media (min-width: 1025px) {
+  .h-custom {
+  height: 100vh !important;
+  }
+  }
+
+  .fireTrackBlack{
+    height: 20%;
+    width: 20%;
+  }
+
+  .genderArea{
+    font-size: 18px;
+  }
+
+
+.btn-signUp{
+    color:#fff;
+    background-color:#6c63ff;
+    border-color:#6c63ff;
+    border-radius: 5px;
+    font-weight: bold;
+    }
+
+.btn-signUp:hover{
+    color:#fff;
+    background-color:#483dff;
+    border-color:#3c30ff;
+}
+
+.btn-signUp.focus,.btn-submit:focus{
+    -webkit-box-shadow:0 0 0 0.2rem rgba(130, 122, 255, 0.5);
+    box-shadow:0 0 0 0.2rem rgba(130, 122, 255, 0.5)
+}
+
+.btn-block-signup{
+    display:block;
+    width:100%;
+    height: 50px;
+}
+/* ENDING CODE FOR SIGNUP PAGE */
