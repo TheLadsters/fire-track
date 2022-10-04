@@ -39,3 +39,7 @@ Route::get('/fire-alert-map', function () {
     return view('firefighter/firealertmap');
 });
 
+Route::get('/reports', function () {
+    return view('firefighter/reports');
+});
+
