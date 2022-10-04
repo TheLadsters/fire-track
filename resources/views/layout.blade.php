@@ -21,28 +21,28 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="head_logo"> <img src="images/fire_track_logo_black.png" alt="fire track logo"> </div>
+        <div class="head_logo"> <img src="images/fire_track_final.png" id="firetrack_logo" alt="fire track logo"> </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_user-name">John Doe</span> </a>
                 <div class="nav_list"> 
-                  <a href="#" class="nav_link active"> 
+                  <a href="/edit-profile" class="nav_link"> 
                     <i class='bx bx-user-circle nav_icon'></i>
                     <span class="nav_name">Edit Profile</span> 
                   </a> 
                   
-                  <a href="#" class="nav_link"> 
+                  <a href="/fire-hydrant-map" class="nav_link"> 
                     <i class='bx bx-map-alt nav_icon'></i>
                     <span class="nav_name">Fire Hydrant Map</span> 
                   </a> 
                   
-                  <a href="#" class="nav_link"> 
+                  <a href="/fire-alert-map" class="nav_link"> 
                     <i class='bx bxs-hot nav_icon'></i> 
                     <span class="nav_name">Fire Alert Map</span> 
                   </a> 
                   
-                  <a href="#" class="nav_link"> 
+                  <a href="/reports" class="nav_link"> 
                     <i class='bx bxs-report' ></i>
                     <span class="nav_name">Generate Reports</span> 
                   </a> 
@@ -57,10 +57,10 @@
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
-        <h4>Main Components</h4>
         @yield('editProfile')
-    </div>
+        @yield('fireHydrantMap')
+        @yield('fireAlertMap')
+        @yield('reportsPage')
     <!--Container Main end-->
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
