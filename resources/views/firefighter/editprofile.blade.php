@@ -4,7 +4,61 @@
 
 
 
-Edit profile body
+<div class="body-editprofile mb-5">
+    <div class="container container-form">
+        <form>
+        <div class="row text-center">
+            <div class="col-6 col-md-6 col-lg-6">
+                <h3 id="edit-profile-title">Edit Profile</h3>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-12">
+                <img src="images/tempo_img.png" />
+                <p class="mt-2"><a href="#">Change Profile Photo</a></p>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-6 my-2">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-inputs" id="firstNameInput" placeholder="First Name" name="firstName">
+                            </div>
+                    </div>
+
+                    <div class="col-md-6 my-2">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-inputs" id="lastNameInput" placeholder="Last Name" name="lastName">
+                            </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 my-2">
+                        <input type="text" class="form-control form-inputs" id="homeAddressInput" placeholder="Home Address" name="homeAddress">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 my-2">
+                        <input type="text" class="form-control form-inputs" id="mobileNumberInput" placeholder="Mobile Number" name="mobileNumber">
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <input type="email" class="form-control form-inputs" id="emailAddressInput" placeholder="Email Address" name="emailAddress">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-12 text-center">
+                    <button class="btn-editprofile">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 {{-- start of modal code --}}
