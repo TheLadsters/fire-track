@@ -2,14 +2,14 @@
 
 @section('signup-page')
 
-<section class="h-100">
-  <div class="container py-5 h-100">
+<section class="h-100 my-5">
+  <div class="container py-1 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
         <div class="card rounded-5">
           <div class="row d-flex justify-content-center mt-3">
-          <img src= "/images/fire_track_logo_black.png"
-            class="fireTrackBlack" alt="Fire Track Logo">
+          <img src= "/images/fire_track_final.png"
+            class="fireTrackFinal" alt="Fire Track Logo">
           </div>
 
           <div class="card-body p-4 p-md-5">
@@ -19,21 +19,21 @@
 
               <div class="row">
                 <div class="col-md-6 mb-4">
-                    <input type="text" class="form-control" id="firstNameInput" placeholder="First Name" />
+                    <input type="text" class="form-control form-inputs" id="firstNameInput" placeholder="First Name" />
                 </div>
 
                 <div class="col-md-6 mb-4">
-                  <input type="text" class="form-control" id="firstNameInput" placeholder="Last Name" />
+                  <input type="text" class="form-control form-inputs" id="firstNameInput" placeholder="Last Name" />
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-4">
-                    <input type="text" class="form-control" id="contactNumberInput" placeholder="Contact Number" />
+                    <input type="text" class="form-control form-inputs" id="contactNumberInput" placeholder="Contact Number" />
                 </div>
 
                 <div class="col-md-6 mb-4">
-                  <input type="text" class="form-control" id="emailAddressInput" placeholder="Email Address" />
+                  <input type="text" class="form-control form-inputs" id="emailAddressInput" placeholder="Email Address" />
                 </div>
               </div>
 
@@ -41,11 +41,11 @@
 
               <div class="row mb-4 pb-2 pb-md-0 mb-md-3">
                 <div class="col-md-12 mb-4">
-                    <input type="text" id="homeAddressInput" class="form-control" placeholder="Home Address" />
+                    <input type="text" id="homeAddressInput" class="form-control form-inputs" placeholder="Home Address" />
                 </div>
 
                 <div class="col-md-12">
-                    <input type="password" id="passwordInput" class="form-control" placeholder="Password" />
+                    <input type="password" id="passwordInput" class="form-control form-inputs" placeholder="Password" />
                 </div>
               </div>
 
