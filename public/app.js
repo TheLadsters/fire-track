@@ -1,19 +1,3 @@
-// code for highlighting sidebar from current page
-// $(function() {
-//     // this will get the full URL at the address bar
-//     let url = window.location.href;
-
-//     $(".sidebar ul li a").each(function() {
-//         // checks if its the same on the address bar
-//         if (url == (this.href)) {
-//             $(this).closest("li").addClass("active");
-//         }
-//     });
-// }); 
-// end of code
-
-
-
 ////////// JS FOR LOGIN PAGE //////////
 
 // code for movement of text for username password in login page
@@ -47,6 +31,19 @@ $('.btn-submit').on('click', function(e){
 
 
 ////////// CODE FOR SIDEBAR //////////
+
+// code for checking current site and highlighting sidebar
+$(function() {
+    // this will get the full URL at the address bar
+    let url = window.location.href;
+
+    $(".nav .nav_list a").each(function() {
+        // checks if its the same on the address bar
+        if (url == (this.href)) {
+            $(this).closest("a").addClass("active");
+        }
+    });
+}); 
 
 document.addEventListener("DOMContentLoaded", function(event) {
    
