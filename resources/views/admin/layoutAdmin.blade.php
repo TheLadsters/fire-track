@@ -27,18 +27,32 @@
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_user-name">John Doe</span> </a>
                 <div class="nav_list"> 
-                  <a href="/user-management-user" class="nav_link"> 
+                  <a class="nav_link dropdown_links"> 
                     <i class='bx bx-user-circle nav_icon'></i>
-                    <span class="nav_name">User Management
+                    <span class="nav_name dropdown-btn-user">User Management
+                      <i class="fa fa-caret-down mx-1"></i>
                       </span> 
                   </a> 
+
+                  <div class="dropdown-container-user mb-3 d-none" id="dropdown-user">
+                    <a href="/user-management-user" class="py-5">User</a>
+                    <br>
+                    <a href="/user-management-admin">Admin</a>
+                  </div>
                   
-                  <a href="#" class="nav_link"> 
+                  <a class="nav_link dropdown_links mt-1"> 
                     <i class='bx bx-map-alt nav_icon'></i>
-                    <span class="nav_name">Fire Hydrant 
+                    <span class="nav_name dropdown-btn-hydrant">Hydrant 
+                      <i class="fa fa-caret-down mx-3"></i>
                       <br>Management
                     </span> 
                   </a> 
+
+                  <div class="dropdown-container-firealert mb-3 d-none" id="dropdown-firealert">
+                    <a href="/add-fire-hydrant" class="py-5">Add Fire Hydrant</a>
+                    <br>
+                    <a href="/fire-hydrant-type-management">Fire Hydrant Type</a>
+                  </div>
                   
                   <a href="/fire-alert-management" class="nav_link"> 
                     <i class='bx bxs-hot nav_icon'></i> 
@@ -48,7 +62,7 @@
                   </a> 
                   
                   <a href="/generate-reports" class="nav_link"> 
-                    <i class='bx bxs-report' ></i>
+                    <i class='bx bxs-report'></i>
                     <span class="nav_name">Generate Reports</span> 
                   </a> 
                   
