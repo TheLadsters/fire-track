@@ -97,6 +97,49 @@ document.addEventListener("DOMContentLoaded", function(event) {
      // Your code to run since DOM is loaded and ready
     });
 
+// code for when smaller screen size, remove drop downs
+jQuery(document).ready(function($) {
+        var alterClass = function() {
+          var ww = document.body.clientWidth;
+          if (ww < 768) {
+            $('#dropdown-user').removeClass('dropdown-container-user');
+            $('#dropdown-firealert').removeClass('dropdown-container-firealert');
+          } else if (ww >= 768) {
+            $('#dropdown-user').addClass('dropdown-container-user');
+            $('#dropdown-firealert').addClass('dropdown-container-firealert');
+          };
+        };
+        $(window).resize(function(){
+          alterClass();
+        });
+        //Fire it when the page first loads:
+        alterClass();
+      });
+
+
+$('.dropdown-btn-user').click(function(){
+    if($('.dropdown-container-user').hasClass('d-none')){
+        $('.dropdown-container-user').removeClass('d-none');
+        $('.dropdown-container-user').addClass('d-block');
+    }
+    else{
+        $('.dropdown-container-user').removeClass('d-block');
+        $('.dropdown-container-user').addClass('d-none');
+    }
+
+})
+
+$('.dropdown-btn-hydrant').click(function(){
+    if($('.dropdown-container-firealert').hasClass('d-none')){
+        $('.dropdown-container-firealert').removeClass('d-none');
+        $('.dropdown-container-firealert').addClass('d-block');
+    }
+    else{
+        $('.dropdown-container-firealert').removeClass('d-block');
+        $('.dropdown-container-firealert').addClass('d-none');
+    }
+
+})
 
 ////////// END OF CODE FOR SIDEBAR //////////
 
