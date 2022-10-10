@@ -19,7 +19,20 @@ $(function() {
 // (temporary) code for login button to redirect to main page
 $('.btn-submit').on('click', function(e){
     e.preventDefault();
-    window.location.href = "http://127.0.0.1:8000/edit-profile";
+
+    if($('.form-group #usernameInput').val() == "admin"){
+        window.location.href = "http://127.0.0.1:8000/user-management-user";
+
+    }
+    else if($('.form-group #usernameInput').val() == "firefighter"){
+        window.location.href = "http://127.0.0.1:8000/edit-profile";
+
+    }
+    else{
+        window.location.href = "http://127.0.0.1:8000/edit-profile";
+
+    }
+    
 });
 // end of (temporary) code for login button to redirect to main page
 
