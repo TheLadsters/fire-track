@@ -42,7 +42,7 @@
                   </div>
 
                   <div class="d-flex justify-content-center mt-5">
-                    <img src="images/fire_track_final.png" alt="firetracklogo" class="img-fluid fireTrackLogo"/>
+                    <img src="images/fire_track_logo_clear.png" alt="firetracklogo" class="img-fluid fireTrackLogo"/>
                   </div>
                 </form>
                 </div>
