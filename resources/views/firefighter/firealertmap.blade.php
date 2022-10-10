@@ -1,4 +1,4 @@
-@extends('/layout')
+@extends('firefighter/layoutFirefighter')
 
 @section('fireAlertMap')
 <img src="./images/maptemplate.png" width="100%" height="100%"/>

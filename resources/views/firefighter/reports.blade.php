@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('firefighter/layoutFirefighter')
 
 @section('reportsPage')
 <form class="form-signin">
