@@ -29,17 +29,22 @@
                 <div class="nav_list"> 
                   <a href="/edit-profile" class="nav_link"> 
                     <i class='bx bx-user-circle nav_icon'></i>
-                    <span class="nav_name">Edit Profile</span> 
+                    <span class="nav_name">User Management
+                      </span> 
                   </a> 
                   
                   <a href="/fire-hydrant-map" class="nav_link"> 
                     <i class='bx bx-map-alt nav_icon'></i>
-                    <span class="nav_name">Fire Hydrant Map</span> 
+                    <span class="nav_name">Fire Hydrant 
+                      <br>Management
+                    </span> 
                   </a> 
                   
                   <a href="/fire-alert-map" class="nav_link"> 
                     <i class='bx bxs-hot nav_icon'></i> 
-                    <span class="nav_name">Fire Alert Map</span> 
+                    <span class="nav_name">Fire Alert 
+                      <br>Management
+                    </span> 
                   </a> 
                   
                   <a href="/reports" class="nav_link"> 
@@ -49,7 +54,9 @@
                   
                   <a href="#" class="nav_link"> 
                     <i class='bx bx-news nav_icon'></i>
-                    <span class="nav_name">Bulletin</span> 
+                    <span class="nav_name">Bulletin 
+                      <br>Management
+                    </span> 
                   </a> 
                   
                 </div>
@@ -57,10 +64,8 @@
         </nav>
     </div>
     <!--Container Main start-->
-        @yield('editProfile')
-        @yield('fireHydrantMap')
-        @yield('fireAlertMap')
-        @yield('reportsPage')
+        @yield('userManagementUser')
+        @yield('userManagementAdmin')
     <!--Container Main end-->
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
