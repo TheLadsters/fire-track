@@ -26,6 +26,22 @@ Route::get('/signup', function () {
     return view('signUp');
 });
 
+//Forgot Password
+
+Route::get('/email', function () {
+    return view('Forgot Password/Email');
+});
+Route::get('/otp', function () {
+    return view('Forgot Password/Otp');
+});
+Route::get('/newpassword', function () {
+    return view('Forgot Password/NewPassword');
+});
+Route::get('/confirmedpass', function () {
+    return view('Forgot Password/ConfirmedPass');
+});
+
+
 // sidebar routes
 Route::get('/edit-profile', function () {
     return view('firefighter/editprofile');

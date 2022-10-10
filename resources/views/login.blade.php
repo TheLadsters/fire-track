@@ -28,7 +28,7 @@
                   </div>
                   
                   <div class="d-flex mb-4 align-items-center">
-                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                    <span class="ml-auto"><a href="/email" class="forgot-pass">Forgot Password</a></span> 
                   </div>
     
                   {{-- this submit button to be used later --}}
