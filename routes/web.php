@@ -45,9 +45,32 @@ Route::get('/confirmedpass', function () {
 Route::get('/user-management-user', function () {
     return view('admin/userManagementUser');
 });
+
 Route::get('/user-management-admin', function () {
     return view('admin/userManagementAdmin');
 });
+
+Route::get('/add-fire-hydrant', function () {
+    return view('admin/fireHManagementAdd');
+});
+
+Route::get('/fire-hydrant-type-management', function () {
+    return view('admin/fireHManagementHType');
+});
+
+Route::get('/fire-alert-management', function () {
+    return view('admin/fireAlertManagement');
+});
+
+
+Route::get('/generate-reports', function () {
+    return view('admin/generateReport');
+});
+
+Route::get('/bulletin-management', function () {
+    return view('admin/bulletinManagement');
+});
+
 
 
 // sidebar routes firefighter

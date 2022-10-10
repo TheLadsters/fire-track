@@ -27,32 +27,32 @@
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_user-name">John Doe</span> </a>
                 <div class="nav_list"> 
-                  <a href="/edit-profile" class="nav_link"> 
+                  <a href="/user-management-user" class="nav_link"> 
                     <i class='bx bx-user-circle nav_icon'></i>
                     <span class="nav_name">User Management
                       </span> 
                   </a> 
                   
-                  <a href="/fire-hydrant-map" class="nav_link"> 
+                  <a href="#" class="nav_link"> 
                     <i class='bx bx-map-alt nav_icon'></i>
                     <span class="nav_name">Fire Hydrant 
                       <br>Management
                     </span> 
                   </a> 
                   
-                  <a href="/fire-alert-map" class="nav_link"> 
+                  <a href="/fire-alert-management" class="nav_link"> 
                     <i class='bx bxs-hot nav_icon'></i> 
                     <span class="nav_name">Fire Alert 
                       <br>Management
                     </span> 
                   </a> 
                   
-                  <a href="/reports" class="nav_link"> 
+                  <a href="/generate-reports" class="nav_link"> 
                     <i class='bx bxs-report' ></i>
                     <span class="nav_name">Generate Reports</span> 
                   </a> 
                   
-                  <a href="#" class="nav_link"> 
+                  <a href="/bulletin-management" class="nav_link"> 
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin 
                       <br>Management
@@ -66,6 +66,11 @@
     <!--Container Main start-->
         @yield('userManagementUser')
         @yield('userManagementAdmin')
+        @yield('addFireHydrantManagement')
+        @yield('fireHydrantManagementType')
+        @yield('fireAlertManagement')
+        @yield('generateReport')
+        @yield('bulletinManagement')
     <!--Container Main end-->
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 

@@ -59,7 +59,7 @@ a{text-decoration: none}
 }
 .header_img img{width: 120px}
   
-.l-navbar{left: 0;padding: 1rem 1rem 0 0}.show{width: calc(var(--nav-width) + 156px)}.body-pd{padding-left: calc(var(--nav-width) + 188px)}}
+.l-navbar{left: 0;padding: 1rem 1rem 0 0}.show{width: calc(var(--nav-width) + 180px)}.body-pd{padding-left: calc(var(--nav-width) + 188px)}}
 /*  END OF SIDEBAR CODE */
 
 
