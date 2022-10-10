@@ -41,8 +41,16 @@ Route::get('/confirmedpass', function () {
     return view('Forgot Password/ConfirmedPass');
 });
 
+// sidebar routes admin
+Route::get('/user-management-user', function () {
+    return view('admin/userManagementUser');
+});
+Route::get('/user-management-admin', function () {
+    return view('admin/userManagementAdmin');
+});
 
-// sidebar routes
+
+// sidebar routes firefighter
 Route::get('/edit-profile', function () {
     return view('firefighter/editprofile');
 });
@@ -58,4 +66,3 @@ Route::get('/fire-alert-map', function () {
 Route::get('/reports', function () {
     return view('firefighter/reports');
 });
-
