@@ -19,8 +19,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/layout', function () {
-    return view('layout');
+Route::get('/layoutFirefighter', function () {
+    return view('layoutFirefighter');
 });
 Route::get('/signup', function () {
     return view('signUp');
