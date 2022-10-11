@@ -83,7 +83,7 @@
               </div>
 
 
-              <button class="btn-signUp btn-block-signup btn-lg mb-1">Sign Up</button>
+              <button class="btn-signUp btn-block-signup btn-lg mb-1" >Sign Up</button>
 
             </form>
 
