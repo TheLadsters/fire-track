@@ -83,7 +83,7 @@ $(document).ready(function(){
 							</span>
 						</td>
 						<td>Type 1</td>
-						<td><img src="images/wetbarrel.jpg" style="width:100px;height:100px; border-radius: 50%;border: 1px solid #555;"></td>
+						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px; border-radius: 50%;border: 1px solid #555;"></td>
                         <td>Wet Barrel</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
@@ -98,7 +98,7 @@ $(document).ready(function(){
 							</span>
 						</td>
 						<td>Type 2</td>
-						<td><img src="images/wetbarrel.jpg" style="width:100px;height:100px;border-radius: 50%;border: 1px solid #555;"></td>
+						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px;border-radius: 50%;border: 1px solid #555;"></td>
                         <td>Wet Barrel</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
@@ -113,7 +113,7 @@ $(document).ready(function(){
 							</span>
 						</td>
 						<td>Type 3</td>
-						<td><img src="images/wetbarrel.jpg" style="width:100px;height:100px;border-radius: 50%;border: 1px solid #555;"></td>
+						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px;border-radius: 50%;border: 1px solid #555;"></td>
                         <td>Wet Barrel</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
@@ -128,7 +128,7 @@ $(document).ready(function(){
 							</span>
 						</td>
 						<td>Type 4</td>
-						<td><img src="images/wetbarrel.jpg" style="width:100px;height:100px;border-radius: 50%;border: 1px solid #555;"></td>
+						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px;border-radius: 50%;border: 1px solid #555;"></td>
                         <td>Wet Barrel</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>

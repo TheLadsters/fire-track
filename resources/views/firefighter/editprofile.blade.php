@@ -54,26 +54,26 @@
                                 <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name">
                             </div>
                         </div>
-                        <!-- Form Group (email address)-->
+                        <!-- Form Group (Address)-->
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Address</label>
-                            <input class="form-control" id="inputEmailAddress" type="text" placeholder="Enter your address">
+                            <label class="small mb-1" for="inputAddress">Address</label>
+                            <input class="form-control" id="inputAddress" type="text" placeholder="Enter your address">
                         </div>
                         <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
+                        <div class="row gx-3 mb-3   ">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
                                 <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number">
                             </div>
-                            <!-- Form Group (birthday)-->
+                            <!-- Form Group (Email address-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Email Address</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your email address">
+                                <label class="small mb-1" for="inputEmail">Email Address</label>
+                                <input class="form-control" id="inputEmail type="text" name="email address" placeholder="Enter your email address">
                             </div>
-                            <!-- <div class="col-md-6">
-                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span>Change Password</span></a>
-                            </div> -->
+                            <div class="col-md-6">
+                                <br><a href="#ChangePasswordModal" class="edit" data-toggle="modal"><label class="small mb-1">Change Password</label></a>
+                            </div>
                         </div>
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="button">Save changes</button>
@@ -82,6 +82,38 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Edit Modal HTML -->
+<div id="ChangePasswordModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Change Password</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<div class="form-group">
+						<label>Current Password</label>
+						<input type="password" class="form-control" required>
+					</div>
+                    <div class="form-group">
+						<label>New Password</label>
+						<input type="password" class="form-control" required> 
+					</div>
+					<div class="form-group">
+						<label>Re-type New Password</label>
+                        <input type="password" class="form-control" required> 
+					</div>	
+				</div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Update password</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 <style>
