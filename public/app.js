@@ -29,7 +29,7 @@ $('.btn-submit').on('click', function(e){
 
     }
     else{
-        window.location.href = "http://127.0.0.1:8000/reports";
+        window.location.href = "http://127.0.0.1:8000/edit-profile";
 
     }
     
@@ -252,7 +252,16 @@ $('#resetPasswordBtn').on('click', function () {
   $('#forgotPassLink').on('click', function () {
     $('#changePasswordModal').modal('hide');
     $('#forgetPasswordModal').modal('show');
+  })
+  
+
+  $('#changePass').on('click', function () {
+    $('#ChangePasswordModal').modal('show');
   })  
+
+
+
+
 
 ////////// END CODE FOR EDIT PROFILE PAGE //////////
 
