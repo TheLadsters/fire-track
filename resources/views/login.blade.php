@@ -76,8 +76,8 @@
                   </div>
 
                   <form>
-                    <div class="row">
-                      <div class="col-md-6 mb-3 form-group first">
+                    <div class="row justify-content-evenly">
+                      <div class="col-md-5 mb-3 form-group first">
                         <label for="firstname">First Name</label>
                           <input type="text" class="form-control" id="firstNameInput"/>
                       </div>
@@ -88,8 +88,8 @@
                       </div>
                     </div>    
 
-                    <div class="row">
-                      <div class="col-md-6 mb-3 form-group first">
+                    <div class="row justify-content-evenly">
+                      <div class="col-md-5 mb-3 form-group first">
                         <label for="contactnumber">Contact Number</label>
                           <input type="text" class="form-control" id="contactNumberInput" />
                       </div>
@@ -100,8 +100,8 @@
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-md-6 mb-3 form-group first">
+                    <div class="row justify-content-evenly">
+                      <div class="col-md-5 mb-3 form-group first">
                         <label for="password">Password</label>
                           <input type="password" class="form-control" id="passwordInput" />
                       </div>
@@ -112,8 +112,8 @@
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-md-12 mb-3 form-group first">
+                    <div class="row justify-content-evenly">
+                      <div class="col-md-10 mb-3 form-group first">
                         <label for="homeAddress">Home Address</label>
                           <input type="text" class="form-control" id="homeAddressInput" />
                       </div>

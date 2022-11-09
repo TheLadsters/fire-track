@@ -302,7 +302,9 @@ transition: .3s all ease;
     border-radius: 0; 
 }
     
-.signup-contents .form-control:active, .signup-contents .form-control:focus, .content-login .bg .form-control:active, .content-login .bg .form-control:focus {
+.signup-contents .form-control:active, .content-login .bg .form-control:active 
+/* , .signup-contents .form-control:focus */
+ {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none; 
