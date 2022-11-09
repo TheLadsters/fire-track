@@ -303,7 +303,7 @@ transition: .3s all ease;
 }
     
 .signup-contents .form-control:active, .content-login .bg .form-control:active 
-/* , .signup-contents .form-control:focus */
+, .signup-contents .form-control:focus
  {
     outline: none;
     -webkit-box-shadow: none;
