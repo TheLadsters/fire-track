@@ -5,7 +5,7 @@
     }
 
 .img-account-profile {
-    height: 10rem;
+    width: 50%;
 }
     
 .rounded-circle {
@@ -52,6 +52,10 @@
 .nav-borders .nav-link.active {
     color: #0061f2;
     border-bottom-color: #0061f2;
+}
+
+.upload-area{
+    text-align: center;
 }
     
 .nav-borders .nav-link {

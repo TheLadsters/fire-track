@@ -20,11 +20,11 @@ $(function() {
 $('.btn-submit').on('click', function(e){
     e.preventDefault();
 
-    if($('.form-group #usernameInput').val() == "admin"){
+    if($('.form-group #signInUsernameInput').val() == "admin"){
         window.location.href = "http://127.0.0.1:8000/user-management-user";
 
     }
-    else if($('.form-group #usernameInput').val() == "firefighter"){
+    else if($('.form-group #signInUsernameInput').val() == "firefighter"){
         window.location.href = "http://127.0.0.1:8000/edit-profile";
 
     }

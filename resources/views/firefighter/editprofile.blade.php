@@ -19,13 +19,11 @@
 </head>
 
 
-<div id="body">
-    <div class="container-xl px-4 mt-4">
-        <hr class="mt-0 mb-4">
+    <div class="container-xl px-4">
         <div class="row">
-            <div class="col-xl-4">
+            <div class="col-sm-4 mt-5">
                 <!-- Profile picture card-->
-                <div class="card mb-4 mb-xl-0">
+                <div class="card mb-4">
                     <div class="card-header">Profile Picture</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
@@ -34,13 +32,14 @@
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
                         <div class="form-group">
-                            <label>Upload new image</label>
+                            <label class="mb-3">Upload new image</label>
                             <input type="file" class="form-control" required>
                         </div>	
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8">
+
+            <div class="col-sm-8 mt-5">
                 <!-- Account details card-->
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
@@ -77,7 +76,7 @@
                                     <input class="form-control" id="inputEmail" type="text" name="email address" placeholder="Enter your email address">
                                 </div>
                                 <div class="col-md-6">
-                                    <br><a href="#ChangePasswordModal" id="changePass"><label class="small mb-1">Change Password</label></a>
+                                    <br><a data-bs-toggle="modal" data-bs-target="#changePasswordModal" id="changePass"><label class="small mb-1">Change Password</label></a>
                                 </div>
                             </div>
                             <!-- Save changes button-->
@@ -88,10 +87,9 @@
             </div>
         </div>
     </div>
-</div>
 
 <!-- Edit Modal HTML -->
-<div id="ChangePasswordModal" class="modal fade">
+{{-- <div id="ChangePasswordModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
@@ -120,7 +118,37 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> --}}
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalCenter" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content px-3">
+        <div class="modal-header forgetPasswordHeader">
+          <h4 class="modal-title" id="forgetPasswordTitle">Reset Your Password</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body forgetPasswordArea">
+            <div class="row my-3">
+                <div class="col-md-12 text-center">
+                    <h5>
+                    Please enter your registered email and we will send you an
+                    email request to reset your password.
+                    </h5>
+                </div>
+            </div>
 
+            <div class="row my-3 mb-3">
+                <div class="col-md-12 form-group">
+                  <label for="homeAddress">Email Address</label>
+                    <input class="form-control first" type="email">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="forgetPasswordSubmit" class="btn-block">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
