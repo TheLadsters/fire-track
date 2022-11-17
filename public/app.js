@@ -260,9 +260,65 @@ $('#resetPasswordBtn').on('click', function () {
   })  
 
 
-
-
-
 ////////// END CODE FOR EDIT PROFILE PAGE //////////
+
+
+
+
+///////// CODE FOR USER MANAGEMENT USER PAGE /////////
+
+
+///////// END OF CODE FOR USER MANAGEMENT USER PAGE /////////
+$(document).ready(function(){
+	// Activate tooltip
+	// $('[data-toggle="tooltip"]').tooltip();
+	
+	// Select/Deselect checkboxes
+	var checkbox = $('table .tbl-body-user input[type="checkbox"]');
+	$("#selectAllUser").click(function(){
+		if(this.checked){
+			checkbox.each(function(){
+				this.checked = true;                        
+			});
+		} else{
+			checkbox.each(function(){
+				this.checked = false;                        
+			});
+		} 
+	});
+	checkbox.click(function(){
+		if(!this.checked){
+			$("#selectAllUser").prop("checked", false);
+		}
+	}); 
+});
+
+///////// CODE FOR USER MANAGEMENT ADMIN PAGE ///////
+$(document).ready(function(){
+	// Activate tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+	
+	// Select/Deselect checkboxes
+	var checkbox = $('table .table-body input[type="checkbox"]');
+	$("#selectAll").click(function(){
+		if(this.checked){
+			checkbox.each(function(){
+				this.checked = true;                        
+			});
+		} else{
+			checkbox.each(function(){
+				this.checked = false;                        
+			});
+		} 
+	});
+	checkbox.click(function(){
+		if(!this.checked){
+			$("#selectAll").prop("checked", false);
+		}
+	}); 
+});
+
+///////// END OF CODE FOR USER MANAGEMENT ADMIN PAGE ///////
+
 
 
