@@ -183,8 +183,17 @@ table.table .avatar {
 	box-shadow: none;
 	background: #ddd;
 }
+
+.nav_link, .nav_logo, #dropdown-user a, #dropdown-firealert a {
+    text-decoration: none !important;
+}
+
+#dropdown-user a:hover, #dropdown-firealert a:hover {
+	color: white;
+}
+
 /* Modal styles */
-/* .modal .modal-dialog {
+.modal .modal-dialog {
 	max-width: 400px;
 }
 .modal .modal-header, .modal .modal-body, .modal .modal-footer {
@@ -215,4 +224,8 @@ table.table .avatar {
 }	
 .modal form label {
 	font-weight: normal;
-}	 */
+}	
+
+tbody a {
+	cursor: pointer;
+}

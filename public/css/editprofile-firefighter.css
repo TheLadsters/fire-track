@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 #body{margin-top:20px;
     background-color:#f2f6fc;
     color:#69707a;
@@ -69,4 +70,16 @@
     padding-right: 0;
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.nav_link, .nav_logo {
+    text-decoration: none !important;
+    font-family: "Roboto" !important;
+    font-weight: Normal !important;
+    font-size: var(--normal-font-size);
+}
+
+#changePass label:hover{
+    text-decoration: underline !important;
+    cursor: pointer;
 }

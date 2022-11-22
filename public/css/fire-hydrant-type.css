@@ -1,12 +1,4 @@
-body {
-	color: #566787; 
-	background: #f5f5f5;
-	font-family: 'Roboto','Arial';
-	font-size: 18px;
-   
-    
-    
-}
+
 .table-responsive {
     margin: 150px 0;
         
@@ -226,3 +218,11 @@ table.table .avatar {
 .modal form label {
 	font-weight: normal;
 }	
+
+.nav_link, .nav_logo, #dropdown-user a, #dropdown-firealert a  {
+    text-decoration: none !important;
+}
+
+#dropdown-user a:hover, #dropdown-firealert a:hover {
+	color: white;
+}

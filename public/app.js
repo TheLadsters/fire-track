@@ -145,17 +145,17 @@ $('.dropdown-btn-hydrant').click(function(){
 
 
 // forgot password modal start
-$('#forgotPassword').on('click', function () {
-    $('#forgetPasswordModal').modal('show');
-  })
+// $('#forgotPassword').on('click', function () {
+//     $('#forgetPasswordModal').modal('show');
+//   })
 
-$('#dismissX').on('click', function () {
-    $('#forgetPasswordModal').modal('hide');
-  })
+// $('#dismissX').on('click', function () {
+//     $('#forgetPasswordModal').modal('hide');
+//   })
 
-$('#forgotPassword').on('click', function () {
-    $('#forgetPasswordModal').modal('show');
-}) 
+// $('#forgotPassword').on('click', function () {
+//     $('#forgetPasswordModal').modal('show');
+// }) 
 // end of forgot password modal code
 
 
@@ -236,24 +236,6 @@ $(document).ready(function() {
         });
     });
     // END OF SHOW UPLOADED IMAGE CODE
-
-$('#resetPasswordBtn').on('click', function () {
-    $('#changePasswordModal').modal('show');
-  })
-
-  $('#dismissX').on('click', function () {
-    $('#changePasswordModal').modal('hide');
-  })
-
-  $('#dismissX2').on('click', function () {
-    $('#forgetPasswordModal').modal('hide');
-  })
-
-  $('#forgotPassLink').on('click', function () {
-    $('#changePasswordModal').modal('hide');
-    $('#forgetPasswordModal').modal('show');
-  })
-  
 
   $('#changePass').on('click', function () {
     $('#ChangePasswordModal').modal('show');

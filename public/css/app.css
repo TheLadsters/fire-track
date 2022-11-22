@@ -20,7 +20,8 @@ body{
   font-family: "Roboto", sans-serif;
   font-size: var(--normal-font-size);
   transition: .5s;
-  background-color: var(--white-color);
+  /* background-color: var(--white-color); */
+  background-color: #f8f4fc !important;
 }
 a{text-decoration: none}
 
