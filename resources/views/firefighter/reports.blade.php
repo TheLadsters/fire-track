@@ -1,6 +1,10 @@
 @extends('firefighter/layoutFirefighter')
 
 @section('reportsPage')
+<head>
+    <link rel="stylesheet" href="css/firefighterCSS/reports-firefighter.css">
+</head>
+
 <form class="form-signin">
 <div class="container">
    <div class="row">

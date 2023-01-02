@@ -160,9 +160,8 @@
   width: 50%;
   margin-bottom: 20px;
 }
-
-
 /* ENDING CODE FOR LOGIN PAGE */
+
 
 /* START OF CODE FOR NAVLINK PILLS */
 .card{
@@ -239,7 +238,6 @@ padding-bottom: 30px;
 
 
 /* STARTING CODE FOR SIGN UP PAGE*/
-
 @media (max-width: 1199.98px) {
   .signup-contents {
      width: 100%; 
@@ -433,5 +431,4 @@ transition: .3s all ease;
 #signup-info {
   color: #b3b3b3;
   font-weight: 300; }
-
 /* ENDING CODE FOR SIGNUP PAGE */
