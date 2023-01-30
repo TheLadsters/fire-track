@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/sideBarLayout.css">
+    <link href="css/firefighterCSS/bulletin-firefighter.css" rel="stylesheet">
+
     <title>FireTrack App</title>
 </head>
 
@@ -47,7 +49,7 @@
                     <span class="nav_name">Generate Reports</span> 
                   </a> 
                   
-                  <a href="#" class="nav_link"> 
+                  <a href="/bulletin-firefighter" class="nav_link"> 
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin</span> 
                   </a> 
@@ -61,12 +63,14 @@
         @yield('fireHydrantMap')
         @yield('fireAlertMap')
         @yield('reportsPage')
+        @yield('bulletinfirefighter')
     <!--Container Main end-->
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script type="text/javascript" src="/app.js"></script>
+      <script type="text/javascript" src="/bulletin-firefighter.js"></script>      
 </body>
 
 

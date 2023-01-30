@@ -1,0 +1,14 @@
+#sample_title{
+    background-color: #153449;
+    color: white;
+    padding: 12px 0px 12px 0px;
+}
+
+/* .NewsGrid{
+
+} */
+
+.news_image{
+    width: calc(100% - 20px);
+    height: 250px;
+}
