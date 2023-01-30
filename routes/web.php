@@ -26,6 +26,10 @@ Route::get('/signup', function () {
     return view('signUp');
 });
 
+Route::get('/firetrack', function () {
+    return view('publicuser/bulletin');
+});
+
 //Forgot Password
 
 Route::get('/email', function () {
@@ -93,3 +97,5 @@ Route::get('/reports', function () {
 Route::get('/bulletin-firefighter', function () {
     return view('firefighter/bulletin-firefighter');
 });
+
+

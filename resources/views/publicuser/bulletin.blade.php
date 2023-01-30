@@ -1,1 +1,8 @@
-<h1>This is the bulletin page</h1>
+@extends('publicuser/layoutPublic')
+
+@section('firefighterpublic')
+
+<h1>NEWS API HERE!</h1>
+
+@endsection
+
