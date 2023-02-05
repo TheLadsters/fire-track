@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2022 at 03:16 PM
+-- Generation Time: Feb 04, 2023 at 11:51 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -24,18 +24,66 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Table structure for table `bulletin`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+CREATE TABLE `bulletin` (
+  `bulletin_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `author_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `summary` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `article_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fire_alarm`
+--
+
+CREATE TABLE `fire_alarm` (
+  `firealarm_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Fire Out','Ongoing Fire') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Ongoing Fire',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hydrant`
+--
+
+CREATE TABLE `hydrant` (
+  `hydrant_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `hydrant_type_id` bigint(20) UNSIGNED NOT NULL,
+  `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('working','not working','maintenance') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'working',
+  `img_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hydrant_type`
+--
+
+CREATE TABLE `hydrant_type` (
+  `hydrant_type_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -44,7 +92,6 @@ CREATE TABLE `failed_jobs` (
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -58,8 +105,11 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(3, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(4, '2023_02_04_092154_create_fire_alarm_table', 1),
+(5, '2023_02_04_092334_create_hydrant_type_table', 1),
+(6, '2023_02_04_092335_create_hydrant_table', 1),
+(7, '2023_02_04_092809_create_bulletin_table', 1);
 
 -- --------------------------------------------------------
 
@@ -67,7 +117,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Table structure for table `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -80,7 +129,6 @@ CREATE TABLE `password_resets` (
 -- Table structure for table `personal_access_tokens`
 --
 
-DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -100,16 +148,20 @@ CREATE TABLE `personal_access_tokens` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `contact_no` int(11) NOT NULL,
-  `birthday` int(11) NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `contact_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` enum('male','female') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'male',
+  `img_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` enum('firefighter','admin') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'admin',
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -119,28 +171,49 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `fname`, `lname`, `contact_no`, `birthday`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'sharon.waelchi@example.net', 'Prof. Dawson Goldner', 'Miss Fanny Ryan', 335, 9741, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'F4KwhA1iCE', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(2, 'runolfsson.salma@example.com', 'Imani Stokes', 'Everardo Donnelly', 9585, 848091, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'dwR0i20sfj', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(3, 'annamarie.tremblay@example.org', 'Shyann Emard', 'Myriam Christiansen', 615512, 6, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'h16ZUUKBc4', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(4, 'lesley.hauck@example.org', 'Leila Greenfelder', 'Yadira Batz', 53156371, 4, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'tkHQkSqttl', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(5, 'lueilwitz.percival@example.com', 'Naomie Buckridge', 'Timothy Buckridge', 56, 30, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'FISJhtn64z', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(6, 'brandon.conroy@example.org', 'Miss Duane Howe', 'Edd Breitenberg', 8491247, 464197, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'EBF9ooXcFf', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(7, 'joana97@example.com', 'Cristal Kohler', 'Mr. Gabe Lesch', 185, 20, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gNju7oidjs', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(8, 'bradtke.trever@example.com', 'Dr. Lea King I', 'Gertrude Torphy', 213037, 5502, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'jGnmiihLlL', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(9, 'aron39@example.net', 'Iva Greenholt I', 'Chasity Hammes', 762240, 34259, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'eA6b8ueljP', '2022-09-09 01:16:42', '2022-09-09 01:16:42'),
-(10, 'zohara@example.com', 'Maryam Johns', 'Raleigh Daugherty', 3686590, 1368, '2022-09-09 01:16:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'IlOg7Bg9kN', '2022-09-09 01:16:42', '2022-09-09 01:16:42');
+INSERT INTO `users` (`user_id`, `email`, `username`, `fname`, `lname`, `contact_no`, `password`, `birthday`, `gender`, `img_url`, `role`, `status`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'cameron12@example.org', 'Ms. Whitney Howell MD', 'Michale', 'Herzog', '82085', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '96513', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'XzzdjhqxtL', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(2, 'vkrajcik@example.net', 'Alvina Dooley', 'Kelvin', 'Kutch', '85107', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '20634', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'tPnhWWoNyG', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(3, 'bahringer.jeramie@example.net', 'Mr. Berta Keeling', 'Joey', 'VonRueden', '93402', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '39475', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'L0juavfXFm', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(4, 'augustine52@example.org', 'Mrs. Della Mitchell II', 'Ernesto', 'Hoppe', '46796', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '34906', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', 'FwHYFpQ9Kk', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(5, 'nolan.noah@example.org', 'Prof. Jana Gottlieb', 'Leif', 'Rippin', '52981', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '95240', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', 'v339uoYW5Y', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(6, 'tweissnat@example.com', 'Skye Jakubowski DDS', 'Scotty', 'Emard', '55618', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '3365', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'Q3ZuCJBEbs', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(7, 'mohamed.thompson@example.net', 'Demarco Kuhlman', 'Chase', 'Torp', '12171', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '22631', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-04 02:49:49', 'AksAWsBtxY', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(8, 'mcclure.sidney@example.org', 'Rosie Cormier', 'Issac', 'Boyle', '46226', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '29340', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'zuHqzA9xqg', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(9, 'dickinson.stan@example.net', 'Brody Smith', 'Sigrid', 'Romaguera', '74660', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '85198', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', '443f1jnkFZ', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
+(10, 'bernie.reinger@example.net', 'Ms. Isabelle Ferry MD', 'Edison', 'Weissnat', '86693', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '86749', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', 'bvCYKepCQo', '2023-02-04 02:49:49', '2023-02-04 02:49:49');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `failed_jobs`
+-- Indexes for table `bulletin`
 --
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+ALTER TABLE `bulletin`
+  ADD PRIMARY KEY (`bulletin_id`),
+  ADD KEY `bulletin_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `fire_alarm`
+--
+ALTER TABLE `fire_alarm`
+  ADD PRIMARY KEY (`firealarm_id`),
+  ADD KEY `fire_alarm_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `hydrant`
+--
+ALTER TABLE `hydrant`
+  ADD PRIMARY KEY (`hydrant_id`),
+  ADD KEY `hydrant_user_id_foreign` (`user_id`),
+  ADD KEY `hydrant_hydrant_type_id_foreign` (`hydrant_type_id`);
+
+--
+-- Indexes for table `hydrant_type`
+--
+ALTER TABLE `hydrant_type`
+  ADD PRIMARY KEY (`hydrant_type_id`);
 
 --
 -- Indexes for table `migrations`
@@ -167,23 +240,42 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_username_unique` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT for table `bulletin`
 --
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `bulletin`
+  MODIFY `bulletin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `fire_alarm`
+--
+ALTER TABLE `fire_alarm`
+  MODIFY `firealarm_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hydrant`
+--
+ALTER TABLE `hydrant`
+  MODIFY `hydrant_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hydrant_type`
+--
+ALTER TABLE `hydrant_type`
+  MODIFY `hydrant_type_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -196,6 +288,35 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `users`
   MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `bulletin`
+--
+ALTER TABLE `bulletin`
+  ADD CONSTRAINT `bulletin_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `fire_alarm`
+--
+ALTER TABLE `fire_alarm`
+  ADD CONSTRAINT `fire_alarm_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `hydrant`
+--
+ALTER TABLE `hydrant`
+  ADD CONSTRAINT `hydrant_hydrant_type_id_foreign` FOREIGN KEY (`hydrant_type_id`) REFERENCES `hydrant_type` (`hydrant_type_id`),
+  ADD CONSTRAINT `hydrant_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD CONSTRAINT `password_resets_email_foreign` FOREIGN KEY (`email`) REFERENCES `users` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
