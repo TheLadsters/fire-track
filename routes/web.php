@@ -62,10 +62,11 @@ Route::get('/fire-hydrant-type-management', function () {
     return view('admin/fireHManagementHType');
 });
 
+// Route::get('/fire-alert-management', [FireAlertAdminController::class, '__invoke']);
+
 Route::get('/fire-alert-management', function () {
     return view('admin/fireAlertManagement');
 });
-
 
 Route::get('/generate-reports', function () {
     return view('admin/generateReport');
@@ -98,4 +99,11 @@ Route::get('/bulletin-firefighter', function () {
     return view('firefighter/bulletin-firefighter');
 });
 
-
+// Common Resource Routes
+// index - Show all listings
+// show - show single listing
+// create - show form to create listing
+// store - store new listing
+// edit - show form to edit listing
+// update - update listing
+// destroy - delete

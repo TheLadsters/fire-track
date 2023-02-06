@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id('firealarm_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users');
+            $table->string('fire_location');
             $table->string('longitude');
             $table->string('latitude');
             $table->enum('status', ['Fire Out', 'Ongoing Fire'])->default('Ongoing Fire');

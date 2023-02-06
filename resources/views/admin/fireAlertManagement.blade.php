@@ -4,18 +4,19 @@
 
 <div class="container">
     <div id="firelertmapmanagement"></div>
+    
 
     <div class="right-sidebar">
 
         <div class="top-details">
             <div class="hamburger">
-                <i class="bx bx-menu bx-sm hamburger-icon"></i>
+                <i class='bx bx-menu bx-sm' style='color:#6c63ff'></i>
             </div>
 
             <div class="search-bar">
                 <label class="visually-hidden" for="autoSizingInputGroup">Search</label>
                 <div class="input-group">
-                <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Search">
+                <input type="text" class="form-control" id="input-mapsearch" placeholder="Search">
                     <div class="input-group-text btn-search">
                             <i class="fas fa-search"></i>
                     </div>
@@ -25,12 +26,14 @@
             <div class="for-title">
                 <h4>Fire Alert Management</h4>
             </div>
+        </div>
 
+        <div class="middle-details">
             <div class="alarm-details px-2">
 
                 <div class="alarm-name py-3 row">
                     <div class="col-12">
-                        <input type="text" class="form-control"  placeholder="Place of Fire">
+                        <input type="text" class="form-control" value="hello" placeholder="Place of Fire">
                     </div>
                 </div>
 
@@ -47,10 +50,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-
-                <div>
-
                 </div>
             </div>
         </div>
