@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class fireAlertAdmin extends Model
 {
     use HasFactory;
+
+    protected $table = "fire_alarm";
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FireAlertsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,11 +63,11 @@ Route::get('/fire-hydrant-type-management', function () {
     return view('admin/fireHManagementHType');
 });
 
-// Route::get('/fire-alert-management', [FireAlertAdminController::class, '__invoke']);
+Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
 
-Route::get('/fire-alert-management', function () {
-    return view('admin/fireAlertManagement');
-});
+Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
+
+Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable']);
 
 Route::get('/generate-reports', function () {
     return view('admin/generateReport');
