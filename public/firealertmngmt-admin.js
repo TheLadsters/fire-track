@@ -1,15 +1,12 @@
-function addMarkerListener(marker, infowindow) {
-
-  marker.addListener('click', function(e) {
-    infowindow.open(map,marker);
-  });
-
-  // marker.addListener('mouseout', function() {        
-  //   infowindow.close();
-  // });
-}
 
 $(document).ready(function() {
+
+  function addMarkerListener(marker, infowindow) {
+
+    marker.addListener('click', function(e) {
+      infowindow.open(map,marker);
+    });
+  }
 
   var centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
   const fireImg = "images/fire.png";
@@ -35,7 +32,6 @@ $.ajax({
       let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
       let fireStatus = response['alert'][i].status;
 
-
       marker = new google.maps.Marker({
             position: new google.maps.LatLng(longitude, latitude),
             map: map,
@@ -48,7 +44,7 @@ $.ajax({
     });
 
       var infowindow = new google.maps.InfoWindow({
-            content: "HELLO",
+            content: fireStatus,
             ariaLabel: "Uluru",
           });
         
@@ -72,6 +68,8 @@ $.ajax({
 
   
 });
+
+
 
 let mapAlerts;
 
