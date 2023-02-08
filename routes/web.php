@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FireAlertsController;
+use App\Http\Controllers\FirefighterAlertsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -88,9 +90,8 @@ Route::get('/fire-hydrant-map', function () {
     return view('firefighter/firehydrantmap');
 });
 
-Route::get('/fire-alert-map', function () {
-    return view('firefighter/firealertmap');
-});
+Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index']);
+Route::get('/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
 
 Route::get('/reports', function () {
     return view('firefighter/reports');

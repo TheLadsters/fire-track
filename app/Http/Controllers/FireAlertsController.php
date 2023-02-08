@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class FireAlertsController extends Controller
 {
-    // show all alerts in google maps
+    // returns view
     public function index(){
         return view('admin.fireAlertManagement');
     }
 
+    // show all alerts in google maps
     public function showMapAlerts(){
         $mapAlerts = fireAlertAdmin::all();
     

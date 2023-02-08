@@ -1,80 +1,62 @@
-let map;
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById("firealertmap"), {
-    center: { lat: 10.352029690791822, lng: 123.91910785394363 },
-    zoom: 16,
-    mapId: 'c887c451d0ae25a6'
-  });
-
-  const fireImg = "images/fire.png"
-  //Name
-  //Latitude, Longitude
-  //Image Url
-  //scaled Size width, height
-  const markers = [
-    [
-        "Fire Near University of San Carlos Talamban",
-        10.353072075803802,
-        123.91298865030441,
-        fireImg,
-        38,
-        31,
-        "University of San Carlos was close to getting a fire as there was an accident in the lab."
-    ],
-
-    [
-        "Fire Near Jollibee Banilad",
-        10.349568075191915, 
-        123.913374888391,
-        fireImg,
-        38,
-        31,
-        "Jollibee Banilad was caught on fire."
-    ],
-    [
-        "Oakridge Business Park Fire",
-        10.343708802976499, 
-        123.91613004382488,
-        fireImg,
-        38,
-        31,
-        "Oakridge Business Park fire almost extinguished."
-    ]
-
-  ];
-
-   
-
-  for (let i = 0; i < markers.length; i++) {
-    const currMarker = markers[i];
-
-    const marker = new google.maps.Marker({
-        position: { lat: currMarker[1], lng: currMarker[2] },
-        map,
-        title: currMarker[0],
-        icon: {
-            url: fireImg,
-            scaledSize: new google.maps.Size(currMarker[4], currMarker[5])
-        },
-        animation: google.maps.Animation.DROP
+$(document).ready(function() {
+  // CODE FOR MARKERS TO SHOW ON MAP
+    function addMarkerListener(marker, infowindow) {
+  
+      marker.addListener('click', function(e) {
+        infowindow.open(map,marker);
       });
+    }
+  
+    var centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
+    const fireImg = "images/fire.png";
     
-      const infowindow = new google.maps.InfoWindow({
-        content: currMarker[6],
-        ariaLabel: "Uluru",
+    var map = new google.maps.Map(document.getElementById("firealertmap"), {
+      center: centerPoint,
+      zoom: 16,
+      mapId: 'c887c451d0ae25a6'
+    });
+  
+    var marker;
+  
+  $.ajax({
+      url: 'fire-alert-map/showMapAlerts',
+      type: 'get',
+      dataType: 'json',
+      success: function(response){
+        console.log(response['alert'][0].latitude);
+  
+      for (let i = 0; i < response['alert'].length; i++) {
+  
+        let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
+        let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
+        let fireStatus = response['alert'][i].status;
+  
+        marker = new google.maps.Marker({
+              position: new google.maps.LatLng(longitude, latitude),
+              map: map,
+              title: response['alert'][i].fire_location,
+              icon: {
+                      url: fireImg,
+                      scaledSize: new google.maps.Size(38, 31)
+                    },
+              animation: google.maps.Animation.DROP
       });
-    
-      marker.addListener("click", () => {
-        infowindow.open({
-          anchor: marker,
-          map,
-        });
-      });
-    
+  
+        var infowindow = new google.maps.InfoWindow({
+              content: fireStatus,
+              ariaLabel: "Uluru",
+            });
+          
+          addMarkerListener(marker, infowindow);
+  
   }
-}
-
-//10.352029690791822, 123.91910785394363 coordinates of banilad, mandaue city
-//10.353072075803802, 123.91298865030441 USC
-window.initMap = initMap;
+  
+    },
+      error: function(xhr, status, error) {
+        var err = eval("(" + xhr.responseText + ")");
+        alert(err.Message);
+      }
+  });
+  
+    
+  });
