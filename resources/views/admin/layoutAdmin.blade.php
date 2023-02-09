@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/sideBarLayout.css">
     <link href="css/adminCSS/fireAlertManagement-admin.css" rel="stylesheet">
+    <link href="css/adminCSS/fireAlertMgmtSidebar.css" rel="stylesheet">
 
     <title>FireTrack App</title>
 </head>

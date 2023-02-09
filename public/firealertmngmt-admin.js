@@ -7,13 +7,14 @@ $(document).ready(function() {
   // (https://maps.…map_ids=c887c451d0ae25a6&callback=initMap:207:279', name: 'InvalidValueError'}
   //   function initMap(){}
 
+
 // global variables 
 var centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
 const fireImg = "images/fire.png";
 let flag = false;
+let listenerHandler;
 
-
-// CODE FOR MARKERS TO SHOW ON MAP
+////// CODE FOR MARKERS TO SHOW ON MAP //////
   function addMarkerListener(marker, infowindow) {
 
     marker.addListener('click', function(e) {
@@ -63,75 +64,99 @@ $.ajax({
   },
     error: function(xhr, status, error) {
       var err = eval("(" + xhr.responseText + ")");
-      alert(err.Message);
+      alert("Error Loading Google Map Markers");
     }
 });
-
-// add fire alert button js START
-const myLatlng = { lat: -25.363, lng: 131.044 };
-
-$("#add-firealert").click(function(){
-
-  // SHOULD TOGGLE DELETE ADD ENTIRE LIST INSTEAD
-  if(flag){
-    $(this).prop('id', 'add-firealert');
-    $(".middle-details").empty();
+////// END OF CODE FOR MARKERS TO SHOW ON MAP //////
 
 
-    // $(".map-controls li:nth-child(1)").append(
-    // `
-    // <li> 
-    //     <a id="edit-firealert">
-    //       <i class='bx bx-edit'></i>
-    //       Edit Fire Alert
-    //     </a>
-    // </li>
-    // `);
 
-    console.log('flag is true');
-    
-  }else{
-    map.addListener("click", (mapsMouseEvent) => {
-      // Create a new InfoWindow.
-      var infoWindow = new google.maps.InfoWindow({
-        position: mapsMouseEvent.latLng,
-      });
-  
-      infoWindow.setContent(
-        JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-      );
-  
-      infoWindow.open(map);
-    });
-  
-    $(".middle-details").empty();
-    $(".middle-details").append(
-      `
-      <div class="alarm-add-notif">
-      <h5>Click on any location on the map to add a fire alert.</h5>
-      </div>
-      `
-    );
-  
-    $(this).empty();
-    $(this).append(
-      `
-      <i class="fa-sharp fa-solid fa-ban"></i>
-      Cancel
-      `  
-    );
-  
-    $(this).prop('id', 'cancel-firealert');
-  
-    $("li #delete-firealert").remove();
-    console.log('flag is false');
-  }
-  flag = !flag;
+function getAlertTable(){
+  $.ajax({
+    url: 'fire-alert-management/getAlertTable',
+    type: 'get',
+    dataType: 'json',
+    success: function(response){
+
+      createRows(response);
+    }
+  });
+
+  $(".fireAlertManagerModal").modal('show');
+}
+
+$("#firealert-manager").click(function(){
+  getAlertTable();
+  addCancelFcn();
+  // if("hello"){
+
+  // }else{
+
+  // }
+
+});
+
+
+/////// ADD FIRE ALERT FUNCTION CODE START ///////
+function addAlertFcn(){
+ listenerHandler = map.addListener("click", (mapsMouseEvent) => {
+
+    let longlat = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2);
+    console.log(longlat);
+    $(".addFireAlertModal").modal("show");
 
   });
-// add fire alert button js END
+
+  $(".middle-details").empty();
+  $(".middle-details").append(
+    `
+    <div class="alarm-add-notif">
+      <h5>Click on any location on the map to add a fire alert.</h5>
+    </div>
+    `
+  );
+
+  $("#edit-firealert").hide();
+  $("#delete-firealert").hide();
+
+  $("#add-firealert").empty();
+  $("#add-firealert").append(
+    `
+      <i class="fa-sharp fa-solid fa-ban"></i>
+      Cancel
+    `);
+
+    $("#add-firealert").off('click').on('click', addCancelFcn)
+}
+
+function addCancelFcn(){
+  $(".middle-details").empty();
+  $("#edit-firealert").show();
+  $("#delete-firealert").show();
+
+  $("#add-firealert").empty();
+  $("#add-firealert").append(
+    `
+      <i class='bx bx-alarm-add'></i>
+      Add Fire Alert
+    `);
+
+    google.maps.event.removeListener(listenerHandler);
+
+    $("#add-firealert").off('click').on('click', addAlertFcn)
+}
+
+$("#add-firealert").on('click', addAlertFcn);
+/////// ADD FIRE ALERT FUNCTION CODE END///////
   
+
+$(".send-alert").click(function(){
+  $(".addFireAlertModal").modal("hide");
+  map.setZoom(map.getZoom());
 });
+
+});
+
 
 
 
@@ -182,17 +207,3 @@ function createRows(response){
 } 
 
 
-$("#firealert-manager").click(function(){
-   // AJAX GET request
-   $.ajax({
-    url: 'fire-alert-management/getAlertTable',
-    type: 'get',
-    dataType: 'json',
-    success: function(response){
-
-       createRows(response);
-    }
-  });
-
-  $(".fireAlertManagerModal").modal('show');
-});
