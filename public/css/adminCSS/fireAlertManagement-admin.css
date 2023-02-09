@@ -145,12 +145,25 @@
     cursor: pointer;
   }
 
-  .middle-details{
-    /* visibility: hidden; */
+  /* .middle-details{
+    visibility: hidden;
+  } */
+
+  .alarm-add-notif{
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .map-controls{
+    list-style-type: none;
+    margin: 0;
+    padding:0;
   }
 }
 
 
+/* table for fire alert management */
 .table-responsive {
   margin: 0;
 }
@@ -344,7 +357,6 @@ background: #ddd;
 #dropdown-user a:hover, #dropdown-firealert a:hover {
 color: white;
 }
-
-
+/* end of code for table fire alert management */
 
 

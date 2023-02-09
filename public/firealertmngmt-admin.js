@@ -1,5 +1,18 @@
 
 $(document).ready(function() {
+
+  // to be fixed error
+  // fire-alert-management:1 Uncaught (in promise) _.pe {message: 
+  // 'initMap is not a function', stack: 'Error\n    at _.pe.captureStackTrace 
+  // (https://maps.…map_ids=c887c451d0ae25a6&callback=initMap:207:279', name: 'InvalidValueError'}
+  //   function initMap(){}
+
+// global variables 
+var centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
+const fireImg = "images/fire.png";
+let flag = false;
+
+
 // CODE FOR MARKERS TO SHOW ON MAP
   function addMarkerListener(marker, infowindow) {
 
@@ -7,9 +20,6 @@ $(document).ready(function() {
       infowindow.open(map,marker);
     });
   }
-
-  var centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
-  const fireImg = "images/fire.png";
   
   var map = new google.maps.Map(document.getElementById("firelertmapmanagement"), {
     center: centerPoint,
@@ -24,8 +34,6 @@ $.ajax({
     type: 'get',
     dataType: 'json',
     success: function(response){
-      console.log(response['alert'][0].latitude);
-
     for (let i = 0; i < response['alert'].length; i++) {
 
       let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
@@ -59,10 +67,75 @@ $.ajax({
     }
 });
 
+// add fire alert button js START
+const myLatlng = { lat: -25.363, lng: 131.044 };
+
+$("#add-firealert").click(function(){
+
+  // SHOULD TOGGLE DELETE ADD ENTIRE LIST INSTEAD
+  if(flag){
+    $(this).prop('id', 'add-firealert');
+    $(".middle-details").empty();
+
+
+    // $(".map-controls li:nth-child(1)").append(
+    // `
+    // <li> 
+    //     <a id="edit-firealert">
+    //       <i class='bx bx-edit'></i>
+    //       Edit Fire Alert
+    //     </a>
+    // </li>
+    // `);
+
+    console.log('flag is true');
+    
+  }else{
+    map.addListener("click", (mapsMouseEvent) => {
+      // Create a new InfoWindow.
+      var infoWindow = new google.maps.InfoWindow({
+        position: mapsMouseEvent.latLng,
+      });
+  
+      infoWindow.setContent(
+        JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+      );
+  
+      infoWindow.open(map);
+    });
+  
+    $(".middle-details").empty();
+    $(".middle-details").append(
+      `
+      <div class="alarm-add-notif">
+      <h5>Click on any location on the map to add a fire alert.</h5>
+      </div>
+      `
+    );
+  
+    $(this).empty();
+    $(this).append(
+      `
+      <i class="fa-sharp fa-solid fa-ban"></i>
+      Cancel
+      `  
+    );
+  
+    $(this).prop('id', 'cancel-firealert');
+  
+    $("li #delete-firealert").remove();
+    console.log('flag is false');
+  }
+  flag = !flag;
+
+  });
+// add fire alert button js END
   
 });
 
-// for creating
+
+
+// for creating rows in fire alert manager
 function createRows(response){
   var len = 0;
   $('table tbody').empty(); // Empty <tbody>
@@ -107,12 +180,6 @@ function createRows(response){
      $(".table tbody").append(tr_str);
   }
 } 
-
-
-$("#add-firealert").click(function(){
-console.log('hello');
-
-});
 
 
 $("#firealert-manager").click(function(){

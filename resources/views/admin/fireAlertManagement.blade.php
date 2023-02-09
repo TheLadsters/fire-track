@@ -32,7 +32,7 @@
         </div>
 
         <div class="middle-details">
-            <div class="alarm-details px-2">
+            <!-- <div class="alarm-details px-2">
 
                 <div class="alarm-name py-3 row">
                     <div class="col-12">
@@ -54,31 +54,41 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
         <div class="bottom-details">
+            <ul class="map-controls">
+                <li> 
+                    <a id="add-firealert">
+                        <i class='bx bx-alarm-add'></i>
+                        Add Fire Alert
+                    </a>
+                </li>
+<!-- 
+                <li>
+                    <a id="edit-firealert">
+                        <i class='bx bx-edit'></i>
+                        Edit Fire Alert
+                    </a>
+                </li> -->
 
-            <a id="add-firealert">
-                <i class='bx bx-alarm-add'></i>
-                Add Fire Alert
-            </a>
+                <li>
+                    <a id="delete-firealert">
+                        <i class="far fa-trash-alt"></i>
+                        Delete Fire Alert
+                    </a>
+                </li>
 
-            <a id="edit-firealert">
-                <i class='bx bx-edit'></i>
-                Edit Fire Alert
-            </a>
-
-            <a id="delete-firealert">
-                <i class="far fa-trash-alt"></i>
-                Delete Fire Alert
-            </a>
-
-            <a id="firealert-manager" data-toggle="modal" data-target=".fireAlertManagerModal">
-                <i class='bx bxs-hot'></i>             
-                Fire Alert Manager
-            </a>
+                <li>
+                    <a id="firealert-manager" data-toggle="modal" data-target=".fireAlertManagerModal">
+                        <i class='bx bxs-hot'></i>             
+                        Fire Alert Manager
+                    </a>
+                </li>
+            </ul>
+           
         </div>
 
     </div>  
