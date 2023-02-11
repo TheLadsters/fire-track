@@ -25,6 +25,7 @@ class UserFactory extends Factory
             'contact_no' => fake()->randomNumber(5),
             'birthday' => fake()->randomNumber(5),
             'gender' => fake()->randomElement(['male' ,'female']),
+            'address' => fake()->streetAddress(),
             'img_url' => '92IXUNpkjO0rOQ5b.png',
             'role' => fake()->randomElement(['firefighter' ,'admin']),
             'status' => fake()->randomElement(['active' ,'inactive']),
