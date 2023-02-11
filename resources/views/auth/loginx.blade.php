@@ -1,4 +1,4 @@
-@extends('loginLayout')
+@extends('login')
 
 @section('loginsection')
 
@@ -42,8 +42,10 @@
                   </div>
                   
                   <div class="d-flex mb-4 align-items-center">
-                    <span class="ml-auto"><a data-bs-toggle="modal" data-bs-target="#forgetPasswordModal" class="forgot-pass">Forgot Password</a></span> 
-                  </div>
+                              <a href="{{route('password.request')}}" class="float-right">
+                                  Forgot Password?
+                                </a>  
+                              </div>
     
                   {{-- this submit button to be used later --}}
                   {{-- <input type="submit" value="Log In" class=" btn-submit btn-block"> --}}
