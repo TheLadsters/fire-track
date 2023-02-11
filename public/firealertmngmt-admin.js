@@ -11,6 +11,7 @@ $(document).ready(function() {
 // global variables 
 var centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
 const fireImg = "images/fire.png";
+var marker;
 let flag = false;
 let listenerHandler;
 
@@ -28,18 +29,17 @@ let listenerHandler;
     mapId: 'c887c451d0ae25a6'
   });
 
-  var marker;
-
 $.ajax({
     url: 'fire-alert-management/showMapAlerts',
     type: 'get',
     dataType: 'json',
     success: function(response){
+      console.log(response);
     for (let i = 0; i < response['alert'].length; i++) {
 
       let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
       let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
-      let fireStatus = response['alert'][i].status;
+      let fireStatus = "<b>Status:</b> " + response['alert'][i].status;
 
       marker = new google.maps.Marker({
             position: new google.maps.LatLng(longitude, latitude),
@@ -101,8 +101,13 @@ $("#firealert-manager").click(function(){
 function addAlertFcn(){
  listenerHandler = map.addListener("click", (mapsMouseEvent) => {
 
-    let longlat = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2);
-    console.log(longlat);
+    let longlat = mapsMouseEvent.latLng.toJSON();
+
+    // sets the longitude and latitude of the clicked part of the map
+    $("#longitude-input").val(longlat.lat);
+    $("#latitude-input").val(longlat.lng);
+    // $("#longitude-input").prop('disabled', true);
+    // $("#latitude-input").prop('disabled', true);
     $(".addFireAlertModal").modal("show");
 
   });
@@ -175,6 +180,8 @@ function createRows(response){
        var latitude = response['data'][i].latitude;
        var status = response['data'][i].status;
 
+       fire_location = (fire_location) ? fire_location : `No specified location`; 
+
     var tr_str =
       `<tr>
         <td>
@@ -199,7 +206,7 @@ function createRows(response){
     }
   }else{
      var tr_str = "<tr>" +
-       "<td align='center' colspan='4'>No record found.</td>" +
+       "<td align='center' colspan='12'>No record found.</td>" +
      "</tr>";
 
      $(".table tbody").append(tr_str);

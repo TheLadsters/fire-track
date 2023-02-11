@@ -31,4 +31,18 @@ class FireAlertsController extends Controller
  
      return response()->json($response);
     }
+
+    // adds a new alert in the database
+    public function storeAlert(Request $request){
+
+        $formFields = $request->validate([
+            'longitude' => 'required',
+            'latitude' => 'required',
+            'status' => 'required',
+            'fire_location' => 'nullable'
+        ]);
+
+        fireAlertAdmin::create($formFields);
+        return redirect('/fire-alert-management');
+    }
 }

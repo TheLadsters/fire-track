@@ -10,4 +10,5 @@ class fireAlertAdmin extends Model
     use HasFactory;
 
     protected $table = "fire_alarm";
+    protected $fillable = ['longitude', 'latitude', 'fire_location', 'status', 'user_id'];
 }

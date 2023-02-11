@@ -71,6 +71,9 @@ Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class,
 
 Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable']);
 
+Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
+
+
 Route::get('/generate-reports', function () {
     return view('admin/generateReport');
 });
