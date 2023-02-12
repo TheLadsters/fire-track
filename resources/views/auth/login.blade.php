@@ -102,15 +102,16 @@
 									</div>
 									<form method="POST" class="my-login-validation" autocomplete="off" action="{{ route('login') }}">
 										@csrf
+										<span class="text-danger">@error('username'){{ $message }}@enderror</span>
 										<div class="form-group first mb-2">
 											<label for="username">Username</label>
 											<input type="text" class="form-control" id="username" name="username">
-											<span class="text-danger">@error('username'){{ $message }}@enderror</span>
-										</div>  
+											
+										</div> 
+										<span class="text-danger">@error('password'){{ $message }}@enderror</span>
 										<div class="form-group last mb-4">
 											<label for="password">Password</label>
-											<input type="password" class="form-control" id="password" name="password">
-											<span class="text-danger">@error('password'){{ $message }}@enderror</span>
+											<input type="password" class="form-control" id="password" name="password">					
 										</div>
 								
 										<div class="d-flex mb-4 align-items-center">
