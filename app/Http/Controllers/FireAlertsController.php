@@ -9,7 +9,8 @@ class FireAlertsController extends Controller
 {
     // returns view
     public function index(){
-        return view('admin.fireAlertManagement');
+        $allAlerts = fireAlertAdmin::all();
+        return view('admin.fireAlertManagement', compact('allAlerts'));
     }
 
     // show all alerts in google maps
@@ -44,5 +45,12 @@ class FireAlertsController extends Controller
 
         fireAlertAdmin::create($formFields);
         return redirect('/fire-alert-management');
+    }
+
+    // Delete an alert
+    public function destroyAlert($firealarm_id){
+        // dd($firealarm_id);
+        $fireAlert = fireAlertAdmin::find($firealarm_id)->delete();
+        return redirect('/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully!');
     }
 }

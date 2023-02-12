@@ -67,12 +67,6 @@ Route::get('/fire-hydrant-type-management', function () {
 
 Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
 
-Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
-
-Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable']);
-
-Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
-
 
 Route::get('/generate-reports', function () {
     return view('admin/generateReport');
@@ -81,6 +75,15 @@ Route::get('/generate-reports', function () {
 Route::get('/bulletin-management', function () {
     return view('admin/bulletinManagement');
 });
+
+// Routes for fire alert management
+Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
+
+Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable']);
+
+Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
+
+Route::delete('/fire-alert-management/deleteFireAlert/{firealarm_id}', [FireAlertsController::class, 'destroyAlert']);
 
 
 

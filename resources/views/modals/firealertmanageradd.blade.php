@@ -71,7 +71,7 @@
 
             <input type="text" style="display: none;" class="form-control" name="user_id" value="1">
 
-
+            <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
             <button type="submit" class="btn btn-primary send-alert">SUBMIT</button>
 
           </form>

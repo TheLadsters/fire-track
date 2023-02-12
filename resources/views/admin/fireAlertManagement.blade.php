@@ -7,8 +7,6 @@
 </head>
 <div class="container" id="content">
     <div id="firelertmapmanagement"></div>
-    
-
     <div class="right-sidebar">
 
         <div class="top-details">
@@ -97,4 +95,5 @@
 
 @include("modals.firealertmanager")
 @include("modals.firealertmanageradd")
+@include("modals.firealertmanagerdelete")
 @endsection
