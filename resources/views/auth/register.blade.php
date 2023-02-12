@@ -47,17 +47,18 @@
                                                     @csrf
                                                     <div class="row justify-content-evenly">
                                                     <div class="row justify-content-evenly">
+                                                        <span class="text-danger">@error('username'){{ $message }}@enderror</span>
                                                         <div class="col-md-12 mb-3 form-group first">
                                                         <label for="username">Username</label>
                                                         <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
-                                                        <span class="text-danger">@error('username'){{ $message }}@enderror</span>
+                                                        
                                                         </div>
                                                     </div>
-
+                                                    <span class="text-danger">@error('fname'){{ $message }}@enderror</span>
                                                     <div class="col-md-5 mb-3 form-group first">
                                                         <label for="fname">First Name</label>
                                                         <input type="text" class="form-control" id="fname" name="fname" value="{{ old('fname') }}">
-                                                        <span class="text-danger">@error('fname'){{ $message }}@enderror</span>
+                                                        
                                                     </div>
                                     
                                                     <div class="col-md-6 mb-3 form-group last">
@@ -94,13 +95,13 @@
                                                             <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>
-<!-- 
+
                                                     <div class="row justify-content-evenly">
                                                         <div class="col-md-11 mb-3 form-group first">
                                                             <label for="homeAddress">Home Address</label>
                                                             <input type="text" class="form-control" id="homeAddressInput" />
                                                         </div>
-                                                    </div> -->
+                                                    </div>
 
                                                     <div class="row mb-2 genderArea">
                                                         <div class="col-sm-2">

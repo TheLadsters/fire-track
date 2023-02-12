@@ -102,24 +102,26 @@
 									</div>
 									<form method="POST" class="my-login-validation" autocomplete="off" action="{{ route('login') }}">
 										@csrf
-										<span class="text-danger">@error('username'){{ $message }}@enderror</span>
+										<!-- <label	class="warning" for="username">Username</label>						 -->
 										<div class="form-group first mb-2">
 											<label for="username">Username</label>
 											<input type="text" class="form-control" id="username" name="username">
-											
 										</div> 
-										<span class="text-danger">@error('password'){{ $message }}@enderror</span>
+										<span class="text-danger" style="float: right;font-size: 13px;">@error('username'){{ $message }}@enderror</span>
+</br>
+										<!-- <label class="warning" for="password">Password</label> -->
 										<div class="form-group last mb-4">
 											<label for="password">Password</label>
 											<input type="password" class="form-control" id="password" name="password">					
 										</div>
+										<span class="text-danger" style="float: right;font-size: 13px;">@error('password'){{ $message }}@enderror</span>
 								
 										<div class="d-flex mb-4 align-items-center">
-											<a href="{{route('password.request')}}" class="float-right">
+											<a href="{{route('password.request')}}" class="float-right" style="font-size: 15px;">
 												Forgot Password?
 											</a>
 										</div>
-										<button type="submit" class="btn btn-primary btn-block">
+										<button type="submit" class="btn-signUp btn-block-signup mb-2"  >
 												Login
 										</button>
 										<div class="mt-4 text-center">
