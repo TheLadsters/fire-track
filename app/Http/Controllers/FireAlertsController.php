@@ -49,22 +49,15 @@ class FireAlertsController extends Controller
 
     // edit a specified alert
     public function updateAlert(Request $request){
-        $formFields = $request->validate([
-            'firealert_hidden_id' => 'required',
-            'user_id' => 'required',
-            'longitude' => 'required',
-            'latitude' => 'required',
-            'status' => 'required',
-            'fire_location' => 'nullable'
-        ]);
+
+        $firealarm_id = $request->input('firealert_hidden_id');
+        $user_id = $request->input('user_id');
+        $longitude = $request->input('longitude');
+        $latitude = $request->input('latitude');
+        $status = $request->input('status');
+        $fire_location = $request->input('fire_location');
         
-        $firealert_id = $formFields['firealert_hidden_id'];
-        $user_id = $formFields['user_id'];
-        $longitude = $formFields['longitude'];
-        $latitude = $formFields['latitude'];
-        $status = $formFields['status'];
-        $fire_location = $formFields['fire_location'];
-        $alarm = FireAlertAdmin::where('firealarm_id', $firealert_id)->update([
+        $alarm = FireAlertAdmin::where('firealarm_id', $firealarm_id)->update([
             'user_id' => $user_id,
             'longitude' => $longitude,
             'latitude' => $latitude,

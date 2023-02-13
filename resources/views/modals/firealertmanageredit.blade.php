@@ -18,8 +18,15 @@
                       </b>
                     </label>
               </div>
-              <div class="col-9">
-                <input type="text" readonly class="form-control" name="longitude" id="edit-longitude" placeholder="Longitude">
+              <div class="col-6">
+                <input type="text" class="form-control" name="longitude" id="edit-longitude" placeholder="Longitude">
+              </div>
+
+              <div class="col-3">
+                <button type="button" class="btn btn-primary edit-longlat">
+                <i class='bx bx-map' ></i>                 
+                  Edit on Map
+                </button>
               </div>
 
             </div>
@@ -33,10 +40,11 @@
                     </label>
               </div>
 
-              <div class="col-9">
-                <input type="text" readonly class="form-control" name="latitude" 
+              <div class="col-6">
+                <input type="text" class="form-control" name="latitude" 
                 id="edit-latitude" placeholder="Latitude">
               </div>
+
             </div>
 
             <div class="row align-items-center px-5">

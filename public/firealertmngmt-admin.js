@@ -98,6 +98,7 @@ $("#firealert-manager").click(function(){
 ////// GET FIRE ALERT TABLE END OF CODE //////
 
 
+// TEMPLATES!
 // Template for when any CRUD buttons are pressed, Cancel appears
 function cancelTemplate(middleText, hiddenOptions, appendClass){
   $(".middle-details").empty();
@@ -132,7 +133,6 @@ function crudTemplate(shownOptions, buttonClass, buttonContent){
       ${buttonContent}
     `);
 }
-
 
 
 /////// ADD FIRE ALERT FUNCTION CODE START ///////
@@ -178,7 +178,7 @@ function editCancelFcn(){
   crudTemplate
   (
     ["#delete-firealert", "#add-firealert"],
-  "#edit-firealert", `<i class='bx bx-edit'></i>Edit Fire Alert`
+  "#edit-firealert", `<i class='bx bx-edit'></i> Edit Fire Alert`
   );
 
   $.ajax({
@@ -201,6 +201,9 @@ function editCancelFcn(){
     }
 });
 
+if(listenerHandler){
+  google.maps.event.removeListener(listenerHandler);
+}
 
     $("#edit-firealert").off('click').on('click', editAlertFcn)
 }
@@ -252,6 +255,33 @@ function editAlertFcn(){
      $("#edit-firealert").off('click').on('click', editCancelFcn);
  }
 
+
+$(".edit-longlat").click(function(){
+
+  $(".editFireAlertModal").modal("hide");
+  $(".middle-details").empty();
+  $(".middle-details").append(
+    `
+    <div class="alarm-notif">
+      <h5>Click on new location to EDIT longitude and latitude of the fire alert.</h5>
+    </div>
+    `
+  );
+  for (let i = 0; i < markerArr.length; i++) {
+    google.maps.event.clearListeners(markerArr[i], "click");
+}
+  listenerHandler = map.addListener("click", (mapsMouseEvent) => {
+ 
+
+    let newLongLat = mapsMouseEvent.latLng.toJSON();
+    // sets the longitude and latitude of the clicked part of the map
+    $("#edit-longitude").val(newLongLat.lat);
+    $("#edit-latitude").val(newLongLat.lng);
+    $(".editFireAlertModal").modal("show");
+  });
+  
+
+});
 
 
 $("#edit-firealert").on('click', editAlertFcn);

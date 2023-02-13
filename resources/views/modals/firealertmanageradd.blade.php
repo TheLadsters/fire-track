@@ -17,7 +17,7 @@
                     </label>
               </div>
 
-              <div class="col-9">
+              <div class="col-6">
                 <input type="text" readonly class="form-control" name="longitude" id="longitude-input" placeholder="Longitude">
               </div>
 
@@ -32,7 +32,7 @@
                     </label>
               </div>
 
-              <div class="col-9">
+              <div class="col-6">
                 <input type="text" readonly class="form-control" name="latitude" 
                 id="latitude-input" placeholder="Latitude">
               </div>
@@ -47,7 +47,7 @@
                     </label>
               </div>
 
-              <div class="col-9">
+              <div class="col-6">
                 <input type="text" class="form-control" name="fire_location" id="locationdetails-input" placeholder="Location Details">
               </div>
             </div>
@@ -61,7 +61,7 @@
                     </label>
               </div>
 
-              <div class="col-6">
+              <div class="col-4">
                 <select class="form-select" name="status" aria-label="status-selector">
                   <option selected value="Ongoing Fire">Ongoing Fire</option>
                   <option value="Fire Out">Fire Out</option>
