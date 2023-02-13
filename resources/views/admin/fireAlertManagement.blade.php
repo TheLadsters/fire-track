@@ -95,5 +95,6 @@
 
 @include("modals.firealertmanager")
 @include("modals.firealertmanageradd")
+@include("modals.firealertmanageredit")
 @include("modals.firealertmanagerdelete")
 @endsection

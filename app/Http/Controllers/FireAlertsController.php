@@ -47,6 +47,35 @@ class FireAlertsController extends Controller
         return redirect('/fire-alert-management');
     }
 
+    // edit a specified alert
+    public function updateAlert(Request $request){
+        $formFields = $request->validate([
+            'firealert_hidden_id' => 'required',
+            'user_id' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
+            'status' => 'required',
+            'fire_location' => 'nullable'
+        ]);
+        
+        $firealert_id = $formFields['firealert_hidden_id'];
+        $user_id = $formFields['user_id'];
+        $longitude = $formFields['longitude'];
+        $latitude = $formFields['latitude'];
+        $status = $formFields['status'];
+        $fire_location = $formFields['fire_location'];
+        $alarm = FireAlertAdmin::where('firealarm_id', $firealert_id)->update([
+            'user_id' => $user_id,
+            'longitude' => $longitude,
+            'latitude' => $latitude,
+            'status' => $status,
+            'fire_location' => $fire_location,
+        ]);
+
+        return redirect('/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully!');
+
+    }
+
     // Delete an alert
     public function destroyAlert($firealarm_id){
         // dd($firealarm_id);

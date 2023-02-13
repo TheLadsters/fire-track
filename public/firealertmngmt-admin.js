@@ -54,7 +54,6 @@ $.ajax({
     type: 'get',
     dataType: 'json',
     success: function(response){
-      console.log(response);
     for (let i = 0; i < response['alert'].length; i++) {
 
       let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
@@ -94,7 +93,7 @@ function getAlertTable(){
 
 $("#firealert-manager").click(function(){
   getAlertTable();
-  addCancelFcn();
+  // addCancelFcn();
 });
 ////// GET FIRE ALERT TABLE END OF CODE //////
 
@@ -105,7 +104,7 @@ function cancelTemplate(middleText, hiddenOptions, appendClass){
   $(".middle-details").append(
     `
     <div class="alarm-notif">
-      <h5>Click on any location on the map to ${middleText} a fire alert.</h5>
+      <h5>Click on ${middleText} a fire alert.</h5>
     </div>
     `
   );
@@ -149,7 +148,7 @@ function addAlertFcn(){
 
   });
 
-  cancelTemplate("ADD", 
+  cancelTemplate("any location on the map to ADD", 
   ["#edit-firealert", "#delete-firealert"], "#add-firealert");
 
     $("#add-firealert").off('click').on('click', addCancelFcn)
@@ -174,10 +173,97 @@ $("#add-firealert").on('click', addAlertFcn);
  
 
 
+/////// EDIT FIRE ALERT FUNCTION CODE START///////
+function editCancelFcn(){
+  crudTemplate
+  (
+    ["#delete-firealert", "#add-firealert"],
+  "#edit-firealert", `<i class='bx bx-edit'></i>Edit Fire Alert`
+  );
+
+  $.ajax({
+    url: 'fire-alert-management/showMapAlerts',
+    type: 'get',
+    dataType: 'json',
+    success: function(response){
+
+      for (let i = 0; i < response['alert'].length; i++) {
+
+        let fireStatus = "<b>Status:</b> " + response['alert'][i].status;
+        google.maps.event.clearListeners(markerArr[i], "click");
+  
+        addMarkerListener(markerArr[i], fireStatus);
+      }
+  },
+    error: function(xhr, status, error) {
+      var err = eval("(" + xhr.responseText + ")");
+      alert("Error");
+    }
+});
+
+
+    $("#edit-firealert").off('click').on('click', editAlertFcn)
+}
+
+function editAlertFcn(){
+
+  $.ajax({
+    url: 'fire-alert-management/showMapAlerts',
+    type: 'get',
+    dataType: 'json',
+    success: function(response){
+      console.log(response);
+      for (let i = 0; i < markerArr.length; i++) {
+        let firealert_id = response['alert'][i].firealarm_id;
+        // temporary user_id
+        let user_id = 1;
+        let fire_location = response['alert'][i].fire_location;
+        let longitude = response['alert'][i].longitude;
+        let latitude = response['alert'][i].latitude;
+        let status = response['alert'][i].status;
+
+        google.maps.event.clearListeners(markerArr[i], "click");
+
+
+        listenerHandler = markerArr[i].addListener("click", (mapsMouseEvent) => {
+
+          $("#firealert_hidden_id").val(firealert_id);
+          $("#user_id").val(user_id);
+          $("#edit-longitude").val(longitude);
+          $("#edit-latitude").val(latitude);
+          $("#edit-location").val(fire_location);
+          $("#status-selector").val(status);
+
+          $(".editFireAlertModal").modal("show");
+      
+        });
+    }
+     
+  },
+    error: function(xhr, status, error) {
+      var err = eval("(" + xhr.responseText + ")");
+      alert("Error");
+    }
+});
+ 
+   cancelTemplate("any fire icon to EDIT", 
+   ["#delete-firealert", "#add-firealert"], "#edit-firealert");
+ 
+     $("#edit-firealert").off('click').on('click', editCancelFcn);
+ }
+
+
+
+$("#edit-firealert").on('click', editAlertFcn);
+/////// EDIT FIRE ALERT FUNCTION CODE END///////
+
+
+
+
 ////// DELETE FIRE ALERT FUNCTION CODE START //////
 function deleteAlertFcn(){
   
-cancelTemplate("DELETE", 
+cancelTemplate("any fire icon to DELETE", 
   ["#add-firealert", "#edit-firealert"], "#delete-firealert");
   
   $.ajax({
@@ -194,10 +280,6 @@ cancelTemplate("DELETE",
   
         listenerHandler = markerArr[i].addListener("click", (mapsMouseEvent) => {
           $("#firealert_key_id").val(firealert_id);
-          // $("#submission").wrap(`
-          // <form id="alert-form" action="${action_url}" method="POST">
-          // </form> 
-          // `);
 
           $(".deleteFireAlertModal").modal("show");
       
@@ -219,7 +301,7 @@ function cancelForDeleteFcn(){
   crudTemplate
   (
     ["#add-firealert", "#edit-firealert"],
-  "#delete-firealert", `<i class="far fa-trash-alt"></i>Delete Fire Alert`
+  "#delete-firealert", `<i class="far fa-trash-alt"></i> Delete Fire Alert`
   );
 
     $.ajax({

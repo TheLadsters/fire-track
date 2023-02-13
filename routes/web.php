@@ -85,6 +85,7 @@ Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class,
 
 Route::delete('/fire-alert-management/deleteFireAlert/{firealarm_id}', [FireAlertsController::class, 'destroyAlert']);
 
+Route::post('/fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert']);
 
 
 // sidebar routes firefighter
