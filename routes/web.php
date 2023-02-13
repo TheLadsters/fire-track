@@ -83,7 +83,7 @@ Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class,
 
 Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
 
-Route::delete('/fire-alert-management/deleteFireAlert/{firealarm_id}', [FireAlertsController::class, 'destroyAlert']);
+Route::delete('/fire-alert-management/deleteFireAlert', [FireAlertsController::class, 'destroyAlert']);
 
 Route::post('/fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert']);
 

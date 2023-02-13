@@ -10,19 +10,17 @@
             <p class="text-warning"><small>This action cannot be undone.</small></p>
             
 
-            <input type="input" name="firealert_key_id" id="firealert_key_id">
-
-
         </div>
 
         <div class="modal-footer">
             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
           
-            {{-- <form id="alert-form" action={{}} method="POST">
-                @csrf 
-                @method('DELETE') --}}
+            <form method="POST" action="/fire-alert-management/deleteFireAlert">
+            @csrf
+            @METHOD('DELETE')
+                <input type="hidden" name="firealert_key_id" id="firealert_key_id">
                 <input type="submit" class="btn btn-danger" id="deleteAlertBtn" value="Delete">   
-            {{-- </form> --}}
+            </form> 
 
         </div>
       </div>

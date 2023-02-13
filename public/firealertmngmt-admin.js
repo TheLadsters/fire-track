@@ -303,8 +303,6 @@ cancelTemplate("any fire icon to DELETE",
     success: function(response){
       for (let i = 0; i < markerArr.length; i++) {
         let firealert_id = response['alert'][i].firealarm_id;
-        console.log(firealert_id);
-        // let action_url = `fire-alert-management/deleteFireAlert/'.$allAlerts[${firealert_id}]->firealarm_id`;
 
         google.maps.event.clearListeners(markerArr[i], "click");
   

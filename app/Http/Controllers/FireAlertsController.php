@@ -70,8 +70,9 @@ class FireAlertsController extends Controller
     }
 
     // Delete an alert
-    public function destroyAlert($firealarm_id){
-        // dd($firealarm_id);
+    public function destroyAlert(Request $request){
+        $firealarm_id = $request->input('firealert_key_id');
+
         $fireAlert = fireAlertAdmin::find($firealarm_id)->delete();
         return redirect('/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully!');
     }
