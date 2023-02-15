@@ -35,7 +35,7 @@
 	border-radius: 2px;
 	border: none;
 	outline: none !important;
-	margin-left: 10px;
+	/* margin-left: 10px; */
 }
 .table-title .btn i {
 	float: left;
@@ -51,9 +51,7 @@ table.table tr th, table.table tr td {
 	padding: 12px 15px;
 	vertical-align: middle;
 }
-table.table tr th:first-child {
-	width: 60px;
-}
+
 table.table tr th:last-child {
 	width: 100px;
 }
@@ -186,36 +184,23 @@ table.table .avatar {
 	background: #ddd;
 }
 /* Modal styles */
-.modal .modal-dialog {
-	max-width: 400px;
-}
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
-	padding: 20px 30px;
-}
-.modal .modal-content {
-	border-radius: 3px;
-	font-size: 14px;
-}
-.modal .modal-footer {
-	background: #ecf0f1;
-	border-radius: 0 0 3px 3px;
-}
-.modal .modal-title {
+
+.addFireHydrantTypeModal .modal-title {
 	display: inline-block;
 }
-.modal .form-control {
+.addFireHydrantTypeModal .form-control {
 	border-radius: 2px;
 	box-shadow: none;
 	border-color: #dddddd;
 }
-.modal textarea.form-control {
+.addFireHydrantTypeModal textarea.form-control {
 	resize: vertical;
 }
-.modal .btn {
+.addFireHydrantTypeModal .btn {
 	border-radius: 2px;
 	min-width: 100px;
 }	
-.modal form label {
+.addFireHydrantTypeModal form label {
 	font-weight: normal;
 }	
 

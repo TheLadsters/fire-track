@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FireAlertsController;
 use App\Http\Controllers\FireHydrantsController;
 use App\Http\Controllers\FirefighterAlertsController;
+use App\Http\Controllers\FireHydrantsTypeController;
 
 
 /*
@@ -59,9 +60,9 @@ Route::get('/user-management-admin', function () {
 });
 
 
-Route::get('/fire-hydrant-type-management', function () {
-    return view('admin/fireHManagementHType');
-});
+// Routes Fire Hydrant Type Management 
+Route::get('/fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index']);
+Route::post('/fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store']);
 
 
 Route::get('/generate-reports', function () {

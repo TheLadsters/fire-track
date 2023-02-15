@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('hydrant_type', function (Blueprint $table) {
             $table->id('hydrant_type_id');
             $table->string('name');
+            $table->string('img_url')->nullable();
             $table->timestamps();
         });
     }

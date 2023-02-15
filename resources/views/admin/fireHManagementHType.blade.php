@@ -8,7 +8,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 <link rel="stylesheet" href="css/adminCSS/fireHydrantType.css">
 
 
-{{-- <script>
+<!-- <script>
 $(document).ready(function(){
 	// Activate tooltip
 	$('[data-toggle="tooltip"]').tooltip();
@@ -32,7 +32,7 @@ $(document).ready(function(){
 		}
 	}); 
 });
-</script> --}}
+</script> -->
 </head>
 
 <div class="container-xl">
@@ -44,8 +44,8 @@ $(document).ready(function(){
 						<h2><b>Fire Hydrant Type</b></h2>
 					</div>
 					<div class="col-sm-6">
-						{{-- <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editFireHydrantTypeModal"><i class="material-icons">&#xE147;</i> <span>Add Type</span></a>
-						<a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteFireHydrantTypeModal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						 --}}
+						<a class="btn btn-success" data-bs-toggle="modal" data-bs-target=".addFireHydrantTypeModal"><i class="material-icons">&#xE147;</i> <span>Add Type</span></a>
+						<!-- <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteFireHydrantTypeModal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						 -->
 					</div>
 				</div>
 			</div>
@@ -53,52 +53,37 @@ $(document).ready(function(){
 				<thead>
 					<tr>
 						<th>Fire Hydrant Type</th>
-						<th>Fire Hydrant Image</th>
+						<th>Image</th>
                         <th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Type 1</td>
-						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px; border-radius: 50%;border: 1px solid #555;"></td>
-                        <td>Wet Barrel</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
-						</td>
-					</tr>
-                    <tr>
-						<td>Type 2</td>
-						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px;border-radius: 50%;border: 1px solid #555;"></td>
-                        <td>Wet Barrel</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
-						</td>
-					</tr>
-                    <tr>
-						<td>Type 3</td>
-						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px;border-radius: 50%;border: 1px solid #555;"></td>
-                        <td>Wet Barrel</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
-						</td>
-					</tr>
-                    <tr>
-						<td>Type 4</td>
-						<td><img src="images/wetbarrel.jpg" style="width:50px;height:50px;border-radius: 50%;border: 1px solid #555;"></td>
-                        <td>Wet Barrel</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
-						</td>
-					</tr>
 
+				@if($allHydrantTypes)
+					@foreach($allHydrantTypes as $types)
+						<tr>
+							<td>{{ $types->name }}</td>
+							<td><img src="{{ $types->img_url ? asset('storage/'.$types->img_url) : asset('images/fire-hydrant.png')}}" 
+							style="width:50px;height:50px; border-radius: 50%;border: 1px solid #555;"></td>
+							<td>
+								<a data-target="#editFireHydrantTypeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
+								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
+							</td>
+						</tr>
+					@endforeach
+					
+				@else
+					<tr>
+						<td colspan="12" class="text-center">No Records Found!</td>
+					</tr>
+				@endif
 				</tbody>
 			</table>
-
 		</div>
 	</div>
 </div>
+
+@include("modals.firehydrantadminadd")
+@include("modals.firehydrantadminedit")
+@include("modals.firehydrantadmindelete")
 @endsection
