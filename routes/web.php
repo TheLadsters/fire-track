@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FireAlertsController;
+use App\Http\Controllers\FireHydrantsController;
 use App\Http\Controllers\FirefighterAlertsController;
 
 
@@ -57,15 +58,10 @@ Route::get('/user-management-admin', function () {
     return view('admin/userManagementAdmin');
 });
 
-Route::get('/add-fire-hydrant', function () {
-    return view('admin/fireHManagementAdd');
-});
 
 Route::get('/fire-hydrant-type-management', function () {
     return view('admin/fireHManagementHType');
 });
-
-Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
 
 
 Route::get('/generate-reports', function () {
@@ -76,7 +72,15 @@ Route::get('/bulletin-management', function () {
     return view('admin/bulletinManagement');
 });
 
+// Routes for Fire Hydrant Management
+Route::get('/admin-hydrant-map', [FireHydrantsController::class, 'index']);
+
+Route::get('/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
+
+
 // Routes for fire alert management
+Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
+
 Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
 
 Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable']);

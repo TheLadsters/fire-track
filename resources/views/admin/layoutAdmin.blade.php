@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/sideBarLayout.css">
     <link href="css/adminCSS/fireAlertManagement-admin.css" rel="stylesheet">
     <link href="css/adminCSS/fireAlertMgmtSidebar.css" rel="stylesheet">
+    <link href="css/adminCSS/fireHydrantMap-admin.css" rel="stylesheet">
 
     <title>FireTrack App</title>
 </head>
@@ -54,9 +55,9 @@
                   </a> 
 
                   <div class="dropdown-container-firealert mb-3 d-none" id="dropdown-firealert">
-                    <a href="/add-fire-hydrant" class="py-5">Add Fire Hydrant</a>
+                    <a href="/admin-hydrant-map">Hydrant Map</a>
                     <br>
-                    <a href="/fire-hydrant-type-management">Fire Hydrant Type</a>
+                    <a href="/fire-hydrant-type-management">Add Hydrant Type</a>
                   </div>
                   
                   <a href="/fire-alert-management" class="nav_link"> 
@@ -98,6 +99,7 @@
       <script type="text/javascript" src="/app.js"></script>      
       <script type="text/javascript" src="/firealertmngmt-admin.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"></script></body>
+      <script type="text/javascript" src="/fireHydrantMap.js"></script>
 
 </body>
 </html>
