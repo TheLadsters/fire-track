@@ -7,32 +7,6 @@
 integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <link rel="stylesheet" href="css/adminCSS/fireHydrantType.css">
 
-
-<!-- <script>
-$(document).ready(function(){
-	// Activate tooltip
-	$('[data-toggle="tooltip"]').tooltip();
-	
-	// Select/Deselect checkboxes
-	var checkbox = $('table tbody input[type="checkbox"]');
-	$("#selectAll").click(function(){
-		if(this.checked){
-			checkbox.each(function(){
-				this.checked = true;                        
-			});
-		} else{
-			checkbox.each(function(){
-				this.checked = false;                        
-			});
-		} 
-	});
-	checkbox.click(function(){
-		if(!this.checked){
-			$("#selectAll").prop("checked", false);
-		}
-	}); 
-});
-</script> -->
 </head>
 
 <div class="container-xl">
@@ -66,8 +40,8 @@ $(document).ready(function(){
 							<td><img src="{{ $types->img_url ? asset('storage/'.$types->img_url) : asset('images/fire-hydrant.png')}}" 
 							style="width:50px;height:50px; border-radius: 50%;border: 1px solid #555;"></td>
 							<td>
-								<a data-target="#editFireHydrantTypeModal" class="edit" data-toggle="modal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
+								<a class="edit editHydrantType" ><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
+								<a class="delete deleteHydrantType"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
 							</td>
 						</tr>
 					@endforeach
@@ -83,7 +57,7 @@ $(document).ready(function(){
 	</div>
 </div>
 
-@include("modals.firehydrantadminadd")
-@include("modals.firehydrantadminedit")
-@include("modals.firehydrantadmindelete")
+@include("modals.firehydranttypeadd")
+@include("modals.firehydranttypeedit")
+@include("modals.firehydranttypedelete")
 @endsection
