@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('hydrant_type_id');
             $table->string('longitude');
             $table->string('latitude');
+            $table->string('address');
             $table->enum('status', ['working', 'not working', 'maintenance'])->default('working');
             $table->string('img_url');
             $table->foreign('user_id')->references('user_id')->on('users');

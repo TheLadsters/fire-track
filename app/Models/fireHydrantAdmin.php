@@ -11,4 +11,8 @@ class fireHydrantAdmin extends Model
     protected $table = "hydrant";
     protected $primaryKey = 'hydrant_id';
     protected $fillable = ['user_id', 'hydrant_type_id', 'longitude', 'latitude', 'status', 'img_url'];
+
+    public function fireHydrantType(){
+        return $this->hasOne(fireHydrantType::class);
+    }
 }

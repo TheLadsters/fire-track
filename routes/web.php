@@ -76,7 +76,7 @@ Route::get('/bulletin-management', function () {
 // Routes for Fire Hydrant Management
 Route::get('/admin-hydrant-map', [FireHydrantsController::class, 'index']);
 
-Route::get('/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
+Route::get('admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
 
 
 // Routes for fire alert management
