@@ -7,8 +7,6 @@
 </head>
 <div class="container" id="content">
     <div id="firelertmapmanagement"></div>
-    
-
     <div class="right-sidebar">
 
         <div class="top-details">
@@ -32,29 +30,7 @@
         </div>
 
         <div class="middle-details">
-            <!-- <div class="alarm-details px-2">
-
-                <div class="alarm-name py-3 row">
-                    <div class="col-12">
-                        <input type="text" class="form-control" value="hello" placeholder="Place of Fire">
-                    </div>
-                </div>
-
-                <div class="alarm-status py-3 row text-center">
-                    <div class="col-12">
-                        <div class="dropdown">
-                            <button class="dropdown-toggle btn-dropdown" type="button" style="width:95%"
-                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Status
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 95%">
-                            <li><a class="dropdown-item" href="#">Fire Out</a></li>
-                            <li><a class="dropdown-item" href="#">Ongoing Fire</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+       
         </div>
 
 
@@ -97,4 +73,6 @@
 
 @include("modals.firealertmanager")
 @include("modals.firealertmanageradd")
+@include("modals.firealertmanageredit")
+@include("modals.firealertmanagerdelete")
 @endsection

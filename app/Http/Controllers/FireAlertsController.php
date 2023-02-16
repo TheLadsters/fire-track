@@ -9,7 +9,8 @@ class FireAlertsController extends Controller
 {
     // returns view
     public function index(){
-        return view('admin.fireAlertManagement');
+        $allAlerts = fireAlertAdmin::all();
+        return view('admin.fireAlertManagement', compact('allAlerts'));
     }
 
     // show all alerts in google maps
@@ -44,5 +45,35 @@ class FireAlertsController extends Controller
 
         fireAlertAdmin::create($formFields);
         return redirect('/fire-alert-management');
+    }
+
+    // edit a specified alert
+    public function updateAlert(Request $request){
+
+        $firealarm_id = $request->input('firealert_hidden_id');
+        $user_id = $request->input('user_id');
+        $longitude = $request->input('longitude');
+        $latitude = $request->input('latitude');
+        $status = $request->input('status');
+        $fire_location = $request->input('fire_location');
+        
+        $alarm = FireAlertAdmin::where('firealarm_id', $firealarm_id)->update([
+            'user_id' => $user_id,
+            'longitude' => $longitude,
+            'latitude' => $latitude,
+            'status' => $status,
+            'fire_location' => $fire_location,
+        ]);
+
+        return redirect('/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully!');
+
+    }
+
+    // Delete an alert
+    public function destroyAlert(Request $request){
+        $firealarm_id = $request->input('firealert_key_id');
+
+        $fireAlert = fireAlertAdmin::find($firealarm_id)->delete();
+        return redirect('/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully!');
     }
 }

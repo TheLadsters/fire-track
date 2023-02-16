@@ -29,7 +29,7 @@ $(document).ready(function() {
   
         let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
         let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
-        let fireStatus = response['alert'][i].status;
+        let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
   
         marker = new google.maps.Marker({
               position: new google.maps.LatLng(longitude, latitude),
