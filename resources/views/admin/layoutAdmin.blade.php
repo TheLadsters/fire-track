@@ -66,7 +66,6 @@
                       <br>Management
                     </span> 
                   </a> 
-                  
                   <a href="/generate-reports" class="nav_link"> 
                     <i class='bx bxs-report'></i>
                     <span class="nav_name">Generate Reports</span> 
@@ -99,6 +98,7 @@
       <script type="text/javascript" src="/app.js"></script>      
       <script type="text/javascript" src="/firealertmngmt-admin.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"></script></body>
+      <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/fireHydrantMap.js"></script>
       <script type="text/javascript" src="/fireHydrantType.js"></script>
 
