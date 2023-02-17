@@ -69,9 +69,11 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/app.js"></script>
       <script type="text/javascript" src="/bulletin-firefighter.js"></script>      
       <script type="text/javascript" src="/firealertmap-firefighter.js"></script>
+      <script type="text/javascript" src="/firehydrantmap-firefighter.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"></script>
 </body>
 

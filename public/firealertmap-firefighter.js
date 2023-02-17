@@ -23,7 +23,6 @@ $(document).ready(function() {
       type: 'get',
       dataType: 'json',
       success: function(response){
-        console.log(response['alert'][0].latitude);
   
       for (let i = 0; i < response['alert'].length; i++) {
   

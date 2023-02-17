@@ -6,6 +6,7 @@ use App\Http\Controllers\FireAlertsController;
 use App\Http\Controllers\FireHydrantsController;
 use App\Http\Controllers\FirefighterAlertsController;
 use App\Http\Controllers\FireHydrantsTypeController;
+use App\Http\Controllers\FirefighterHydrantsController;
 
 
 /*
@@ -50,7 +51,7 @@ Route::get('/confirmedpass', function () {
     return view('Forgot Password/ConfirmedPass');
 });
 
-// sidebar routes admin
+// ~~~~~~~~~~~ SIDEBAR ROUTES FOR ADMIN ~~~~~~~~~~~ //
 Route::get('/user-management-user', function () {
     return view('admin/userManagementUser');
 });
@@ -60,20 +61,24 @@ Route::get('/user-management-admin', function () {
 });
 
 
-// Routes Fire Hydrant Type Management 
+// Routes Fire Hydrant Type Management (ADMIN)
 Route::get('/fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index']);
+
 Route::post('/fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store']);
 
 
+// Routes for Generate Reports (ADMIN)
 Route::get('/generate-reports', function () {
     return view('admin/generateReport');
 });
 
+// Routes for Bulletin Management (ADMIN)
 Route::get('/bulletin-management', function () {
     return view('admin/bulletinManagement');
 });
 
-// Routes for Fire Hydrant Management
+
+// Routes for Fire Hydrant Management (ADMIN)
 Route::get('/admin-hydrant-map', [FireHydrantsController::class, 'index']);
 
 Route::get('admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
@@ -85,7 +90,7 @@ Route::post('admin-hydrant-map/updateFireHydrant', [FireHydrantsController::clas
 Route::post('admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant']);
 
 
-// Routes for fire alert management
+// Routes for fire alert management (ADMIN)
 Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
 
 Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
@@ -99,17 +104,23 @@ Route::delete('/fire-alert-management/deleteFireAlert', [FireAlertsController::c
 Route::post('/fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert']);
 
 
-// sidebar routes firefighter
+
+// ~~~~~~~~~~~ SIDEBAR ROUTES FOR FIREFIGHTER ~~~~~~~~~~~ //
 Route::get('/edit-profile', function () {
     return view('firefighter/editprofile');
 });
 
-Route::get('/fire-hydrant-map', function () {
-    return view('firefighter/firehydrantmap');
-});
+// Routes for firefighter hydrant map (FIREFIGHTER)
+Route::get('/fire-hydrant-map', [FirefighterHydrantsController::class, 'index']);
 
+Route::get('/fire-hydrant-map/showMapHydrants', [FirefighterHydrantsController::class, 'showMapHydrants']);
+
+
+// Routes for firefighter alert map (FIREFIGHTER)
 Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index']);
+
 Route::get('/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
+
 
 Route::get('/reports', function () {
     return view('firefighter/reports');

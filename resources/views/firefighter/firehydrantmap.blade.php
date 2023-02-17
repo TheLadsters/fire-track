@@ -1,5 +1,10 @@
 @extends('firefighter/layoutFirefighter')
 
 @section('fireHydrantMap')
-<img src="./images/maptemplate.png" width="100%" height="100%"/>
+<head>
+    <link rel="stylesheet" href="css/firefighterCSS/firehydrantmap-firefighter.css">
+</head>
+
+<div id="firehydrantmap"></div>
+
 @endsection
