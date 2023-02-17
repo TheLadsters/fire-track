@@ -1,25 +1,53 @@
-$(document).ready(function() {
-    // CODE FOR MARKERS TO SHOW ON MAP
-      function addMarkerListener(marker, infowindow) {
+// const centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
+const hydrantImg = "images/fire-hydrant.png";
+let marker;
+let map;
+let markerContent;
+let infowindow;
+let markerArr =[];
+
+function addMarkerListener(marker, markerContent) {
+  
+    marker.addListener('click', function(e) {
+      infowindow.open(map,marker);
+    });
     
-        marker.addListener('click', function(e) {
-          infowindow.open(map,marker);
-        });
-      }
-    
-      const centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
-      const hydrantImg = "images/fire-hydrant.png";
-      let marker;
-      
-      let map = new google.maps.Map(document.getElementById("firehydrantmap"), {
-        center: centerPoint,
+  }
+
+
+function initMap(){
+    map = new google.maps.Map(document.getElementById("firehydrantmap"), {
+        center: new google.maps.LatLng(10.352029690791822, 123.91910785394363),
         zoom: 16,
         mapId: 'c887c451d0ae25a6'
       });
-    
-      
-    
-    $.ajax({
+
+      var input = document.getElementById('searchHydrantMap');
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.bindTo('bounds', map);
+
+
+      autocomplete.addListener('place_changed', function(){
+
+        var place = autocomplete.getPlace();
+        if(!place.geometry){
+            window.alert("Autocomplete's returned place contains no geometry");
+            return;
+        }
+
+        if(place.geometry.viewport){
+            map.fitBounds(place.geometry.viewport);
+        }else{
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);
+        }
+
+        marker.setPosition(place.geometry.location);
+      })
+
+      $.ajax({
         url: 'fire-hydrant-map/showMapHydrants',
         type: 'get',
         dataType: 'json',
@@ -37,7 +65,7 @@ $(document).ready(function() {
           let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['hydrant'][i].img_url : "images/no_img_available.png";
 
 
-        let markerContent = `
+        markerContent = `
         <div style="max-width: 300px;">
             <p>
             <img src="${hydrantPhoto}" id="imageMarker" style="width:300px; height:200px;" />
@@ -66,13 +94,17 @@ $(document).ready(function() {
                       },
                 animation: google.maps.Animation.DROP
         });
+
+        markerArr.push(marker);
     
-          var infowindow = new google.maps.InfoWindow({
+          infowindow = new google.maps.InfoWindow({
                 content: markerContent,
                 ariaLabel: "Uluru",
               });
             
-            addMarkerListener(marker, infowindow);
+            marker.addListener('click', function(e) {
+                infowindow.open(map,marker);
+            });
     
     }
     
@@ -82,6 +114,13 @@ $(document).ready(function() {
           alert(err.Message);
         }
     });
+}
+
+
+ 
+
     
       
-    });
+    
+
+    
