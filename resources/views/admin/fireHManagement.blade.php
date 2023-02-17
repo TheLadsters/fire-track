@@ -74,5 +74,7 @@
 
 @include("modals.addHydrant")
 @include("modals.editHydrant")
+@include("modals.deleteHydrant")
+@include("modals.fireHydrantManager")
 
 @endsection

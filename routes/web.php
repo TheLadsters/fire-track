@@ -82,6 +82,8 @@ Route::post('admin-hydrant-map/addFireHydrant', [FireHydrantsController::class, 
 
 Route::post('admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant']);
 
+Route::post('admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant']);
+
 
 // Routes for fire alert management
 Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);

@@ -46,7 +46,53 @@ class FireHydrantsController extends Controller
         return redirect('/admin-hydrant-map');
     }
 
-    public function updateFireHydrant(){
+    public function updateFireHydrant(Request $request){
+        $firehydrant_id = $request->input('firehydrant_hidden_id');
+        $user_id = $request->input('user_id');
+        $longitude = $request->input('longitude');
+        $latitude = $request->input('latitude');
+        $address = $request->input('address');
+        $status = $request->input('status');
+        $hydrant_type = $request->input('hydrant_type_id');
 
+        if($request->hasFile('img_url')){
+            $hydrantImg = $request->file('img_url')->store('hydrant-images', 
+            'public');
+        }else{
+            $hydrant = fireHydrantAdmin::find($firehydrant_id);
+            $hydrantImg = $hydrant->img_url;
+        }
+
+
+        if($hydrantImg){
+            $hydrant = fireHydrantAdmin::where('hydrant_id', $firehydrant_id)->update([
+                'user_id' => $user_id,
+                'longitude' => $longitude,
+                'latitude' => $latitude,
+                'address' => $address,
+                'status' => $status,
+                'hydrant_type_id' => $hydrant_type,
+                'img_url' => $hydrantImg
+            ]);
+        }else{
+            $hydrant = fireHydrantAdmin::where('hydrant_id', $firehydrant_id)->update([
+                'user_id' => $user_id,
+                'longitude' => $longitude,
+                'latitude' => $latitude,
+                'address' => $address,
+                'status' => $status,
+                'hydrant_type_id' => $hydrant_type,
+            ]);
+        }
+
+
+        return redirect('/admin-hydrant-map')->with('message', 'Fire Hydrant Updated Successfully!');
+    }
+
+    public function deleteFireHydrant(Request $request){
+        $firehydrant_id = $request->input('firehydrant_key_id');
+
+        $fireHydrant = fireHydrantAdmin::find($firehydrant_id)->delete();
+        return redirect('/admin-hydrant-map')->with('message', 'Fire Hydrant Deleted Successfully!');   
     }
 }

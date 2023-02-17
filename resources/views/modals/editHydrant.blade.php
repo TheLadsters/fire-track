@@ -6,7 +6,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="/admin-hydrant-map/updateFireHydrant">
+          <form method="POST" action="/admin-hydrant-map/updateFireHydrant" enctype="multipart/form-data">
             @csrf
             <input type="hidden" id="firehydrant_hidden_id" name="firehydrant_hidden_id">
             <input type="hidden" name="user_id" id="user_id">
@@ -111,6 +111,12 @@
                 <div class="col-6">
                     <input class="form-control" name="img_url" type="file" id="hydrantImg">
                 </div>
+            </div>
+
+            <div class="row text-center mb-3">
+              <div class="col-12">
+                <img class="img-fluid img-thumbnail" height="200" width="150">
+              </div>
             </div>
 
             <input type="text" id="user_id" style="display: none;" class="form-control" name="user_id" value="1">
