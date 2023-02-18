@@ -3,9 +3,47 @@
     margin-right: 2%;
 }
 
-#searchAlertMap{
-    margin-top: 6%;
-    height: 4%;
-    width: 50%;
-    margin-bottom: 0;
+@media screen and (min-width: 0px){
+    #searchAlertMap{
+        margin-top: 20%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 376px){
+    #searchAlertMap{
+        margin-top: 15%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
+}
+
+@media screen and (min-width: 500px){
+    #searchAlertMap{
+        margin-top: 12%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
+}
+
+@media screen and (min-width: 1000px){
+    #searchAlertMap{
+        margin-top: 8%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
+}
+
+@media screen and (min-width: 1400px){
+    #searchAlertMap{
+        margin-top: 6%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
 }

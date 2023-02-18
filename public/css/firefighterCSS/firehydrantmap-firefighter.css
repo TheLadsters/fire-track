@@ -3,9 +3,48 @@
     margin-right: 2%;
 }
 
-#searchbox{
-    margin-top: 6%;
-    height: 4%;
-    width: 50%;
-    margin-bottom: 0;
+@media screen and (min-width: 0px){
+    #searchbox{
+        margin-top: 20%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 376px){
+    #searchbox{
+        margin-top: 15%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
+}
+
+@media screen and (min-width: 500px){
+    #searchbox{
+        margin-top: 12%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
+}
+
+@media screen and (min-width: 1000px){
+    #searchbox{
+        margin-top: 7%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
+}
+
+
+@media screen and (min-width: 1400px){
+    #searchbox{
+        margin-top: 6%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    } 
 }
