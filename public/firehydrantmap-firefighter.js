@@ -1,18 +1,6 @@
-// const centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
 const hydrantImg = "images/fire-hydrant.png";
-let marker;
 let map;
-let markerContent;
-let infowindow;
-let markerArr =[];
-
-function addMarkerListener(marker, markerContent) {
-  
-    marker.addListener('click', function(e) {
-      infowindow.open(map,marker);
-    });
-    
-  }
+let markerArr = [];
 
 
 function initMap(){
@@ -22,8 +10,8 @@ function initMap(){
         mapId: 'c887c451d0ae25a6'
       });
 
-      var input = document.getElementById('searchHydrantMap');
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+      var input = document.getElementById('searchbox');
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
       var autocomplete = new google.maps.places.Autocomplete(input);
       autocomplete.bindTo('bounds', map);
@@ -44,7 +32,6 @@ function initMap(){
             map.setZoom(17);
         }
 
-        marker.setPosition(place.geometry.location);
       })
 
       $.ajax({
@@ -65,7 +52,7 @@ function initMap(){
           let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['hydrant'][i].img_url : "images/no_img_available.png";
 
 
-        markerContent = `
+       let markerContent = `
         <div style="max-width: 300px;">
             <p>
             <img src="${hydrantPhoto}" id="imageMarker" style="width:300px; height:200px;" />
@@ -85,7 +72,7 @@ function initMap(){
         </div>
         `;
     
-          marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(longitude, latitude),
                 map: map,
                 icon: {
@@ -97,13 +84,14 @@ function initMap(){
 
         markerArr.push(marker);
     
-          infowindow = new google.maps.InfoWindow({
+         let infowindow = new google.maps.InfoWindow({
                 content: markerContent,
                 ariaLabel: "Uluru",
               });
+
             
-            marker.addListener('click', function(e) {
-                infowindow.open(map,marker);
+            markerArr[i].addListener('click', function(e) {
+                infowindow.open(map ,markerArr[i]);
             });
     
     }

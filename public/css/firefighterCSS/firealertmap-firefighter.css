@@ -1,5 +1,11 @@
 #firealertmap{
-    height: 85vh;
-    margin-top: 5%;
+    height: 100vh;
     margin-right: 2%;
+}
+
+#searchAlertMap{
+    margin-top: 6%;
+    height: 4%;
+    width: 50%;
+    margin-bottom: 0;
 }
