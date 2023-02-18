@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('birthday');
             $table->enum('gender', ['male', 'female'])->default('male');
-            $table->string('');
+            $table->string('address');
             $table->string('img_url');
             $table->enum('role', ['firefighter', 'admin'])->default('admin');
             $table->enum('status', ['active', 'inactive'])->default('active');

@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FireAlertsController;
+use App\Http\Controllers\FirefighterAlertsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,10 +65,21 @@ Route::get('/', function () {
 //     return view('admin/fireHManagementHType');
 // });
 
-// Route::get('/fire-alert-management', function () {
-//     return view('admin/fireAlertManagement');
-// });
+Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
 
+Route::get('/fire-hydrant-type-management', function () {
+    return view('admin/fireHManagementHType');
+});
+
+Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
+
+Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
+
+Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable']);
+
+Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
+
+Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
 
 // Route::get('/generate-reports', function () {
 //     return view('admin/generateReport');
@@ -86,9 +100,8 @@ Route::get('/', function () {
 //     return view('firefighter/firehydrantmap');
 // });
 
-// Route::get('/fire-alert-map', function () {
-//     return view('firefighter/firealertmap');
-// });
+Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index']);
+Route::get('/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
 
 // Route::get('/reports', function () {
 //     return view('firefighter/reports');
@@ -98,17 +111,32 @@ Route::get('/', function () {
 //     return view('firefighter/bulletin-firefighter');
 // });
 
-
+// Common Resource Routes
+// index - Show all listings
+// show - show single listing
+// create - show form to create listing
+// store - store new listing
+// edit - show form to edit listing
+// update - update listing
+// destroy - delete
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
-    Route::get('layoutFirefighter',[App\Http\Controllers\UserController::class,'layoutFirefighter'])->name('firefighter.layoutFirefighter');
-    Route::get('editprofile',[App\Http\Controllers\UserController::class,'editprofile'])->name('firefighter.editprofile');
-    Route::get('firealertmap',[App\Http\Controllers\UserController::class,'firealertmap'])->name('firefighter.firealertmap');
-    Route::get('firehydrantmap',[App\Http\Controllers\UserController::class,'firehydrantmap'])->name('firefighter.firehydrantmap');
-    Route::get('reports',[App\Http\Controllers\UserController::class,'reports'])->name('firefighter.reports');
-   
+Route::get('/reports', function () {
+    return view('firefighter/reports');
 });
+
+Route::get('/bulletin-firefighter', function () {
+    return view('firefighter/bulletin-firefighter');
+});
+
+// Common Resource Routes
+// index - Show all listings
+// show - show single listing
+// create - show form to create listing
+// store - store new listing
+// edit - show form to edit listing
+// update - update listing
+// destroy - delete

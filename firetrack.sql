@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2023 at 11:51 AM
+-- Generation Time: Feb 05, 2023 at 01:50 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -48,12 +48,22 @@ CREATE TABLE `bulletin` (
 CREATE TABLE `fire_alarm` (
   `firealarm_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+  `fire_location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('Fire Out','Ongoing Fire') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Ongoing Fire',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `fire_alarm`
+--
+
+INSERT INTO `fire_alarm` (`firealarm_id`, `user_id`, `fire_location`, `longitude`, `latitude`, `status`, `created_at`, `updated_at`) VALUES
+(5, 1, 'University of San Carlos', '10.353072075803802', '123.91298865030441', 'Ongoing Fire', '2023-02-05 12:27:36', '2023-02-04 16:00:00'),
+(6, 2, 'Jollibee Banilad', '10.349568075191915', '123.913374888391', 'Ongoing Fire', '2023-02-05 12:28:20', '2023-02-05 12:28:20'),
+(7, 4, 'Oakridge Business Park', '10.343708802976499', '123.91613004382488', 'Fire Out', '2023-02-05 12:28:20', '2023-02-05 12:28:20');
 
 -- --------------------------------------------------------
 
@@ -103,13 +113,13 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(4, '2023_02_04_092154_create_fire_alarm_table', 1),
-(5, '2023_02_04_092334_create_hydrant_type_table', 1),
-(6, '2023_02_04_092335_create_hydrant_table', 1),
-(7, '2023_02_04_092809_create_bulletin_table', 1);
+(8, '2014_10_12_000000_create_users_table', 1),
+(9, '2014_10_12_100000_create_password_resets_table', 1),
+(10, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(11, '2023_02_04_092154_create_fire_alarm_table', 1),
+(12, '2023_02_04_092334_create_hydrant_type_table', 1),
+(13, '2023_02_04_092335_create_hydrant_table', 1),
+(14, '2023_02_04_092809_create_bulletin_table', 1);
 
 -- --------------------------------------------------------
 
@@ -172,16 +182,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `username`, `fname`, `lname`, `contact_no`, `password`, `birthday`, `gender`, `img_url`, `role`, `status`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'cameron12@example.org', 'Ms. Whitney Howell MD', 'Michale', 'Herzog', '82085', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '96513', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'XzzdjhqxtL', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(2, 'vkrajcik@example.net', 'Alvina Dooley', 'Kelvin', 'Kutch', '85107', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '20634', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'tPnhWWoNyG', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(3, 'bahringer.jeramie@example.net', 'Mr. Berta Keeling', 'Joey', 'VonRueden', '93402', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '39475', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'L0juavfXFm', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(4, 'augustine52@example.org', 'Mrs. Della Mitchell II', 'Ernesto', 'Hoppe', '46796', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '34906', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', 'FwHYFpQ9Kk', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(5, 'nolan.noah@example.org', 'Prof. Jana Gottlieb', 'Leif', 'Rippin', '52981', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '95240', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', 'v339uoYW5Y', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(6, 'tweissnat@example.com', 'Skye Jakubowski DDS', 'Scotty', 'Emard', '55618', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '3365', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'Q3ZuCJBEbs', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(7, 'mohamed.thompson@example.net', 'Demarco Kuhlman', 'Chase', 'Torp', '12171', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '22631', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-04 02:49:49', 'AksAWsBtxY', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(8, 'mcclure.sidney@example.org', 'Rosie Cormier', 'Issac', 'Boyle', '46226', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '29340', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-04 02:49:49', 'zuHqzA9xqg', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(9, 'dickinson.stan@example.net', 'Brody Smith', 'Sigrid', 'Romaguera', '74660', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '85198', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', '443f1jnkFZ', '2023-02-04 02:49:49', '2023-02-04 02:49:49'),
-(10, 'bernie.reinger@example.net', 'Ms. Isabelle Ferry MD', 'Edison', 'Weissnat', '86693', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '86749', 'female', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-04 02:49:49', 'bvCYKepCQo', '2023-02-04 02:49:49', '2023-02-04 02:49:49');
+(1, 'robbie84@example.net', 'Juvenal Ledner', 'Alfredo', 'Cole', '22330', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '37035', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'active', '2023-02-05 04:26:43', 'pTKElCqyL2', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(2, 'mallory.walsh@example.net', 'Amina O\'Connell V', 'Franz', 'Auer', '45794', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '22328', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'TfcHKX6SW9', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(3, 'lenore.hills@example.org', 'Kirk Witting', 'Monroe', 'Jerde', '78250', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '54610', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'active', '2023-02-05 04:26:43', 'zPMUtuymLF', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(4, 'lucius54@example.com', 'Cecilia Satterfield II', 'Freddy', 'Hill', '21439', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '62774', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'wsSsI97Lo6', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(5, 'johnston.vida@example.net', 'Charley Kunde', 'Chase', 'Carter', '342', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '41200', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-05 04:26:43', 'oqXlf7ARCI', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(6, 'sadye36@example.net', 'Barry Homenick IV', 'Laverna', 'Koelpin', '68472', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '68556', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'hGzNu8uNaA', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(7, 'mills.theresia@example.com', 'Euna Kuhic PhD', 'Wilbert', 'Welch', '72788', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '44311', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'Y6J0BkZSWg', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(8, 'kris.labadie@example.com', 'Prof. Berta Howe', 'Efrain', 'Pacocha', '3119', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '709', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'SdvudR0OqE', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(9, 'sporer.jamal@example.org', 'Dominique Abshire', 'Laron', 'Cruickshank', '68862', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '43976', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'rlMMqL3FoL', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(10, 'zane.krajcik@example.net', 'Margie Goyette', 'Marquis', 'Beer', '85421', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '80671', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'DNrHsPWEzQ', '2023-02-05 04:26:44', '2023-02-05 04:26:44');
 
 --
 -- Indexes for dumped tables
@@ -257,7 +267,7 @@ ALTER TABLE `bulletin`
 -- AUTO_INCREMENT for table `fire_alarm`
 --
 ALTER TABLE `fire_alarm`
-  MODIFY `firealarm_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `firealarm_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `hydrant`
@@ -275,7 +285,7 @@ ALTER TABLE `hydrant_type`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

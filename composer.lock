@@ -1304,6 +1304,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v9.50.2",
             "source": {
                 "type": "git",
@@ -1314,6 +1315,31 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/39932773c09658ddea9045958f305e67f9304995",
                 "reference": "39932773c09658ddea9045958f305e67f9304995",
+=======
+<<<<<<< HEAD
+            "version": "v9.50.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "2ec7083834563e2bb1003ab50d2b6071f3418e75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2ec7083834563e2bb1003ab50d2b6071f3418e75",
+                "reference": "2ec7083834563e2bb1003ab50d2b6071f3418e75",
+=======
+            "version": "v9.50.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "39932773c09658ddea9045958f305e67f9304995"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/39932773c09658ddea9045958f305e67f9304995",
+                "reference": "39932773c09658ddea9045958f305e67f9304995",
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
                 "shasum": ""
             },
             "require": {
@@ -1488,7 +1514,15 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2023-02-02T20:52:46+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2023-02-01T14:04:34+00:00"
+=======
+            "time": "2023-02-02T20:52:46+00:00"
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
         },
         {
             "name": "laravel/sanctum",
@@ -2347,6 +2381,26 @@
         },
         {
             "name": "nette/utils",
+<<<<<<< HEAD
+            "version": "v4.0.0",
+=======
+<<<<<<< HEAD
+            "version": "v3.2.9",
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/utils.git",
+                "reference": "cacdbf5a91a657ede665c541eda28941d4b09c1e"
+            },
+            "dist": {
+                "type": "zip",
+<<<<<<< HEAD
+                "url": "https://api.github.com/repos/nette/utils/zipball/cacdbf5a91a657ede665c541eda28941d4b09c1e",
+                "reference": "cacdbf5a91a657ede665c541eda28941d4b09c1e",
+=======
+                "url": "https://api.github.com/repos/nette/utils/zipball/c91bac3470c34b2ecd5400f6e6fdf0b64a836a5c",
+                "reference": "c91bac3470c34b2ecd5400f6e6fdf0b64a836a5c",
+=======
             "version": "v4.0.0",
             "source": {
                 "type": "git",
@@ -2357,6 +2411,8 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/nette/utils/zipball/cacdbf5a91a657ede665c541eda28941d4b09c1e",
                 "reference": "cacdbf5a91a657ede665c541eda28941d4b09c1e",
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
                 "shasum": ""
             },
             "require": {
@@ -2368,7 +2424,15 @@
             },
             "require-dev": {
                 "jetbrains/phpstorm-attributes": "dev-master",
+<<<<<<< HEAD
                 "nette/tester": "^2.4",
+=======
+<<<<<<< HEAD
+                "nette/tester": "~2.0",
+=======
+                "nette/tester": "^2.4",
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
                 "phpstan/phpstan": "^1.0",
                 "tracy/tracy": "^2.9"
             },
@@ -2428,9 +2492,21 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/nette/utils/tree/v4.0.0"
             },
             "time": "2023-02-02T10:41:53+00:00"
+=======
+<<<<<<< HEAD
+                "source": "https://github.com/nette/utils/tree/v3.2.9"
+            },
+            "time": "2023-01-18T03:26:20+00:00"
+=======
+                "source": "https://github.com/nette/utils/tree/v4.0.0"
+            },
+            "time": "2023-02-02T10:41:53+00:00"
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
         },
         {
             "name": "nikic/php-parser",
@@ -6866,7 +6942,12 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "9.6.1",
+=======
+<<<<<<< HEAD
+            "version": "9.5.28",
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
@@ -6874,8 +6955,25 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9a52e8385f3e432d7e8ecab72c4d211a67223285",
                 "reference": "9a52e8385f3e432d7e8ecab72c4d211a67223285",
+=======
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/954ca3113a03bf780d22f07bf055d883ee04b65e",
+                "reference": "954ca3113a03bf780d22f07bf055d883ee04b65e",
+=======
+            "version": "9.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "70fc8be1d0b9fad56a199a4df5f9cfabfc246f84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/70fc8be1d0b9fad56a199a4df5f9cfabfc246f84",
+                "reference": "70fc8be1d0b9fad56a199a4df5f9cfabfc246f84",
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
                 "shasum": ""
             },
             "require": {
@@ -6948,7 +7046,15 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.1"
+=======
+<<<<<<< HEAD
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.28"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.0"
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
             },
             "funding": [
                 {
@@ -6964,7 +7070,15 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2023-02-03T19:31:30+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2023-01-14T12:32:24+00:00"
+=======
+            "time": "2023-02-03T07:32:24+00:00"
+>>>>>>> 8eed9a9c3c4388fb07746aeaea0e8edc1399043a
+>>>>>>> 50d4fbd950da957b91233aa789290cdf473db5dd
         },
         {
             "name": "sebastian/cli-parser",
