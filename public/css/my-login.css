@@ -1,10 +1,18 @@
-html,body {
+html,body{
 	height: 100%;
+    font-family: 'Poppins', sans-serif;
 }
+
 
 body.my-login-page {
 	background-color: #f7f9fb;
 	font-size: 14px;
+}
+
+.text-danger {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+    float: right;
 }
 
 .my-login-page .brand {
@@ -49,6 +57,7 @@ body.my-login-page {
 
 .my-login-page .btn.btn-block {
 	padding: 12px 10px;
+	
 }
 
 .my-login-page .footer {

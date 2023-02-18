@@ -1,7 +1,10 @@
 /* STARTING CODE FOR LOGIN PAGE */
 
+html,body{
+  font-family: 'Poppins', sans-serif;
+}
+
 #login-body {
-    font-family: "Roboto", sans-serif;
     background-color: #f2f6fc; 
   }
   
@@ -11,7 +14,7 @@
   }
 
 #signIn-title{
-  font-family: "Roboto", sans-serif; 
+  font-family: 'Poppins', sans-serif;
 } 
 
 .forgot-pass {
@@ -367,7 +370,7 @@ transition: .3s all ease;
   pointer-events: none; }
 
 .control__indicator:after {
-  font-family: 'icomoon';
+  font-family: 'Poppins', sans-serif;
   content: '\e5ca';
   position: absolute;
   display: none;
@@ -425,8 +428,12 @@ transition: .3s all ease;
 }
 
 #signUp-title{
-  font-family: "Roboto", sans-serif; 
+  font-family: 'Poppins', sans-serif;
 } 
+
+/* .text-danger{
+  float:right;
+} */
 
 #signup-info {
   color: #b3b3b3;
