@@ -1,4 +1,4 @@
-<div class="modal fade fireAlertManagerModal" tabindex="-1" role="dialog" aria-labelledby="fireAlertManagerModalCenter" aria-hidden="true">
+<div class="modal fade fireHydrantManagerModal" tabindex="-1" role="dialog" aria-labelledby="fireHydrantManagerModalCenter" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content px-3">
         <div class="modal-header forgetPasswordHeader">
@@ -16,7 +16,7 @@
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-striped table-hover alert-table">
+                        <table class="table table-striped table-hover hydrant-table">
                             <thead>
                                 <tr>
                                     <th>
@@ -25,10 +25,12 @@
                                             <label for="selectAll"></label>
                                         </span>
                                     </th>
-                                    <th>Fire Location</th>
                                     <th>Longitude</th>
                                     <th>Latitude</th>
+                                    <th>Address</th>
+                                    <th>Hydrant Type</th>
                                     <th>Status</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

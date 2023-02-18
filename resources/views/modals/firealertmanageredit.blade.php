@@ -80,13 +80,13 @@
 
             <input type="text" style="display: none;" class="form-control" name="user_id" value="1">
 
+            
+        <div class="modal-footer">
             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
             <button type="submit" class="btn btn-primary send-edit-alert">SUBMIT</button>
-
-          </form>
         </div>
-
-        <div class="modal-footer">
+        
+          </form>
         </div>
       </div>
     </div>
