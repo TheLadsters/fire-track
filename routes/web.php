@@ -3,10 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FireAlertsController;
-use App\Http\Controllers\FireHydrantsController;
 use App\Http\Controllers\FirefighterAlertsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FireHydrantsController;
 use App\Http\Controllers\FireHydrantsTypeController;
-use App\Http\Controllers\FirefighterHydrantsController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -21,43 +23,7 @@ use App\Http\Controllers\FirefighterHydrantsController;
 */
 
 Route::get('/', function () {
-    return view('login');
-});
-
-
-Route::get('/layoutFirefighter', function () {
-    return view('layoutFirefighter');
-});
-Route::get('/signup', function () {
-    return view('signUp');
-});
-
-Route::get('/firetrack', function () {
-    return view('publicuser/bulletin');
-});
-
-//Forgot Password
-
-Route::get('/email', function () {
-    return view('Forgot Password/Email');
-});
-Route::get('/otp', function () {
-    return view('Forgot Password/Otp');
-});
-Route::get('/newpassword', function () {
-    return view('Forgot Password/NewPassword');
-});
-Route::get('/confirmedpass', function () {
-    return view('Forgot Password/ConfirmedPass');
-});
-
-// ~~~~~~~~~~~ SIDEBAR ROUTES FOR ADMIN ~~~~~~~~~~~ //
-Route::get('/user-management-user', function () {
-    return view('admin/userManagementUser');
-});
-
-Route::get('/user-management-admin', function () {
-    return view('admin/userManagementAdmin');
+    return view('home');
 });
 
 
@@ -67,27 +33,16 @@ Route::get('/fire-hydrant-type-management', [FireHydrantsTypeController::class, 
 Route::post('/fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store']);
 
 
-// Routes for Generate Reports (ADMIN)
-Route::get('/generate-reports', function () {
-    return view('admin/generateReport');
-});
-
-// Routes for Bulletin Management (ADMIN)
-Route::get('/bulletin-management', function () {
-    return view('admin/bulletinManagement');
-});
-
-
 // Routes for Fire Hydrant Management (ADMIN)
 Route::get('/admin-hydrant-map', [FireHydrantsController::class, 'index']);
 
-Route::get('admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
+Route::get('/admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
 
-Route::post('admin-hydrant-map/addFireHydrant', [FireHydrantsController::class, 'addFireHydrant']);
+Route::post('/admin-hydrant-map/addFireHydrant', [FireHydrantsController::class, 'addFireHydrant']);
 
-Route::post('admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant']);
+Route::post('/admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant']);
 
-Route::post('admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant']);
+Route::post('/admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant']);
 
 
 // Routes for fire alert management (ADMIN)
@@ -104,31 +59,52 @@ Route::delete('/fire-alert-management/deleteFireAlert', [FireAlertsController::c
 Route::post('/fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert']);
 
 
-
-// ~~~~~~~~~~~ SIDEBAR ROUTES FOR FIREFIGHTER ~~~~~~~~~~~ //
-Route::get('/edit-profile', function () {
-    return view('firefighter/editprofile');
-});
-
 // Routes for firefighter hydrant map (FIREFIGHTER)
 Route::get('/fire-hydrant-map', [FirefighterHydrantsController::class, 'index']);
-
 Route::get('/fire-hydrant-map/showMapHydrants', [FirefighterHydrantsController::class, 'showMapHydrants']);
 
 
-// Routes for firefighter alert map (FIREFIGHTER)
+//FIREFIGHTER FIRE ALERT MAP
 Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index']);
-
 Route::get('/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
 
 
-Route::get('/reports', function () {
-    return view('firefighter/reports');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
+    Auth::routes();
 });
 
-Route::get('/bulletin-firefighter', function () {
-    return view('firefighter/bulletin-firefighter');
+Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
+    Route::get('editprofile',[UserController::class,'editprofile'])->name('firefighter.editprofile');
+    Route::get('firehydrantmap',[UserController::class,'firehydrantmap'])->name('firefighter.firehydrantmap');
+    Route::get('firealertmap',[UserController::class,'firealertmap'])->name('firefighter.firealertmap');
+    Route::get('reports',[UserController::class,'reports'])->name('firefighter.reports');
+    Route::get('bulletinfirefighter',[UserController::class,'bulletinfirefighter'])->name('firefighter.bulletinfirefighter');
+
+    Route::post('update-profile-info',[UserController::class,'updateInfo'])->name('firefighterUpdateInfo');
+    Route::post('change-profile-picture',[UserController::class,'updatePicture'])->name('firefighterPictureUpdate');
+    Route::post('change-password',[UserController::class,'changePassword'])->name('firefighterChangePassword');
+    
+    
 });
+
+Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
+    Route::get('fireAlertManagement',[AdminController::class,'fireAlertManagement'])->name('admin.fireAlertManagement');
+    // Route::get('fireHManagement',[AdminController::class,'fireHManagement'])->name('admin.fireHManagement');
+    // Route::get('fireHManagementHType',[AdminController::class,'fireHManagementHType'])->name('admin.fireHManagementHType');
+    Route::get('generateReport',[AdminController::class,'generateReports'])->name('admin.generateReport');
+    Route::get('userManagementAdmin',[AdminController::class,'userManagementAdmin'])->name('admin.userManagementAdmin');
+    Route::get('userManagementUser',[AdminController::class,'userManagementUser'])->name('admin.userManagementUser');
+    Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
+
+});
+
+
 
 // Common Resource Routes
 // index - Show all listings

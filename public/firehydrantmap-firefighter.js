@@ -57,15 +57,12 @@ function initMap(){
             <p>
             <img src="${hydrantPhoto}" id="imageMarker" style="width:300px; height:200px;" />
             </p>
-
             <p>
             <b>Address:</b> ${hydrantAddress}
             </p>
-
             <p>
             <b>Type:</b> ${hydrantType}
             </p>
-
             <p>
             <b>Status:</b> ${hydrantStatus}
             </p>
@@ -103,12 +100,3 @@ function initMap(){
         }
     });
 }
-
-
- 
-
-    
-      
-    
-
-    
