@@ -17,23 +17,23 @@ $(function() {
 // end of code for movement of text for username password in login page
 
 // (temporary) code for login button to redirect to main page
-$('.btn-submit').on('click', function(e){
-    e.preventDefault();
+// $('.btn-submit').on('click', function(e){
+//     e.preventDefault();
 
-    if($('.form-group #signInUsernameInput').val() == "admin"){
-        window.location.href = "http://127.0.0.1:8000/user-management-user";
+//     if($('.form-group #signInUsernameInput').val() == "admin"){
+//         window.location.href = "http://127.0.0.1:8000/user-management-user";
 
-    }
-    else if($('.form-group #signInUsernameInput').val() == "firefighter"){
-        window.location.href = "http://127.0.0.1:8000/edit-profile";
+//     }
+//     else if($('.form-group #signInUsernameInput').val() == "firefighter"){
+//         window.location.href = "http://127.0.0.1:8000/edit-profile";
 
-    }
-    else{
-        window.location.href = "http://127.0.0.1:8000/edit-profile";
+//     }
+//     else{
+//         window.location.href = "http://127.0.0.1:8000/edit-profile";
 
-    }
+//     }
     
-});
+// });
 // end of (temporary) code for login button to redirect to main page
 
 

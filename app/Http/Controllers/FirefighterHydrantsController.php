@@ -12,7 +12,7 @@ class FirefighterHydrantsController extends Controller
 {
     // show all hydrants on google maps
     public function index(){
-        return view('firefighter.firehydrantmap');
+        return view('dashboards.firefighter.firehydrantmap');
     }
 
     // show all alerts in google maps

@@ -12,7 +12,7 @@ class FireHydrantsTypeController extends Controller
 {
     public function index(){
         $allHydrantTypes = fireHydrantTypeAdmin::all();
-        return view('admin.fireHManagementHType', compact('allHydrantTypes'));
+        return view('dashboards.admin.fireHManagementHType', compact('allHydrantTypes'));
     }
 
     public function store(Request $request){

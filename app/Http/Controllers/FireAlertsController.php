@@ -10,7 +10,7 @@ class FireAlertsController extends Controller
     // returns view
     public function index(){
         $allAlerts = fireAlertAdmin::all();
-        return view('admin.fireAlertManagement', compact('allAlerts'));
+        return view('dashboards.admin.fireAlertManagement', compact('allAlerts'));
     }
 
     // show all alerts in google maps

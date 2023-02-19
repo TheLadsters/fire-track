@@ -11,7 +11,7 @@ class FireHydrantsController extends Controller
     public function index(){
         $allHydrants = fireHydrantAdmin::all();
         $allHydrantTypes = fireHydrantTypeAdmin::all();
-        return view('admin.fireHManagement', compact('allHydrants', 'allHydrantTypes'));
+        return view('dashboards.admin.fireHManagement', compact('allHydrants', 'allHydrantTypes'));
     }
 
      // show all hydrants in google maps
