@@ -58,6 +58,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact_no'=>['required', 'max:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string','max:255']
         ]);
     }
 
@@ -89,18 +90,19 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact_no' => ['required', 'max:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string','max:255']
          ]);
 
          /** Make avata */
 
-        //  $path = 'users/images/';
-        //  $fontPath = public_path('fonts/Oliciy.ttf');
-        //  $char = strtoupper($request->fname[0]);
-        //  $newAvatarName = rand(12,34353).time().'_avatar.png';
-        //  $dest = $path.$newAvatarName;
+         $path = 'users/images/';
+         $fontPath = public_path('fonts/Oliciy.ttf');
+         $char = strtoupper($request->fname[0]);
+         $newAvatarName = rand(12,34353).time().'_avatar.png';
+         $dest = $path.$newAvatarName;
 
-        //  $createAvatar = makeAvatar($fontPath,$dest,$char);
-        //  $picture = $createAvatar == true ? $newAvatarName : '';
+         $createAvatar = makeAvatar($fontPath,$dest,$char);
+         $picture = $createAvatar == true ? $newAvatarName : '';
 
          $user = new User();
          $user->username = $request->username;
@@ -111,7 +113,8 @@ class RegisterController extends Controller
          $user->gender = 'female';
          $user->role = 'firefighter';
          $user->birthday = 03102001;
-         $user->img_url = '92IXUNpkjO0rOQ5b.png';
+         $user->address = $request->address;
+         $user->img_url = $img_url;
          $user->password = \Hash::make($request->password);
 
          if( $user->save() ){

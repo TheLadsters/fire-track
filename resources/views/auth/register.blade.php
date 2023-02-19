@@ -98,8 +98,9 @@
 
                                                     <div class="row justify-content-evenly">
                                                         <div class="col-md-11 mb-3 form-group first">
-                                                            <label for="homeAddress">Home Address</label>
-                                                            <input type="text" class="form-control" id="homeAddressInput" />
+                                                            <label for="address">Home Address</label>
+                                                            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                                                            <span class="text-danger">@error('address'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>
 

@@ -13,8 +13,8 @@ class AdminController extends Controller
         return view('dashboards.admin.fireAlertManagement');
     }
 
-    function fireHManagementAdd() {
-        return view('dashboards.admin.fireHManagementAdd');
+    function fireHManagement() {
+        return view('dashboards.admin.fireHManagement');
     }
 
     function fireHManagementHType() {

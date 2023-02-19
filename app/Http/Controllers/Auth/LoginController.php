@@ -62,10 +62,10 @@ class LoginController extends Controller
        if( auth()->attempt(array('username'=>$input['username'], 'password'=>$input['password'])) ){
 
         if( auth()->user()->role == 'admin' ){
-            return redirect()->route('admin.layoutAdmin');
+            return redirect()->route('admin.userManagementAdmin');
         }
         elseif( auth()->user()->role == 'firefighter' ){
-            return redirect()->route('firefighter.layoutFirefighter');
+            return redirect()->route('firefighter.editprofile');
         }
 
        }else{

@@ -4,6 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FireAlertsController;
 use App\Http\Controllers\FirefighterAlertsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FireHydrantsController;
+use App\Http\Controllers\FireHydrantsTypeController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -22,55 +27,25 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/layoutFirefighter', function () {
-//     return view('layoutFirefighter');
-// });
-// Route::get('/signup', function () {
-//     return view('signUp');
-// });
+// Routes Fire Hydrant Type Management (ADMIN)
+Route::get('/fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index']);
 
-// Route::get('/firetrack', function () {
-//     return view('publicuser/bulletin');
-// });
+Route::post('/fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store']);
 
-// //Forgot Password
 
-// Route::get('/email', function () {
-//     return view('Forgot Password/Email');
-// });
-// Route::get('/otp', function () {
-//     return view('Forgot Password/Otp');
-// });
-// Route::get('/newpassword', function () {
-//     return view('Forgot Password/NewPassword');
-// });
-// Route::get('/confirmedpass', function () {
-//     return view('Forgot Password/ConfirmedPass');
-// });
+// Routes for Fire Hydrant Management (ADMIN)
+Route::get('/admin-hydrant-map', [FireHydrantsController::class, 'index']);
 
-// // sidebar routes admin
-// Route::get('/user-management-user', function () {
-//     return view('admin/userManagementUser');
-// });
+Route::get('/admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
 
-// Route::get('/user-management-admin', function () {
-//     return view('admin/userManagementAdmin');
-// });
+Route::post('/admin-hydrant-map/addFireHydrant', [FireHydrantsController::class, 'addFireHydrant']);
 
-// Route::get('/add-fire-hydrant', function () {
-//     return view('admin/fireHManagementAdd');
-// });
+Route::post('/admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant']);
 
-// Route::get('/fire-hydrant-type-management', function () {
-//     return view('admin/fireHManagementHType');
-// });
+Route::post('/admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant']);
 
-Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
 
-Route::get('/fire-hydrant-type-management', function () {
-    return view('admin/fireHManagementHType');
-});
-
+// Routes for fire alert management (ADMIN)
 Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
 
 Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
@@ -79,58 +54,57 @@ Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class,
 
 Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
 
-Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
+Route::delete('/fire-alert-management/deleteFireAlert', [FireAlertsController::class, 'destroyAlert']);
 
-// Route::get('/generate-reports', function () {
-//     return view('admin/generateReport');
-// });
-
-// Route::get('/bulletin-management', function () {
-//     return view('admin/bulletinManagement');
-// });
+Route::post('/fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert']);
 
 
+// Routes for firefighter hydrant map (FIREFIGHTER)
+Route::get('/fire-hydrant-map', [FirefighterHydrantsController::class, 'index']);
+Route::get('/fire-hydrant-map/showMapHydrants', [FirefighterHydrantsController::class, 'showMapHydrants']);
 
-// // sidebar routes firefighter
-// Route::get('/edit-profile', function () {
-//     return view('firefighter/editprofile');
-// });
 
-// Route::get('/fire-hydrant-map', function () {
-//     return view('firefighter/firehydrantmap');
-// });
-
+//FIREFIGHTER FIRE ALERT MAP
 Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index']);
 Route::get('/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
 
-// Route::get('/reports', function () {
-//     return view('firefighter/reports');
-// });
 
-// Route::get('/bulletin-firefighter', function () {
-//     return view('firefighter/bulletin-firefighter');
-// });
-
-// Common Resource Routes
-// index - Show all listings
-// show - show single listing
-// create - show form to create listing
-// store - store new listing
-// edit - show form to edit listing
-// update - update listing
-// destroy - delete
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/reports', function () {
-    return view('firefighter/reports');
+
+Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
+    Auth::routes();
 });
 
-Route::get('/bulletin-firefighter', function () {
-    return view('firefighter/bulletin-firefighter');
+Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
+    Route::get('editprofile',[UserController::class,'editprofile'])->name('firefighter.editprofile');
+    Route::get('firehydrantmap',[UserController::class,'firehydrantmap'])->name('firefighter.firehydrantmap');
+    Route::get('firealertmap',[UserController::class,'firealertmap'])->name('firefighter.firealertmap');
+    Route::get('reports',[UserController::class,'reports'])->name('firefighter.reports');
+    Route::get('bulletinfirefighter',[UserController::class,'bulletinfirefighter'])->name('firefighter.bulletinfirefighter');
+
+    Route::post('update-profile-info',[UserController::class,'updateInfo'])->name('firefighterUpdateInfo');
+    Route::post('change-profile-picture',[UserController::class,'updatePicture'])->name('firefighterPictureUpdate');
+    Route::post('change-password',[UserController::class,'changePassword'])->name('firefighterChangePassword');
+    
+    
 });
+
+Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
+    Route::get('fireAlertManagement',[AdminController::class,'fireAlertManagement'])->name('admin.fireAlertManagement');
+    // Route::get('fireHManagement',[AdminController::class,'fireHManagement'])->name('admin.fireHManagement');
+    // Route::get('fireHManagementHType',[AdminController::class,'fireHManagementHType'])->name('admin.fireHManagementHType');
+    Route::get('generateReport',[AdminController::class,'generateReports'])->name('admin.generateReport');
+    Route::get('userManagementAdmin',[AdminController::class,'userManagementAdmin'])->name('admin.userManagementAdmin');
+    Route::get('userManagementUser',[AdminController::class,'userManagementUser'])->name('admin.userManagementUser');
+    Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
+
+});
+
+
 
 // Common Resource Routes
 // index - Show all listings

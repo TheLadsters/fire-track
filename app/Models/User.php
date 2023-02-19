@@ -24,6 +24,8 @@ class User extends Authenticatable
         'email',
         'password',
         'contact_no',
+        'address',
+        'img_url',
     ];
 
     /**
@@ -45,4 +47,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     protected $primaryKey = 'user_id';
+
+    public function getPictureAttribute($value){
+        if($value){
+            return asset('users/images/'.$value);
+        }else{
+            return asset('users/images/no-image.png');
+        }
+    }
 }

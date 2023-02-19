@@ -2,7 +2,7 @@
 @section('title','profile')
 
 @section('content')
-{{-- <head>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -14,13 +14,12 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</head> --}}
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/firefighterCSS/editprofile-firefighter.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/firefighterCSS/editprofile-firefighter.css">
 </head>
 
 <!-- Edit Modal HTML -->
@@ -64,16 +63,16 @@
                 <!-- Profile picture card-->    
                 <div class="card mb-4"> 
                     <div class="card-header">Profile Picture</div>
-                    <h3 class="profile-username text-center admin_name">{{Auth::user()->lname}} {{Auth::user()->fname}}</h3>
+                    <h3 class="profile-username text-center admin_name">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="{{ Auth::user()->img_url }}" alt="">
+                        <img class="img-account-profile rounded-circle mb-2 firefighter_picture" src="{{ Auth::user()->img_url }}" alt="User profile picture">
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
                         <div class="form-group">
-                            <label class="mb-3">Upload new image</label>
-                            <input type="file" class="form-control" required>
+                            <input type="file" class="form_control" name="firefighter_image" id="firefighter_image" style="opacity: 0;height:1px;display:none"><br>      
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" id="change_picture_btn"><b>Change picture</b></a>
                         </div>	
                     </div>
                 </div>

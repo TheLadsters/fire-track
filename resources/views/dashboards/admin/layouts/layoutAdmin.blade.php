@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/sideBarLayout.css">
     <link href="css/adminCSS/fireAlertManagement-admin.css" rel="stylesheet">
     <link href="css/adminCSS/fireAlertMgmtSidebar.css" rel="stylesheet">
+    <link href="css/adminCSS/fireHydrantMap-admin.css" rel="stylesheet">
 
     <title>FireTrack App</title>
 </head>
@@ -58,9 +59,9 @@
                   </a> 
 
                   <div class="dropdown-container-firealert mb-3 d-none" id="dropdown-firealert">
-                  <a href="{{ route('admin.fireHManagementAdd')}}" class="py-5{{ (request()->is('admin/fireHManagementAdd*')) ? 'active' : '' }}">Add Fire Hydrant</a>
+                  <a href="/admin-hydrant-map">Add Fire Hydrant</a>
                     <br>
-                    <a href="{{ route('admin.fireHManagementHType')}}" class="py-5 {{ (request()->is('admin/fireHManagementHType*')) ? 'active' : '' }}">Fire Hydrant Type</a>
+                    <a href="/fire-hydrant-type-management">Fire Hydrant Type</a>
                   </div>
                   
                   <a href="{{ route('admin.fireAlertManagement')}}" class="nav_link {{ (request()->is('admin/fireAlertManagement*')) ? 'active' : '' }}">
@@ -97,12 +98,15 @@
         @yield('content')
     <!--Container Main end-->
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script type="text/javascript" src="/app.js"></script>      
       <script type="text/javascript" src="/firealertmngmt-admin.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"></script></body>
+      <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
+      <script type="text/javascript" src="/fireHydrantMap.js"></script>
+      <script type="text/javascript" src="/fireHydrantType.js"></script>
 
 </body>
 </html>

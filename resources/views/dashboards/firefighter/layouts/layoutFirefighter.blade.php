@@ -82,15 +82,18 @@
         @yield('content')
     <!--Container Main end-->
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/app.js"></script>
       <script type="text/javascript" src="/bulletin-firefighter.js"></script>      
       <script type="text/javascript" src="/firealertmap-firefighter.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"></script>
+      <script type="text/javascript" src="/firehydrantmap-firefighter.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap" defer></script>
 
-<script src="plugins/jquery/jquery.min.js"></script>
+
+      <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.js') }}"></script>
@@ -106,7 +109,7 @@
      }
   });
   
-  $(function(){
+$(function(){
 
     /* UPDATE ADMIN PERSONAL INFO */
 
@@ -136,7 +139,7 @@
                 }
            }
         });
-    });
+  
 
 
 
@@ -167,7 +170,30 @@
     });
 
     
-  });
+    $(document).on('click','#change_picture_btn', function(){
+      $('firefighter_image').click();
+    });
+
+
+    $('#firefighter_image').ijaboCropTool({
+          preview : '.firefighter_picture',
+          setRatio:1,
+          allowedExtensions: ['jpg', 'jpeg','png'],
+          buttonsText:['CROP','QUIT'],
+          buttonsColor:['#30bf7d','#ee5155', -15],
+          processUrl:'{{ route("firefighterPictureUpdate") }}',
+          // withCSRF:['_token','{{ csrf_token() }}'],
+          onSuccess:function(message, element, status){
+             alert(message);
+          },
+          onError:function(message, element, status){
+            alert(message);
+          }
+       });
+
+
+    });
+});
 </script>
 </body>
 
