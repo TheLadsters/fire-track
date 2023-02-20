@@ -2,17 +2,28 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content px-3">
         <div class="modal-header">
-            <h4>Add Fire Hydrant</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form method="POST" action="{{ route('admin.addFireHydrant')}}" enctype="multipart/form-data">
             @csrf
+            <div class="row text-center">
+              <div class="col-12">
+                <h4>Add Fire Hydrant</h4>
+              </div>
+            </div>
+
+            <div class="row text-center">
+              <div class="col-12 mb-3">
+              <span> <b>Note:</b> The fields with a red asterisk <span style="color:red;">*</span> are required.</span>
+              </div>
+            </div>
+            
             <div class="row align-items-center px-5">
               <div class="col-3">
                     <label for="longitude">
                       <b>
-                        Longitude
+                        Longitude<span style="color:red;">*</span>
                       </b>
                     </label>
               </div>
@@ -28,7 +39,7 @@
               <div class="col-3">
                     <label for="latitude">
                       <b>
-                        Latitude
+                        Latitude<span style="color:red;">*</span>
                       </b>
                     </label>
               </div>
@@ -43,7 +54,7 @@
               <div class="col-3">
                     <label for="hydrant-address">
                       <b>
-                        Address
+                        Address<span style="color:red;">*</span>
                       </b>
                     </label>
               </div>
@@ -57,7 +68,7 @@
               <div class="col-3">
                     <label for="Status">
                       <b>
-                        Status
+                        Status<span style="color:red;">*</span>
                       </b>
                     </label>
               </div>
@@ -75,7 +86,7 @@
                 <div class="col-3">
                       <label for="hydrant_type">
                         <b>
-                          Hydrant Type
+                          Hydrant Type<span style="color:red;">*</span>
                         </b>
                       </label>
                 </div>

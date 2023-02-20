@@ -18,7 +18,7 @@
                 <i class='bx bx-menu bx-sm' style='color:#6c63ff'></i>
             </div>
 
-            <div class="search-bar-hydrant">
+            {{-- <div class="search-bar-hydrant">
                 <label class="visually-hidden" for="autoSizingInputGroup">Search</label>
                 <div class="input-group">
                 <input type="text" class="form-control" id="input-mapsearch" placeholder="Search">
@@ -26,7 +26,7 @@
                             <i class="fas fa-search"></i>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="for-title-hydrant">
                 <h4>Fire Hydrant Management</h4>
@@ -78,5 +78,4 @@
 @include("modals.editHydrant")
 @include("modals.deleteHydrant")
 @include("modals.fireHydrantManager")
-
 @endsection

@@ -2,10 +2,16 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content px-3">
         <div class="modal-header">
-            <h4>Delete Fire Hydrant</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
+          <div class="row text-center">
+            <div class="col-12 mb-2">
+              <h4>Delete Fire Hydrant</h4>
+            </div>
+          </div>
+
             <p>Are you sure you want to delete this Fire Hydrant? </p>
             <p class="text-warning"><small>This action cannot be undone.</small></p>
             

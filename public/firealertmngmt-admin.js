@@ -17,9 +17,9 @@ let listenerHandler;
 let alertGeocoder;
 
 ////// CODE FOR MARKERS TO SHOW ON MAP //////
-  function addMarkerListener(marker, fireStatus) {
+  function addMarkerListener(marker, markerContent) {
     let infowindow = new google.maps.InfoWindow({
-      content: fireStatus,
+      content: markerContent,
       ariaLabel: "Uluru",
     });
 
@@ -63,12 +63,25 @@ $.ajax({
 
       let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
       let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
-      let fireStatus = "<b>Status:</b> " + response['alert'][i].status;
+      let fireStatus = "<b>Status: </b> " + response['alert'][i].status;
+      let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
+      let markerContent = `
+        <div style="max-width: 300px;">
+          <p>
+            ${fireStatus}
+          </p>
+
+          <p>
+            ${fireLocation}
+          </p>
+        </div>
+        `;
+
       let location_title = response['alert'][i].fire_location;
 
       marker = createMarker(longitude, latitude, location_title);
     
-        addMarkerListener(marker, fireStatus);
+        addMarkerListener(marker, markerContent);
         markerArr.push(marker);
 }
 
@@ -207,10 +220,23 @@ function editCancelFcn(){
 
       for (let i = 0; i < response['alert'].length; i++) {
 
-        let fireStatus = "<b>Status:</b> " + response['alert'][i].status;
+      let fireStatus = "<b>Status: </b> " + response['alert'][i].status;
+      let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
+      let markerContent = `
+        <div style="max-width: 300px;">
+          <p>
+            ${fireStatus}
+          </p>
+
+          <p>
+            ${fireLocation}
+          </p>
+        </div>
+        `;
+
         google.maps.event.clearListeners(markerArr[i], "click");
   
-        addMarkerListener(markerArr[i], fireStatus);
+        addMarkerListener(markerArr[i], markerContent);
       }
   },
     error: function(xhr, status, error) {
@@ -372,10 +398,24 @@ function cancelForDeleteFcn(){
 
         for (let i = 0; i < response['alert'].length; i++) {
 
-          let fireStatus = "<b>Status:</b> " + response['alert'][i].status;
+          
+      let fireStatus = "<b>Status: </b> " + response['alert'][i].status;
+      let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
+      let markerContent = `
+        <div style="max-width: 300px;">
+          <p>
+            ${fireStatus}
+          </p>
+
+          <p>
+            ${fireLocation}
+          </p>
+        </div>
+        `;
+
           google.maps.event.clearListeners(markerArr[i], "click");
     
-          addMarkerListener(markerArr[i], fireStatus);
+          addMarkerListener(markerArr[i], markerContent);
         }
     },
       error: function(xhr, status, error) {
