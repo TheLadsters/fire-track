@@ -74,7 +74,7 @@
 
 /* for screens wider than 821px or has vertical orientation*/
 @media screen and (min-width: 821px){
-  .container{
+  .container-firealert{
     margin: 0;
     margin-top: 5%;
     display: flex;
@@ -123,6 +123,7 @@
     align-self: center;
     margin-top: 20%;
     text-align: center;
+    padding: 5px 5px;
   }
 
   .for-title h4{

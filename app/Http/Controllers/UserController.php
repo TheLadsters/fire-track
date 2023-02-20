@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -18,6 +20,18 @@ class UserController extends Controller
     function firehydrantmap(){
            return view ('dashboards.firefighter.firehydrantmap');
     }
+
+    function showMapHydrants(){
+        $allHydrants = DB::table('hydrant')
+        ->join('hydrant_type', 'hydrant.hydrant_type_id', '=', 'hydrant_type.hydrant_type_id')
+        ->select('hydrant.*', 'hydrant_type.name')
+        ->get();
+        // Fetch all records
+        $response['hydrant'] = $allHydrants;
+        
+        return response()->json($response);
+    }
+
     function reports(){
         return view ('dashboards.firefighter.reports');
     }
