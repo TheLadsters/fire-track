@@ -96,14 +96,14 @@ class RegisterController extends Controller
 
          /** Make avata */
 
-         $path = 'users/images/';
-         $fontPath = public_path('fonts/Oliciy.ttf');
-         $char = strtoupper($request->fname[0]);
-         $newAvatarName = rand(12,34353).time().'_avatar.png';
-         $dest = $path.$newAvatarName;
+        //  $path = 'users/images/';
+        //  $fontPath = public_path('fonts/Oliciy.ttf');
+        //  $char = strtoupper($request->fname[0]);
+        //  $newAvatarName = rand(12,34353).time().'_avatar.png';
+        //  $dest = $path.$newAvatarName;
 
-         $createAvatar = makeAvatar($fontPath,$dest,$char);
-         $picture = $createAvatar == true ? $newAvatarName : '';
+        //  $createAvatar = makeAvatar($fontPath,$dest,$char);
+        //  $picture = $createAvatar == true ? $newAvatarName : '';
 
          $user = new User();
          $user->username = $request->username;
@@ -115,7 +115,7 @@ class RegisterController extends Controller
          $user->role = 'firefighter';
          $user->birthday = 03102001;
          $user->address = $request->address;
-         $user->img_url = $img_url;
+         $user->img_url = "images/no_img_available.png";
          $user->password = \Hash::make($request->password);
 
          if( $user->save() ){

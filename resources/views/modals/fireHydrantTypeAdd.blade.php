@@ -6,7 +6,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        	<form action="{{ url('fire-hydrant-type-management/addHydrantType') }}" method="post" enctype="multipart/form-data">
+        	<form action="{{ route('admin.fireHTypeAdd')}}" method="post" enctype="multipart/form-data">
 				@csrf
 				<div class="form-row align-items-center">
 					<div class="col-auto mb-4">

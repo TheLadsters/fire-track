@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -18,6 +20,7 @@ class UserController extends Controller
     function firehydrantmap(){
            return view ('dashboards.firefighter.firehydrantmap');
     }
+
     function reports(){
         return view ('dashboards.firefighter.reports');
     }

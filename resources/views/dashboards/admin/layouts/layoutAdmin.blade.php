@@ -59,9 +59,9 @@
                   </a> 
 
                   <div class="dropdown-container-firealert mb-3 d-none" id="dropdown-firealert">
-                  <a href="/admin-hydrant-map">Add Fire Hydrant</a>
+                  <a href="{{ route('admin.fireHManagement')}}" class="{{ (request()->is('admin/admin-hydrant-map*')) ? 'active' : '' }}">Hydrant Map</a>
                     <br>
-                    <a href="/fire-hydrant-type-management">Fire Hydrant Type</a>
+                    <a href="{{ route('admin.fireHTypeManagement')}}" class="{{ (request()->is('admin/fire-hydrant-type-management*')) ? 'active' : '' }}">Add Hydrant Type</a>
                   </div>
                   
                   <a href="{{ route('admin.fireAlertManagement')}}" class="nav_link {{ (request()->is('admin/fireAlertManagement*')) ? 'active' : '' }}">

@@ -89,7 +89,7 @@ function crudHydrantTemplate(shownOptions, buttonClass, buttonContent){
 
 // code to show hydrant markers on map
 $.ajax({
-  url: 'admin-hydrant-map/showMapHydrants',
+  url: 'admin/admin-hydrant-map/showMapHydrants',
   type: 'get',
   dataType: 'json',
     success: function(response){
@@ -144,7 +144,7 @@ $.ajax({
 ////// GET FIRE HYDRANT TABLE START OF CODE //////
 function getHydrantTable(){
   $.ajax({
-    url: 'admin-hydrant-map/showMapHydrants',
+    url: 'admin/admin-hydrant-map/showMapHydrants',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -221,7 +221,7 @@ function addHydrantFcn(){
   );
 
   $.ajax({
-    url: 'admin-hydrant-map/showMapHydrants',
+    url: 'admin/admin-hydrant-map/showMapHydrants',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -276,7 +276,7 @@ if(hydrantListenerHandler){
 function editHydrantFcn(){
 
   $.ajax({
-    url: 'admin-hydrant-map/showMapHydrants',
+    url: 'admin/admin-hydrant-map/showMapHydrants',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -381,7 +381,7 @@ function deleteHydrantFcn(){
     ["#add-firehydrant", "#edit-firehydrant"], "#delete-firehydrant");
     
     $.ajax({
-      url: 'admin-hydrant-map/showMapHydrants',
+      url: 'admin/admin-hydrant-map/showMapHydrants',
       type: 'get',
       dataType: 'json',
       success: function(response){
@@ -417,7 +417,7 @@ function deleteHydrantFcn(){
     );
   
       $.ajax({
-        url: 'admin-hydrant-map/showMapHydrants',
+        url: 'admin/admin-hydrant-map/showMapHydrants',
         type: 'get',
         dataType: 'json',
         success: function(response){

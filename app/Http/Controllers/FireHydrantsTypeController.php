@@ -26,6 +26,6 @@ class FireHydrantsTypeController extends Controller
 
         fireHydrantTypeAdmin::create($formFields);
 
-        return redirect('/fire-hydrant-type-management')->with('message', 'Fire Hydrant Type created successfully!');
+        return redirect('admin/fire-hydrant-type-management')->with('message', 'Fire Hydrant Type created successfully!');
     }
 }

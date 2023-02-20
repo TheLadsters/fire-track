@@ -6,7 +6,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="/fire-alert-management/addFireAlert">
+          <form method="POST" action="{{ route('admin.addFireAlert')}}">
             @csrf
             <div class="row align-items-center px-5">
               <div class="col-3">
