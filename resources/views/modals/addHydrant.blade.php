@@ -6,7 +6,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="/admin-hydrant-map/addFireHydrant" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('admin.addFireHydrant')}}" enctype="multipart/form-data">
             @csrf
             <div class="row align-items-center px-5">
               <div class="col-3">

@@ -21,17 +21,6 @@ class UserController extends Controller
            return view ('dashboards.firefighter.firehydrantmap');
     }
 
-    function showMapHydrants(){
-        $allHydrants = DB::table('hydrant')
-        ->join('hydrant_type', 'hydrant.hydrant_type_id', '=', 'hydrant_type.hydrant_type_id')
-        ->select('hydrant.*', 'hydrant_type.name')
-        ->get();
-        // Fetch all records
-        $response['hydrant'] = $allHydrants;
-        
-        return response()->json($response);
-    }
-
     function reports(){
         return view ('dashboards.firefighter.reports');
     }

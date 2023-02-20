@@ -27,23 +27,6 @@ Route::get('/', function () {
 });
 
 
-// Routes Fire Hydrant Type Management (ADMIN)
-Route::get('/fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index']);
-
-Route::post('/fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store']);
-
-
-// Routes for Fire Hydrant Management (ADMIN)
-Route::get('/admin-hydrant-map', [FireHydrantsController::class, 'index']);
-
-Route::get('/admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants']);
-
-Route::post('/admin-hydrant-map/addFireHydrant', [FireHydrantsController::class, 'addFireHydrant']);
-
-Route::post('/admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant']);
-
-Route::post('/admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant']);
-
 
 // Routes for fire alert management (ADMIN)
 Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
@@ -96,11 +79,24 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
     Route::get('fireAlertManagement',[AdminController::class,'fireAlertManagement'])->name('admin.fireAlertManagement');
     // Route::get('fireHManagement',[AdminController::class,'fireHManagement'])->name('admin.fireHManagement');
-    // Route::get('fireHManagementHType',[AdminController::class,'fireHManagementHType'])->name('admin.fireHManagementHType');
-    Route::get('generateReport',[AdminController::class,'generateReports'])->name('admin.generateReport');
+    
+    // ROUTE FOR HYDRANT MAP MANAGER (ADMIN)
+    Route::get('admin-hydrant-map', [FireHydrantsController::class, 'index'])->name('admin.fireHManagement');
+    Route::get('admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants'])->name('admin.showMapHydrants');
+    Route::post('admin-hydrant-map/addFireHydrant', [FireHydrantsController::class, 'addFireHydrant'])->name('admin.addFireHydrant');
+    Route::post('admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant'])->name('admin.editFireHydrant');
+    Route::post('admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant'])->name('admin.deleteFireHydrant');
+
+
+
+    Route::get('generateReport',[AdminController::class,'generateReport'])->name('admin.generateReport');
     Route::get('userManagementAdmin',[AdminController::class,'userManagementAdmin'])->name('admin.userManagementAdmin');
     Route::get('userManagementUser',[AdminController::class,'userManagementUser'])->name('admin.userManagementUser');
     Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
+
+    // ADD FIRE HYDRANT TYPE ROUTES (ADMIN)
+    Route::get('fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index'])->name('admin.fireHTypeManagement');
+    Route::post('fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store'])->name('admin.fireHTypeAdd');
 
 });
 

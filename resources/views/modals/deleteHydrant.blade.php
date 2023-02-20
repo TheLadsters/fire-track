@@ -15,7 +15,7 @@
         <div class="modal-footer">
             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
           
-            <form method="POST" action="admin-hydrant-map/deleteFireHydrant">
+            <form method="POST" action="{{ route('admin.deleteFireHydrant')}}">
             @csrf
                 <input type="hidden" name="firehydrant_key_id" id="firehydrant_key_id">
                 <input type="submit" class="btn btn-danger" id="deleteHydrantBtn" value="Delete">   

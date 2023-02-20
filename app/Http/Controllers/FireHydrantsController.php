@@ -43,7 +43,7 @@ class FireHydrantsController extends Controller
         }
     
         fireHydrantAdmin::create($formFields);
-        return redirect('/admin-hydrant-map');
+        return redirect('admin/admin-hydrant-map');
     }
 
     public function updateFireHydrant(Request $request){
@@ -86,13 +86,13 @@ class FireHydrantsController extends Controller
         }
 
 
-        return redirect('/admin-hydrant-map')->with('message', 'Fire Hydrant Updated Successfully!');
+        return redirect('admin/admin-hydrant-map')->with('message', 'Fire Hydrant Updated Successfully!');
     }
 
     public function deleteFireHydrant(Request $request){
         $firehydrant_id = $request->input('firehydrant_key_id');
 
         $fireHydrant = fireHydrantAdmin::find($firehydrant_id)->delete();
-        return redirect('/admin-hydrant-map')->with('message', 'Fire Hydrant Deleted Successfully!');   
+        return redirect('admin/admin-hydrant-map')->with('message', 'Fire Hydrant Deleted Successfully!');   
     }
 }
