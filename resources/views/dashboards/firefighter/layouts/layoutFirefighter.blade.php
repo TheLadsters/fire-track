@@ -41,7 +41,22 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_user-name admin_name">{{Auth::user()->fname}} {{Auth::user()->lname}}</span> </a>
+            <div> <a href="#" class="nav_logo"> 
+              <?php
+              if(Auth::user()->img_url)
+              {
+              ?>
+                  <span class="user_img_url">
+                    <img src="{{ Auth::user()->img_url }}" width="20" height="20" class="rounded-circle">
+                  </span>
+              <?php
+              }else{
+              ?>
+                  <i class='bx bx-user nav_logo-icon'></i>  
+              <?php
+              }
+              ?>
+              <span class="nav_user-name admin_name">{{Auth::user()->fname}} {{Auth::user()->lname}}</span> </a>
                 <div class="nav_list"> 
                   <a href="{{ route('firefighter.editprofile')}}" class="nav_link {{ (request()->is('firefighter/editprofile*')) ? 'active' : '' }}">
                     <i class='bx bx-user-circle nav_icon'></i>
