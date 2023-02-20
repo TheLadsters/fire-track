@@ -48,12 +48,12 @@
                     <span class="nav_name">Edit Profile</span> 
                   </a> 
                   
-                  <a href="{{ route('firefighter.firehydrantmap')}}" class="nav_link {{ (request()->is('firefighter/firehydrantmap*')) ? 'active' : '' }}"> 
+                  <a href="{{ route('firefighter.fireHydrantMap')}}" class="nav_link {{ (request()->is('firefighter/fireHydrantMap*')) ? 'active' : '' }}"> 
                     <i class='bx bx-map-alt nav_icon'></i>
                     <span class="nav_name">Fire Hydrant Map</span> 
                   </a> 
                   
-                  <a href="{{ route('firefighter.firealertmap')}}" class="nav_link {{ (request()->is('firefighter/firealerttmap*')) ? 'active' : '' }}">
+                  <a href="{{ route('firefighter.fireAlertMap')}}" class="nav_link {{ (request()->is('firefighter/fireAlertMap*')) ? 'active' : '' }}">
                     <i class='bx bxs-hot nav_icon'></i> 
                     <span class="nav_name">Fire Alert Map</span> 
                   </a> 

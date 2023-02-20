@@ -35,7 +35,7 @@ function initMap(){
       })
 
       $.ajax({
-        url: 'fire-hydrant-map/showMapHydrants',
+        url: 'user/fire-hydrant-map/showMapHydrants',
         type: 'get',
         dataType: 'json',
         success: function(response){

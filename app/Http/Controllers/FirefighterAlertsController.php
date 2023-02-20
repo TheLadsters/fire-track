@@ -10,7 +10,7 @@ class FirefighterAlertsController extends Controller
 {
     // show all alerts in google maps
     public function index(){
-        return view('firefighter.firealertmap');
+        return view('dashboards.firefighter.firealertmap');
     }
 
     // show all alerts in google maps

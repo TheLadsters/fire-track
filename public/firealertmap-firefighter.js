@@ -42,7 +42,7 @@ $(document).ready(function() {
     var marker;
   
   $.ajax({
-      url: 'fire-alert-map/showMapAlerts',
+      url: 'user/fire-alert-map/showMapAlerts',
       type: 'get',
       dataType: 'json',
       success: function(response){

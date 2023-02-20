@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FireAlertsController;
 use App\Http\Controllers\FirefighterAlertsController;
+use App\Http\Controllers\FirefighterHydrantsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FireHydrantsController;
@@ -28,16 +29,6 @@ Route::get('/', function () {
 
 
 
-// Routes for firefighter hydrant map (FIREFIGHTER)
-Route::get('/fire-hydrant-map', [FirefighterHydrantsController::class, 'index']);
-Route::get('/fire-hydrant-map/showMapHydrants', [FirefighterHydrantsController::class, 'showMapHydrants']);
-
-
-//FIREFIGHTER FIRE ALERT MAP
-Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index']);
-Route::get('/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
-
-
 
 Auth::routes();
 
@@ -50,8 +41,12 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
 Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
     Route::get('editprofile',[UserController::class,'editprofile'])->name('firefighter.editprofile');
-    Route::get('firehydrantmap',[UserController::class,'firehydrantmap'])->name('firefighter.firehydrantmap');
-    Route::get('firealertmap',[UserController::class,'firealertmap'])->name('firefighter.firealertmap');
+    Route::get('fire-hydrant-map', [FirefighterHydrantsController::class, 'index'])->name('firefighter.fireHydrantMap');
+    Route::get('fire-hydrant-map/showMapHydrants', [FirefighterHydrantsController::class, 'showMapHydrants'])->name('firefighter.showMapHydrants');
+
+    Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index'])->name('firefighter.fireAlertMap');
+    Route::get('fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts'])->name('firefighter.showMapAlerts');
+
     Route::get('reports',[UserController::class,'reports'])->name('firefighter.reports');
     Route::get('bulletinfirefighter',[UserController::class,'bulletinfirefighter'])->name('firefighter.bulletinfirefighter');
 
