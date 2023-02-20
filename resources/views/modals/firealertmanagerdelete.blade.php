@@ -15,7 +15,7 @@
         <div class="modal-footer">
             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
           
-            <form method="POST" action="/fire-alert-management/deleteFireAlert">
+            <form method="POST" action="{{ route('admin.deleteFireAlert') }}">
             @csrf
             @METHOD('DELETE')
                 <input type="hidden" name="firealert_key_id" id="firealert_key_id">

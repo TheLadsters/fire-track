@@ -44,7 +44,7 @@ class FireAlertsController extends Controller
         ]);
 
         fireAlertAdmin::create($formFields);
-        return redirect('/fire-alert-management');
+        return redirect('admin/fire-alert-management');
     }
 
     // edit a specified alert
@@ -65,7 +65,7 @@ class FireAlertsController extends Controller
             'fire_location' => $fire_location,
         ]);
 
-        return redirect('/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully!');
+        return redirect('admin/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully!');
 
     }
 
@@ -74,6 +74,6 @@ class FireAlertsController extends Controller
         $firealarm_id = $request->input('firealert_key_id');
 
         $fireAlert = fireAlertAdmin::find($firealarm_id)->delete();
-        return redirect('/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully!');
+        return redirect('admin/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully!');
     }
 }

@@ -6,7 +6,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="/fire-alert-management/updateFireAlert">
+          <form method="POST" action="{{ route('admin.editFireAlert') }}">
             @csrf
             <input type="hidden" id="firealert_hidden_id" name="firealert_hidden_id">
             <input type="hidden" name="user_id" id="user_id">

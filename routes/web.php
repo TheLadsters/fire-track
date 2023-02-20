@@ -28,20 +28,6 @@ Route::get('/', function () {
 
 
 
-// Routes for fire alert management (ADMIN)
-Route::get('/fire-alert-management', [FireAlertsController::class, 'index']);
-
-Route::get('/fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts']);
-
-Route::get('/fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable']);
-
-Route::post('/fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert']);
-
-Route::delete('/fire-alert-management/deleteFireAlert', [FireAlertsController::class, 'destroyAlert']);
-
-Route::post('/fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert']);
-
-
 // Routes for firefighter hydrant map (FIREFIGHTER)
 Route::get('/fire-hydrant-map', [FirefighterHydrantsController::class, 'index']);
 Route::get('/fire-hydrant-map/showMapHydrants', [FirefighterHydrantsController::class, 'showMapHydrants']);
@@ -77,8 +63,6 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
 });
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
-    Route::get('fireAlertManagement',[AdminController::class,'fireAlertManagement'])->name('admin.fireAlertManagement');
-    // Route::get('fireHManagement',[AdminController::class,'fireHManagement'])->name('admin.fireHManagement');
     
     // ROUTE FOR HYDRANT MAP MANAGER (ADMIN)
     Route::get('admin-hydrant-map', [FireHydrantsController::class, 'index'])->name('admin.fireHManagement');
@@ -87,6 +71,13 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::post('admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant'])->name('admin.editFireHydrant');
     Route::post('admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant'])->name('admin.deleteFireHydrant');
 
+    // ROUTE FOR FIRE ALERT MANAGER (ADMIN)
+    Route::get('fire-alert-management', [FireAlertsController::class, 'index'])->name('admin.fireAlertManagement');
+    Route::get('fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts'])->name('admin.showMapAlerts');
+    Route::get('fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable'])->name('admin.getAlertTable');
+    Route::post('fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert'])->name('admin.addFireAlert');
+    Route::delete('fire-alert-management/deleteFireAlert', [FireAlertsController::class, 'destroyAlert'])->name('admin.deleteFireAlert');
+    Route::post('fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert'])->name('admin.editFireAlert');
 
 
     Route::get('generateReport',[AdminController::class,'generateReport'])->name('admin.generateReport');

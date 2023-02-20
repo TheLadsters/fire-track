@@ -14,6 +14,7 @@ const fireImg = "images/fire.png";
 var marker;
 let markerArr = [];
 let listenerHandler;
+let alertGeocoder;
 
 ////// CODE FOR MARKERS TO SHOW ON MAP //////
   function addMarkerListener(marker, fireStatus) {
@@ -49,8 +50,12 @@ let listenerHandler;
     mapId: 'c887c451d0ae25a6'
   });
 
+  // creation of GEOCODER
+  alertGeocoder = new google.maps.Geocoder();
+// end of creation of GEOCODER
+
 $.ajax({
-    url: 'fire-alert-management/showMapAlerts',
+    url: 'admin/fire-alert-management/showMapAlerts',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -79,7 +84,7 @@ $.ajax({
 ////// GET FIRE ALERT TABLE START OF CODE //////
 function getAlertTable(){
   $.ajax({
-    url: 'fire-alert-management/getAlertTable',
+    url: 'admin/fire-alert-management/getAlertTable',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -141,12 +146,25 @@ function addAlertFcn(){
 
     let longlat = mapsMouseEvent.latLng.toJSON();
 
+    //  creates a geocoder to get specified address on map
+   alertGeocoder.geocode({
+    'latLng': longlat
+  }, function (results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[0]) {
+        let alertAddress = results[0].formatted_address;
+        $("#locationdetails-input").val(alertAddress);
+      }
+    }
+  });
+
     // sets the longitude and latitude of the clicked part of the map
     $("#longitude-input").val(longlat.lat);
     $("#latitude-input").val(longlat.lng);
     $(".addFireAlertModal").modal("show");
 
   });
+
 
   cancelTemplate("any location on the map to ADD", 
   ["#edit-firealert", "#delete-firealert"], "#add-firealert");
@@ -182,7 +200,7 @@ function editCancelFcn(){
   );
 
   $.ajax({
-    url: 'fire-alert-management/showMapAlerts',
+    url: 'admin/fire-alert-management/showMapAlerts',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -211,7 +229,7 @@ if(listenerHandler){
 function editAlertFcn(){
 
   $.ajax({
-    url: 'fire-alert-management/showMapAlerts',
+    url: 'admin/fire-alert-management/showMapAlerts',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -274,9 +292,23 @@ $(".edit-longlat").click(function(){
  
 
     let newLongLat = mapsMouseEvent.latLng.toJSON();
+
     // sets the longitude and latitude of the clicked part of the map
     $("#edit-longitude").val(newLongLat.lat);
     $("#edit-latitude").val(newLongLat.lng);
+
+    //  creates a geocoder to get specified address on map
+   alertGeocoder.geocode({
+    'latLng': newLongLat
+  }, function (results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[0]) {
+        let newAddress = results[0].formatted_address;
+        $("#edit-location").val(newAddress);
+      }
+    }
+  });
+
     $(".editFireAlertModal").modal("show");
   });
   
@@ -297,7 +329,7 @@ cancelTemplate("any fire icon to DELETE",
   ["#add-firealert", "#edit-firealert"], "#delete-firealert");
   
   $.ajax({
-    url: 'fire-alert-management/showMapAlerts',
+    url: 'admin/fire-alert-management/showMapAlerts',
     type: 'get',
     dataType: 'json',
     success: function(response){
@@ -333,7 +365,7 @@ function cancelForDeleteFcn(){
   );
 
     $.ajax({
-      url: 'fire-alert-management/showMapAlerts',
+      url: 'admin/fire-alert-management/showMapAlerts',
       type: 'get',
       dataType: 'json',
       success: function(response){
