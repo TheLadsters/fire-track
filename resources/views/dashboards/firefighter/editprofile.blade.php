@@ -63,7 +63,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                 <!-- Profile picture card-->    
                 <div class="card mb-4"> 
                     <div class="card-header">Profile Picture</div>
-                    <h3 class="profile-username text-center admin_name">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
+                    <h3 class="profile-username text-center mt-3 admin_name">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <img class="img-account-profile rounded-circle mb-2 firefighter_picture" src="{{ Auth::user()->img_url }}" alt="User profile picture">
