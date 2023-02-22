@@ -1,5 +1,12 @@
+.container-alert{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+}
+
 #firealertmap{
     height: 100vh;
+    width:100%;
     margin-right: 2%;
 }
 

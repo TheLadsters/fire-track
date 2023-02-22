@@ -1,12 +1,5 @@
 
-$(document).ready(function() {
-
-  // to be fixed error
-  // fire-alert-management:1 Uncaught (in promise) _.pe {message: 
-  // 'initMap is not a function', stack: 'Error\n    at _.pe.captureStackTrace 
-  // (https://maps.…map_ids=c887c451d0ae25a6&callback=initMap:207:279', name: 'InvalidValueError'}
-  //   function initMap(){}
-
+function initMap(){
 
 // global variables 
 var centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
@@ -432,9 +425,8 @@ $("#delete-firealert").on('click', deleteAlertFcn);
 
 ////// DELETE FIRE ALERT FUNCTION CODE END //////
 
-});
 
-
+};
 
 
 // for creating rows in fire alert manager
