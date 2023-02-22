@@ -13,10 +13,6 @@
   border-color:#3c30ff;
 }
 
-.btn-dropdown.focus, .btn-search.focus{
-  -webkit-box-shadow:0 0 0 0.2rem rgba(130, 122, 255, 0.5);
-  box-shadow:0 0 0 0.2rem rgba(130, 122, 255, 0.5)
-}
 
 
 
