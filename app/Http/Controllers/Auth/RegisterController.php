@@ -91,7 +91,7 @@ class RegisterController extends Controller
             'contact_no' => ['required', 'max:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string','max:255'],
-            'gender'=> ['required','in:male,female'],
+            'gender'=> ['required','string'],
          ]);
 
          /** Make avata */
