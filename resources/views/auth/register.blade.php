@@ -105,12 +105,21 @@
                                                     </div>
 
                                                     <div class="row mb-2 genderArea">
-                                                        <div class="col-sm-2">
-                                                            Gender
+                                                        <!-- <div class="col-sm-2">
+                                                            <label for="gender">Gender</label>
+                                                        </div> -->
+                                                        <div class="col-sm-6">
+                                                            <select class="form-select" name="gender" id="gender" required>
+                                                                <option value="">Select Gender</option>
+                                                                <option value="male">Male</option>
+                                                                <option value="female">Female</option>
+                                                            </select>
+
+                                                            <span class="text-danger">@error('address'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="row mb-3">
+                                                    <!-- <div class="row mb-3">
                                                         <div class="col-sm-2">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" name="chooseGender" id="genderMale">
@@ -128,7 +137,8 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    </div>	
+                                                    </div>	 -->
+                                                    <br>
 
                                             		<button class="btn-signUp btn-block-signup mb-2" >Sign Up</button>
 

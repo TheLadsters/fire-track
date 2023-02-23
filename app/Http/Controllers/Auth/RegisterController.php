@@ -90,7 +90,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact_no' => ['required', 'max:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'address' => ['required', 'string','max:255']
+            'address' => ['required', 'string','max:255'],
+            'gender'=> ['required','string'],
          ]);
 
          /** Make avata */
@@ -110,7 +111,7 @@ class RegisterController extends Controller
          $user->lname = $request->lname;
          $user->email = $request->email;
          $user->contact_no = $request->contact_no;
-         $user->gender = 'female';
+         $user->gender = $request->gender;
          $user->role = 'firefighter';
          $user->birthday = 03102001;
          $user->address = $request->address;

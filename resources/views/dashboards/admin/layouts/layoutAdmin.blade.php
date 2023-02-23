@@ -36,7 +36,7 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_user-name">John Doe</span> </a>
+            <div> <a href="#" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_user-name">{{Auth::user()->fname}} {{Auth::user()->lname}}</span> </a>
                 <div class="nav_list"> 
                   <a class="nav_link dropdown_links"> 
                     <i class='bx bx-user-circle nav_icon'></i>
