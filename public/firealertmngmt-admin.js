@@ -1,4 +1,38 @@
 
+
+$(document).ready( function () {
+  
+  $('#alertTable').DataTable({
+    'ajax': 'admin/fire-alert-management/getAlertTable',
+    'columns': [
+        {'data': 'fire_location', "width": "20%"},
+        {'data': 'longitude', "width": "20%"},
+        {'data': 'latitude'},
+        {'data': 'status'},
+        
+        {'defaultContent': 
+        `
+        <a class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+          <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
+          </i>
+        </a>
+
+        <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal">
+          <i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete">
+          </i>
+        </a>
+        `
+      }
+    ]
+  });
+
+  $(".paginate_button").click(function(){
+    $('.fireAlertManagerModal').css("display", "block");
+  });
+
+});
+
+
 function initMap(){
 
 // global variables 
@@ -87,24 +121,10 @@ $.ajax({
 ////// END OF CODE FOR MARKERS TO SHOW ON MAP //////
 
 
-////// GET FIRE ALERT TABLE START OF CODE //////
-function getAlertTable(){
-  $.ajax({
-    url: 'admin/fire-alert-management/getAlertTable',
-    type: 'get',
-    dataType: 'json',
-    success: function(response){
-
-      createRows(response);
-    }
-  });
-
-  $(".fireAlertManagerModal").modal('show');
-}
 
 $("#firealert-manager").click(function(){
-  getAlertTable();
-  // addCancelFcn();
+  $(".fireAlertManagerModal").modal({backdrop: 'static', keyboard: false});
+  $(".fireAlertManagerModal").modal('show');
 });
 ////// GET FIRE ALERT TABLE END OF CODE //////
 
@@ -429,52 +449,54 @@ $("#delete-firealert").on('click', deleteAlertFcn);
 };
 
 
+
+
 // for creating rows in fire alert manager
-function createRows(response){
-  var len = 0;
-  $('table tbody').empty(); // Empty <tbody>
-  if(response['data'] != null){
-     len = response['data'].length;
-  }
+// function createRows(response){
+//   var len = 0;
+//   $('table tbody').empty(); // Empty <tbody>
+//   if(response['data'] != null){
+//      len = response['data'].length;
+//   }
 
-  if(len > 0){
-    for(var i=0; i<len; i++){
-       var fire_location = response['data'][i].fire_location;
-       var longitude = response['data'][i].longitude;
-       var latitude = response['data'][i].latitude;
-       var status = response['data'][i].status;
+//   if(len > 0){
+//     for(var i=0; i<len; i++){
+//        var fire_location = response['data'][i].fire_location;
+//        var longitude = response['data'][i].longitude;
+//        var latitude = response['data'][i].latitude;
+//        var status = response['data'][i].status;
 
-       fire_location = (fire_location) ? fire_location : `No specified location`; 
+//        fire_location = (fire_location) ? fire_location : `No specified location`; 
 
-    var tr_str =
-      `<tr>
-        <td>
-            <span class='custom-checkbox'>
-              <input type='checkbox' id='checkbox1' name='options[]' value='1'>
-              <label for="checkbox1"></label>
-            </span>
-        </td>
+//     var tr_str =
+//       `<tr>
+//         <td>
+//             <span class='custom-checkbox'>
+//               <input type='checkbox' id='checkbox1' name='options[]' value='1'>
+//               <label for="checkbox1"></label>
+//             </span>
+//         </td>
 
-        <td>${fire_location}</td>
-        <td> ${longitude} </td>
-        <td>${latitude}</td>
-        <td>${status}</td>
+//         <td>${fire_location}</td>
+//         <td> ${longitude} </td>
+//         <td>${latitude}</td>
+//         <td>${status}</td>
 
-        <td>
-          <a class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-          <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
-        </td>
-       </tr>`;
+//         <td>
+//           <a class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
+//           <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
+//         </td>
+//        </tr>`;
 
-       $(".table tbody").append(tr_str);
-    }
-  }else{
-     var tr_str = "<tr>" +
-       "<td align='center' colspan='12'>No record found.</td>" +
-     "</tr>";
+//        $(".table tbody").append(tr_str);
+//     }
+//   }else{
+//      var tr_str = "<tr>" +
+//        "<td align='center' colspan='12'>No record found.</td>" +
+//      "</tr>";
 
-     $(".table tbody").append(tr_str);
-  }
-} 
+//      $(".table tbody").append(tr_str);
+//   }
+// } 
 
 

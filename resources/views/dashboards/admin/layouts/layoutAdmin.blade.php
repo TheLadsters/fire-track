@@ -20,6 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/sideBarLayout.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <link href="css/adminCSS/fireAlertManagement-admin.css" rel="stylesheet">
     <link href="css/adminCSS/fireAlertMgmtSidebar.css" rel="stylesheet">
     <link href="css/adminCSS/fireHydrantMap-admin.css" rel="stylesheet">
@@ -100,9 +102,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" src="/app.js"></script>      
       <script type="text/javascript" src="/firealertmngmt-admin.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"></script></body>
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"></script>
       <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/fireHydrantMap.js"></script>
       <script type="text/javascript" src="/fireHydrantType.js"></script>

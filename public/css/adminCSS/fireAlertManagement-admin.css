@@ -161,6 +161,16 @@
 
 
 /* table for fire alert management */
+
+#alertTable{
+  width: 100% !important;
+}
+
+#alertTable_length, .dataTables_filter{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
 .table-responsive {
   margin: 0;
 }
@@ -196,7 +206,6 @@ min-width: 100px;
 border-radius: 2px;
 border: none;
 outline: none !important;
-/* margin-left: 10px;  */
 }
 .table-title .btn i {
 float: left;
@@ -293,7 +302,9 @@ float: left;
 margin-top: 10px;
 font-size: 13px;
 }    
+
 /* Custom checkbox */
+
 .custom-checkbox {
 position: relative;
 }
