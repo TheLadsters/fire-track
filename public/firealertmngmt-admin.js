@@ -1,7 +1,11 @@
-
-
 $(document).ready( function () {
-  
+
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
   $('#alertTable').DataTable({
     'ajax': 'admin/fire-alert-management/getAlertTable',
     'columns': [
@@ -9,28 +13,63 @@ $(document).ready( function () {
         {'data': 'longitude', "width": "20%"},
         {'data': 'latitude'},
         {'data': 'status'},
-        
-        {'defaultContent': 
-        `
-        <a class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-          <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
-          </i>
-        </a>
+        {'data' : 'created_at'},
+        {
+          "mData": null,
+          "bSortable": false,
+          "mRender": function(alert, type, full) {
+            return `
+                    <a class="edit editColAlert" data-bs-toggle="modal" id="${alert['firealarm_id']}" data-bs-target=".editFireAlertModal">
+                      <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
+                      </i>
+                    </a>
 
-        <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal">
-          <i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete">
-          </i>
-        </a>
-        `
-      }
-    ]
+                    <a class="delete deleteColAlert" data-bs-toggle="modal" id="${alert['firealarm_id']}" data-bs-target=".deleteFireAlertModal">
+                    <i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete">
+                    </i>
+                  </a>
+                  `;
+          }
+        }
+    ],
+
+    order : [[4, 'desc']],
   });
 
-  $(".paginate_button").click(function(){
-    $('.fireAlertManagerModal').css("display", "block");
-  });
+  // on clicking edit alert in fire alert management
+$('#alertTable tbody').on('click', '.editColAlert', function(){
+    let alert_id = $(this).attr('id');
+
+    $.ajax({
+      type: 'post',
+      url: 'admin/fire-alert-management/getOneMapAlert/' + alert_id,
+      dataType: 'json',    
+      success: function(response){ 
+        let longitude = response['data'].longitude;
+        let latitude = response['data'].latitude;
+        let location = response['data'].fire_location;
+        let status = response['data'].status;
+
+        $("#edit-longitude").val(longitude);
+        $("#edit-latitude").val(latitude);
+        $("#edit-location").val(location);
+        $("#status-selector").val(status);
+        $("#firealert_hidden_id").val(alert_id);
+      },
+      error: function(jqXHR, textStatus, errorThrown) { 
+           console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+       }
+    });
+});
+
+// delete alert in fire alert manager
+$('#alertTable tbody').on('click', '.deleteColAlert', function(){
+  let alert_id = $(this).attr('id');
+  $('.deleteFireAlertModal #firealert_key_id').val(alert_id);
+});
 
 });
+
 
 
 function initMap(){
@@ -93,7 +132,7 @@ $.ajax({
       let fireStatus = "<b>Status: </b> " + response['alert'][i].status;
       let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
       let markerContent = `
-        <div style="max-width: 300px;">
+        <div style="max-width: 200px;">
           <p>
             ${fireStatus}
           </p>
@@ -143,6 +182,7 @@ function cancelTemplate(middleText, hiddenOptions, appendClass){
 
   $(`${hiddenOptions[0]}`).hide();
   $(`${hiddenOptions[1]}`).hide();
+  $('#firealert-manager').hide();
 
   $(`${appendClass}`).empty();
   $(`${appendClass}`).append(
@@ -157,6 +197,7 @@ function crudTemplate(shownOptions, buttonClass, buttonContent){
   $(".middle-details").empty();
   $(`${shownOptions[0]}`).show();
   $(`${shownOptions[1]}`).show();
+  $('#firealert-manager').show();
 
   $(`${buttonClass}`).empty();
   $(`${buttonClass}`).append(
@@ -276,7 +317,7 @@ function editAlertFcn(){
       for (let i = 0; i < markerArr.length; i++) {
         let firealert_id = response['alert'][i].firealarm_id;
         // temporary user_id
-        let user_id = 1;
+        let user_id = response['alert'][i].user_id;
         let fire_location = response['alert'][i].fire_location;
         let longitude = response['alert'][i].longitude;
         let latitude = response['alert'][i].latitude;
@@ -445,58 +486,7 @@ $("#delete-firealert").on('click', deleteAlertFcn);
 
 ////// DELETE FIRE ALERT FUNCTION CODE END //////
 
-
 };
 
-
-
-
-// for creating rows in fire alert manager
-// function createRows(response){
-//   var len = 0;
-//   $('table tbody').empty(); // Empty <tbody>
-//   if(response['data'] != null){
-//      len = response['data'].length;
-//   }
-
-//   if(len > 0){
-//     for(var i=0; i<len; i++){
-//        var fire_location = response['data'][i].fire_location;
-//        var longitude = response['data'][i].longitude;
-//        var latitude = response['data'][i].latitude;
-//        var status = response['data'][i].status;
-
-//        fire_location = (fire_location) ? fire_location : `No specified location`; 
-
-//     var tr_str =
-//       `<tr>
-//         <td>
-//             <span class='custom-checkbox'>
-//               <input type='checkbox' id='checkbox1' name='options[]' value='1'>
-//               <label for="checkbox1"></label>
-//             </span>
-//         </td>
-
-//         <td>${fire_location}</td>
-//         <td> ${longitude} </td>
-//         <td>${latitude}</td>
-//         <td>${status}</td>
-
-//         <td>
-//           <a class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-//           <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
-//         </td>
-//        </tr>`;
-
-//        $(".table tbody").append(tr_str);
-//     }
-//   }else{
-//      var tr_str = "<tr>" +
-//        "<td align='center' colspan='12'>No record found.</td>" +
-//      "</tr>";
-
-//      $(".table tbody").append(tr_str);
-//   }
-// } 
 
 

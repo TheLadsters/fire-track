@@ -70,6 +70,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::get('fire-alert-management', [FireAlertsController::class, 'index'])->name('admin.fireAlertManagement');
     Route::get('fire-alert-management/showMapAlerts', [FireAlertsController::class, 'showMapAlerts'])->name('admin.showMapAlerts');
     Route::get('fire-alert-management/getAlertTable', [FireAlertsController::class, 'getMapAlertTable'])->name('admin.getAlertTable');
+    Route::post('fire-alert-management/getOneMapAlert/{id}', [FireAlertsController::class, 'getOneMapAlert']);
     Route::post('fire-alert-management/addFireAlert', [FireAlertsController::class, 'storeAlert'])->name('admin.addFireAlert');
     Route::delete('fire-alert-management/deleteFireAlert', [FireAlertsController::class, 'destroyAlert'])->name('admin.deleteFireAlert');
     Route::post('fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert'])->name('admin.editFireAlert');

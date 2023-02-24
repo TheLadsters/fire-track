@@ -37,10 +37,18 @@ class FireAlertsController extends Controller
      return response()->json($response);
     }
 
+    public function getOneMapAlert($id){
+        $alert = fireAlertAdmin::findOrFail($id);
+        $response['data'] = $alert;
+ 
+     return response()->json($response);
+    }
+
     // adds a new alert in the database
     public function storeAlert(Request $request){
 
         $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
             'longitude' => 'required',
             'latitude' => 'required',
             'status' => 'required',
@@ -55,13 +63,14 @@ class FireAlertsController extends Controller
         
         else{
             $formFields = $request->validate([
+                'user_id' => 'required',
                 'longitude' => 'required',
                 'latitude' => 'required',
                 'status' => 'required',
                 'fire_location' => 'required'
             ]);
             fireAlertAdmin::create($formFields);
-            Alert::success('Added Fire Hydrant Successfully!');
+            Alert::success('Added Fire Alert Successfully!');
         }
        
         return redirect('admin/fire-alert-management');
@@ -75,11 +84,12 @@ class FireAlertsController extends Controller
             'latitude' => 'required',
             'status' => 'required',
             'fire_location' => 'required',
-            'firealarm_id' => 'required'
+            'firealarm_id' => 'required',
+            'user_id' => 'required'
           ]);
         
         if($validator->fails()){
-            Alert::error('Editing the Fire Hydrant  was not successful.',
+            Alert::error('Editing the Fire Alert  was not successful.',
             'Please fill up required fields.');
         }
         
@@ -90,6 +100,7 @@ class FireAlertsController extends Controller
             $latitude = $request->input('latitude');
             $status = $request->input('status');
             $fire_location = $request->input('fire_location');
+            $user_id = $request->input('user_id');
             
             $alarm = FireAlertAdmin::where('firealarm_id', $firealarm_id)->update([
                 'user_id' => $user_id,
@@ -98,12 +109,12 @@ class FireAlertsController extends Controller
                 'status' => $status,
                 'fire_location' => $fire_location,
             ]);
-            Alert::success('Updated Fire Alarm Successfully!');
+            Alert::success('Updated Fire Alert Successfully!');
 
         }
        
 
-        return redirect('admin/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully!');
+        return redirect('admin/fire-alert-management')->with('message', 'Fire Alert Updated Successfully!');
 
     }
 

@@ -142,9 +142,6 @@
     cursor: pointer;
   }
 
-  /* .middle-details{
-    visibility: hidden;
-  } */
 
   .alarm-notif{
     text-align: center;
@@ -169,6 +166,10 @@
 #alertTable_length, .dataTables_filter{
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+.editColAlert, .deleteColAlert {
+  cursor: pointer;
 }
 
 .table-responsive {

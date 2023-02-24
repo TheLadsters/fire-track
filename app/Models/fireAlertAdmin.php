@@ -11,5 +11,6 @@ class fireAlertAdmin extends Model
 
     protected $table = "fire_alarm";
     protected $primaryKey = 'firealarm_id';
-    protected $fillable = ['longitude', 'latitude', 'fire_location', 'status', 'user_id'];
+    protected $fillable = ['user_id', 'longitude', 'latitude', 'fire_location', 'status'];
+    protected $dates = ['created_at'];
 }

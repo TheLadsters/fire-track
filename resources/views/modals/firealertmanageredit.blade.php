@@ -8,11 +8,11 @@
           <form method="POST" action="{{ route('admin.editFireAlert') }}">
             @csrf
             <input type="hidden" id="firealert_hidden_id" name="firealarm_id">
-            <input type="hidden" name="user_id" id="user_id">
+            <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->user_id}}">
             
             <div class="row text-center">
               <div class="col-12">
-                <h4>Edit Fire Hydrant</h4>
+                <h4>Edit Fire Alert</h4>
               </div>
             </div>
 
