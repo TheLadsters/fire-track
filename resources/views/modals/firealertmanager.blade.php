@@ -23,7 +23,7 @@
                                     <th>Longitude</th>
                                     <th>Latitude</th>
                                     <th>Status</th>
-                                    <th>Created At</th>
+                                    <th style="display: none;">Created At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

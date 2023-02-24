@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <input type="text" style="display: none;" class="form-control" name="user_id" value="1">
+            <input type="text" style="display: none;" class="form-control" name="user_id" value="{{Auth::user()->user_id}}">
 
             <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">

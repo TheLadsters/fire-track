@@ -79,3 +79,31 @@
     margin: 0;
      padding:0;
 }
+
+#hydrant_table{
+    width: 100% !important;
+  }
+  
+#hydrant_table_length, .dataTables_filter{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#hydrant_table thead tr th, #hydrant_table tbody td{
+   text-align: center;
+}
+
+
+#hydrant_table tbody .odd td:nth-child(7), 
+#hydrant_table tbody .even td:nth-child(7){
+width: 75px !important;
+}
+
+#hydrant_table tbody .odd td:nth-child(1), 
+#hydrant_table tbody .even td:nth-child(1){
+width: 120px !important;
+}
+
+.editColHydrant, .deleteColHydrant {
+cursor: pointer;
+}

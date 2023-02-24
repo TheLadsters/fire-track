@@ -1,5 +1,105 @@
 
 $(document).ready(function() {
+  
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+
+////// GET FIRE HYDRANT TABLE START OF CODE //////
+function checkImg(hydrant){
+  let imgUrl = (hydrant.img_url) ? assetUrl + '/' + hydrant['img_url'] : "images/no_img_available.png";
+return imgUrl;
+}
+
+$('#hydrant_table').DataTable({
+  'ajax': 'admin/admin-hydrant-map/getHydrantTable',
+  'columns': [
+    {'data': 'address'},
+    {'data': 'longitude', "bSortable": false},
+    {'data': 'latitude', "bSortable": false},
+    {'data': 'name'},
+    {'data': 'status'},
+    {'data': 'created_at', visible: false, searchable: false},
+    {
+      "mData": null,
+      "bSortable": false,
+      "mRender": function(hydrant, type, full) {
+        return `
+                <img src="${checkImg(hydrant)}" width="120" height="100" />
+              `;
+      }
+    },
+    {
+      "mData": null,
+      "bSortable": false,
+      "mRender": function(hydrant, type, full) {
+        return `
+                <a class="edit editColHydrant" data-bs-toggle="modal" id="${hydrant['hydrant_id']}" data-bs-target=".editFireHydrantModal">
+                  <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
+                  </i>
+                </a>
+
+                <a class="delete deleteColHydrant" data-bs-toggle="modal" id="${hydrant['hydrant_id']}" data-bs-target=".deleteHydrantModal">
+                <i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete">
+                </i>
+              </a>
+              `;
+      }
+    }
+  ],
+  "order": [5, 'desc']
+});
+
+$("#firehydrant-manager").click(function(){
+  $(".fireHydrantManagerModal").modal({backdrop: 'static', keyboard: false});
+  $(".fireHydrantManagerModal").modal('show');
+});
+
+// on clicking edit hydrant in fire hydrant management
+$('#hydrant_table tbody').on('click', '.editColHydrant', function(){
+    let hydrant_id = $(this).attr('id');
+
+    $.ajax({
+      type: 'post',
+      url: 'admin/admin-hydrant-map/getOneMapHydrant/' + hydrant_id,
+      dataType: 'json',    
+      success: function(response){ 
+        let longitude = response['data'].longitude;
+        let latitude = response['data'].latitude;
+        let location = response['data'].address;
+        let status = response['data'].status;
+        let hydrantType = response['data'].hydrant_type_id;
+        let hydrantImgUrl = response['data'].img_url;
+        let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['data'].img_url : 
+        "images/no_img_available.png";
+
+        $("#edit-longitude").val(longitude);
+        $("#edit-latitude").val(latitude);
+        $("#edit-hydrant-address").val(location);
+        $("#status-selector").val(status);
+        $("#type-selector").val(hydrantType);
+        $("#firehydrant_hidden_id").val(hydrant_id);
+        $(".img-thumbnail").attr("src", hydrantPhoto);
+
+      },
+      error: function(jqXHR, textStatus, errorThrown) { 
+           console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+       }
+    });
+});
+
+// delete hydrant in fire hydrant manager
+$('#hydrant_table tbody').on('click', '.deleteColHydrant', function(){
+  let hydrant_id = $(this).attr('id');
+  $('.deleteHydrantModal #firehydrant_key_id').val(hydrant_id);
+});
+
+////// GET FIRE HYDRANT TABLE END OF CODE //////
+
+
   //variables
   const centerPoint = new google.maps.LatLng(10.352029690791822, 123.91910785394363);
   const hydrantImg = "images/fire-hydrant.png";
@@ -64,6 +164,7 @@ function cancelHydrantTemplate(middleText, hiddenOptions, appendClass){
 
   $(`${hiddenOptions[0]}`).hide();
   $(`${hiddenOptions[1]}`).hide();
+  $('#firehydrant-manager').hide();
 
   $(`${appendClass}`).empty();
   $(`${appendClass}`).append(
@@ -77,6 +178,7 @@ function crudHydrantTemplate(shownOptions, buttonClass, buttonContent){
   $(".middle-details-hydrant").empty();
   $(`${shownOptions[0]}`).show();
   $(`${shownOptions[1]}`).show();
+  $('#firehydrant-manager').show();
 
   $(`${buttonClass}`).empty();
   $(`${buttonClass}`).append(
@@ -138,27 +240,6 @@ $.ajax({
   }
 });
 // END OF CODE for showing hydrant markers on map
-
-
-
-////// GET FIRE HYDRANT TABLE START OF CODE //////
-function getHydrantTable(){
-  $.ajax({
-    url: 'admin/admin-hydrant-map/showMapHydrants',
-    type: 'get',
-    dataType: 'json',
-    success: function(response){
-      createHydrantRows(response);
-    }
-  });
-
-  $(".fireHydrantManagerModal").modal('show');
-}
-
-$("#firehydrant-manager").click(function(){
-    getHydrantTable();
-});
-////// GET FIRE HYDRANT TABLE END OF CODE //////
 
 
 
@@ -225,7 +306,6 @@ function addHydrantFcn(){
     type: 'get',
     dataType: 'json',
     success: function(response){
-      console.log(response);
       for (let i = 0; i < response['hydrant'].length; i++) {
 
       let hydrantAddress = response['hydrant'][i].address;
@@ -283,7 +363,7 @@ function editHydrantFcn(){
       for (let i = 0; i < hydrantMarkerArr.length; i++) {
         let firehydrant_id = response['hydrant'][i].hydrant_id;
         // temporary user_id
-        let user_id = 1;
+        let user_id = $('#user_id').val();
         let longitude = parseFloat(response['hydrant'][i].longitude).toFixed(15);
         let latitude = parseFloat(response['hydrant'][i].latitude).toFixed(15);
         let hydrantAddress = response['hydrant'][i].address;
@@ -470,56 +550,3 @@ function deleteHydrantFcn(){
 
 
 });
-
-
-
-// for creating rows in fire hydrant manager
-function createHydrantRows(response){
-  var len = 0;
-  $('.hydrant-table tbody').empty(); // Empty <tbody>
-  if(response['hydrant'] != null){
-     len = response['hydrant'].length;
-  }
-
-  if(len > 0){
-    for(var i = 0; i < len; i++){
-       var longitude = response['hydrant'][i].longitude;
-       var latitude = response['hydrant'][i].latitude;
-       var address = response['hydrant'][i].address;
-       var status = response['hydrant'][i].status;
-       var hydrant_type = response['hydrant'][i].name;
-       var image = response['hydrant'][i].img_url;
-       var hydrant_img = (image) ? assetUrl + '/' + response['hydrant'][i].img_url : "images/no_img_available.png";
-
-    var tr_str =
-      `<tr>
-        <td>
-            <span class='custom-checkbox'>
-              <input type='checkbox' id='checkbox1' name='options[]' value='1'>
-              <label for="checkbox1"></label>
-            </span>
-        </td>
-
-        <td>${longitude}</td>
-        <td> ${latitude} </td>
-        <td>${address}</td>
-        <td>${hydrant_type}</td>
-        <td>${status}</td>
-        <td><img src="${hydrant_img}" style="width:150px; height:100px;" /></td>
-
-        <td>
-          <a class="edit" data-bs-toggle="modal" data-bs-target=".editHydrantModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-          <a class="delete" data-bs-toggle="modal" data-bs-target=".deleteHydrantModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
-        </td>
-       </tr>`;
-
-       $(".hydrant-table tbody").append(tr_str);
-    }
-  }else{
-     var tr_str = "<tr>" +
-       "<td align='center' colspan='12'>No record found.</td>" +
-     "</tr>";
-
-     $(".hydrant-table tbody").append(tr_str);
-  }
-} 

@@ -168,6 +168,15 @@
   margin-bottom: 2%;
 }
 
+#alertTable thead tr th, #alertTable tbody td{
+  text-align: center;
+}
+
+#alertTable tbody .odd td:nth-child(1), 
+#alertTable tbody .even td:nth-child(1){
+width: 120px !important;
+}
+
 .editColAlert, .deleteColAlert {
   cursor: pointer;
 }

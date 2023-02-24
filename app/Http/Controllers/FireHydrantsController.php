@@ -24,6 +24,24 @@ class FireHydrantsController extends Controller
         ->get();
         // Fetch all records
         $response['hydrant'] = $allHydrants;
+        
+        return response()->json($response);
+    }
+
+    public function getHydrantTable(){
+        $allHydrants = DB::table('hydrant')
+        ->join('hydrant_type', 'hydrant.hydrant_type_id', '=', 'hydrant_type.hydrant_type_id')
+        ->select('hydrant.*', 'hydrant_type.name')
+        ->get();
+        // Fetch all records
+        $response['data'] = $allHydrants;
+        
+        return response()->json($response);
+    }
+
+    public function getOneMapHydrant($id){
+        $hydrant = fireHydrantAdmin::findOrFail($id);
+            $response['data'] = $hydrant;
     
         return response()->json($response);
     }

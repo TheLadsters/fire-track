@@ -68,7 +68,7 @@
                     </label>
               </div>
 
-              <div class="col-9">
+              <div class="col-6">
                 <input type="text" class="form-control" name="address" id="edit-hydrant-address" placeholder="Hydrant Address">
               </div>
             </div>
@@ -131,7 +131,7 @@
               </div>
             </div>
 
-            <input type="text" id="user_id" style="display: none;" class="form-control" name="user_id" value="1">
+            <input type="text" id="user_id" style="display: none;" class="form-control" name="user_id" value="{{Auth::user()->user_id}}">
 
             <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">

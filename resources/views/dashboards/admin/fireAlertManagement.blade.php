@@ -15,16 +15,6 @@
                 <i class='bx bx-menu bx-sm' style='color:#6c63ff'></i>
             </div>
 
-            {{-- <div class="search-bar">
-                <label class="visually-hidden" for="autoSizingInputGroup">Search</label>
-                <div class="input-group">
-                <input type="text" class="form-control" id="input-mapsearch" placeholder="Search">
-                    <div class="input-group-text btn-search">
-                            <i class="fas fa-search"></i>
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="for-title">
                 <h4>Fire Alert Management</h4>
             </div>

@@ -1,6 +1,6 @@
 $(document).ready( function () {
 
-  $.ajaxSetup({
+$.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
@@ -13,7 +13,7 @@ $(document).ready( function () {
         {'data': 'longitude', "width": "20%"},
         {'data': 'latitude'},
         {'data': 'status'},
-        {'data' : 'created_at'},
+        {'data' : 'created_at', visible: false, searchable: false},
         {
           "mData": null,
           "bSortable": false,

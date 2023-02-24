@@ -62,6 +62,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     // ROUTE FOR HYDRANT MAP MANAGER (ADMIN)
     Route::get('admin-hydrant-map', [FireHydrantsController::class, 'index'])->name('admin.fireHManagement');
     Route::get('admin-hydrant-map/showMapHydrants', [FireHydrantsController::class, 'showMapHydrants'])->name('admin.showMapHydrants');
+    Route::get('admin-hydrant-map/getHydrantTable', [FireHydrantsController::class, 'getHydrantTable']);
+    Route::post('admin-hydrant-map/getOneMapHydrant/{id}', [FireHydrantsController::class, 'getOneMapHydrant']);
     Route::post('admin-hydrant-map/addFireHydrant', [FireHydrantsController::class, 'addFireHydrant'])->name('admin.addFireHydrant');
     Route::post('admin-hydrant-map/updateFireHydrant', [FireHydrantsController::class, 'updateFireHydrant'])->name('admin.editFireHydrant');
     Route::post('admin-hydrant-map/deleteFireHydrant', [FireHydrantsController::class, 'deleteFireHydrant'])->name('admin.deleteFireHydrant');
