@@ -109,6 +109,7 @@
       <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/fireHydrantMap.js"></script>
       <script type="text/javascript" src="/fireHydrantType.js"></script>
+      <script type="text/javascript" src="/rightSidebar.js"></script>
       @include('sweetalert::alert')
 
 

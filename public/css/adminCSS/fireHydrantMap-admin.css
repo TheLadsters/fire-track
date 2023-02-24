@@ -26,7 +26,6 @@
     margin: 0;
     margin-top: 6%;
     padding: 0;
-    width: 20%;
     background-color: #f1f1f1;
     height: 87vh;
     box-shadow: 1px 1px 2px grey;
@@ -34,6 +33,10 @@
     flex-direction: column;
     justify-content: space-between;
     order: 1;
+    width: 0;
+    overflow-x: hidden;
+    transition: 0.6s;
+    z-index: 1;
     }
   
 .hamburger-hydrant{
@@ -41,22 +44,17 @@
     justify-content: flex-end;
     margin-top: 5%;
     margin-bottom: 5%;
-     margin-right: 5%;
+    margin-right: 5%;
+    cursor: pointer;
 }
   
-.search-bar-hydrant{
-    padding-left: 3%;
-    padding-right: 3%;
-}
   
 .for-title-hydrant{
     align-self: center;
     margin-top: 20%;
     text-align: center;
-}
-  
-.for-title-hydrant h4{
     font-size: 22px;
+    padding: 5px 5px;
 }
   
   
@@ -116,3 +114,9 @@ width: 120px !important;
 .editColHydrant, .deleteColHydrant {
 cursor: pointer;
 }
+
+#sidebarHydrantBurger{
+    align-self: flex-start;
+    margin: 6% 1% 0 1%;
+    background-color: #f1f1f1;
+  }
