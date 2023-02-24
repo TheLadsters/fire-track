@@ -116,6 +116,30 @@ let alertGeocoder;
     mapId: 'c887c451d0ae25a6'
   });
 
+  var input = document.getElementById('alertSearchBox');
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+
+
+  autocomplete.addListener('place_changed', function(){
+
+    var place = autocomplete.getPlace();
+    if(!place.geometry){
+        window.alert("Autocomplete's returned place contains no geometry");
+        return;
+    }
+
+    if(place.geometry.viewport){
+        map.fitBounds(place.geometry.viewport);
+    }else{
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+    }
+
+  })
+
   // creation of GEOCODER
   alertGeocoder = new google.maps.Geocoder();
 // end of creation of GEOCODER

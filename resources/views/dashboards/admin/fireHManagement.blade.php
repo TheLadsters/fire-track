@@ -65,6 +65,8 @@
     </div>  
 </div>
 
+<input id="hydrantSearchBox" type="text" placeholder="Search Box"/>
+
 @include("modals.addHydrant")
 @include("modals.editHydrant")
 @include("modals.deleteHydrant")

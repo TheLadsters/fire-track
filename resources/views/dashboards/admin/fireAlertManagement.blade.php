@@ -61,6 +61,7 @@
 
     </div>  
 </div>
+<input id="alertSearchBox" type="text" placeholder="Search Box"/>
 
 @include("modals.firealertmanager")
 @include("modals.firealertmanageradd")

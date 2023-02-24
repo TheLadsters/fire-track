@@ -71,30 +71,36 @@
 /* for screens wider than 821px or has vertical orientation*/
 @media screen and (min-width: 821px){
   .container-firealert{
-    margin: 0;
-    margin-top: 5%;
+    margin-top: 0 !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
-    /* float: right; */
+    align-items: center;
     width:100%;
     z-index: -1;
   }
 
+  #alertSearchBox{
+    margin-top: 2%;
+    height: 4%;
+    width: 50%;
+    margin-bottom: 0;
+  }
+
   #firelertmapmanagement{
-    height: 85vh;
+    height: 87vh;
     width: 100%;
+    margin-top: 6%;
   }
 
   .right-sidebar{
   border-radius: 5px;
   margin: 0;
-  margin-top: 2%;
+  margin-top: 6%;
   padding: 0;
   width: 20%;
   background-color: #f1f1f1;
-  height: 85vh;
+  height: 87vh;
   box-shadow: 1px 1px 2px grey;
   display: flex;
   flex-direction: column;
