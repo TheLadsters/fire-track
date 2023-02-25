@@ -113,4 +113,20 @@ a{text-decoration: none !important}
 
 }
 
+
+@media screen and (max-height: 454px){
+  .nav_list .nav_link{
+    margin-bottom: 2%;
+  }
+  
+  .nav_logo{
+    margin-bottom: 4%;
+  }
+
+  .logOut{
+    padding-left: 11%;
+  }
+}
+
 /*  END OF SIDEBAR CODE */
+

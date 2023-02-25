@@ -51,12 +51,26 @@ $(document).ready(function() {
   
         let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
         let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
+        let location_title = response['alert'][i].fire_location;
         let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
-  
+        let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
+        let markerContent = `
+        <div style="max-width: 200px;">
+          <p>
+            ${fireStatus}
+          </p>
+
+          <p>
+            ${fireLocation}
+          </p>
+        </div>
+        `;
+
+
         marker = new google.maps.Marker({
               position: new google.maps.LatLng(longitude, latitude),
               map: map,
-              title: response['alert'][i].fire_location,
+              title: location_title,
               icon: {
                       url: fireImg,
                       scaledSize: new google.maps.Size(38, 31)
@@ -65,7 +79,7 @@ $(document).ready(function() {
       });
   
         var infowindow = new google.maps.InfoWindow({
-              content: fireStatus,
+              content: markerContent,
               ariaLabel: "Uluru",
             });
           

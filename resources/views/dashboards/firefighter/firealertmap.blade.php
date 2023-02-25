@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/firefighterCSS/firealertmap-firefighter.css">
 </head>
 
-<input id="searchAlertMap" type="text" placeholder="Search Box"/>
 <div id="firealertmap"></div>
+<input id="searchAlertMap" type="text" placeholder="Search Box"/>
 
 @endsection 

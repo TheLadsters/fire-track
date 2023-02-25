@@ -7,7 +7,7 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="css/firefighterCSS/firehydrantmap-firefighter.css">
 </head>
-<input id="searchbox" type="text" placeholder="Search Box"/>
-<div id="firehydrantmap"></div>
 
+<div id="firehydrantmap"></div>
+<input id="searchbox" type="text" placeholder="Search Box"/>
 @endsection

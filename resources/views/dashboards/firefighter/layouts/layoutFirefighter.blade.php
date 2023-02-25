@@ -31,7 +31,7 @@
     
     
 
-    <!-- <title>FireTrack App</title> -->
+    <title>FireTrack App</title>
     
 </head>
 
@@ -83,9 +83,9 @@
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin</span> 
                   </a> 
-                  
+                </div> <a href="/" class="nav_link logOut"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
+
                 </div>
-            </div> <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
             
         </nav>
     </div>
