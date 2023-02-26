@@ -8,11 +8,16 @@
 </head>
 <div class="container-firealert" id="content">
     <div id="firelertmapmanagement"></div>
+
+    <div id="sidebarAlertBurger" style="cursor:pointer">
+        <i class='bx bx-menu bx-md' style='color:#6c63ff'></i>
+    </div>
+
     <div class="right-sidebar">
 
         <div class="top-details">
             <div class="hamburger">
-                <i class='bx bx-menu bx-sm' style='color:#6c63ff'></i>
+                <i class="bx bx-menu bx-x bx-md" style='color:#6c63ff'></i>
             </div>
 
             <div class="for-title">
@@ -61,6 +66,7 @@
 
     </div>  
 </div>
+<input id="alertSearchBox" type="text" placeholder="Search Box"/>
 
 @include("modals.firealertmanager")
 @include("modals.firealertmanageradd")

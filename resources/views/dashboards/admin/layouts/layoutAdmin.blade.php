@@ -25,6 +25,7 @@
     <link href="css/adminCSS/fireAlertManagement-admin.css" rel="stylesheet">
     <link href="css/adminCSS/fireAlertMgmtSidebar.css" rel="stylesheet">
     <link href="css/adminCSS/fireHydrantMap-admin.css" rel="stylesheet">
+    <link href="css/adminCSS/bulletinManagement-admin.css" rel="stylesheet">
 
     <title>FireTrack App</title>
 </head>
@@ -78,8 +79,9 @@
                     </span> 
                   </a> 
                   
+                  <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
                 </div>
-            </div> <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
+            </div> 
         </nav>
     </div>
     <!--Container Main start-->
@@ -102,6 +104,8 @@
       <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/fireHydrantMap.js"></script>
       <script type="text/javascript" src="/fireHydrantType.js"></script>
+      <script type="text/javascript" src="/rightSidebar.js"></script>
+      <script type="text/javascript" src="/bulletinNews.js"></script>
       @include('sweetalert::alert')
 
 

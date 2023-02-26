@@ -16,3 +16,49 @@
     width: 50%;
     margin-bottom: 0;
 }
+
+
+@media screen and (min-width: 0px){
+    #searchAlertMap{
+        margin-top: 18%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 425px){
+    #searchAlertMap{
+        margin-top: 14%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 767px){
+    #searchAlertMap{
+        margin-top: 11%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 950px){
+    #searchAlertMap{
+        margin-top: 8%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1400px){
+    #searchAlertMap{
+        margin-top: 6%;
+        height: 4%;
+        width: 50%;
+        margin-bottom: 0;
+    }
+}

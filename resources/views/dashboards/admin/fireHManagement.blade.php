@@ -11,11 +11,15 @@
 <div class="container-hydrant">
     <div id="firehydrantmap"></div>
 
+    <div id="sidebarHydrantBurger" style="cursor:pointer">
+        <i class='bx bx-menu bx-md' style='color:#6c63ff'></i>
+    </div>
+
     <div class="right-sidebar-hydrant">
 
         <div class="top-details-hydrant">
             <div class="hamburger-hydrant">
-                <i class='bx bx-menu bx-sm' style='color:#6c63ff'></i>
+                <i class="bx bx-menu bx-x bx-md" style='color:#6c63ff'></i>
             </div>
 
 
@@ -64,6 +68,8 @@
 
     </div>  
 </div>
+
+<input id="hydrantSearchBox" type="text" placeholder="Search Box"/>
 
 @include("modals.addHydrant")
 @include("modals.editHydrant")

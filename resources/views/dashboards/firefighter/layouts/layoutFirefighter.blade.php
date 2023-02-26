@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
      <base href="{{ \URL::to('/') }}">
@@ -30,7 +31,7 @@
     
     
 
-    <!-- <title>FireTrack App</title> -->
+    <title>FireTrack App</title>
     
 </head>
 
@@ -82,9 +83,9 @@
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin</span> 
                   </a> 
-                  
+                </div> <a href="/" class="nav_link logOut"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
+
                 </div>
-            </div> <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
             
         </nav>
     </div>

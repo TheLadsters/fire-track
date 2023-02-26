@@ -1,30 +1,42 @@
 #firehydrantmap{
-    height: 85vh;
-    margin-top: 2%;
+    height: 87vh;
+    margin-top: 6%;
     width: 100%;
 }
 
 .container-hydrant{
     margin: 0;
-    margin-top: 5%;
+    margin-top: 0 !important;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
 }
+
+#hydrantSearchBox{
+    margin-top: 2%;
+    height: 4%;
+    width: 50%;
+    margin-bottom: 0;
+}
+
 
 .right-sidebar-hydrant{
     border-radius: 5px;
     margin: 0;
-    margin-top: 2%;
+    margin-top: 6%;
     padding: 0;
-    width: 20%;
     background-color: #f1f1f1;
-    height: 85vh;
+    height: 87vh;
     box-shadow: 1px 1px 2px grey;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     order: 1;
+    width: 20%;
+    overflow-x: hidden;
+    transition: 0.6s;
+    z-index: 1;
     }
   
 .hamburger-hydrant{
@@ -32,22 +44,17 @@
     justify-content: flex-end;
     margin-top: 5%;
     margin-bottom: 5%;
-     margin-right: 5%;
+    margin-right: 5%;
+    cursor: pointer;
 }
   
-.search-bar-hydrant{
-    padding-left: 3%;
-    padding-right: 3%;
-}
   
 .for-title-hydrant{
     align-self: center;
     margin-top: 20%;
     text-align: center;
-}
-  
-.for-title-hydrant h4{
     font-size: 22px;
+    padding: 5px 5px;
 }
   
   
@@ -107,3 +114,10 @@ width: 120px !important;
 .editColHydrant, .deleteColHydrant {
 cursor: pointer;
 }
+
+#sidebarHydrantBurger{
+    display:none;
+    align-self: flex-start;
+    margin: 6% 1% 0 1%;
+    background-color: #f1f1f1;
+  }

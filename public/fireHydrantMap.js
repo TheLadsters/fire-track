@@ -119,6 +119,29 @@ $('#hydrant_table tbody').on('click', '.deleteColHydrant', function(){
 });
 // end of creation of MAP
 
+var input = document.getElementById('hydrantSearchBox');
+hydrantMap.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', hydrantMap);
+
+
+  autocomplete.addListener('place_changed', function(){
+
+    var place = autocomplete.getPlace();
+    if(!place.geometry){
+        window.alert("Autocomplete's returned place contains no geometry");
+        return;
+    }
+
+    if(place.geometry.viewport){
+      hydrantMap.fitBounds(place.geometry.viewport);
+    }else{
+      hydrantMap.setCenter(place.geometry.location);
+      hydrantMap.setZoom(17);
+    }
+
+  })
 
 // function for creating Marker on Google Maps
 function createMarker(longitude, latitude){

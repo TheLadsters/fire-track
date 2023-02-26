@@ -1,0 +1,8 @@
+.container-news{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-news div{
+    margin-bottom: 10px;
+}
