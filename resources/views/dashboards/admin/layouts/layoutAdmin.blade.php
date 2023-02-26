@@ -25,6 +25,7 @@
     <link href="css/adminCSS/fireAlertManagement-admin.css" rel="stylesheet">
     <link href="css/adminCSS/fireAlertMgmtSidebar.css" rel="stylesheet">
     <link href="css/adminCSS/fireHydrantMap-admin.css" rel="stylesheet">
+    <link href="css/adminCSS/bulletinManagement-admin.css" rel="stylesheet">
 
     <title>FireTrack App</title>
 </head>
@@ -111,6 +112,7 @@
       <script type="text/javascript" src="/fireHydrantMap.js"></script>
       <script type="text/javascript" src="/fireHydrantType.js"></script>
       <script type="text/javascript" src="/rightSidebar.js"></script>
+      <script type="text/javascript" src="/bulletinNews.js"></script>
       @include('sweetalert::alert')
 
 
