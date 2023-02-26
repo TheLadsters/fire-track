@@ -79,15 +79,24 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
 
 
     Route::get('generateReport',[AdminController::class,'generateReport'])->name('admin.generateReport');
-    Route::get('userManagementAdmin',[AdminController::class,'userManagementAdmin'])->name('admin.userManagementAdmin');
+    // Route::get('userManagementAdmin',[AdminController::class,'userManagementAdmin'])->name('admin.userManagementAdmin');
     Route::get('userManagementUser',[AdminController::class,'userManagementUser'])->name('admin.userManagementUser');
     Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
 
+  
     // ADD FIRE HYDRANT TYPE ROUTES (ADMIN)
     Route::get('fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index'])->name('admin.fireHTypeManagement');
     Route::post('fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store'])->name('admin.fireHTypeAdd');
 
+    Route::post('userManagementUser/addAdminUser', [AdminController::class, 'store']);
+    Route::post('userManagementUser/getUserID/{id}', [FireAlertsController::class, 'getUserID']);
+    Route::post('userManagementUser/Update', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
+    Route::post('userManagementUser/Delete', [AdminController::class, 'deleteUserManagement'])->name('admin.userManagementDelete');
+
+    
+
 });
+
 
 
 

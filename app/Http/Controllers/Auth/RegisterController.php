@@ -42,7 +42,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -94,17 +94,6 @@ class RegisterController extends Controller
             'gender'=> ['required','string'],
          ]);
 
-         /** Make avata */
-
-        //  $path = 'users/images/';
-        //  $fontPath = public_path('fonts/Oliciy.ttf');
-        //  $char = strtoupper($request->fname[0]);
-        //  $newAvatarName = rand(12,34353).time().'_avatar.png';
-        //  $dest = $path.$newAvatarName;
-
-        //  $createAvatar = makeAvatar($fontPath,$dest,$char);
-        //  $picture = $createAvatar == true ? $newAvatarName : '';
-
          $user = new User();
          $user->username = $request->username;
          $user->fname = $request->fname;
@@ -117,9 +106,9 @@ class RegisterController extends Controller
          $user->address = $request->address;
          $user->img_url = "images/no_img_available.png";
          $user->password = \Hash::make($request->password);
+         $user->status = 'active';
 
          if( $user->save() ){
-
             return redirect()->back()->with('success','You are now successfully registerd');
          }else{
              return redirect()->back()->with('error','Failed to register');

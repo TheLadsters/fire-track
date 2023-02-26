@@ -115,7 +115,7 @@
                                                                 <option value="female">Female</option>
                                                             </select>
 
-                                                            <span class="text-danger">@error('address'){{ $message }}@enderror</span>
+                                                            <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>
 

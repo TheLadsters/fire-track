@@ -38,20 +38,13 @@
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_user-name">{{Auth::user()->fname}} {{Auth::user()->lname}}</span> </a>
                 <div class="nav_list"> 
-                  <a class="nav_link dropdown_links"> 
-                    <i class='bx bx-user-circle nav_icon'></i>
-                    <span class="nav_name dropdown-btn-user">User Management
-                      <i class="fa fa-caret-down mx-1"></i>
-                      </span> 
+                  <a href="{{ route('admin.userManagementUser')}}" class="nav_link {{ (request()->is('admin/userManagementUser*')) ? 'active' : '' }}">
+                    <i class='bx bx-user-circle nav_icon'></i> 
+                    <span class="nav_name">User 
+                      <br>Management
+                    </span> 
                   </a> 
 
-                  <div class="dropdown-container-user mb-3 d-none" id="dropdown-user">
-                  <a href="{{ route('admin.userManagementUser')}}" class="py-5 {{ (request()->is('admin/userManagementUser*')) ? 'active' : '' }}">User</a>
-                    
-                    <br>
-                    <a href="{{ route('admin.userManagementAdmin')}}" class="py-5 {{ (request()->is('admin/userManagementAdmin*')) ? 'active' : '' }}">Admin</a>
-                  </div>
-                  
                   <a class="nav_link dropdown_links mt-1"> 
                     <i class='bx bx-map-alt nav_icon'></i>
                     <span class="nav_name dropdown-btn-hydrant">Hydrant 

@@ -27,6 +27,7 @@ class User extends Authenticatable
         'address',
         'img_url',
         'gender',
+        'status',
     ];
 
     /**
@@ -49,11 +50,4 @@ class User extends Authenticatable
     ];
     protected $primaryKey = 'user_id';
 
-    public function getPictureAttribute($value){
-        if($value){
-            return asset('users/images/'.$value);
-        }else{
-            return asset('users/images/no-image.png');
-        }
-    }
 }
