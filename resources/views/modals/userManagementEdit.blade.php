@@ -2,33 +2,33 @@
 <div id="userManagementEditModal" class="modal fade userManagementEditModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form method="POST" action="{{route('admin.userManagementEdit')}}">
+			<form method="POST" action="{{route('admin.userManagementEdit', [$user->user_id])}}">
 				@csrf
+				@method('PUT')
 				<div class="modal-header">							
 					<h4 class="modal-title">Edit User</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>				</div>
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Username</label>
-						<input type="text" class="form-control" name="username" required>
+						<input type="text" class="form-control" name="username" value="{{ old('username') ? old('username') : $user->username }}">
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" name="email" required>
+						<input type="email" class="form-control" name="email" value="{{ old('email') ? old('email') : $user->email}}">
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<input type="text" class="form-control" name="address" required>
+						<input type="text" class="form-control" name="address" value="{{ old('address') ? old('address') : $user->address }}">
 					</div>
 					<div class="form-group">
 						<label>Contact Number</label>
-						<input type="text" class="form-control" name="contact_no" required>
+						<input type="text" class="form-control" name="contact_no" value="{{ old('contact_no') ? old('contact_no') : $user->contact_no }}">
 					</div>					
 					<div class="form-group">
 						<label>Status</label>
-						<input type="text" class="form-control" name="status" required>
+						<input type="text" class="form-control" name="status" value="{{ old('status') ? old('status') : $user->status }}">
 					</div>
-					<input type="text" id="user_id" style="display: none;" class="form-control" name="user_id" value="{{Auth::user()->user_id}}">
 				
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">

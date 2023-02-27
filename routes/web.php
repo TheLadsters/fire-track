@@ -89,9 +89,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::post('fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store'])->name('admin.fireHTypeAdd');
 
     Route::post('userManagementUser/addAdminUser', [AdminController::class, 'store']);
-    Route::post('userManagementUser/getUserID/{id}', [FireAlertsController::class, 'getUserID']);
-    Route::post('userManagementUser/Update', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
-    Route::post('userManagementUser/Delete', [AdminController::class, 'deleteUserManagement'])->name('admin.userManagementDelete');
+    Route::get('userManagementUser/getUserID/{user_id}', [AdminController::class, 'getUserID'])->name('admin.userManagementGetID');
+    Route::put('userManagementUser/Update/{user_id}', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
+    Route::delete('userManagementUser/Delete/{user_id}', [AdminController::class, 'deleteUserManagement'])->name('admin.userManagementDelete');
 
     
 

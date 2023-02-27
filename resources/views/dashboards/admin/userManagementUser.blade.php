@@ -60,8 +60,18 @@
 						<td>{{$user->gender}}</td>
                         <td>{{$user->status}}</td>
 						<td>
-							<a class="edit" data-bs-toggle="modal" data-bs-target=".userManagementEditModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
-							<a class="delete" data-bs-toggle="modal" data-bs-target="#userManagementDeleteModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
+							<!-- <a class="edit" data-bs-toggle="modal" data-bs-target="#userManagementEditModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a> -->
+							<a href="{{ route('admin.userManagementGetID', [$user->user_id]) }}" class="edit">
+								<i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i>
+                            </a>
+							<!-- <a class="delete" data-bs-toggle="modal" data-bs-target="#userManagementDeleteModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a> -->
+							<form method="POST" action="{{ route('admin.userManagementDelete',[$user->user_id])}}">
+								@csrf
+								@method('DELETE')
+								<button type="submit" style="border:none; outline: none;">
+									<i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i>
+                                </button> 
+							</form>
 						</td>
 					</tr>
                     <tr>
@@ -83,7 +93,7 @@
 		</div>
 	</div>        
 </div>
- 
+<!--  
 <div id="userManagementDeleteModal" class="modal fade userManagementDeleteModal">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content px-3">
@@ -107,16 +117,17 @@
         <div class="modal-footer">
             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
           
-            <form method="POST" action="{{ route('admin.userManagementDelete')}}">
-            	@csrf
-                <input type="hidden" name="userid" id="userid">
-                <input type="submit" class="btn btn-danger" id="" value="Delete">   
-            </form> 
+     
+			<form method="POST" action="{{ route('admin.userManagementDelete',[$user->user_id])}}">
+                @csrf
+                @method('DELETE')
+				<input type="submit" class="btn btn-danger" id="" value="Delete"> 
+            </form>
 
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 @include("modals.adminUserAdd")
 @include("modals.userManagementEdit")
