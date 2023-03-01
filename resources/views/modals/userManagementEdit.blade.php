@@ -1,5 +1,5 @@
 <!-- Edit Modal HTML -->
-<div id="userManagementEditModal" class="modal fade userManagementEditModal">
+<div id="userManagementEditModal{{ $user->user_id }}" class="modal fade userManagementEditModal" value="{{$user->user_id}}">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form method="POST" action="{{route('admin.userManagementEdit', [$user->user_id])}}">
@@ -27,9 +27,17 @@
 					</div>					
 					<div class="form-group">
 						<label>Status</label>
-						<input type="text" class="form-control" name="status" value="{{ old('status') ? old('status') : $user->status }}">
-					</div>
-				
+						<!-- <input type="text" class="form-control" name="status" value="{{ old('status') ? old('status') : $user->status }}"> -->
+						<div class="col-sm-6">
+                            <select class="form-select" name="status" id="status">
+                                <option value="{{$user->status}}"> {{$user->status}}</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                    	</div>
+					</div>				
+				<br>
+				<br>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
 					<button type="submit" class="btn btn-primary send-edit-alert">Update</button>

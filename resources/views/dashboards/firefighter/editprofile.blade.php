@@ -71,8 +71,14 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
                         <div class="form-group">
-                            <input type="file" class="form_control" name="firefighter_image" id="firefighter_image" style="opacity: 0;height:1px;display:none"><br>      
-                            <a href="javascript:void(0)" class="btn btn-primary btn-block" id="change_picture_btn"><b>Change picture</b></a>
+                            
+                            <form action="upload" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="file"> <br><br>
+                            <!-- <input type="file" class="form_control" name="firefighter_image" id="firefighter_image" style="opacity: 0;height:1px;display:none"><br>       -->
+                            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-block" id="change_picture_btn"><b>Change picture</b></a> -->
+                                <button type="submit"> Upload File</button>
+                            </form>
                         </div>	
                     </div>
                 </div>

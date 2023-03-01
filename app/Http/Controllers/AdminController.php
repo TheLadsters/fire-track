@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -39,20 +40,20 @@ class AdminController extends Controller
         return view('dashboards.admin.bulletinManagement');
     }
 
-    public function getUserID($user_id){
-        $user =  User::whereuser_id($user_id)->first();
+    // public function getUserID($user_id){
+    //     $user =  User::whereuser_id($user_id)->first();
 
-        if(!$user){
-            return back()->with('error', 'User Not Found');
-        }
+    //     if(!$user){
+    //         return back()->with('error', 'User Not Found');
+    //     }
 
-        return view('modals.userManagementEdit')->with([
-            'user' => $user
-        ]);
-        // return view('dashboards.admin.userManagementUser')->with([
-        //     'user' => $user
-        // ]);
-    }
+    //     return view('modals.userManagementEdit')->with([
+    //         'user' => $user
+    //     ]);
+    //     // return view('dashboards.admin.userManagementUser')->with([
+    //     //     'user' => $user
+    //     // ]);
+    // }
 
     public function store(Request $request)
     {
@@ -94,17 +95,17 @@ class AdminController extends Controller
         $request->validate([
             'username' => 'required',
             'email' => 'required|email',
-            'address' => 'required',
+            'address' => 'required', 
             'contact_no' => 'required',
             'status' => 'required',
-        ]);
-        
+        ]); 
+         
         try {
-            DB::beginTransaction();
-            // Logic For Save User Data
-
-            $update_user = User::where('user_id', $user_id)->update([
-                'username' => $request->username,
+              DB::beginTransaction();
+             // Logic For Save User Data
+  
+             $update_user = User::where('user_id', $user_id)->update([
+                 'username' => $request->username,
                 'email' => $request->email,
                 'address' => $request->address,
                 'contact_no' => $request->contact_no,
@@ -149,6 +150,22 @@ class AdminController extends Controller
             DB::rollBack();
             throw $th;
         }
+    }
+
+    public function export_users_pdf(){
+
+        $users = User::all();
+        // $pdf = Pdf::loadView('pdf.users',   [
+        //     'users'=>$users
+        // ]);
+        // return $pdf->download('users.pdf');
+        view()->share('users',$users);
+        $pdf = PDF::loadView('pdf.Users', [
+            'users'=>$users
+        ]);
+        // download PDF file with download method
+        return $pdf->download('users.pdf');
+        
     }
 
 

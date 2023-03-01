@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use PDF;
 
 class FireHydrantsController extends Controller
 {
@@ -158,5 +159,24 @@ class FireHydrantsController extends Controller
         }
 
         return redirect('admin/admin-hydrant-map')->with('message', 'Fire Hydrant Deleted Successfully!');   
+    }
+
+    public function export_FH_pdf(){
+        $hydrant = fireHydrantAdmin::all();
+        // $allHydrantTypes = fireHydrantTypeAdmin::all();
+        // $allHydrants = DB::table('hydrant')
+        // ->join('hydrant_type', 'hydrant.hydrant_type_id', '=', 'hydrant_type.hydrant_type_id')
+        // ->select('hydrant.*', 'hydrant_type.name')
+        // ->get();
+        
+        // $response['data'] = $allHydrants;
+        
+        view()->share('firehydrants',$hydrant);
+        $pdf = PDF::loadView('pdf.firehydrants', [
+            'firehydrants'=>$hydrant,
+        ]);
+        // download PDF file with download method
+        return $pdf->download('Fire Hydrants.pdf');
+        
     }
 }

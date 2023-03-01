@@ -1,5 +1,5 @@
 @extends('dashboards.admin.layouts.layoutAdmin')
-@section('title','fireHManagementAdd')
+@section('title','Fire Hydrant Management')
 
 @section('content')
 

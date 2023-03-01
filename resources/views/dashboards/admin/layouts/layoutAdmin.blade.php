@@ -66,12 +66,7 @@
                       <br>Management
                     </span> 
                   </a> 
-                  
-                  <a href="{{ route('admin.generateReport')}}" class="nav_link {{ (request()->is('admin/generateReport*')) ? 'active' : '' }}"> 
-                    <i class='bx bxs-report'></i>
-                    <span class="nav_name">Generate Reports</span> 
-                  </a> 
-                  
+             
                   <a href="{{ route('admin.bulletinManagement')}}" class="nav_link {{ (request()->is('admin/bulletinManagement*')) ? 'active' : '' }}"> 
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin 
@@ -90,7 +85,6 @@
         @yield('addFireHydrantManagement')
         @yield('fireHydrantManagementType')
         @yield('fireAlertManagement')
-        @yield('generateReport')
         @yield('bulletinManagement') -->
         @yield('content')
     <!--Container Main end-->
