@@ -10,7 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FireHydrantsController;
 use App\Http\Controllers\FireHydrantsTypeController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +96,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::get('fire-hydrant-management/export_FH_pdf', [FireHydrantsController::class, 'export_FH_pdf'])->name('admin.export_FH_pdf');
 });
 
+Route::get('/',function(){
+    return view('editprofile');
+});
+
+Route::view('upload','upload');
+Route::post('upload',[UploadController::class,'index']);
 
 
 
