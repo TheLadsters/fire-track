@@ -28,7 +28,7 @@
                                     <span class="text-danger">@error('email'){{ $message }} @enderror</span>
                     </div>
                     <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button type="submit" class="btn-submit btn-block">
 										Send Password Link
 									</button>
                     </div>
