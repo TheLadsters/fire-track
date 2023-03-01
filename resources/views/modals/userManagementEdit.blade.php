@@ -1,5 +1,5 @@
 <!-- Edit Modal HTML -->
-<div id="userManagementEditModal" class="modal fade userManagementEditModal">
+<div id="userManagementEditModal{{ $user->user_id }}" class="modal fade userManagementEditModal" value="{{$user->user_id}}">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form method="POST" action="{{route('admin.userManagementEdit', [$user->user_id])}}">

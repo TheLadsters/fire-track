@@ -1,5 +1,5 @@
 @extends('dashboards.admin.layouts.layoutAdmin')
-@section('title','bulletinAdmin')
+@section('title','Bulletin Management')
 
 @section('content')
 

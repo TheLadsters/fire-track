@@ -47,7 +47,6 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
     Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index'])->name('firefighter.fireAlertMap');
     Route::get('fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts'])->name('firefighter.showMapAlerts');
 
-    Route::get('reports',[UserController::class,'reports'])->name('firefighter.reports');
     Route::get('bulletinfirefighter',[UserController::class,'bulletinfirefighter'])->name('firefighter.bulletinfirefighter');
 
     Route::post('update-profile-info',[UserController::class,'updateInfo'])->name('firefighterUpdateInfo');
@@ -77,8 +76,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::delete('fire-alert-management/deleteFireAlert', [FireAlertsController::class, 'destroyAlert'])->name('admin.deleteFireAlert');
     Route::post('fire-alert-management/updateFireAlert', [FireAlertsController::class, 'updateAlert'])->name('admin.editFireAlert');
 
-
-    Route::get('generateReport',[AdminController::class,'generateReport'])->name('admin.generateReport');
     // Route::get('userManagementAdmin',[AdminController::class,'userManagementAdmin'])->name('admin.userManagementAdmin');
     Route::get('userManagementUser',[AdminController::class,'userManagementUser'])->name('admin.userManagementUser');
     Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
@@ -88,13 +85,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::get('fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index'])->name('admin.fireHTypeManagement');
     Route::post('fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store'])->name('admin.fireHTypeAdd');
 
+    // USER MANAGEMENT 
     Route::post('userManagementUser/addAdminUser', [AdminController::class, 'store']);
     Route::get('userManagementUser/getUserID/{user_id}', [AdminController::class, 'getUserID'])->name('admin.userManagementGetID');
     Route::put('userManagementUser/Update/{user_id}', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
     Route::delete('userManagementUser/Delete/{user_id}', [AdminController::class, 'deleteUserManagement'])->name('admin.userManagementDelete');
 
-    
-
+    // REPORTS
+    Route::get('userManagementUser/export_users_pdf', [AdminController::class, 'export_users_pdf'])->name('admin.export_users_pdf');
+    Route::get('fire-hydrant-management/export_FH_pdf', [FireHydrantsController::class, 'export_FH_pdf'])->name('admin.export_FH_pdf');
 });
 
 
