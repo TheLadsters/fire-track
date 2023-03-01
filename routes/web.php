@@ -96,12 +96,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::get('fire-hydrant-management/export_FH_pdf', [FireHydrantsController::class, 'export_FH_pdf'])->name('admin.export_FH_pdf');
 });
 
-Route::get('/',function(){
-    return view('editprofile');
-});
+// Route::get('/',function(){
+//     return view('editprofile');
+// });
 
-Route::view('upload','upload');
-Route::post('upload',[UploadController::class,'index']);
+// Route::view('upload','upload');
+// Route::post('upload',[UploadController::class,'index']);
 
 
 

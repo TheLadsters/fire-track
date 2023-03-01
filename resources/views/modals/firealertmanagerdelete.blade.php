@@ -2,11 +2,11 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content px-3">
         <div class="modal-header">
-            <h4>Delete Fire Alert</h4>
+            <h4>Delete Fire Alarm</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p>Are you sure you want to delete this Fire Alert? </p>
+            <p>Are you sure you want to delete this Fire Alarm? </p>
             <p class="text-warning"><small>This action cannot be undone.</small></p>
             
 
