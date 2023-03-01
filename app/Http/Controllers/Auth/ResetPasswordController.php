@@ -33,7 +33,7 @@ class ResetPasswordController extends Controller
             return route('admin.layoutAdmin');
         }
         elseif( Auth()->user()->role == 'firefighter' ){
-            return route('firefighter.layoutFirefighter');
+            return route('login');
         }
     }   
 }
