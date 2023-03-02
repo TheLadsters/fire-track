@@ -72,9 +72,19 @@
                     </label>
               </div>
 
-              <div class="col-4">
+              <div class="col-6">
                 <select class="form-select" name="status" aria-label="status-selector">
-                  <option selected value="Ongoing Fire">Ongoing Fire</option>
+                  <option value="First Alarm">First Alarm</option>
+                  <option value="Second Alarm">Second Alarm</option>
+                  <option value="Third Alarm">Third Alarm</option>
+                  <option value="Fourth Alarm">Fourth Alarm</option>
+                  <option value="Fifth Alarm">Fifth Alarm</option>
+                  <option value="Task Force Alpha">Task Force Alpha</option>
+                  <option value="Task Force Bravo">Task Force Bravo</option>
+                  <option value="Task Force Charlie">Task Force Charlie</option>
+                  <option value="Task Force Delta, Echo, Hotel, India">Task Force Delta, Echo, Hotel, India</option>
+                  <option value="General Alarm">General Alarm</option>
+                  <option value="Under Control">Under Control</option>
                   <option value="Fire Out">Fire Out</option>
                 </select>
               </div>

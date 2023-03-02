@@ -21,7 +21,9 @@ return new class extends Migration
             $table->string('fire_location');
             $table->string('longitude');
             $table->string('latitude');
-            $table->enum('status', ['Fire Out', 'Ongoing Fire'])->default('Ongoing Fire');
+            $table->enum('status', ['First Alarm', 'Second Alarm','Third Alarm','Fourth Alarm',
+                                    'Fifth Alarm','Task Force Alpha','Task Force Bravo','Task Force Charlie',
+                                    "Task Force Delta, Echo, Hotel, India", 'General Alarm','Under Control', 'Fire Out'])->default('First Alarm');
             $table->timestamps();
         });
     }
