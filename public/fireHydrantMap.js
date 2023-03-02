@@ -116,6 +116,8 @@ $('#hydrant_table tbody').on('click', '.deleteColHydrant', function(){
  hydrantMap = new google.maps.Map(document.getElementById("firehydrantmap"), {
   center: centerPoint,
   zoom: 16,
+  disableDefaultUI: true,
+  zoomControl: true
 });
 // end of creation of MAP
 

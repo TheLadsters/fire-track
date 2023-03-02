@@ -12,7 +12,9 @@ $(document).ready(function() {
     var map = new google.maps.Map(document.getElementById("firealertmap"), {
       center: new google.maps.LatLng(10.352029690791822, 123.91910785394363),
       zoom: 16,
-      mapId: 'c887c451d0ae25a6'
+      mapId: 'c887c451d0ae25a6',
+      disableDefaultUI: true,
+      zoomControl: true
     });
   
     var input = document.getElementById('searchAlertMap');
@@ -55,7 +57,7 @@ $(document).ready(function() {
         let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
         let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
         let markerContent = `
-        <div style="max-width: 200px;">
+        <div style="max-width: 200px;" class="text-center">
           <p>
             ${fireStatus}
           </p>

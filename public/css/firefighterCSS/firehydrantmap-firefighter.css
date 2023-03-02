@@ -11,7 +11,13 @@
         width: 50%;
         margin-bottom: 0;
     }
+
+    .responsive-img{
+        height: 100px;
+        width: 150px;
+    }
 }
+
 
 @media screen and (min-width: 425px){
     #searchbox{
@@ -19,6 +25,11 @@
         height: 4%;
         width: 50%;
         margin-bottom: 0;
+    }
+
+    .responsive-img{
+        height: 200px;
+        width: 180px;
     }
 }
 
@@ -29,6 +40,11 @@
         width: 50%;
         margin-bottom: 0;
     }
+
+    .responsive-img{
+        height: 200px;
+        width: 250px;
+    }
 }
 
 @media screen and (min-width: 950px){
@@ -38,6 +54,11 @@
         width: 50%;
         margin-bottom: 0;
     }
+
+    .responsive-img{
+        height: 200px;
+        width: 250px;
+    }
 }
 
 @media screen and (min-width: 1400px){
@@ -46,5 +67,10 @@
         height: 4%;
         width: 50%;
         margin-bottom: 0;
+    }
+
+    .responsive-img{
+        height: 200px;
+        width: 250px;
     }
 }
