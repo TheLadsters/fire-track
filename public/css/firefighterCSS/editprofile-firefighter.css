@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
-#body{margin-top:20px;
+#body{
+    margin-top:20px;
     background-color:#f2f6fc;
     color:#69707a;
     margin:190px;
     }
 
 .img-account-profile {
-    width: 50%;
-}
-    
+    /* width: 50%; */
+    height: 10rem;
+} 
 .rounded-circle {
     border-radius: 50% !important;
 }

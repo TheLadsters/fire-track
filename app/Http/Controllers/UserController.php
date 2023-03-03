@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class UserController extends Controller
@@ -56,7 +57,10 @@ class UserController extends Controller
              if(!$query){
                  return response()->json(['status'=>0,'msg'=>'Something went wrong.']);
              }else{
-                 return response()->json(['status'=>1,'msg'=>'Your profile info has been update successfuly.']);
+                return response()->json(['status'=>1,'msg'=>'Your profile info has been update successfuly.']);
+                // Alert::success('Your profile info has been updated successfully.');
+    
+    
              }
         }
     }
