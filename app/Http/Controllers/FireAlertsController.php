@@ -57,7 +57,7 @@ class FireAlertsController extends Controller
 
         if($validator->fails()) {
             $allErrors = $validator->errors();
-            Alert::error('Adding the Fire Alert was not successful.', 
+            Alert::error('Adding the Fire Alarm was not successful.', 
             'Please fill up required fields.');
           }
         
@@ -70,7 +70,7 @@ class FireAlertsController extends Controller
                 'fire_location' => 'required'
             ]);
             fireAlertAdmin::create($formFields);
-            Alert::success('Added Fire Alert Successfully!');
+            Alert::success('Added Fire Alarm Successfully!');
         }
        
         return redirect('admin/fire-alert-management');
@@ -89,7 +89,7 @@ class FireAlertsController extends Controller
           ]);
         
         if($validator->fails()){
-            Alert::error('Editing the Fire Alert  was not successful.',
+            Alert::error('Editing the Fire Alarm  was not successful.',
             'Please fill up required fields.');
         }
         
@@ -109,12 +109,12 @@ class FireAlertsController extends Controller
                 'status' => $status,
                 'fire_location' => $fire_location,
             ]);
-            Alert::success('Updated Fire Alert Successfully!');
+            Alert::success('Updated Fire Alarm Successfully!');
 
         }
        
 
-        return redirect('admin/fire-alert-management')->with('message', 'Fire Alert Updated Successfully!');
+        return redirect('admin/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully!');
 
     }
 
@@ -125,10 +125,10 @@ class FireAlertsController extends Controller
         $fireAlert = fireAlertAdmin::find($firealarm_id);
         if($fireAlert){
             $fireAlert->delete();
-            Alert::success('Fire Alert deleted Successfully!');
+            Alert::success('Fire Alarm deleted Successfully!');
 
         }else{
-            Alert::error('Fire Alert deletion was not successful.');
+            Alert::error('Fire Alarm deletion was not successful.');
         }
         
         return redirect('admin/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully!');
