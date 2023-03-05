@@ -20,7 +20,6 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 					</div>
 					<div class="col-sm-6">
 						<a class="btn btn-success" data-bs-toggle="modal" data-bs-target=".addFireHydrantTypeModal"><i class="material-icons">&#xE147;</i> <span>Add Type</span></a>
-						<!-- <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteFireHydrantTypeModal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						 -->
 					</div>
 				</div>
 			</div>
