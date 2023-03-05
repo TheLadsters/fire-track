@@ -48,7 +48,6 @@
 							<div class="forms-inputs mb-4"> 
 								<span>Password</span> 
 								<input autocomplete="off" name="password" type="password" v-model="password" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" v-on:blur="passwordBlured = true">
-								<i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
 								<div class="invalid-feedback">Password must be 8 character!</div>
 							</div>
 							<div class="d-flex mb-4 align-items-center">
