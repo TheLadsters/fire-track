@@ -75,11 +75,11 @@
 
 					<div class="row">
 						<div class="col-6">
-							<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+							<input type="button" class="btn-cancel" data-bs-dismiss="modal" value="Cancel">
 						</div>
 
 						<div class="col-6">
-							<button type="submit" class="btn btn-success">SUBMIT</button>
+							<button type="submit" class="btn-add-user">Submit</button>
 						</div>
 					</div>
 
