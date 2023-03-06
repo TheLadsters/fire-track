@@ -10,36 +10,39 @@
 				@csrf
 				<div class="modal-body">
 					<div class="form-group">
-						<label>Username</label>
+						<label id="label-form">Username</label>
 						<input type="text" class="form-control" id="username" name="username" required value="{{ old('username') }}">
 					</div>					
 					<div class="form-group">
-						<label>First Name</label>
+						<label  id="label-form">First Name</label>
 						<input type="text" class="form-control" id="fname" required name="fname" value="{{ old('fname') }}">
 					</div>
 					<div class="form-group">
-						<label>Last Name</label>
+						<label  id="label-form">Last Name</label>
 						<input type="text" class="form-control" id="lname" required name="lname" value="{{ old('lname') }}">
 					</div>
 					<div class="form-group">
-						<label>Password</l abel>
+						<label  id="label-form">Password</l abel>
 						<input type="password" class="form-control" id="password" required name="password" value="{{ old('password') }}">
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label  id="label-form">Email</label>
 						<input type="email" class="form-control" id="email" required name="email" value="{{ old('email') }}">
 					</div>
                     <div class="form-group">
-						<label>Mobile Number</label>
+						<label id="label-form">Mobile Number</label>
 						<input type="number" class="form-control" id="contact_no" required name="contact_no" value="{{ old('contact_no') }}">
 					</div>
 					<div class="form-group">
-						<label>Address</label>
+						<label  id="label-form">Address</label>
 						<textarea class="form-control" id="address" required name="address" value="{{ old('address') }}"></textarea>
 					</div>
-					<div class="form-group">
-						<label>Gender</label>
-						<input type="text" class="form-control" id="gender" name="gender" required value="{{ old('gender') }}">
+					<div class="form-group"> <br>
+						<select class="form-select" name="gender" id="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
 					</div>					
 				</div>
 				<div class="modal-footer">

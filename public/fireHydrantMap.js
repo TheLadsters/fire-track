@@ -16,6 +16,13 @@ return imgUrl;
 
 $('#hydrant_table').DataTable({
   'ajax': 'admin/admin-hydrant-map/getHydrantTable',
+  dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
   'columns': [
     {'data': 'address'},
     {'data': 'longitude', "bSortable": false},

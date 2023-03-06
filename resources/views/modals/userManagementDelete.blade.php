@@ -1,5 +1,5 @@
  
-<div id="userManagementDeleteModal{{$user->user_id}}" class="modal fade userManagementDeleteModal" value="{{$user->user_id}}">
+<div id="userManagementDeleteModal" class="modal fade userManagementDeleteModal">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content px-3">
         <div class="modal-header">
@@ -23,10 +23,10 @@
             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
           
      
-			<form method="POST" action="{{ route('admin.userManagementDelete',[$user->user_id])}}">
-                @csrf
-                @method('DELETE')
-				<input type="submit" class="btn btn-danger" id="" value="Delete"> 
+			      <form method="POST" action="{{ route('admin.userManagementDelete')}}">
+              @csrf
+              <input type="hidden" name="user_id" id="user_id">
+              <input type="submit" class="btn btn-danger" id="deleteUser" value="Delete"> 
             </form>
 
         </div>
