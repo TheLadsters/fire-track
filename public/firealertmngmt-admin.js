@@ -113,7 +113,9 @@ let alertGeocoder;
   var map = new google.maps.Map(document.getElementById("firelertmapmanagement"), {
     center: centerPoint,
     zoom: 16,
-    mapId: 'c887c451d0ae25a6'
+    mapId: 'c887c451d0ae25a6',
+    disableDefaultUI: true,
+    zoomControl: true
   });
 
   var input = document.getElementById('alertSearchBox');

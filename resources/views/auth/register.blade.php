@@ -13,7 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login-signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="icon" type="image" href="images/Firetrack.png">
     <title>FireTrack App</title>
 </head>
 
@@ -29,7 +31,7 @@
                                         <img src="images/fire_track_logo_clear.png" alt="firetracklogo" class="fireTrackLogo"/>
                                     </div>
 
-                                     <div class="mb-4">
+                                     <div class="mb-5">
                                         <h3 id="signUp-title">Sign Up</h3>
                                         <p id="signup-info" class="mb-4">Sign Up to create an account for the FireTrack App.</p>
                                     </div>
@@ -45,70 +47,64 @@
                                                         </div>
                                                     @endif
                                                     @csrf
-                                                    <div class="row justify-content-evenly">
-                                                    <div class="row justify-content-evenly">
-                                                        <span class="text-danger">@error('username'){{ $message }}@enderror</span>
-                                                        <div class="col-md-12 mb-3 form-group first">
+                                 
+                                                    <div class="forms-inputs md-12 mb-4"> 
                                                         <label for="username">Username</label>
                                                         <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
-                                                        
-                                                        </div>
+                                                        <span class="text-danger">@error('username'){{ $message }}@enderror</span>
                                                     </div>
-                                                    <span class="text-danger">@error('fname'){{ $message }}@enderror</span>
-                                                    <div class="col-md-5 mb-3 form-group first">
-                                                        <label for="fname">First Name</label>
-                                                        <input type="text" class="form-control" id="fname" name="fname" value="{{ old('fname') }}">
-                                                        
-                                                    </div>
-                                    
-                                                    <div class="col-md-6 mb-3 form-group last">
-                                                        <label for="lname">Last Name</label>
-                                                        <input type="text" class="form-control" id="lname" name="lname" value="{{ old('lname') }}">
-                                                        <span class="text-danger">@error('lname'){{ $message }}@enderror</span>
-                                                    </div>
-                                                    </div>    
 
-                                                    <div class="row justify-content-evenly">
-                                                        <div class="col-md-5 mb-3 form-group first">
-                                                            <label for="contact_no">Contact Number</label>
-                                                            <input type="text" class="form-control" id="contact_no" name="contact_no" value="{{ old('contact_no') }}">
-                                                            <span class="text-danger">@error('contact_no'){{ $message }}@enderror</span>
+                                                    <div class="forms-inputs row">
+                                                        <div class="form-inputs col-md-6 mb-4">
+                                                            <label for="fname">First Name</label>
+                                                            <input type="text" class="form-control" id="fname" name="fname" value="{{ old('fname')}}">  
+                                                            <span class="text-danger">@error('fname'){{ $message }}@enderror</span>                                                      
+                                                        </div>                                                        
+                                                                                            
+                                                        <div class="col-md-6 mb-4 forms-inputs">
+                                                            <label for="lname">Last Name</label>
+                                                            <input type="text" class="form-control" id="lname" name="lname" value="{{ old('lname') }}">
+                                                            <span class="text-danger">@error('lname'){{ $message }}@enderror</span>
                                                         </div>
-                                    
-                                                        <div class="col-md-6 mb-3 form-group last">
+                                                    </div>
+                                                    <div class="forms-inputs row">
+                                                        <div class="form-inputs col-md-6 mb-4">
+                                                            <label for="password">Password</label>
+                                                            <input type="password" class="form-control" id="password" name="password">  
+                                                            <!-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i> -->
+                                                            <span class="text-danger">@error('password'){{ $message }}@enderror</span>                                                      
+                                                        </div>                                                        
+                                                                                            
+                                                        <div class="col-md-6 mb-4 forms-inputs">
+                                                            <label for="lname">Confirm Password</label>
+                                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                                                            <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="forms-inputs row">
+                                                        <div class="forms-inputs col-md-6 mb-4">
+                                                        <label for="contact_no">Contact Number</label>
+                                                        <input type="text" class="form-control" id="contact_no" name="contact_no" value="{{ old('contact_no')}}"> 
+                                                        <span class="text-danger">@error('contact_no'){{ $message }}@enderror</span>                                                        
+                                                    </div>                                                        
+                                                                                            
+                                                        <div class="col-md-6 mb-4 forms-inputs">
                                                             <label for="email">Email Address</label>
                                                             <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
                                                             <span class="text-danger">@error('email'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="row justify-content-evenly">
-                                                        <div class="col-md-5 mb-3 form-group first">
-                                                            <label for="password">Password</label>
-                                                            <input type="password" class="form-control" id="password" name="password">
-                                                            <span class="text-danger">@error('password'){{ $message }}@enderror</span>
-                                                        </div>
-                                    
-                                                        <div class="col-md-6 mb-3 form-group last">
-                                                            <label for="password-confirm">Confirm Password</label>
-                                                            <input type="password" class="form-control" id="password-confirm" name="password_confirmation">
-                                                            <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
-                                                        </div>
+                                                    <div class="forms-inputs md-12 mb-4"> 
+                                                        <label for="address">Home Address</label>
+                                                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                                                        <span class="text-danger">@error('address'){{ $message }}@enderror</span>
                                                     </div>
 
-                                                    <div class="row justify-content-evenly">
-                                                        <div class="col-md-11 mb-3 form-group first">
-                                                            <label for="address">Home Address</label>
-                                                            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
-                                                            <span class="text-danger">@error('address'){{ $message }}@enderror</span>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="row mb-2 genderArea">
-                                                        <!-- <div class="col-sm-2">
-                                                            <label for="gender">Gender</label>
-                                                        </div> -->
-                                                        <div class="col-sm-6">
+                                                    <div class="row mb-2 forms-inputs">
+                                                        <div class="col-md-6 mb-4">
                                                             <select class="form-select" name="gender" id="gender" required>
                                                                 <option value="">Select Gender</option>
                                                                 <option value="male">Male</option>
@@ -118,29 +114,11 @@
                                                             <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>
-
-                                                    <!-- <div class="row mb-3">
-                                                        <div class="col-sm-2">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="chooseGender" id="genderMale">
-                                                                <label class="form-check-label" for="chooseGender">
-                                                                    Male
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                          
-                                                    <div class="col-sm-2">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="chooseGender" id="genderFemale">
-                                                            <label class="form-check-label" for="chooseGender">
-                                                                Female
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    </div>	 -->
                                                     <br>
 
-                                            		<button class="btn-signUp btn-block-signup mb-2" >Sign Up</button>
+                                                    <div class="mb-2"> 
+								                        <button id="button" type="submit" class="btn btn-dark w-100">Login</button> 
+							                        </div>
 
 													<div class="mt-4 text-center">
 														Already have an account? <a href="{{route('login')}}">Login</a>
@@ -162,6 +140,20 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script type="text/javascript" src="app.js"></script>
+      <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+    </script>
 </body>
 
 

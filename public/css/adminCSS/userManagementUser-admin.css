@@ -61,6 +61,10 @@ table.table-striped tbody tr:nth-of-type(odd) {
 table.table-striped.table-hover tbody tr:hover {
 	background: #f5f5f5;
 }
+#label-form:before{
+	content:"*" ;
+	color:red   
+	}
 table.table th i {
 	font-size: 13px;
 	margin: 0 5px;
@@ -193,12 +197,39 @@ table.table .avatar {
 }
 
 /* Modal styles */
-.modal .modal-dialog {
+/* .modal .modal-dialog {
 	max-width: 400px;
+} */
+
+/* #adminUserAddModal .modal-add-user
+{
+	background-image: url('public/images/maptemplate.png');
+} */
+
+
+#adminUserAddModal .modal-body .row {
+	margin-bottom: 3%;
 }
+
+#adminUserAddModal .modal-body label{
+	font-weight: bold;
+}
+
+/* #adminUserAddModal #modal-head{
+	background-image: url('public/images/maptemplate.png');
+	background-repeat:no-repeat;
+	background-position: center;
+	/* background-size:contain; */
+
+.container h1{
+	float: left !important;
+}
+
 .modal .modal-header, .modal .modal-body, .modal .modal-footer {
-	padding: 20px 30px;
+	/* padding: 20px 30px; */
 }
+
+
 .modal .modal-content {
 	border-radius: 3px;
 	font-size: 14px;
@@ -208,7 +239,7 @@ table.table .avatar {
 	border-radius: 0 0 3px 3px;
 }
 .modal .modal-title {
-	display: inline-block;
+	/* display: inline-block; */
 }
 .modal .form-control {
 	border-radius: 2px;
@@ -222,10 +253,38 @@ table.table .avatar {
 	border-radius: 2px;
 	min-width: 100px;
 }	
-.modal form label {
-	font-weight: normal;
-}	
 
 tbody a {
 	cursor: pointer;
+}
+
+.btn-cancel{
+	background-color: white;
+	border: solid #CDCDCD 2px;
+	border-radius: 5px;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+.btn-cancel:hover{
+	background-color: #e1e1e1;
+}
+
+.btn-add-user{
+	background-color: #6B66F5;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+
+#modal-head {
+    background-image:url("images/vector.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
 }

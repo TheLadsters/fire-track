@@ -7,7 +7,9 @@ function initMap(){
     map = new google.maps.Map(document.getElementById("firehydrantmap"), {
         center: new google.maps.LatLng(10.352029690791822, 123.91910785394363),
         zoom: 16,
-        mapId: 'c887c451d0ae25a6'
+        mapId: 'c887c451d0ae25a6',
+        disableDefaultUI: true,
+        zoomControl: true
       });
 
       var input = document.getElementById('searchbox');
@@ -53,11 +55,11 @@ function initMap(){
 
 
        let markerContent = `
-        <div style="max-width: 300px;">
+        <div class="text-center">
             <p>
-            <img src="${hydrantPhoto}" id="imageMarker" style="width:300px; height:200px;" />
+            <img src="${hydrantPhoto}" id="imageMarker" class="responsive-img" />
             </p>
-            <p>
+            <p style="max-width: 250px;">
             <b>Address:</b> ${hydrantAddress}
             </p>
             <p>

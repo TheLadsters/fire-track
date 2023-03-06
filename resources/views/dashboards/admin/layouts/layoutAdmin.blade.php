@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image" href="images/Firetrack.png">  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
@@ -22,6 +23,7 @@
     <link rel="stylesheet" href="css/sideBarLayout.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css">
     <link href="css/adminCSS/fireAlertManagement-admin.css" rel="stylesheet">
     <link href="css/adminCSS/fireAlertMgmtSidebar.css" rel="stylesheet">
     <link href="css/adminCSS/fireHydrantMap-admin.css" rel="stylesheet">
@@ -100,6 +102,12 @@
       <script type="text/javascript" src="/fireHydrantType.js"></script>
       <script type="text/javascript" src="/rightSidebar.js"></script>
       <script type="text/javascript" src="/bulletinNews.js"></script>
+      <script type="text/javascript" src="/userManagement.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.5/js/dataTables.buttons.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script>
       @include('sweetalert::alert')
 
 

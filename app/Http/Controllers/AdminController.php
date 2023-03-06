@@ -40,20 +40,21 @@ class AdminController extends Controller
         return view('dashboards.admin.bulletinManagement');
     }
 
-    // public function getUserID($user_id){
-    //     $user =  User::whereuser_id($user_id)->first();
-
-    //     if(!$user){
-    //         return back()->with('error', 'User Not Found');
-    //     }
-
-    //     return view('modals.userManagementEdit')->with([
-    //         'user' => $user
-    //     ]);
-    //     // return view('dashboards.admin.userManagementUser')->with([
-    //     //     'user' => $user
-    //     // ]);
-    // }
+    public function getUserID($user_id){
+     
+            $user = User::findOrFail($user_id);
+                $response['data'] = $user;
+        
+            return response()->json($response);
+        
+    }
+    public function getUserTable(){
+        $user = DB::table('users')->get();
+        // Fetch all records
+        $response['data'] = $user;
+        
+        return response()->json($response);
+    }
 
     public function store(Request $request)
     {
@@ -90,66 +91,61 @@ class AdminController extends Controller
         
     }
 
-    public function updateUserManagement(Request $request, $user_id){
+    public function updateUserManagement(Request $request){
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
             'username' => 'required',
             'email' => 'required|email',
             'address' => 'required', 
             'contact_no' => 'required',
             'status' => 'required',
-        ]); 
-         
-        try {
-              DB::beginTransaction();
-             // Logic For Save User Data
-  
-             $update_user = User::where('user_id', $user_id)->update([
-                 'username' => $request->username,
-                'email' => $request->email,
-                'address' => $request->address,
-                'contact_no' => $request->contact_no,
-                'status' => $request->status,
-            ]);
+          ]);
 
-            if(!$update_user){
-                DB::rollBack();
+        if($validator->fails()){
+            Alert::error('Not successful');
+        }else{
+            $user_id = $request->input('user_id');
+            $username = $request->input('username');
+            $email = $request->input('email');
+            $address = $request->input('address');
+            $contact_no = $request->input('contact_no');
+            $status = $request->input('status');
 
-                Alert::error('Not Successful!');
-            }
+            $user = User::find($user_id);
 
-            DB::commit();
+    
+                $user = User::where('user_id', $user_id)->update([
+                    'user_id' => $user_id,
+                    'username' => $username,
+                    'email' => $email,
+                    'address' => $address,
+                    'contact_no' => $contact_no,
+                    'status' => $status,
+                ]);
+            
+    
             Alert::success('Updated Successfully!');
-            return redirect('admin/userManagementUser');
-
-
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            throw $th;
         }
+  
+
+        return redirect('admin/userManagementUser');
     }
 
-    public function deleteUserManagement($user_id){
+    public function deleteUserManagement(Request $request){
        
-        try {
-            DB::beginTransaction();
-
-            $delete_user = User::whereuser_id($user_id)->delete();
-
-            if(!$delete_user){
-                DB::rollBack();
-                Alert::error('Deletion was not successful.');
-            }
-
-            DB::commit();
-            Alert::success('User deleted Successfully!');
-            return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully!'); 
-
-
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            throw $th;
+        $user_id = $request->input('user_id');
+        
+        $user = User::find($user_id);
+        if($user){
+        $user->delete();
+        Alert::success('User deleted Successfully!');
+        }else
+        {
+            Alert::error('Deletion was not successful.');
         }
+
+        return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully!');   
     }
 
     public function export_users_pdf(){

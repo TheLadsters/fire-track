@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
@@ -55,11 +56,11 @@ class LoginController extends Controller
     public function login(Request $request){
         $input = $request->all();
         $this->validate($request,[
-            'username'=>'required',
+            'email'=>'required',
             'password'=>'required'
         ]);
 
-       if( auth()->attempt(array('username'=>$input['username'], 'password'=>$input['password'])) ){
+       if( auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password'])) ){
 
         if( auth()->user()->role == 'admin' ){
             return redirect()->route('admin.fireHManagement');
@@ -69,7 +70,7 @@ class LoginController extends Controller
         }
 
        }else{
-           return redirect()->route('login')->with('error','Email and password are wrong');
+           return redirect()->route('login')->with('error','Email or password is invalid');
        }
     }
 }

@@ -87,21 +87,22 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
 
     // USER MANAGEMENT 
     Route::post('userManagementUser/addAdminUser', [AdminController::class, 'store']);
-    Route::get('userManagementUser/getUserID/{user_id}', [AdminController::class, 'getUserID'])->name('admin.userManagementGetID');
-    Route::put('userManagementUser/Update/{user_id}', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
-    Route::delete('userManagementUser/Delete/{user_id}', [AdminController::class, 'deleteUserManagement'])->name('admin.userManagementDelete');
+    Route::get('userManagementUser/getUserTable', [AdminController::class, 'getUserTable']);
+    Route::post('userManagementUser/getUserID/{user_id}', [AdminController::class, 'getUserID']);
+    Route::post('userManagementUser/Update', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
+    Route::post('userManagementUser/Delete', [AdminController::class, 'deleteUserManagement'])->name('admin.userManagementDelete');
 
     // REPORTS
     Route::get('userManagementUser/export_users_pdf', [AdminController::class, 'export_users_pdf'])->name('admin.export_users_pdf');
     Route::get('fire-hydrant-management/export_FH_pdf', [FireHydrantsController::class, 'export_FH_pdf'])->name('admin.export_FH_pdf');
 });
 
-Route::get('/',function(){
-    return view('editprofile');
-});
+// Route::get('/',function(){
+//     return view('editprofile');
+// });
 
-Route::view('upload','upload');
-Route::post('upload',[UploadController::class,'index']);
+// Route::view('upload','upload');
+// Route::post('upload',[UploadController::class,'index']);
 
 
 

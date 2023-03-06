@@ -16,6 +16,13 @@ return imgUrl;
 
 $('#hydrant_table').DataTable({
   'ajax': 'admin/admin-hydrant-map/getHydrantTable',
+  dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
   'columns': [
     {'data': 'address'},
     {'data': 'longitude', "bSortable": false},
@@ -116,6 +123,8 @@ $('#hydrant_table tbody').on('click', '.deleteColHydrant', function(){
  hydrantMap = new google.maps.Map(document.getElementById("firehydrantmap"), {
   center: centerPoint,
   zoom: 16,
+  disableDefaultUI: true,
+  zoomControl: true
 });
 // end of creation of MAP
 
