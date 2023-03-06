@@ -42,13 +42,13 @@
 							@csrf
 							<div class="forms-inputs mb-4 mt-4"> 
 								<span>Email</span> 
-								<input autocomplete="off" name="email" type="text" v-model="email" v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}" v-on:blur="emailBlured = true">
+								<input autocomplete="off" name="email" type="text" required v-model="email" v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}" v-on:blur="emailBlured = true">
 								<div class="invalid-feedback">A valid email is required!</div>
 							</div>
 							<div class="forms-inputs mb-4"> 
 								<span>Password</span> 
-								<input autocomplete="off" name="password" type="password" v-model="password" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" v-on:blur="passwordBlured = true">
-								<div class="invalid-feedback">Password must be 8 character!</div>
+								<input autocomplete="off" name="password" type="password" required v-model="password" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" v-on:blur="passwordBlured = true">
+								<div class="invalid-feedback">Password must be at least 8 characters!</div>
 							</div>
 							<div class="d-flex mb-4 align-items-center">
 								<a href="{{route('password.request')}}" class="float-right" style="font-size: 15px;">

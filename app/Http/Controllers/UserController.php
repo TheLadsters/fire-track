@@ -7,6 +7,7 @@ use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
@@ -105,9 +106,9 @@ class UserController extends Controller
     }
 
     function updatePicture(Request $request){
-        $path = 'users/images/';
-        $file = $request->file('firefighter_image');
-        $new_name = 'UIMG_'.date('Ymd').uniqid().'.jpg';
+        $path = 'storage/users/images/';
+        $file = $request->file('img_url');
+        $new_name = 'storage/users/images/UIMG_'.date('Ymd').uniqid().'.jpg';
 
         //Upload new image
         $upload = $file->move(public_path($path), $new_name);
@@ -116,7 +117,7 @@ class UserController extends Controller
             return response()->json(['status'=>0,'msg'=>'Something went wrong, upload new picture failed.']);
         }else{
             //Get Old picture
-            $oldPicture = User::find(Auth::user()->user_id)->getAttributes()['picture'];
+            $oldPicture = User::find(Auth::user()->user_id)->getAttributes()['img_url'];
 
             if( $oldPicture != '' ){
                 if( \File::exists(public_path($path.$oldPicture))){
@@ -125,15 +126,46 @@ class UserController extends Controller
             }
 
             //Update DB
-            $update = User::find(Auth::user()->user_id)->update(['picture'=>$new_name]);
+            $update = User::find(Auth::user()->user_id)->update(['img_url'=>$new_name]);
 
             if( !$upload ){
                 return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
             }else{
-                return response()->json(['status'=>1,'msg'=>'Your profile picture has been updated successfully']);
+                return redirect('user/editprofile');
+                Alert::success('Profile picture changed successfully');
             }
         }
-    }
+           
+        }
+        
+        // $validator = Validator::make($request->all(), [
+        //     'user_id' => 'required',
+        //     'img_url' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //   ]);
 
-   
+        // if($validator->fails()){
+        //     Alert::error('failed');
+        // }else{
+      
+        //     $user_id = $request->input('user_id');
+           
+        //     $user = User::find($user_id);
+
+        //     $userImg = ($request->hasFile('img_url')) ? 
+        //     $request->file('img_url')->store('users', 'public') : $user->img_url;
+    
+        //     if($userImg){
+        //         $user = User::where('user_id', $user_id)->update([
+        //             'user_id' => $user_id,
+        //             'img_url' => $userImg
+        //         ]);
+        //     }
+    
+        //     Alert::success('Profile picture changed successfully');
+        // }
+  
+
+        // return redirect('user/editprofile');
+    
+    
 }

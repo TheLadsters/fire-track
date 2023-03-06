@@ -1,5 +1,5 @@
 @extends('dashboards.firefighter.layouts.layoutFirefighter')
-@section('title','profile')
+@section('title','Profile')
 
 @section('content')
 <head>
@@ -63,21 +63,34 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                 <!-- Profile picture card-->    
                 <div class="card mb-4"> 
                     <div class="card-header" style="background-color:#6c63ff; color:white">Profile Picture</div>
-                    <h3 class="profile-username text-center mt-3 admin_name" style="padding: 0px 10px 0px;">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
+                    <h3 class="profile-username text-center mt-3 user_name" style="padding: 0px 10px 0px;">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2 firefighter_picture" src="{{ Auth::user()->img_url }}" alt="User profile picture">
+                        <!-- <php $user_img = Auth::user()->img_url > 
+                        src="<php echo asset("storage/$user_img")>" -->
+                        <img class="img-account-profile rounded-circle mb-2 user_picture" src="{{Auth::user()->img_url}}" alt="User profile picture">
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
                    
                             <!-- <form action="upload" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" name="file"> <br><br> -->
-                            <input type="file" class="form_control" name="firefighter_image" id="firefighter_image" style="opacity: 0;height:1px;display:none"><br>      
-                            <a href="javascript:void(0)" class="btn btn-primary btn-block" id="change_picture_btn"  style="background-color:#6c63ff;"><b>Change picture</b></a>
+                                 @csrf 
+                                <input type="file" name="file"  name="img_url" id="user_image"> <br><br> -->
+                            <!-- <input type="file" name="img_url" id="img_url" style="opacity: 0;height:1px;display:none">    
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" id="change_picture_btn"  style="background-color:#6c63ff;"><b>Change picture</b></a> -->
                                 <!-- <button type="submit"> Upload File</button>
                             </form> -->
+                            <form action="{{route('firefighterPictureUpdate')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Change Profile Picture</label>
+                                    <input type="text" style="display: none;" class="form-control" name="user_id" value="{{Auth::user()->user_id}}">
+                                    <input class="form-control" type="file" name="img_url">
+                                </div>    
+                                <div class="mb-3">   
+                                    <input type="submit" class="btn btn-primary"  style="background-color:#6c63ff;" value="Upload">
+                                </div>
+                            </form>
                         
                     </div>
                 </div>
@@ -88,7 +101,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                 <div class="card mb-4">
                     <div class="card-header "  style="background-color:#6c63ff; color:white">Account Details</div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('firefighterUpdateInfo') }}" id="firefighterInfoForm">
+                        <form class="form-horizontal" method="POST" action="{{ route('firefighterUpdateInfo') }}" id="UserInfoForm">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <div class="mb-3">

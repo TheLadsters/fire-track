@@ -27,6 +27,7 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
    <link rel="stylesheet" href="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.css') }}">
+   <link rel="stylesheet" href="path/to/ijaboCropTool.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
     
@@ -49,7 +50,7 @@
               {
               ?>
                   <span class="user_img_url">
-                    <img src="{{ Auth::user()->img_url }}" width="20" height="20" class="rounded-circle">
+                    <img src="{{Auth::user()->img_url}}" width="20" height="20" class="rounded-circle">
                   </span>
               <?php
               }else{
@@ -109,8 +110,8 @@
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 {{-- CUSTOM JS CODES --}}
 <script>
@@ -123,9 +124,9 @@
   
 $(function(){
 
-    /* UPDATE ADMIN PERSONAL INFO */
+    /* UPDATE USER PERSONAL INFO */
 
-    $('#firefighterInfoForm').on('submit', function(e){
+    $('#UserInfoForm').on('submit', function(e){
         e.preventDefault();
 
         $.ajax({
@@ -144,15 +145,35 @@ $(function(){
                     $('span.'+prefix+'_error').text(val[0]);
                   });
                 }else{
-                  $('.admin_name').each(function(){
-                     $(this).html( $('#firefighterInfoForm').find( $('input[fname="fname"]') ).val() );
+                  $('.user_name').each(function(){
+                     $(this).html( $('#UserInfoForm').find( $('input[fname="fname"]') ).val() );
                   });
                   alert(data.msg);
                 }
            }
         });
+    });
   
+    $(document).on('click','#change_picture_btn', function(){
+      $('#img_url').click();
+    });
 
+
+    $('#img_url').ijaboCropTool({
+          preview : '.user_picture',
+          setRatio:1,
+          allowedExtensions: ['jpg', 'jpeg','png'],
+          buttonsText:['CROP','QUIT'],
+          buttonsColor:['#30bf7d','#ee5155', -15],
+          processUrl:'{{ route("firefighterPictureUpdate") }}',
+          // withCSRF:['_token','{{ csrf_token() }}'],
+          onSuccess:function(message, element, status){
+             alert(message);
+          },
+          onError:function(message, element, status){
+            alert(message);
+          }
+       });
 
 
     $('#changePasswordFirefighterForm').on('submit', function(e){
@@ -181,31 +202,7 @@ $(function(){
          });
     });
 
-    
-    $(document).on('click','#change_picture_btn', function(){
-      $('firefighter_image').click();
-    });
-
-
-    $('#firefighter_image').ijaboCropTool({
-          preview : '.firefighter_picture',
-          setRatio:1,
-          allowedExtensions: ['jpg', 'jpeg','png'],
-          buttonsText:['CROP','QUIT'],
-          buttonsColor:['#30bf7d','#ee5155', -15],
-          processUrl:'{{ route("firefighterPictureUpdate") }}',
-          // withCSRF:['_token','{{ csrf_token() }}'],
-          onSuccess:function(message, element, status){
-             alert(message);
-          },
-          onError:function(message, element, status){
-            alert(message);
-          }
-       });
-
-
-    });
-});
+  })  
 </script>
 </body>
 
