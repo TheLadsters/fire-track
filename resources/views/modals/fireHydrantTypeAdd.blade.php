@@ -1,4 +1,4 @@
-<div class="modal fade addFireHydrantTypeModal" tabindex="-1" role="dialog" aria-labelledby="addFireHydrantTypeModalCenter" aria-hidden="true">
+<div class="modal fade addFireHydrantTypeModal" tabindex="-1" role="dialog" aria-labelledby="addFireHydrantTypeModalCenter" aria-hidden="true" id="addFireHydrantTypeModal">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content px-3">
         <div class="modal-header">
