@@ -111,6 +111,7 @@ width: 75px !important;
 width: 120px !important;
 }
 
+
 .editColHydrant, .deleteColHydrant {
 cursor: pointer;
 }
@@ -121,3 +122,92 @@ cursor: pointer;
     margin: 6% 1% 0 1%;
     background-color: #f1f1f1;
   }
+
+  /* Modal styles */
+.addFireHydrantModal .modal-body .row, 
+.editFireHydrantModal .modal-body .row{
+      margin-bottom: 3%;
+      font-weight: bold;
+}
+
+.head-icon{
+	margin-right: 3px;
+}
+
+#modal-head {
+    background-repeat: no-repeat;
+    background-size: 60% 150px;
+	background-position: right;
+    height: 150px;
+}
+
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+	padding: 20px 30px;
+}
+
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+
+.btn-cancel{
+	background-color: white;
+	border: solid #CDCDCD 2px;
+	border-radius: 5px;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+.btn-cancel:hover{
+	background-color: #e1e1e1;
+}
+
+.btn-add-hydrant, .btn-edit-hydrant{
+	background-color: #6B66F5;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+.btn-add-hydrant:hover, .btn-edit-hydrant:hover{
+	color:#fff;
+	background-color:#483dff;
+	border-color:#3c30ff;
+}
+
+.addFireHydrantModal form input, .addFireHydrantModal form select, 
+.editFireHydrantModal form input, .editFireHydrantModal form select{
+	border-radius: 5px !important;
+}
+
+.addFireHydrantModal form input:focus, .addFireHydrantModal form select:focus,
+.editFireHydrantModal form input:focus, .editFireHydrantModal form select:focus{
+	box-shadow: none;
+	outline: none;
+	border: 2px solid #6c63ff;
+}
+
+.editFireHydrantModal .edit-hydrant-longlat{
+    width: 100%;
+}
+
+.deleteHydrantModal .text-warning-title,
+.deleteHydrantModal .text-warning{
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.deleteHydrantModal #deleteHydrantBtn{
+	width: 100%;
+	border: none;
+	height: 40px;
+	border-radius: 5px;
+}
