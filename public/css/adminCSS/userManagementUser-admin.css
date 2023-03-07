@@ -197,50 +197,41 @@ table.table .avatar {
 }
 
 /* Modal styles */
-/* .modal .modal-dialog {
-	max-width: 400px;
-} */
-
-/* #adminUserAddModal .modal-add-user
-{
-	background-image: url('public/images/maptemplate.png');
-} */
 
 
-#adminUserAddModal .modal-body .row {
+#adminUserAddModal .modal-body .row, 
+#userManagementEditModal .modal-body .row {
 	margin-bottom: 3%;
-}
-
-#adminUserAddModal .modal-body label{
 	font-weight: bold;
 }
 
-/* #adminUserAddModal #modal-head{
-	background-image: url('public/images/maptemplate.png');
-	background-repeat:no-repeat;
-	background-position: center;
-	/* background-size:contain; */
 
 .container h1{
 	float: left !important;
-}
-
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
-	/* padding: 20px 30px; */
 }
 
 
 .modal .modal-content {
 	border-radius: 3px;
 	font-size: 14px;
+	padding: 20px 30px;
 }
+
+#userManagementDeleteModal .text-warning-title,
+#userManagementDeleteModal .text-warning{
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
 .modal .modal-footer {
 	background: #ecf0f1;
 	border-radius: 0 0 3px 3px;
 }
 .modal .modal-title {
-	/* display: inline-block; */
+	color: black;
 }
+
 .modal .form-control {
 	border-radius: 2px;
 	box-shadow: none;
@@ -271,7 +262,7 @@ tbody a {
 	background-color: #e1e1e1;
 }
 
-.btn-add-user{
+.btn-add-user, .btn-edit-user{
 	background-color: #6B66F5;
 	border-radius: 5px;
 	border: none;
@@ -281,10 +272,39 @@ tbody a {
 	font-weight: bold;
 }
 
+.btn-add-user:hover, .btn-edit-user:hover{
+	color:#fff;
+	background-color:#483dff;
+	border-color:#3c30ff;
+}
+
+#userManagementDeleteModal #deleteUser{
+	width: 100%;
+	border: none;
+	height: 40px;
+	border-radius: 5px;
+}
+
+.head-icon{
+	margin-right: 3px;
+}
 
 #modal-head {
-    background-image:url("images/vector.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 400px;
+    background-size: 60% 150px;
+	background-position: right;
+    height: 150px;
+}
+
+#adminUserAddModal form input, #adminUserAddModal form select {
+	border-radius: 5px;
+}
+#userManagementEditModal form input, #userManagementEditModal form select {
+	border-radius: 5px;
+}
+
+#adminUserAddModal form input:focus, #adminUserAddModal form select:focus{
+	box-shadow: none;
+	outline: none;
+	border: 2px solid #6c63ff;
 }

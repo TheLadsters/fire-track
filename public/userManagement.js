@@ -57,19 +57,23 @@ $(document).ready(function() {
         url: 'admin/userManagementUser/getUserID/' + user_id,
         dataType: 'json',    
         success: function(response){ 
-          let username = response['data'].username;
+          let fname = response['data'].fname;
+          let lname = response['data'].lname;
           let email = response['data'].email;
           let address = response['data'].address;
           let contact_no = response['data'].contact_no;
           let status = response['data'].status;
+          let gender = response['data'].gender;
    
      
   
-          $("#username-edit").val(username);
+          $("#edit-fname").val(fname);
+          $("#edit-lname").val(lname);
           $("#email-edit").val(email);
           $("#address-edit").val(address);
           $("#contact_no-edit").val(contact_no);
           $("#status-edit").val(status);
+          $("#edit-gender").val(gender);
           $("#user_id").val(user_id);
 
   
