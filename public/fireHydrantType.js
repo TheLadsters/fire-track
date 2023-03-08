@@ -73,8 +73,8 @@ $(document).ready(function() {
     
     // delete hydrant in fire hydrant type manager
     $('#hydrantType_table tbody').on('click', '.deleteColHType', function(){
-      let hydrant_type_id = $(this).attr('id');
-      $('.deleteHydrantTypeModal #hydrant_type_id_delete').val(hydrant_type_id);
+      let htype_id = $(this).attr('id');
+      $('.deleteHydrantTypeModal #htype_id_delete').val(htype_id);
     });
     
     ////// GET FIRE HYDRANT TYPE TABLE END OF CODE //////

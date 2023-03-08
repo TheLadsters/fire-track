@@ -13,7 +13,7 @@
                                     <h2>Fire Hydrant Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="btn btn-success" href="{{route('admin.export_FH_pdf')}}"><i class="material-icons">&#xE15C;</i> <span>Export</span></a>						
+                                    {{-- <a class="btn btn-success" href="{{route('admin.export_FH_pdf')}}"><i class="material-icons">&#xE15C;</i> <span>Export</span></a>						 --}}
                                 </div>
                             </div>
                         </div>
