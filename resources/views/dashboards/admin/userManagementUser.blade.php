@@ -32,7 +32,6 @@
 			<table class="table table-striped table-hover user_table" id="user_table" >
 				<thead>
 					<tr>
-						<th style="font-weight: bold;">Username</th>
 						<th style="font-weight: bold;">Name</th>
 						<th style="font-weight: bold;">Email</th>
 						<th style="font-weight: bold;">Mobile No.</th>

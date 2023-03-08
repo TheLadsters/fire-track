@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
+use Validator;
 use PDF;
 
 class AdminController extends Controller
@@ -33,7 +34,7 @@ class AdminController extends Controller
 
     function userManagementUser(Request $request) {
         $users = User::all();
-        return view('dashboards.admin.userManagementUser', compact('users'));
+        return view('dashboards.admin.userManagementUser', compact('users'));  
      }
 
     function bulletinManagement() {
@@ -49,10 +50,11 @@ class AdminController extends Controller
         
     }
     public function getUserTable(){
-        $user = DB::table('users')->get();
+        $user = DB::table('users')
+        ->select('users.*', DB::raw("CONCAT(fname, ' ', lname) as full_name"))
+        ->get();
         // Fetch all records
         $response['data'] = $user;
-        
         return response()->json($response);
     }
 
@@ -95,21 +97,25 @@ class AdminController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'username' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
             'email' => 'required|email',
-            'address' => 'required', 
             'contact_no' => 'required',
-            'status' => 'required',
+            'address' => 'required', 
+            'gender' => 'required',
+            'status' => 'required'
           ]);
 
         if($validator->fails()){
             Alert::error('Not successful');
         }else{
             $user_id = $request->input('user_id');
-            $username = $request->input('username');
+            $fname = $request->input('fname');
+            $lname = $request->input('lname');
             $email = $request->input('email');
-            $address = $request->input('address');
             $contact_no = $request->input('contact_no');
+            $address = $request->input('address');
+            $gender = $request->input('gender');
             $status = $request->input('status');
 
             $user = User::find($user_id);
@@ -117,11 +123,13 @@ class AdminController extends Controller
     
                 $user = User::where('user_id', $user_id)->update([
                     'user_id' => $user_id,
-                    'username' => $username,
+                    'fname' => $fname,
+                    'lname' => $lname,
                     'email' => $email,
-                    'address' => $address,
                     'contact_no' => $contact_no,
-                    'status' => $status,
+                    'address' => $address,
+                    'gender' => $gender,
+                    'status' => $status
                 ]);
             
     

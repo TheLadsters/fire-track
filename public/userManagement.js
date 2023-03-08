@@ -7,7 +7,6 @@ $(document).ready(function() {
     });
     $('#user_table').DataTable({
       // 'ajax': 'admin/userManagementUser/getUserTable',
-    
       dom: 'Bfrtip',
         buttons: [
             'copyHtml5',
@@ -19,8 +18,7 @@ $(document).ready(function() {
         "url": "admin/userManagementUser/getUserTable",
       },
       'columns': [
-        {'data': 'username'},
-        {'data': 'fname', "bSortable": false},
+        {'data': 'full_name', "bSortable": false},
         {'data': 'email', "bSortable": false},
         {'data': 'contact_no'},
         {'data': 'address'},
