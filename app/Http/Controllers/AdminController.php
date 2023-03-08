@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-// use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
-use Validator;
-use PDF;
+// use Validator;
+
 
 class AdminController extends Controller
 {
-    //
+    
     function fireAlertManagement() {
         return view('dashboards.admin.fireAlertManagement');
     }
@@ -103,8 +103,9 @@ class AdminController extends Controller
             'contact_no' => 'required',
             'address' => 'required', 
             'gender' => 'required',
-            'status' => 'required'
+            'status' => 'required',
           ]);
+
 
         if($validator->fails()){
             Alert::error('Not successful');
@@ -119,8 +120,7 @@ class AdminController extends Controller
             $status = $request->input('status');
 
             $user = User::find($user_id);
-
-    
+            
                 $user = User::where('user_id', $user_id)->update([
                     'user_id' => $user_id,
                     'fname' => $fname,
@@ -156,21 +156,21 @@ class AdminController extends Controller
         return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully!');   
     }
 
-    public function export_users_pdf(){
+    // public function export_users_pdf(){
 
-        $users = User::all();
-        // $pdf = Pdf::loadView('pdf.users',   [
-        //     'users'=>$users
-        // ]);
-        // return $pdf->download('users.pdf');
-        view()->share('users',$users);
-        $pdf = PDF::loadView('pdf.Users', [
-            'users'=>$users
-        ]);
-        // download PDF file with download method
-        return $pdf->download('users.pdf');
+    //     $users = User::all();
+    //     // $pdf = Pdf::loadView('pdf.users',   [
+    //     //     'users'=>$users
+    //     // ]);
+    //     // return $pdf->download('users.pdf');
+    //     view()->share('users',$users);
+    //     $pdf = PDF::loadView('pdf.Users', [
+    //         'users'=>$users
+    //     ]);
+    //     // download PDF file with download method
+    //     return $pdf->download('users.pdf');
         
-    }
+    // }
 
 
 }

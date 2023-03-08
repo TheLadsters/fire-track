@@ -79,7 +79,8 @@ class FireHydrantsTypeController extends Controller
         
           $hydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
 
-          $hydrantImg = ($request->hasFile('img_url')) ? $request->file('img_url')->store('hydrant-types', 'public') : $hydrantType->img_url;
+          $hydrantImg = ($request->hasFile('img_url')) ? 
+          $request->file('img_url')->store('hydrant-types', 'public') : $hydrantType->img_url;
   
           if($hydrantImg){
               $hydrantType = fireHydrantTypeAdmin::where('hydrant_type_id', $hydrant_type_id)->update([

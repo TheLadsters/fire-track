@@ -1,6 +1,6 @@
 <!-- Delete Modal HTML -->
 <div id="deleteFireHydrantTypeModal" class="modal fade deleteFireHydrantTypeModal" >
-	<div class="modal-dialog ">
+	<div class="modal-dialog " role="document">
 		<div class="modal-content">
 				<div class="modal-header">						
 					<h4 class="modal-title">Delete Fire Hydrant</h4>
@@ -13,7 +13,7 @@
 				<div class="modal-footer">
 				<form method="post" action="{{ route('admin.fireHTypeDelete')}}" >
 				@csrf
-					<input type="hidden" name="hydrant_type_id" id="hydrant_type_id">
+					<input type="hidden" name="hydrant_type_id" id="hydrant_type_id_delete">
 					<input type="submit" class="btn btn-danger" id="deleteHydrantTypeBtn" value="Delete">   
 				</form> 
 				</div>

@@ -72,7 +72,7 @@ $(document).ready(function() {
           $("#contact_no-edit").val(contact_no);
           $("#status-edit").val(status);
           $("#edit-gender").val(gender);
-          $("#user_id").val(user_id);
+          $("#user_id_edit").val(user_id);
 
   
         },

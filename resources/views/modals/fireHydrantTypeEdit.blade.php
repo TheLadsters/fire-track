@@ -1,6 +1,6 @@
 <!-- Edit Modal HTML -->
 <div id="editFireHydrantTypeModal" class="modal fade editFireHydrantTypeModal">
-	<div class="modal-dialog">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 				<div class="modal-header">						
 					<h4 class="modal-title">Edit Fire Hydrant Type</h4>
@@ -9,7 +9,7 @@
 				<form method="POST" action="{{route('admin.fireHTypeEdit')}}"  enctype="multipart/form-data">
 						@csrf
 					<div class="modal-body">
-							<input type="hidden" name="hydrant_type_id" id="hydrant_type_id" >					
+							<input type="hidden" name="hydrant_type_id" id="hydrant_type_id_edit" >					
 							<div class="form-group">
 								<label>Type</label>
 								<input type="text" name="name" id="name-edit" class="form-control">

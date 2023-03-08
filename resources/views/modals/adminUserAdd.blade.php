@@ -55,6 +55,7 @@
 						<div class="form-group col-md-6">
 							<label>Email<span style="color:red;">*</span></label>
 							<input type="email" class="form-control" id="email" required name="email" value="{{ old('email') }}">
+							<span class="text-danger">@error('email'){{ $message }}@enderror</span>
 						</div>
 						<div class="form-group col-md-6">
 							<label>Mobile Number<span style="color:red;">*</span></label>
