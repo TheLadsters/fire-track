@@ -132,7 +132,7 @@ class UserController extends Controller
                 return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
             }else{
                 return redirect('user/editprofile');
-                Alert::success('Profile picture changed successfully');
+                Alert::success('Profile picture changed successfully.');
             }
         }
            

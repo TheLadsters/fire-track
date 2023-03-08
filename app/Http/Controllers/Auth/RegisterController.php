@@ -109,7 +109,7 @@ class RegisterController extends Controller
          $user->status = 'active';
 
          if( $user->save() ){
-            return redirect()->back()->with('success','You are now successfully registerd');
+            return redirect()->back()->with('success','You are now successfully registered');
          }else{
              return redirect()->back()->with('error','Failed to register');
          }

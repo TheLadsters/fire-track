@@ -30,7 +30,7 @@ $(document).ready(function() {
           "mRender": function(user, type, full) {
             return `
         
-                  <a class="edit editColUser" data-bs-toggle="modal" id="${user['user_id']}" data-bs-target=".userManagementEditModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
+                  <a class="edit editColUser" data-bs-toggle="modal" id="${user['user_id']}" data-bs-target=".userManagementEditModal"><i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
 			
 							    <a class="delete deleteColUser" data-bs-toggle="modal" id="${user['user_id']}" data-bs-target=".userManagementDeleteModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
                   `;

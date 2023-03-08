@@ -45,14 +45,14 @@
               <label for="longitude">
                 Longitude<span style="color:red;">*</span>
               </label>
-              <input type="text" class="form-control" name="longitude" id="edit-longitude" placeholder="Longitude">
+              <input type="text" readonly class="form-control" name="longitude" id="edit-longitude" placeholder="Longitude">
             </div>
 
             <div class="col-md-6">
               <label for="latitude">
                 Latitude<span style="color:red;">*</span>
               </label>
-              <input type="text" class="form-control" name="latitude" 
+              <input type="text" readonly class="form-control" name="latitude" 
                 id="edit-latitude" placeholder="Latitude">
             </div>
 

@@ -34,7 +34,7 @@ $(document).ready(function() {
           "bSortable": false,
           "mRender": function(hydrantType, type, full) {
             return `
-                    <a class="edit editColHType" data-bs-toggle="modal" id="${hydrantType['hydrant_type_id']}" data-bs-target=".editFireHydrantTypeModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
+                    <a class="edit editColHType" data-bs-toggle="modal" id="${hydrantType['hydrant_type_id']}" data-bs-target=".editFireHydrantTypeModal"><i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
                     
                     <a class="delete deleteColHType" data-bs-toggle="modal" id="${hydrantType['hydrant_type_id']}" data-bs-target=".deleteFireHydrantTypeModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
 
