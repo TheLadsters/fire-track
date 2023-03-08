@@ -14,12 +14,11 @@ $(document).ready(function() {
     }
     
     $('#hydrantType_table').DataTable({
-    //   'ajax': 'admin/fire-hydrant-type-management/getHydrantTypeTable',
       "ajax": {
                 "url": "admin/fire-hydrant-type-management/getHydrantTypeTable",
               },
       'columns': [
-        {'data': 'name'},
+        {'data': 'name', "bSortable": false},
         {
           "mData": null,
           "bSortable": false,
@@ -27,7 +26,7 @@ $(document).ready(function() {
             return `
                     <img src="${checkImg(hydrantType)}" width="120" height="100" />
                   `;
-          }
+          },
         },
         {
           "mData": null,
@@ -40,15 +39,12 @@ $(document).ready(function() {
 
                   `;
           }
-        }
+        },
+        {'data' : 'created_at', visible: false, searchable: false},
       ],
-      "order": [2, 'desc']
+      "order": [3, 'desc']
     });
     
-    // $("#firehydrant-manager").click(function(){
-    //   $(".fireHydrantManagerModal").modal({backdrop: 'static', keyboard: false});
-    //   $(".fireHydrantManagerModal").modal('show');
-    // });
     
     // on clicking edit hydrant in fire hydrant type management
     $('#hydrantType_table tbody').on('click', '.editColHType', function(){
