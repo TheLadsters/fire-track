@@ -1,6 +1,6 @@
 <!-- Edit Modal HTML -->
 <div id="userManagementEditModal" class="modal fade userManagementEditModal">
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 
 			<div id="modal-head" style="background-image:url('images/rectangles_background.png');">
@@ -27,16 +27,16 @@
 			<form method="POST" action="{{route('admin.userManagementEdit')}}">
 				@csrf
 	
-				<input type="hidden" name="user_id" id="user_id">
+				<input type="hidden" name="user_id" id="user_id_edit">
 				<div class="modal-body">
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label>First Name<span style="color:red;">*</span></label>
-							<input type="text" class="form-control" id="edit-fname" name="fname" value="{{ old('fname') }}">
+							<input type="text" class="form-control" id="edit-fname" name="fname">
 						</div>
 						<div class="form-group col-md-6">
 							<label>Last Name<span style="color:red;">*</span></label>
-							<input type="text" class="form-control" id="edit-lname" name="lname" value="{{ old('lname') }}">
+							<input type="text" class="form-control" id="edit-lname" name="lname">
 						</div>
 					</div>
 
@@ -58,7 +58,7 @@
 						</div>
 						<div class="form-group col-md-6">
 							<label>Gender<span style="color:red;">*</span></label>
-							<select class="form-select" id="edit-gender" name="gender" value="{{ old('gender') }}">
+							<select class="form-select" id="edit-gender" name="gender" >
 								<option value="male">Male</option>
 								<option value="female">Female</option>
 							</select>

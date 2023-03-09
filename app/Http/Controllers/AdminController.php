@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
-use PDF;
+// use Validator;
+
 
 class AdminController extends Controller
 {
-    //
+    
     function fireAlertManagement() {
         return view('dashboards.admin.fireAlertManagement');
     }
@@ -33,7 +34,7 @@ class AdminController extends Controller
 
     function userManagementUser(Request $request) {
         $users = User::all();
-        return view('dashboards.admin.userManagementUser', compact('users'));
+        return view('dashboards.admin.userManagementUser', compact('users'));  
      }
 
     function bulletinManagement() {
@@ -49,10 +50,11 @@ class AdminController extends Controller
         
     }
     public function getUserTable(){
-        $user = DB::table('users')->get();
+        $user = DB::table('users')
+        ->select('users.*', DB::raw("CONCAT(fname, ' ', lname) as full_name"))
+        ->get();
         // Fetch all records
         $response['data'] = $user;
-        
         return response()->json($response);
     }
 
@@ -95,37 +97,43 @@ class AdminController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'username' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
             'email' => 'required|email',
-            'address' => 'required', 
             'contact_no' => 'required',
+            'address' => 'required', 
+            'gender' => 'required',
             'status' => 'required',
           ]);
+
 
         if($validator->fails()){
             Alert::error('Not successful');
         }else{
             $user_id = $request->input('user_id');
-            $username = $request->input('username');
+            $fname = $request->input('fname');
+            $lname = $request->input('lname');
             $email = $request->input('email');
-            $address = $request->input('address');
             $contact_no = $request->input('contact_no');
+            $address = $request->input('address');
+            $gender = $request->input('gender');
             $status = $request->input('status');
 
             $user = User::find($user_id);
-
-    
+            
                 $user = User::where('user_id', $user_id)->update([
                     'user_id' => $user_id,
-                    'username' => $username,
+                    'fname' => $fname,
+                    'lname' => $lname,
                     'email' => $email,
-                    'address' => $address,
                     'contact_no' => $contact_no,
-                    'status' => $status,
+                    'address' => $address,
+                    'gender' => $gender,
+                    'status' => $status
                 ]);
             
     
-            Alert::success('Updated Successfully!');
+            Alert::success('Updated User Successfully.');
         }
   
 
@@ -139,30 +147,30 @@ class AdminController extends Controller
         $user = User::find($user_id);
         if($user){
         $user->delete();
-        Alert::success('User deleted Successfully!');
+        Alert::success('User deleted Successfully.');
         }else
         {
             Alert::error('Deletion was not successful.');
         }
 
-        return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully!');   
+        return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully.');   
     }
 
-    public function export_users_pdf(){
+    // public function export_users_pdf(){
 
-        $users = User::all();
-        // $pdf = Pdf::loadView('pdf.users',   [
-        //     'users'=>$users
-        // ]);
-        // return $pdf->download('users.pdf');
-        view()->share('users',$users);
-        $pdf = PDF::loadView('pdf.Users', [
-            'users'=>$users
-        ]);
-        // download PDF file with download method
-        return $pdf->download('users.pdf');
+    //     $users = User::all();
+    //     // $pdf = Pdf::loadView('pdf.users',   [
+    //     //     'users'=>$users
+    //     // ]);
+    //     // return $pdf->download('users.pdf');
+    //     view()->share('users',$users);
+    //     $pdf = PDF::loadView('pdf.Users', [
+    //         'users'=>$users
+    //     ]);
+    //     // download PDF file with download method
+    //     return $pdf->download('users.pdf');
         
-    }
+    // }
 
 
 }

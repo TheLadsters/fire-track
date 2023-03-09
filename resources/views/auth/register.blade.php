@@ -117,7 +117,7 @@
                                                     <br>
 
                                                     <div class="mb-2"> 
-								                        <button id="button" type="submit" class="btn btn-dark w-100">Login</button> 
+								                        <button id="button" type="submit" class="btn btn-dark w-100">Register</button> 
 							                        </div>
 
 													<div class="mt-4 text-center">

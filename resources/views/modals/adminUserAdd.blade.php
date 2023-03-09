@@ -19,7 +19,7 @@
 				
 				<div class="row" style="margin-left: 9%;">
 					<div class="col-12">
-						Add a new user to be an admin or firefighter to use the FireTrack App.
+						Add a new user to be a firefighter to use the FireTrack App.
 					</div>
 				</div>
 			</div>
@@ -55,6 +55,7 @@
 						<div class="form-group col-md-6">
 							<label>Email<span style="color:red;">*</span></label>
 							<input type="email" class="form-control" id="email" required name="email" value="{{ old('email') }}">
+							<span class="text-danger">@error('email'){{ $message }}@enderror</span>
 						</div>
 						<div class="form-group col-md-6">
 							<label>Mobile Number<span style="color:red;">*</span></label>

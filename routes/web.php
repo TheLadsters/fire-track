@@ -83,7 +83,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
   
     // ADD FIRE HYDRANT TYPE ROUTES (ADMIN)
     Route::get('fire-hydrant-type-management', [FireHydrantsTypeController::class, 'index'])->name('admin.fireHTypeManagement');
+    Route::get('fire-hydrant-type-management/getHydrantTypeTable', [FireHydrantsTypeController::class, 'getHydrantTypeTable']);
+    Route::post('fire-hydrant-type-management/getHydrantTypeID/{hydrant_type_id}', [FireHydrantsTypeController::class, 'getHydrantTypeID']);
     Route::post('fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store'])->name('admin.fireHTypeAdd');
+    Route::post('fire-hydrant-type-management/editHydrantType', [FireHydrantsTypeController::class, 'updateFireHydrantType'])->name('admin.fireHTypeEdit');
+    Route::post('fire-hydrant-type-management/deleteHydrantType', [FireHydrantsTypeController::class, 'deleteFireHydrantType'])->name('admin.fireHTypeDelete');
+    
 
     // USER MANAGEMENT 
     Route::post('userManagementUser/addAdminUser', [AdminController::class, 'store']);
@@ -92,9 +97,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::post('userManagementUser/Update', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
     Route::post('userManagementUser/Delete', [AdminController::class, 'deleteUserManagement'])->name('admin.userManagementDelete');
 
-    // REPORTS
-    Route::get('userManagementUser/export_users_pdf', [AdminController::class, 'export_users_pdf'])->name('admin.export_users_pdf');
-    Route::get('fire-hydrant-management/export_FH_pdf', [FireHydrantsController::class, 'export_FH_pdf'])->name('admin.export_FH_pdf');
+    // // REPORTS
+    // Route::get('userManagementUser/export_users_pdf', [AdminController::class, 'export_users_pdf'])->name('admin.export_users_pdf');
+    // Route::get('fire-hydrant-management/export_FH_pdf', [FireHydrantsController::class, 'export_FH_pdf'])->name('admin.export_FH_pdf');
 });
 
 // Route::get('/',function(){
