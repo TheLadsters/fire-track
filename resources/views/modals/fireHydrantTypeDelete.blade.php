@@ -36,12 +36,13 @@
 						</div>
 					</div>
 
-				<form method="post" action="{{ route('admin.fireHTypeDelete')}}" >
-					@csrf
-					<input type="hidden" name="htype_id" id="htype_id_delete">
 					<div class="row">
 
 						<div class="col-md-6">
+						<form method="POST" action="{{ route('admin.fireHTypeDelete')}}">
+							@csrf
+							@METHOD('DELETE')	
+							<input type="hidden" name="htype_id" id="htype_id_delete" value="1">
 							<input type="button" class="btn-cancel mb-2" data-bs-dismiss="modal" value="Cancel">
 						</div>
 						<div class="col-md-6">

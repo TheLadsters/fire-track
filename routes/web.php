@@ -87,7 +87,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::post('fire-hydrant-type-management/getHydrantTypeID/{hydrant_type_id}', [FireHydrantsTypeController::class, 'getHydrantTypeID']);
     Route::post('fire-hydrant-type-management/addHydrantType', [FireHydrantsTypeController::class, 'store'])->name('admin.fireHTypeAdd');
     Route::post('fire-hydrant-type-management/editHydrantType', [FireHydrantsTypeController::class, 'updateFireHydrantType'])->name('admin.fireHTypeEdit');
-    Route::post('fire-hydrant-type-management/deleteHydrantType', [FireHydrantsTypeController::class, 'deleteFireHydrantType'])->name('admin.fireHTypeDelete');
+    Route::delete('fire-hydrant-type-management/deleteHydrantType', [FireHydrantsTypeController::class, 'deleteFireHydrantType'])->name('admin.fireHTypeDelete');
     
 
     // USER MANAGEMENT 
