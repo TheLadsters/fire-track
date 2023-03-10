@@ -43,8 +43,6 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 </div>
 
 
-@include("modals.fireHydrantTypeDelete")
-
 
 @include("modals.fireHydrantTypeEdit")
 
@@ -52,5 +50,6 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 @include("modals.fireHydrantTypeAdd")
 
 
+@include("modals.fireHydrantTypeDelete")
 
 @endsection

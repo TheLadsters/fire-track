@@ -13,7 +13,12 @@
                                     <h2>Fire Hydrant Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
+<<<<<<< HEAD
                                     
+=======
+                                    {{-- <a class="btn btn-success" href="{{route('admin.export_FH_pdf')}}"><i class="material-icons">&#xE15C;</i> <span>Export</span></a>						 --}}
+                                </div>
+>>>>>>> a61fc5442e35e9b04ac6d891ff0fa8526a93c521
                             </div>
                         </div>
                         <table id="hydrant_table" class="table table-striped table-hover hydrant-table">

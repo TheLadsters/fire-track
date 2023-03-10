@@ -14,12 +14,11 @@ $(document).ready(function() {
     }
     
     $('#hydrantType_table').DataTable({
-    //   'ajax': 'admin/fire-hydrant-type-management/getHydrantTypeTable',
       "ajax": {
                 "url": "admin/fire-hydrant-type-management/getHydrantTypeTable",
               },
       'columns': [
-        {'data': 'name'},
+        {'data': 'name', "bSortable": false},
         {
           "mData": null,
           "bSortable": false,
@@ -27,33 +26,30 @@ $(document).ready(function() {
             return `
                     <img src="${checkImg(hydrantType)}" width="120" height="100" />
                   `;
-          }
+          },
         },
         {
           "mData": null,
           "bSortable": false,
           "mRender": function(hydrantType, type, full) {
             return `
-                    <a class="edit editColHType" data-bs-toggle="modal" id="${hydrantType['hydrant_type_id']}" data-bs-target=".editFireHydrantTypeModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
+                    <a class="edit editColHType" data-bs-toggle="modal" id="${hydrantType['hydrant_type_id']}" data-bs-target=".editFireHydrantTypeModal"><i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
                     
                     <a class="delete deleteColHType" data-bs-toggle="modal" id="${hydrantType['hydrant_type_id']}" data-bs-target=".deleteFireHydrantTypeModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
 
                   `;
           }
-        }
+        },
+        {'data' : 'created_at', visible: false, searchable: false},
       ],
-      "order": [2, 'desc']
+      "order": [3, 'desc']
     });
     
-    // $("#firehydrant-manager").click(function(){
-    //   $(".fireHydrantManagerModal").modal({backdrop: 'static', keyboard: false});
-    //   $(".fireHydrantManagerModal").modal('show');
-    // });
     
     // on clicking edit hydrant in fire hydrant type management
     $('#hydrantType_table tbody').on('click', '.editColHType', function(){
         let hydrant_type_id = $(this).attr('id');
-        console.log(hydrant_type_id)
+ 
         $.ajax({
           type: 'post',
           url: 'admin/fire-hydrant-type-management/getHydrantTypeID/' + hydrant_type_id,
@@ -77,8 +73,8 @@ $(document).ready(function() {
     
     // delete hydrant in fire hydrant type manager
     $('#hydrantType_table tbody').on('click', '.deleteColHType', function(){
-      let hydrant_type_id = $(this).attr('id');
-      $('.deleteHydrantTypeModal #hydrant_type_id_delete').val(hydrant_type_id);
+      let htype_id = $(this).attr('id');
+      $("#deleteFireHydrantTypeModal input[name='htype_id']").val(htype_id);
     });
     
     ////// GET FIRE HYDRANT TYPE TABLE END OF CODE //////

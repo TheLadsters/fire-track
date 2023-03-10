@@ -19,7 +19,7 @@
 				
 				<div class="row" style="margin-left: 9%;">
 					<div class="col-12">
-						Add a new user to be an admin or firefighter to use the FireTrack App.
+						Add a new user to be a firefighter to use the FireTrack App.
 					</div>
 				</div>
 			</div>

@@ -133,7 +133,7 @@ class AdminController extends Controller
                 ]);
             
     
-            Alert::success('Updated Successfully!');
+            Alert::success('Updated User Successfully.');
         }
   
 
@@ -147,13 +147,13 @@ class AdminController extends Controller
         $user = User::find($user_id);
         if($user){
         $user->delete();
-        Alert::success('User deleted Successfully!');
+        Alert::success('User deleted Successfully.');
         }else
         {
             Alert::error('Deletion was not successful.');
         }
 
-        return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully!');   
+        return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully.');   
     }
 
     // public function export_users_pdf(){

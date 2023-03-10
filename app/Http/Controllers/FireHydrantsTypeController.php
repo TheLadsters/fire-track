@@ -40,7 +40,7 @@ class FireHydrantsTypeController extends Controller
             }
 
             fireHydrantTypeAdmin::create($formFields);
-            Alert::success('Added Fire Hydrant Type Successfully!');
+            Alert::success('Added Fire Hydrant Type Successfully.');
 
           }
 
@@ -67,7 +67,7 @@ class FireHydrantsTypeController extends Controller
       $validator = Validator::make($request->all(), [
           'hydrant_type_id' => 'required',
           'name' => 'required',
-          'img_url' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
          
         ]);
 
@@ -95,7 +95,7 @@ class FireHydrantsTypeController extends Controller
               ]);
           }
   
-          Alert::success('Updated Fire Hydrant Type Successfully!');
+          Alert::success('Updated Fire Hydrant Type Successfully.');
       }
 
 
@@ -103,17 +103,15 @@ class FireHydrantsTypeController extends Controller
   }
 
   public function deleteFireHydrantType(Request $request){
-      $hydrant_type_id = $request->input('hydrant_type_id');
-
+      $hydrant_type_id = $request->input('htype_id');
       $HydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
       if($HydrantType){
       $HydrantType->delete();
-      Alert::success('Fire Hydrant Type deleted Successfully!');
-      }else
-      {
+      Alert::success('Fire Hydrant Type deleted Successfully.');
+      }else{
           Alert::error('Fire Hydrant Type deletion was not successful.');
       }
 
-      return redirect('admin/fire-hydrant-type-management')->with('message', 'Fire Hydrant Type Deleted Successfully!');   
+      return redirect('admin/fire-hydrant-type-management')->with('message', 'Fire Hydrant Type Deleted Successfully.');   
   }
 }

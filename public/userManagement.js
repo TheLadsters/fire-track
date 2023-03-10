@@ -5,14 +5,38 @@ $(document).ready(function() {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
+
+    var buttonCommon = {
+      exportOptions: {
+          columns: [ 0, 1, 2, 3, 4, 5 ]
+          // format: {
+          //     body: function ( data, row, column, node ) {
+          //         // Strip $ from salary column to make it numeric
+          //         return (column === 6) ? data.replace(data, "") : data;
+          //     }
+          // }
+      }
+  };
+  
     $('#user_table').DataTable({
-      // 'ajax': 'admin/userManagementUser/getUserTable',
       dom: 'Bfrtip',
         buttons: [
             'copyHtml5',
-            'excelHtml5',
+            $.extend( true, {}, buttonCommon, {
+              extend: 'excelHtml5',
+              title: 'User Management - FireTrack App',
+              messageTop: 'List of all the users that can access the FireTrack App.',
+              customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['Users of FireTrack App.xml'];
+                $('row:first c', sheet).attr( 's', '42' );
+                
+                $('row c[r^="C"]', sheet).attr( 's', '2' );
+            }
+          } ),
+            // 'excelHtml5',
             'csvHtml5',
-            'pdfHtml5'
+            'pdfHtml5',
+            'colvis'
         ],
       "ajax": {
         "url": "admin/userManagementUser/getUserTable",
@@ -30,7 +54,7 @@ $(document).ready(function() {
           "mRender": function(user, type, full) {
             return `
         
-                  <a class="edit editColUser" data-bs-toggle="modal" id="${user['user_id']}" data-bs-target=".userManagementEditModal"><i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
+                  <a class="edit editColUser" data-bs-toggle="modal" id="${user['user_id']}" data-bs-target=".userManagementEditModal"><i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i></a>
 			
 							    <a class="delete deleteColUser" data-bs-toggle="modal" id="${user['user_id']}" data-bs-target=".userManagementDeleteModal"><i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete" ></i></a>
                   `;
