@@ -45,7 +45,7 @@ $('#hydrant_table').DataTable({
       "mRender": function(hydrant, type, full) {
         return `
                 <a class="edit editColHydrant" data-bs-toggle="modal" id="${hydrant['hydrant_id']}" data-bs-target=".editFireHydrantModal">
-                  <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
+                <i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i>
                   </i>
                 </a>
 
