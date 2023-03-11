@@ -24,7 +24,7 @@
                                 </tr>
                                 <tr>
                                     <td> 
-                                        <input type="button" class="my-2" id="clearDates" value="Clear Dates">
+                                        <input type="button" class="my-1 mb-3" id="clearDates" value="Clear Dates">
                                     </td>
                                     <td>
                                     </td>
@@ -35,7 +35,7 @@
                                     <th id="lat_header">Latitude</th>
                                     <th>Hydrant Type</th>
                                     <th>Status</th>
-                                    <th style="display: hidden;">Created At</th>
+                                    <th>Created At</th>
                                     <th>Image</th>
                                     <th id="action_header">Action</th>
                                 </tr>

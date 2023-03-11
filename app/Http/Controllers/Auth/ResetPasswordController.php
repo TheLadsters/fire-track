@@ -30,7 +30,7 @@ class ResetPasswordController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo(){
         if( Auth()->user()->role == 'admin' ){
-            return route('admin.layoutAdmin');
+            return route('admin.fireAlertManagement');
         }
         elseif( Auth()->user()->role == 'firefighter' ){
             return route('login');

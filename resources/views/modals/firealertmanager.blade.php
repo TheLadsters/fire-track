@@ -19,12 +19,23 @@
                         <table id="alertTable" class="table table-striped table-hover alert-table">
                             <thead>
                                 <tr>
+                                    <td><b>Minimum date:</b> <input type="text" id="minAlert" name="minAlert"></td>
+                                    <td><b>Maximum date:</b> <input type="text" id="maxAlert" name="maxAlert"></td>
+                                </tr>
+                                <tr>
+                                    <td> 
+                                        <input type="button" class="my-1 mb-3" id="clearAlertDates" value="Clear Dates">
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th>Fire Location</th>
                                     <th>Longitude</th>
                                     <th>Latitude</th>
                                     <th>Status</th>
                                     <th>Created At</th>
-                                    <th>Action</th>
+                                    <th id="action_col">Action</th>
                                 </tr>
                             </thead>
 

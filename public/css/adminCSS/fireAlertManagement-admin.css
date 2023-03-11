@@ -475,3 +475,11 @@ color: white;
 	height: 40px;
 	border-radius: 5px;
 }
+
+#alertTable #action_col{
+  width: 80px !important;
+}
+
+#hydrant_table td {
+  border: none;
+}

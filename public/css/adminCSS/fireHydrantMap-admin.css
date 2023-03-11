@@ -209,3 +209,7 @@ cursor: pointer;
 	height: 40px;
 	border-radius: 5px;
 }
+
+#alertTable td {
+    border: none;
+  }
