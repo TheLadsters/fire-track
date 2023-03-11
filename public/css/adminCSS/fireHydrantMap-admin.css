@@ -101,16 +101,14 @@
 }
 
 
-#hydrant_table tbody .odd td:nth-child(7), 
-#hydrant_table tbody .even td:nth-child(7){
-width: 75px !important;
+#hydrant_table #action_header{
+    width: 70px !important;
 }
 
-#hydrant_table tbody .odd td:nth-child(1), 
-#hydrant_table tbody .even td:nth-child(1){
-width: 120px !important;
-}
-
+#hydrant_table #long_header, #hydrant_table #lat_header{
+    width: 0px !important;
+    margin: 0;
+} 
 
 .editColHydrant, .deleteColHydrant {
 cursor: pointer;

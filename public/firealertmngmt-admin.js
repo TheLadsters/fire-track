@@ -8,12 +8,46 @@ $.ajaxSetup({
 
   $('#alertTable').DataTable({
     'ajax': 'admin/fire-alert-management/getAlertTable',
+    buttons: [
+      $.extend( true, {}, {
+        extend: 'excelHtml5',
+        title: 'Fire Hydrant Manager - FireTrack App',
+        filename: 'Fire Hydrant Manager - FireTrack App',
+        sheetName:'Fire Hydrants in FireTrack',
+        messageTop: function(){
+          return `List of all the fire hydrants that are inputted in the FireTrack App.
+         
+          `
+        } 
+      ,
+        // messageBottom: `${strDate}`,
+        text: `<i class='bx bxs-file-export'></i> Export as Excel`,
+        exportOptions: {
+          columns: [ 0, 1, 2, 3, 4, 5]
+      }
+    }),
+        $.extend( true, {}, {
+          extend: 'pdfHtml5',
+          title: 'Fire Hydrant Manager - FireTrack App',
+          filename: 'Fire Hydrant Manager - FireTrack App',
+          messageTop: function(){
+            return `List of all the fire hydrants that are inputted in the FireTrack App.
+            
+            `
+          },
+          // messageBottom:`${strDate}`,
+          text: `<i class='bx bxs-file-pdf' ></i> Export as PDF`,
+          exportOptions: {
+            columns: [ 0, 1, 2, 3, 4, 5]
+        }
+      }),
+    ],
     'columns': [
         {'data': 'fire_location', "width": "20%"},
         {'data': 'longitude', "width": "20%"},
         {'data': 'latitude'},
         {'data': 'status'},
-        {'data' : 'created_at', visible: false, searchable: false},
+        {'data' : 'created_at', visible: true, searchable: true},
         {
           "mData": null,
           "bSortable": false,
