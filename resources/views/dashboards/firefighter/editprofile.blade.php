@@ -104,11 +104,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                         <form class="form-horizontal" method="POST" action="{{ route('firefighterUpdateInfo') }}" id="UserInfoForm">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
-                                <div class="mb-3">
-                                    <label class="large mb-1" for="inputAddress">Username:</label>
-                                    <input class="form-control" id="username" type="text" placeholder="Enter your username" value="{{ Auth::user()->username }}" name="username">
-                                    <span class="text-danger error-text username_error"></span>
-                                </div>
+                                
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
                                     <label class="large mb-1" for="fname">First Name:</label>

@@ -84,7 +84,6 @@ class RegisterController extends Controller
         \Log::info(json_encode($request->all()));
 
          $request->validate([
-            'username' => ['required', 'string', 'max:255'],
             'fname' => ['required', 'string', 'max:100'],
             'lname' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -95,7 +94,6 @@ class RegisterController extends Controller
          ]);
 
          $user = new User();
-         $user->username = $request->username;
          $user->fname = $request->fname;
          $user->lname = $request->lname;
          $user->email = $request->email;

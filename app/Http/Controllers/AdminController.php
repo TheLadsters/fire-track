@@ -62,10 +62,9 @@ class AdminController extends Controller
     {
 
          $request->validate([
-            'username' => 'required',
             'fname' => 'required',
             'lname' => 'required',
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
             'contact_no' => 'required',
             'password' => 'required',
             'address' => 'required',
@@ -73,7 +72,6 @@ class AdminController extends Controller
          ]);
 
          $user = new User();
-         $user->username = $request->username;
          $user->fname = $request->fname;
          $user->lname = $request->lname;
          $user->email = $request->email;

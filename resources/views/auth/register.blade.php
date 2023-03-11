@@ -48,12 +48,6 @@
                                                     @endif
                                                     @csrf
                                  
-                                                    <div class="forms-inputs md-12 mb-4"> 
-                                                        <label for="username">Username</label>
-                                                        <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
-                                                        <span class="text-danger">@error('username'){{ $message }}@enderror</span>
-                                                    </div>
-
                                                     <div class="forms-inputs row">
                                                         <div class="form-inputs col-md-6 mb-4">
                                                             <label for="fname">First Name</label>
