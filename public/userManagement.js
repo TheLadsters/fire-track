@@ -9,12 +9,6 @@ $(document).ready(function() {
     var buttonCommon = {
       exportOptions: {
           columns: [ 0, 1, 2, 3, 4, 5 ]
-          // format: {
-          //     body: function ( data, row, column, node ) {
-          //         // Strip $ from salary column to make it numeric
-          //         return (column === 6) ? data.replace(data, "") : data;
-          //     }
-          // }
       }
   };
   

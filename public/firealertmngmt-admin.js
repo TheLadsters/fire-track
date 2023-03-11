@@ -20,8 +20,7 @@ $.ajaxSetup({
           "mRender": function(alert, type, full) {
             return `
                     <a class="edit editColAlert" data-bs-toggle="modal" id="${alert['firealarm_id']}" data-bs-target=".editFireAlertModal">
-                      <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
-                      </i>
+                    <i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i>                      </i>
                     </a>
 
                     <a class="delete deleteColAlert" data-bs-toggle="modal" id="${alert['firealarm_id']}" data-bs-target=".deleteFireAlertModal">
