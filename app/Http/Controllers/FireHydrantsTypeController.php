@@ -104,13 +104,11 @@ class FireHydrantsTypeController extends Controller
 
   public function deleteFireHydrantType(Request $request){
       $hydrant_type_id = $request->input('htype_id');
-
       $HydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
       if($HydrantType){
       $HydrantType->delete();
       Alert::success('Fire Hydrant Type deleted Successfully.');
-      }else
-      {
+      }else{
           Alert::error('Fire Hydrant Type deletion was not successful.');
       }
 

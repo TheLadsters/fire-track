@@ -47,8 +47,9 @@
 							</div>
 							<div class="forms-inputs mb-4"> 
 								<span>Password</span> 
-								<input autocomplete="off" name="password" type="password" required v-model="password" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" v-on:blur="passwordBlured = true">
+								<input autocomplete="off"  id="myInput" name="password" type="password" required v-model="password" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" v-on:blur="passwordBlured = true">
 								<div class="invalid-feedback">Password must be at least 8 characters!</div>
+								<input style="float:right;"type="checkbox" onclick="myFunction()">
 							</div>
 							<div class="d-flex mb-4 align-items-center">
 								<a href="{{route('password.request')}}" class="float-right" style="font-size: 15px;">

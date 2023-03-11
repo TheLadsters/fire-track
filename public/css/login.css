@@ -8,7 +8,7 @@ body{background: #6c63ff;}
 .btn{height: 50px}
 .success-data{display: flex;flex-direction: column}
 .bxs-badge-check{font-size: 90px}
-#button {background-color: #6c63ff;;}
+#button {background-color: #6c63ff;}
 span:after{
   content:"*" ;
   color:red   

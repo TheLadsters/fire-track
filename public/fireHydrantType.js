@@ -49,7 +49,7 @@ $(document).ready(function() {
     // on clicking edit hydrant in fire hydrant type management
     $('#hydrantType_table tbody').on('click', '.editColHType', function(){
         let hydrant_type_id = $(this).attr('id');
-        console.log(hydrant_type_id)
+ 
         $.ajax({
           type: 'post',
           url: 'admin/fire-hydrant-type-management/getHydrantTypeID/' + hydrant_type_id,
@@ -74,7 +74,7 @@ $(document).ready(function() {
     // delete hydrant in fire hydrant type manager
     $('#hydrantType_table tbody').on('click', '.deleteColHType', function(){
       let htype_id = $(this).attr('id');
-      $('.deleteHydrantTypeModal #htype_id_delete').val(htype_id);
+      $("#deleteFireHydrantTypeModal input[name='htype_id']").val(htype_id);
     });
     
     ////// GET FIRE HYDRANT TYPE TABLE END OF CODE //////

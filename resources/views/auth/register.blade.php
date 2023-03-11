@@ -77,7 +77,8 @@
                                                                                             
                                                         <div class="col-md-6 mb-4 forms-inputs">
                                                             <label for="lname">Confirm Password</label>
-                                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                                                            <input type="password" class="form-control" id="password" name="password_confirmation">
+                                                            <!-- <i class="far fa-eye" id="togglePassword" style="float:right; cursor: pointer;"></i> -->
                                                             <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>

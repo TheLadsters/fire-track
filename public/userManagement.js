@@ -1,18 +1,58 @@
 $(document).ready(function() {
+  let d = new Date(Date.now());
+
+let strDate = `Date Accessed: ${(d.getMonth()+1)}/${d.getDate()}/${d.getFullYear()}`;
   
   $.ajaxSetup({
       headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
+
+  
     $('#user_table').DataTable({
-      // 'ajax': 'admin/userManagementUser/getUserTable',
       dom: 'Bfrtip',
         buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
+            $.extend( true, {}, {
+              extend: 'excelHtml5',
+              title: 'User Management - FireTrack App',
+              filename: 'User Management - FireTrack App',
+              messageTop: `List of all the users that can access the FireTrack App.`,
+              messageBottom: strDate,
+              exportOptions: {
+                columns: [ 0, 1, 2, 3, 4, 5 ]
+            },
+            text: `<i class='bx bxs-file-export'></i> Export as Excel`,
+            // format:{
+            //     body: function(data, row, column, node){
+            //         return row === 0 ? row.html("<b></b>") : data;
+            //     }
+            // },
+              // sheetName: 'Users of FireTrack',
+              customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                var stylesheet = xlsx.xl['styles.xml'];
+                var tagName = stylesheet.getElementsByTagName('sz');
+                // for changing text size
+                for (i = 0; i < tagName.length; i++) {
+                  tagName[i].setAttribute("val", "12")
+                }
+
+            }
+          }),
+          
+            $.extend( true, {}, {
+              extend: 'pdfHtml5',
+              title: 'User Management - FireTrack App',
+              filename: 'User Management - FireTrack App',
+              messageTop: 'List of all the users that can access the FireTrack App.',
+              messageBottom: strDate,
+              exportOptions: {
+                columns: [ 0, 1, 2, 3, 4, 5 ]
+            },
+            text: `<i class='bx bxs-file-pdf' ></i> Export as PDF`,
+          }),
+          
         ],
       "ajax": {
         "url": "admin/userManagementUser/getUserTable",
@@ -40,10 +80,6 @@ $(document).ready(function() {
       "order": [5, 'desc']
     });
 
-    // $("#firehydrant-manager").click(function(){
-    //   $(".fireHydrantManagerModal").modal({backdrop: 'static', keyboard: false});
-    //   $(".fireHydrantManagerModal").modal('show');
-    // });
 
 
     $('#user_table tbody').on('click', '.editColUser', function(){

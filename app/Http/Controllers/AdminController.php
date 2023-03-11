@@ -65,7 +65,7 @@ class AdminController extends Controller
             'username' => 'required',
             'fname' => 'required',
             'lname' => 'required',
-            'email' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact_no' => 'required',
             'password' => 'required',
             'address' => 'required',

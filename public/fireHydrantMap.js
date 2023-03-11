@@ -1,5 +1,38 @@
+var minDate, maxDate;
+ 
+// Custom filtering function which will search data in column four between two values
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = minDate.val();
+        var max = maxDate.val();
+        var date = new Date( data[5] );
+ 
+        if (
+            ( min === null && max === null ) ||
+            ( min === null && date <= max ) ||
+            ( min <= date   && max === null ) ||
+            ( min <= date   && date <= max )
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
 
 $(document).ready(function() {
+
+// Create date inputs
+function newDateInputs(){
+  minDate = new DateTime($('#min'), {
+    format: 'YYYY Do MMMM HH:mm:ss'
+});
+maxDate = new DateTime($('#max'), {
+    format: 'YYYY Do MMMM HH:mm:ss'
+});
+
+}
+newDateInputs();
+   
   
 $.ajaxSetup({
     headers: {
@@ -8,20 +41,74 @@ $.ajaxSetup({
   });
 
 
+// Get current date (for excel and pdf access dates)
+let d = new Date(Date.now());
+let strDate = `Date Accessed: ${(d.getMonth()+1)}/${d.getDate()}/${d.getFullYear()}`;
+
+
+let minMaxDateText = "";
+
+$('#min, #max').on('change', function () {
+  // Gets the current daterange if there are and places it in excel and pdf
+let minDateInput = $("#min").val();
+let maxDateInput =  $("#max").val();
+
+if(minDateInput == "" && maxDateInput != ""){
+  minMaxDateText = `Time Period: Before "${maxDateInput}"`;
+}
+else if(minDateInput != "" && maxDateInput ==""){
+  minMaxDateText = `Time Period: After "${minDateInput}"`;
+}
+else if(minDateInput == "" && maxDateInput == ""){
+  minMaxDateText = ``;
+}
+else{
+  minMaxDateText = `Time Period From: "${minDateInput}" to "${maxDateInput}"`;
+}
+});
+
 ////// GET FIRE HYDRANT TABLE START OF CODE //////
 function checkImg(hydrant){
   let imgUrl = (hydrant.img_url) ? assetUrl + '/' + hydrant['img_url'] : "images/no_img_available.png";
 return imgUrl;
 }
 
-$('#hydrant_table').DataTable({
+let htable = $('#hydrant_table').DataTable({
   'ajax': 'admin/admin-hydrant-map/getHydrantTable',
   dom: 'Bfrtip',
         buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
+          $.extend( true, {}, {
+            extend: 'excelHtml5',
+            title: 'Fire Hydrant Manager - FireTrack App',
+            filename: 'Fire Hydrant Manager - FireTrack App',
+            sheetName:'Fire Hydrants in FireTrack',
+            messageTop: function(){
+              return `List of all the fire hydrants that are inputted in the FireTrack App.
+              ${minMaxDateText}
+              `
+            } 
+          ,
+            messageBottom: `${strDate}`,
+            text: `<i class='bx bxs-file-export'></i> Export as Excel`,
+            exportOptions: {
+              columns: [ 0, 1, 2, 3, 4, 5]
+          }
+        }),
+            $.extend( true, {}, {
+              extend: 'pdfHtml5',
+              title: 'Fire Hydrant Manager - FireTrack App',
+              filename: 'Fire Hydrant Manager - FireTrack App',
+              messageTop: function(){
+                return `List of all the fire hydrants that are inputted in the FireTrack App.
+                ${minMaxDateText}
+                `
+              },
+              messageBottom:`${strDate}`,
+              text: `<i class='bx bxs-file-pdf' ></i> Export as PDF`,
+              exportOptions: {
+                columns: [ 0, 1, 2, 3, 4, 5]
+            }
+          }),
         ],
   'columns': [
     {'data': 'address'},
@@ -29,7 +116,7 @@ $('#hydrant_table').DataTable({
     {'data': 'latitude', "bSortable": false},
     {'data': 'name'},
     {'data': 'status'},
-    {'data': 'created_at', visible: false, searchable: false},
+    {'data': 'created_at', visible: true, searchable: true},
     {
       "mData": null,
       "bSortable": false,
@@ -45,7 +132,7 @@ $('#hydrant_table').DataTable({
       "mRender": function(hydrant, type, full) {
         return `
                 <a class="edit editColHydrant" data-bs-toggle="modal" id="${hydrant['hydrant_id']}" data-bs-target=".editFireHydrantModal">
-                  <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
+                <i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i>
                   </i>
                 </a>
 
@@ -58,6 +145,20 @@ $('#hydrant_table').DataTable({
     }
   ],
   "order": [5, 'desc']
+});
+
+
+// Refilter the table
+$('#min, #max').on('change', function () {
+  htable.draw();
+});
+
+$("#clearDates").click(function(){
+  $('#min, #max').val("");
+  newDateInputs();
+  htable.clear().draw();
+  htable.ajax.reload();
+  minMaxDateText = "";
 });
 
 $("#firehydrant-manager").click(function(){
