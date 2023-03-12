@@ -1,20 +1,16 @@
-// const searchFrom = document.querySelector('.search');
-// const input = document.querySelector('.input-news');
+
+document.getElementById('announcement_tab').click();
+
 const newsList = document.querySelector('.news-list');
 
-// searchFrom.addEventListener('submit', retrieve);
-
-// function retrieve(e){
-
     newsList.innerHTML = '';
-    // e.preventDefault();
 
     
     const apiKey = '3bd9123369d54e9794bb2063d731de85';
 
-    // let topic = input.value;
 
-    let url = `https://newsapi.org/v2/everything?q=cebu&apiKey=${apiKey}`;
+    let url = `https://newsapi.org/v2/everything?q=Cebu sunog&apiKey=${apiKey}`;
+    let vhTotal = 3;
 
     fetch(url).then((res)=>{
         return res.json()
@@ -23,56 +19,78 @@ const newsList = document.querySelector('.news-list');
         data.articles.forEach(article =>{
 
             let image = article.urlToImage;
-
             if(image == null){
                 image = 'images/santonino.png';
             }   
 
+            // image.style.filter = "blur(5px)";            
 
-            let li = document.createElement('li');
+            // let li = document.createElement('li');
+            let divMain = document.createElement('div');
+            let divBg = document.createElement('div');
+            let divContent = document.createElement('div');
+            let h = document.createElement('h5');
+            let para = document.createElement('p');
+            let read  = document.createElement('a');
 
-            li.style.display = "block";
-            li.style.width = "100%";
-            li.style.height = "200px";
-            li.style.padding = "10px";
-            li.style.border = "1px solid blue";
-            li.style.borderRadius = "15px";
-            li.style.marginTop = "20px";
-            li.style.color = "white";
-            li.style.backgroundImage= `url('${image}')`;
-            li.style.filter = "grayscale(50%)";
-            li.style.backgroundRepeat = "no-repeat";
-            li.style.backgroundSize = "100%";
+            divMain.classList.add('child');
+            divBg.classList.add('background-blur');
+            divContent.classList.add('content');
 
+            divMain.appendChild(divBg);
 
-            let h = document.createElement('h4');
+            divMain.style.backgroundImage= `url('${image}')`;
+            divMain.style.height = "35vh";
+            divMain.style.width = "auto";
+            divMain.style.backgroundRepeat = "no-repeat";
+            divMain.style.backgroundSize = "cover";
+            divMain.style.backgroundPosition = "center center";
+            
+            divContent.style.top = `${vhTotal}vh`;
+            divContent.style.marginLeft = "2%";
+            vhTotal += 38.5;
 
             h.setAttribute('target', '_blank');
             h.textContent = article.title;
             h.style.fontWeight = "bold";
-            h.style.marginLeft ="5%";
-
-            li.appendChild(h);
-            
-            let para = document.createElement('p');
-
             para.textContent = article.description;
-            para.style.marginLeft ="5%";
-            para.style.marginRight ="15%";
-            para.style.marginTop = "3%";
-                         
-            li.appendChild(para);
-
-            let read  = document.createElement('a');
-
-            read.textContent = "Read More...";
+            read.textContent = "Read More Here...";
             read.setAttribute('href', `${article.url}`);
             read.style.color = "white";
-            read.style.marginLeft ="5%";
 
-            li.appendChild(read);
+
+            divContent.appendChild(h);
+            divContent.appendChild(para);
+            divContent.appendChild(read);
+
+            // li.style.display = "block";
+            // li.style.width = "100%";
+            // li.style.height = "200px";
+            // li.style.padding = "10px";
+            // li.style.border = "1px solid blue";
+            // li.style.borderRadius = "15px";
+            // li.style.marginTop = "20px";
+            // li.style.color = "white";
+            // li.style.backgroundRepeat = "no-repeat";
+            // li.style.backgroundSize = "100%";
+
+            // h.style.marginLeft ="5%";
+
+            // li.appendChild(h);
+
+            // para.style.marginLeft ="5%";
+            // para.style.marginRight ="15%";
+            // para.style.marginTop = "3%";
+                         
+            // li.appendChild(para);
+
+
+
+            // read.style.marginLeft ="5%";
+
             
-            newsList.appendChild(li);
+            newsList.appendChild(divMain);
+            newsList.appendChild(divContent);
         })
 
     })
@@ -92,5 +110,3 @@ const newsList = document.querySelector('.news-list');
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
       }
-
-// }

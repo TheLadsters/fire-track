@@ -12,7 +12,7 @@
 
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Announcements')">Announcements</button>
+  <button class="tablinks" id="announcement_tab" onclick="openCity(event, 'Announcements')">Announcements</button>
   <button class="tablinks" onclick="openCity(event, 'News')">News</button>
 </div>
 
@@ -24,9 +24,9 @@
 <div id="News" class="tabcontent">
         <div class="container-news">
 
-            <div class="container">
-                <ul class="news-list">
-                </ul>
+            <div class="news-list">
+                {{-- <ul class="news-list">
+                </ul> --}}
             </div>
 
         </div>
