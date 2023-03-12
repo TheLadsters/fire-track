@@ -423,6 +423,7 @@ function addHydrantFcn(){
  }
  
  $("#add-firehydrant").on('click', addHydrantFcn);
+ $(".addNewHydrant").on('click', addHydrantFcn);
  /////// ADD FIRE HYDRANT FUNCTION CODE END///////
 
 

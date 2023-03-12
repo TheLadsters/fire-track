@@ -29,12 +29,17 @@ class FireAlertsController extends Controller
 
     // show all alerts in table
     public function getMapAlertTable(){
-        $alerts = fireAlertAdmin::all();
+    //     $alerts = fireAlertAdmin::all();
     
-    // Fetch all records
-     $response['data'] = $alerts;
+    // // Fetch all records
+    //  $response['data'] = $alerts;
  
-     return response()->json($response);
+    $allAlerts = DB::table('fire_alarm')
+    ->join('users', 'fire_alarm.user_id', '=', 'users.user_id')
+    ->select('fire_alarm.*', 'users.email')
+    ->get();
+    $response['data'] = $allAlerts;
+    return response()->json($response);
     }
 
     public function getOneMapAlert($id){

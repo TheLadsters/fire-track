@@ -30,18 +30,6 @@
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label>Username<span style="color:red;">*</span></label>
-							<input type="text" class="form-control" id="username" name="username" required value="{{ old('username') }}">
-						</div>	
-						
-						<div class="form-group col-md-6">
-							<label>Password<span style="color:red;">*</span></label>
-							<input type="password" class="form-control" id="password" required name="password" value="{{ old('password') }}">
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-6">
 							<label>First Name<span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="fname" required name="fname" value="{{ old('fname') }}">
 						</div>
@@ -49,25 +37,37 @@
 							<label>Last Name<span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="lname" required name="lname" value="{{ old('lname') }}">
 						</div>
+						
+						
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-6">
+							<label>Password<span style="color:red;">*</span></label>
+							<input type="password" class="form-control" id="password" required name="password" value="{{ old('password') }}">
+						</div>
+						<div class="form-group col-md-6">
 							<label>Email<span style="color:red;">*</span></label>
 							<input type="email" class="form-control" id="email" required name="email" value="{{ old('email') }}">
-							<span class="text-danger">@error('email'){{ $message }}@enderror</span>
+							<div><span class="text-danger">@error('email'){{ $message }}@enderror</span></div>
 						</div>
+					
+					</div>
+
+					<div class="row">
+						
 						<div class="form-group col-md-6">
 							<label>Mobile Number<span style="color:red;">*</span></label>
 							<input type="number" class="form-control" id="contact_no" required name="contact_no" value="{{ old('contact_no') }}">
 						</div>
-					</div>
-
-					<div class="row">
 						<div class="form-group col-md-6">
 							<label>Address<span style="color:red;">*</span></label>
 							<input class="form-control" type="text" id="address" required name="address" value="{{ old('address') }}">
 						</div>
+					</div>
+
+					<div class="row">
+						
 						<div class="form-group col-md-6">
 							<label>Gender<span style="color:red;">*</span></label>
 							<select class="form-select" id="gender" name="gender" required value="{{ old('gender') }}">

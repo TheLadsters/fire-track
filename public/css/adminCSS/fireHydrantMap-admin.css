@@ -98,6 +98,8 @@
 
 #hydrant_table thead tr th, #hydrant_table tbody td{
    text-align: center;
+   padding: 0px 0px 0px 0px;
+   vertical-align: middle;
 }
 
 
@@ -209,3 +211,7 @@ cursor: pointer;
 	height: 40px;
 	border-radius: 5px;
 }
+
+#alertTable td {
+    border: none;
+  }
