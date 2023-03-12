@@ -69,24 +69,26 @@ $(document).ready(function() {
         `;
 
 
+    if(response['alert'][i].status != "Fire Out"){
         marker = new google.maps.Marker({
-              position: new google.maps.LatLng(longitude, latitude),
-              map: map,
-              title: location_title,
-              icon: {
-                      url: fireImg,
-                      scaledSize: new google.maps.Size(38, 31)
-                    },
-              animation: google.maps.Animation.DROP
-      });
-  
-        var infowindow = new google.maps.InfoWindow({
-              content: markerContent,
-              ariaLabel: "Uluru",
-            });
-          
-          addMarkerListener(marker, infowindow);
-  
+          position: new google.maps.LatLng(longitude, latitude),
+          map: map,
+          title: location_title,
+          icon: {
+                  url: fireImg,
+                  scaledSize: new google.maps.Size(38, 31)
+                },
+          animation: google.maps.Animation.DROP
+    });
+
+      var infowindow = new google.maps.InfoWindow({
+            content: markerContent,
+            ariaLabel: "Uluru",
+          });
+        
+        addMarkerListener(marker, infowindow);
+        }
+        
   }
   
     },
