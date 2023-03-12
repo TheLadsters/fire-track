@@ -16,7 +16,7 @@
 
 
 
-/* for screens smaller than 821px or has horizontal orientation*/
+/* for screens smaller than 821px or has horizontal orientation
 @media screen and (min-width: 0px){
 
 #firelertmapmanagement{
@@ -66,7 +66,7 @@
   cursor: pointer;
 }
 
-}
+} */
 
 /* for screens wider than 821px or has vertical orientation*/
 @media screen and (min-width: 821px){
@@ -476,7 +476,8 @@ color: white;
 	border-radius: 5px;
 }
 
-#alertTable #action_col{
+#alertTable #action_col, #alertTable #created_col,
+#alertTable #status_col{
   width: 80px !important;
 }
 

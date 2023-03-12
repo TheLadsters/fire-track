@@ -13,6 +13,7 @@
                                     <h2>Fire Alert Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
+                                    <a class="btn btn-success addNewAlert" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Alert</span></a>
                                 </div>
                             </div>
                         </div>
@@ -33,8 +34,8 @@
                                     <th>Fire Location</th>
                                     <th>Longitude</th>
                                     <th>Latitude</th>
-                                    <th>Status</th>
-                                    <th>Created At</th>
+                                    <th id="status_col">Status</th>
+                                    <th id="created_col">Created At</th>
                                     <th id="action_col">Action</th>
                                 </tr>
                             </thead>

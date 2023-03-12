@@ -388,6 +388,8 @@ function addCancelFcn(){
 }
 
 $("#add-firealert").on('click', addAlertFcn);
+
+$(".addNewAlert").on('click', addAlertFcn);
 /////// ADD FIRE ALERT FUNCTION CODE END///////
  
 

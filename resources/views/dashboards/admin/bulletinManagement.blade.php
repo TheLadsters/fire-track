@@ -25,7 +25,7 @@
         <div class="container-news">
 
             <div class="news-list">
-                {{-- <ul class="news-list">
+               {{-- <ul class="news-list">
                 </ul> --}}
             </div>
 

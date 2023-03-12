@@ -13,6 +13,7 @@
                                     <h2>Fire Hydrant Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
+                                    <a class="btn btn-success addNewHydrant" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Hydrant</span></a>
                                 </div>
                             </div>
                         </div>
