@@ -23,7 +23,7 @@
 						<h2><b>User</b> Management</h2>
 					</div>
 					<div class="col-sm-6">	
-						<a class="btn btn-info" data-bs-toggle="modal" data-bs-target=".adminUserAddModal"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
+						<a class="btn btn-info" href="{{ route('admin.addUserAdmin')}}"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
 					</div>
 				</div>
 			</div>
