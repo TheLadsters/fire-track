@@ -24,7 +24,10 @@
 
 
             <div class="for-title-hydrant">
-                <h4>Fire Hydrant Management</h4>
+                <div>
+                    <img src="images/hydrant_white.png" id="hydrant_logo" width="40%" height="35%"/>
+                </div>
+                <p>Fire Hydrant Management</p>
             </div>
         </div>
 
@@ -33,31 +36,32 @@
 
 
         <div class="bottom-details-hydrant">
+            <p id="menu-title">Menu</p>
             <ul class="map-controls-hydrant">
                 <li> 
                     <a id="add-firehydrant">
-                        <i class='bx bx-alarm-add'></i>
+                        <i class="fas fa-plus-circle"></i>
                         Add Fire Hydrant
                     </a>
                 </li>
 
                 <li>
                     <a id="edit-firehydrant">
-                        <i class='bx bx-edit'></i>
+                        <i class='bx bxs-edit'></i>
                         Edit Fire Hydrant
                     </a>
                 </li>
 
                 <li>
                     <a id="delete-firehydrant">
-                        <i class="far fa-trash-alt"></i>
+                        <i class="fas fa-trash-alt"></i>
                         Delete Fire Hydrant
                     </a>
                 </li>
 
                 <li>
                     <a id="firehydrant-manager">
-                        <i class='bx bxs-hot'></i>             
+                        <i class="fas fa-fire-extinguisher"></i>            
                         Fire Hydrant Manager
                     </a>
                 </li>

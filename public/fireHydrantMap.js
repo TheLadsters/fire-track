@@ -412,7 +412,7 @@ function addHydrantFcn(){
   crudHydrantTemplate
    (
      ["#edit-firehydrant", "#delete-firehydrant"],
-   "#add-firehydrant", `<i class='bx bx-alarm-add'></i> Add Fire Hydrant`
+   "#add-firehydrant", `<i class="fas fa-plus-circle"></i> Add Fire Hydrant`
    );
  
    if(hydrantListenerHandler){
@@ -432,7 +432,7 @@ function addHydrantFcn(){
   crudHydrantTemplate
   (
     ["#delete-firehydrant", "#add-firehydrant"],
-  "#edit-firehydrant", `<i class='bx bx-edit'></i> Edit Fire Hydrant`
+  "#edit-firehydrant", `<i class='bx bxs-edit'></i> Edit Fire Hydrant`
   );
 
   $.ajax({
@@ -627,7 +627,7 @@ function deleteHydrantFcn(){
     crudHydrantTemplate
     (
       ["#add-firehydrant", "#edit-firehydrant"],
-    "#delete-firehydrant", `<i class="far fa-trash-alt"></i> Delete Fire Hydrant`
+    "#delete-firehydrant", `<i class="fas fa-trash-alt"></i> Delete Fire Hydrant`
     );
   
       $.ajax({

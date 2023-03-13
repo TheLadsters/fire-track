@@ -21,7 +21,10 @@
             </div>
 
             <div class="for-title">
-                <h4>Fire Alert Management</h4>
+                <div>
+                    <img src="images/fire_white.png" id="alert_logo" width="40%" height="35%"/>
+                </div>
+                <p>Fire Alert Management</p>
             </div>
         </div>
 
@@ -31,24 +34,25 @@
 
 
         <div class="bottom-details">
+            <p id="menu-title">Menu</p>
             <ul class="map-controls">
                 <li> 
                     <a id="add-firealert">
-                        <i class='bx bx-alarm-add'></i>
+                        <i class="fas fa-plus-circle"></i>
                         Add Fire Alert
                     </a>
                 </li>
 
                 <li>
                     <a id="edit-firealert">
-                        <i class='bx bx-edit'></i>
+                        <i class='bx bxs-edit'></i>
                         Edit Fire Alert
                     </a>
                 </li>
 
                 <li>
                     <a id="delete-firealert">
-                        <i class="far fa-trash-alt"></i>
+                        <i class="fas fa-trash-alt"></i>
                         Delete Fire Alert
                     </a>
                 </li>
