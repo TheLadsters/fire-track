@@ -79,6 +79,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     // Route::get('userManagementAdmin',[AdminController::class,'userManagementAdmin'])->name('admin.userManagementAdmin');
     Route::get('userManagementUser',[AdminController::class,'userManagementUser'])->name('admin.userManagementUser');
     Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
+    Route::get('addUserAdmin',[AdminController::class,'addUserAdmin'])->name('admin.addUserAdmin');
 
   
     // ADD FIRE HYDRANT TYPE ROUTES (ADMIN)
@@ -91,7 +92,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     
 
     // USER MANAGEMENT 
-    Route::post('userManagementUser/addAdminUser', [AdminController::class, 'store']);
+    Route::post('userManagementUser/addAdminUser', [AdminController::class, 'store'])->name('admin.addAdminUser');;
     Route::get('userManagementUser/getUserTable', [AdminController::class, 'getUserTable']);
     Route::post('userManagementUser/getUserID/{user_id}', [AdminController::class, 'getUserID']);
     Route::post('userManagementUser/Update', [AdminController::class, 'updateUserManagement'])->name('admin.userManagementEdit');
