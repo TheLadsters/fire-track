@@ -51,9 +51,6 @@ class AdminController extends Controller
         return view('dashboards.admin.userManagementUser', compact('users'));  
      }
 
-    function bulletinManagement() {
-        return view('dashboards.admin.bulletinManagement');
-    }
 
     public function getUserID($user_id){
      

@@ -45,6 +45,33 @@ position: relative;
 
 }
 
+.addManagerGroup{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2%;
+}
+
+.addManagerGroup .addBtn{
+  color: white;
+  /* background-color: #6B66F5;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	width:8%;
+	height: 40px;
+	font-weight: bold; */
+}
+
+/* .addManagerGroup .addBtn:hover{
+	color:#fff;
+	background-color:#483dff;
+	border-color:#3c30ff;
+} */
+
+.addManagerGroup .managerBtn{
+  margin-left: 1%;
+}
+
 body {font-family: Roboto;}
 
 /* Style the tab */
@@ -73,7 +100,8 @@ body {font-family: Roboto;}
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: #6c63ff;
+
 }
 
 /* Style the tab content */
@@ -82,4 +110,27 @@ body {font-family: Roboto;}
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+/* For announcement container */
+.announce-container{
+  display:flex;
+  border-radius: 15px;
+  background-color: #EDF2F5;
+  padding: 20px 20px;
+}
+
+.second-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.second-content .btn-group{
+  cursor: pointer;
+}
+
+.second-content .deleteBtn{
+  margin-left: 15%;
 }
