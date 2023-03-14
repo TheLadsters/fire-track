@@ -377,7 +377,7 @@ function addCancelFcn(){
   crudTemplate
   (
     ["#edit-firealert", "#delete-firealert"],
-  "#add-firealert", `<i class='bx bx-alarm-add'></i>Add Fire Alert`
+  "#add-firealert", `<i class="fas fa-plus-circle"></i> Add Fire Alert`
   );
 
   if(listenerHandler){
@@ -399,7 +399,7 @@ function editCancelFcn(){
   crudTemplate
   (
     ["#delete-firealert", "#add-firealert"],
-  "#edit-firealert", `<i class='bx bx-edit'></i> Edit Fire Alert`
+  "#edit-firealert", `<i class='bx bxs-edit'></i> Edit Fire Alert`
   );
 
   $.ajax({
@@ -577,7 +577,7 @@ function cancelForDeleteFcn(){
   crudTemplate
   (
     ["#add-firealert", "#edit-firealert"],
-  "#delete-firealert", `<i class="far fa-trash-alt"></i> Delete Fire Alert`
+  "#delete-firealert", `<i class="fas fa-trash-alt"></i> Delete Fire Alert`
   );
 
     $.ajax({

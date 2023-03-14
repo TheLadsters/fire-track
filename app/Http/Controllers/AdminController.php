@@ -15,7 +15,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
-    
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => ['required', 'string', 'max:255'],
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'contact_no'=>['required', 'max:11'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string','max:255']
+        ]);
+    }
     function fireAlertManagement() {
         return view('dashboards.admin.fireAlertManagement');
     }
@@ -30,6 +41,9 @@ class AdminController extends Controller
 
     function generateReport() {
         return view('dashboards.admin.generateReport');
+    }
+    function addUserAdmin() {
+        return view('dashboards.admin.addUserAdmin');
     }
 
     function userManagementUser(Request $request) {
@@ -60,16 +74,18 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
+        \Log::info(json_encode($request->all()));
 
-         $request->validate([
-            'fname' => 'required',
-            'lname' => 'required',
-            'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
-            'contact_no' => 'required',
-            'password' => 'required',
-            'address' => 'required',
-            'gender'=> 'required',
+        $request->validate([
+            'fname' => ['required', 'string', 'max:100'],
+            'lname' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'max:255', 'unique:users,email'],
+            'contact_no' => ['required', 'max:11'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string','max:255'],
+            'gender'=> ['required','string'],
          ]);
+
 
          $user = new User();
          $user->fname = $request->fname;

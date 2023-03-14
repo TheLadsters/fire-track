@@ -50,28 +50,52 @@
   
   
 .for-title-hydrant{
+    display: flex;
+    flex-direction: column;
     align-self: center;
-    margin-top: 20%;
+    margin-top: 10%;
     text-align: center;
     font-size: 22px;
+    font-weight: bold;
+    font-family: 'Roboto';
     padding: 5px 5px;
+}
+
+.for-title-hydrant #hydrant_logo{
+    border-radius: 120px;
+    margin-bottom: 5%;
+    border: 0.5px solid black;
 }
   
   
+.right-sidebar-hydrant .bottom-details-hydrant{
+    border-top: 0.3px solid #D9D9D9;
+}
+
+.right-sidebar-hydrant #menu-title{
+    color: #7E7E7E;
+    margin-left: 7%;
+    margin-top: 4%;
+    margin-bottom: 0;
+}
+
 .right-sidebar-hydrant .bottom-details-hydrant a {
     display: block;
     color: black;
+    font-weight: 600;
     padding: 16px;
     text-decoration: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.179);
+    margin-left: 5%;
 }
     
   
 .right-sidebar-hydrant a:hover:not(.active) {
-      background-color: #6c63ff;
-      color: white;
-      cursor: pointer;
-    }
+    background-color: #6c63ff;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 2%;
+    color: white !important;
+}
   
 
   
