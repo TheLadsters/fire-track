@@ -19,7 +19,6 @@ class UserFactory extends Factory
     {
         return [
             'email' => fake()->unique()->safeEmail(),
-            'username' => fake()->name(),
             'fname' => fake()->firstName('male'),
             'lname' => fake()->lastName(),
             'contact_no' => fake()->randomNumber(5),
