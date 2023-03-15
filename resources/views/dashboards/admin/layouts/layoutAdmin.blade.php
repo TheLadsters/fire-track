@@ -76,8 +76,11 @@
                       <br>Management
                     </span> 
                   </a> 
-                  
-                  <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                        @csrf
+                                   
+                  <button type="submit" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </button>
+                  </form>
                 </div>
             </div> 
         </nav>
