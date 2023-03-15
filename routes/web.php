@@ -24,16 +24,13 @@ use App\Http\Controllers\UploadController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
 
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('guest');
 
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
@@ -57,7 +54,7 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
     
 });
 
-Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
+Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     
     // ROUTE FOR HYDRANT MAP MANAGER (ADMIN)
     Route::get('admin-hydrant-map', [FireHydrantsController::class, 'index'])->name('admin.fireHManagement');
