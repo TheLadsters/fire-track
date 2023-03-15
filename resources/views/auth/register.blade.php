@@ -48,12 +48,6 @@
                                                     @endif
                                                     @csrf
                                  
-                                                    <div class="forms-inputs md-12 mb-4"> 
-                                                        <label for="username">Username</label>
-                                                        <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
-                                                        <span class="text-danger">@error('username'){{ $message }}@enderror</span>
-                                                    </div>
-
                                                     <div class="forms-inputs row">
                                                         <div class="form-inputs col-md-6 mb-4">
                                                             <label for="fname">First Name</label>
@@ -77,7 +71,8 @@
                                                                                             
                                                         <div class="col-md-6 mb-4 forms-inputs">
                                                             <label for="lname">Confirm Password</label>
-                                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                                                            <input type="password" class="form-control" id="password" name="password_confirmation">
+                                                            <!-- <i class="far fa-eye" id="togglePassword" style="float:right; cursor: pointer;"></i> -->
                                                             <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
                                                         </div>
                                                     </div>
@@ -117,7 +112,7 @@
                                                     <br>
 
                                                     <div class="mb-2"> 
-								                        <button id="button" type="submit" class="btn btn-dark w-100">Login</button> 
+								                        <button id="button" type="submit" class="btn btn-dark w-100">Register</button> 
 							                        </div>
 
 													<div class="mt-4 text-center">

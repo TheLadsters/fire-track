@@ -13,25 +13,37 @@
                                     <h2>Fire Hydrant Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="btn btn-success" href="{{route('admin.export_FH_pdf')}}"><i class="material-icons">&#xE15C;</i> <span>Export</span></a>						
+                                    <a class="btn btn-success addNewHydrant" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Hydrant</span></a>
                                 </div>
                             </div>
                         </div>
                         <table id="hydrant_table" class="table table-striped table-hover hydrant-table">
-                            <thead>
+                            <thead>                               
+                                <tr>
+                                    <td><b>Minimum date:</b> <input type="text" id="min" name="min"></td>
+                                    <td><b>Maximum date:</b> <input type="text" id="max" name="max"></td>
+                                </tr>
+                                <tr>
+                                    <td> 
+                                        <input type="button" class="my-1 mb-3" id="clearDates" value="Clear Dates">
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <th>Address</th>
-                                    <th>Longitude</th>
-                                    <th>Latitude</th>
+                                    <th id="long_header">Longitude</th>
+                                    <th id="lat_header">Latitude</th>
                                     <th>Hydrant Type</th>
                                     <th>Status</th>
-                                    <th style="display: hidden;">Created At</th>
+                                    <th>Created At</th>
                                     <th>Image</th>
-                                    <th>Action</th>
+                                    <th id="action_header">Action</th>
                                 </tr>
                             </thead>
 
                             <tbody class="tbl-hydrant-body">
+                               
                                                          
                             </tbody>
 

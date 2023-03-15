@@ -1,4 +1,62 @@
+var minDateAlert;
+var maxDateAlert;
+
+// Custom filtering function which will search data in column four between two values
+$.fn.dataTable.ext.search.push(
+  function( settings, data, dataIndex ) {
+      var min = minDateAlert.val();
+      var max = maxDateAlert.val();
+      var date = new Date( data[4] );
+
+      if (
+          ( min === null && max === null ) ||
+          ( min === null && date <= max ) ||
+          ( min <= date   && max === null ) ||
+          ( min <= date   && date <= max )
+      ) {
+          return true;
+      }
+      return false;
+  }
+);
+
+
 $(document).ready( function () {
+  let date_now = new Date(Date.now());
+  let stringDate = `Date Accessed: ${(date_now.getMonth()+1)}/${date_now.getDate()}/${date_now.getFullYear()}`;
+
+// Create date inputs
+function newAlertDateInputs(){
+  minDateAlert = new DateTime($('#minAlert'), {
+    format: 'YYYY Do MMMM HH:mm:ss'
+});
+maxDateAlert = new DateTime($('#maxAlert'), {
+    format: 'YYYY Do MMMM HH:mm:ss'
+});
+
+}
+newAlertDateInputs();
+
+let minMaxAlertDateText = "";
+
+$('#minAlert, #maxAlert').on('change', function () {
+  // Gets the current daterange if there are and places it in excel and pdf
+let minAlertDateInput = $("#minAlert").val();
+let maxAlertDateInput =  $("#maxAlert").val();
+
+if(minAlertDateInput == "" && maxAlertDateInput != ""){
+  minMaxAlertDateText = `Time Period: Before "${maxAlertDateInput}"`;
+}
+else if(minAlertDateInput != "" && maxAlertDateInput ==""){
+  minMaxAlertDateText = `Time Period: After "${minAlertDateInput}"`;
+}
+else if(minAlertDateInput == "" && maxAlertDateInput == ""){
+  minMaxAlertDateText = ``;
+}
+else{
+  minMaxAlertDateText = `Time Period From: "${minAlertDateInput}" to "${maxAlertDateInput}"`;
+}
+});
 
 $.ajaxSetup({
     headers: {
@@ -6,22 +64,56 @@ $.ajaxSetup({
     }
 });
 
-  $('#alertTable').DataTable({
+  let aTable= $('#alertTable').DataTable({
     'ajax': 'admin/fire-alert-management/getAlertTable',
+    dom: 'Bfrtip',
+    buttons: [
+      $.extend( true, {}, {
+        extend: 'excelHtml5',
+        title: 'Fire Alert Manager - FireTrack App',
+        filename: 'Fire Alert Manager - FireTrack App',
+        sheetName:'Fire Alerts in FireTrack',
+        messageTop: function(){
+          return `List of all the fire alerts that are inputted in the FireTrack App.
+          ${minMaxAlertDateText}
+          `
+        } 
+      ,
+        messageBottom: `${stringDate}`,
+        text: `<i class='bx bxs-file-export'></i> Export as Excel`,
+        exportOptions: {
+          columns: [ 0, 1, 2, 3, 4]
+      }
+    }),
+        $.extend( true, {}, {
+          extend: 'pdfHtml5',
+          title: 'Fire Alert Manager - FireTrack App',
+          filename: 'Fire Alert Manager - FireTrack App',
+          messageTop: function(){
+            return `List of all the fire Alerts that are inputted in the FireTrack App.
+            ${minMaxAlertDateText}
+            `
+          },
+          messageBottom:`${stringDate}`,
+          text: `<i class='bx bxs-file-pdf' ></i> Export as PDF`,
+          exportOptions: {
+            columns: [ 0, 1, 2, 3, 4]
+        }
+      }),
+    ],
     'columns': [
         {'data': 'fire_location', "width": "20%"},
         {'data': 'longitude', "width": "20%"},
         {'data': 'latitude'},
         {'data': 'status'},
-        {'data' : 'created_at', visible: false, searchable: false},
+        {'data' : 'created_at', visible: true, searchable: true},
         {
           "mData": null,
           "bSortable": false,
           "mRender": function(alert, type, full) {
             return `
                     <a class="edit editColAlert" data-bs-toggle="modal" id="${alert['firealarm_id']}" data-bs-target=".editFireAlertModal">
-                      <i class='bx bx-cog' style='color:#6b66f5' data-toggle="tooltip" title="Edit">
-                      </i>
+                    <i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i>                      </i>
                     </a>
 
                     <a class="delete deleteColAlert" data-bs-toggle="modal" id="${alert['firealarm_id']}" data-bs-target=".deleteFireAlertModal">
@@ -35,6 +127,19 @@ $.ajaxSetup({
 
     order : [[4, 'desc']],
   });
+
+// Refilter the table
+$('#minAlert, #maxAlert').on('change', function () {
+  aTable.draw();
+});
+
+$("#clearAlertDates").click(function(){
+  $('#minAlert, #maxAlert').val("");
+  newAlertDateInputs();
+  aTable.clear().draw();
+  aTable.ajax.reload();
+  minMaxAlertDateText = "";
+});
 
   // on clicking edit alert in fire alert management
 $('#alertTable tbody').on('click', '.editColAlert', function(){
@@ -171,10 +276,13 @@ $.ajax({
 
       let location_title = response['alert'][i].fire_location;
 
-      marker = createMarker(longitude, latitude, location_title);
+      if(response['alert'][i].status != "Fire Out"){
+        marker = createMarker(longitude, latitude, location_title);
     
         addMarkerListener(marker, markerContent);
         markerArr.push(marker);
+      }
+  
 }
 
   },
@@ -269,7 +377,7 @@ function addCancelFcn(){
   crudTemplate
   (
     ["#edit-firealert", "#delete-firealert"],
-  "#add-firealert", `<i class='bx bx-alarm-add'></i>Add Fire Alert`
+  "#add-firealert", `<i class="fas fa-plus-circle"></i> Add Fire Alert`
   );
 
   if(listenerHandler){
@@ -280,6 +388,8 @@ function addCancelFcn(){
 }
 
 $("#add-firealert").on('click', addAlertFcn);
+
+$(".addNewAlert").on('click', addAlertFcn);
 /////// ADD FIRE ALERT FUNCTION CODE END///////
  
 
@@ -289,7 +399,7 @@ function editCancelFcn(){
   crudTemplate
   (
     ["#delete-firealert", "#add-firealert"],
-  "#edit-firealert", `<i class='bx bx-edit'></i> Edit Fire Alert`
+  "#edit-firealert", `<i class='bx bxs-edit'></i> Edit Fire Alert`
   );
 
   $.ajax({
@@ -467,7 +577,7 @@ function cancelForDeleteFcn(){
   crudTemplate
   (
     ["#add-firealert", "#edit-firealert"],
-  "#delete-firealert", `<i class="far fa-trash-alt"></i> Delete Fire Alert`
+  "#delete-firealert", `<i class="fas fa-trash-alt"></i> Delete Fire Alert`
   );
 
     $.ajax({

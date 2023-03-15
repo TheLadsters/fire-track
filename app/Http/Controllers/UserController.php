@@ -33,7 +33,6 @@ class UserController extends Controller
     function updateInfo(Request $request){
            
         $validator = \Validator::make($request->all(),[
-            'username'=>'required',
             'fname'=>'required',
             'lname'=>'required',
             'address'=>'required', 
@@ -47,7 +46,6 @@ class UserController extends Controller
             return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
         }else{
              $query = User::find(Auth::user()->user_id)->update([
-                  'username'=>$request->username,
                   'fname'=>$request->fname,
                   'lname'=>$request->lname,
                   'address'=>$request->address,
@@ -132,40 +130,11 @@ class UserController extends Controller
                 return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
             }else{
                 return redirect('user/editprofile');
-                Alert::success('Profile picture changed successfully');
+                Alert::success('Profile picture changed successfully.');
             }
         }
            
         }
-        
-        // $validator = Validator::make($request->all(), [
-        //     'user_id' => 'required',
-        //     'img_url' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        //   ]);
-
-        // if($validator->fails()){
-        //     Alert::error('failed');
-        // }else{
-      
-        //     $user_id = $request->input('user_id');
-           
-        //     $user = User::find($user_id);
-
-        //     $userImg = ($request->hasFile('img_url')) ? 
-        //     $request->file('img_url')->store('users', 'public') : $user->img_url;
-    
-        //     if($userImg){
-        //         $user = User::where('user_id', $user_id)->update([
-        //             'user_id' => $user_id,
-        //             'img_url' => $userImg
-        //         ]);
-        //     }
-    
-        //     Alert::success('Profile picture changed successfully');
-        // }
-  
-
-        // return redirect('user/editprofile');
     
     
 }

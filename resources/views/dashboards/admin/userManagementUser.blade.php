@@ -23,8 +23,7 @@
 						<h2><b>User</b> Management</h2>
 					</div>
 					<div class="col-sm-6">	
-						<a class="btn btn-info" data-bs-toggle="modal" data-bs-target=".adminUserAddModal"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
-						<a class="btn btn-success" href="{{route('admin.export_users_pdf')}}"><i class="material-icons">&#xE15C;</i> <span>Export</span></a>						
+						<a class="btn btn-info" href="{{ route('admin.addUserAdmin')}}"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
 					</div>
 				</div>
 			</div>
@@ -32,7 +31,6 @@
 			<table class="table table-striped table-hover user_table" id="user_table" >
 				<thead>
 					<tr>
-						<th style="font-weight: bold;">Username</th>
 						<th style="font-weight: bold;">Name</th>
 						<th style="font-weight: bold;">Email</th>
 						<th style="font-weight: bold;">Mobile No.</th>
@@ -54,6 +52,8 @@
 @include("modals.userManagementDelete")
 
 @include("modals.adminUserAdd")	
+
+ 
 @include("modals.userManagementEdit")
 
 

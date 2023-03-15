@@ -50,28 +50,52 @@
   
   
 .for-title-hydrant{
+    display: flex;
+    flex-direction: column;
     align-self: center;
-    margin-top: 20%;
+    margin-top: 10%;
     text-align: center;
     font-size: 22px;
+    font-weight: bold;
+    font-family: 'Roboto';
     padding: 5px 5px;
+}
+
+.for-title-hydrant #hydrant_logo{
+    border-radius: 120px;
+    margin-bottom: 5%;
+    border: 0.5px solid black;
 }
   
   
+.right-sidebar-hydrant .bottom-details-hydrant{
+    border-top: 0.3px solid #D9D9D9;
+}
+
+.right-sidebar-hydrant #menu-title{
+    color: #7E7E7E;
+    margin-left: 7%;
+    margin-top: 4%;
+    margin-bottom: 0;
+}
+
 .right-sidebar-hydrant .bottom-details-hydrant a {
     display: block;
     color: black;
+    font-weight: 600;
     padding: 16px;
     text-decoration: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.179);
+    margin-left: 5%;
 }
     
   
 .right-sidebar-hydrant a:hover:not(.active) {
-      background-color: #6c63ff;
-      color: white;
-      cursor: pointer;
-    }
+    background-color: #6c63ff;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 2%;
+    color: white !important;
+}
   
 
   
@@ -98,18 +122,19 @@
 
 #hydrant_table thead tr th, #hydrant_table tbody td{
    text-align: center;
+   padding: 0px 0px 0px 0px;
+   vertical-align: middle;
 }
 
 
-#hydrant_table tbody .odd td:nth-child(7), 
-#hydrant_table tbody .even td:nth-child(7){
-width: 75px !important;
+#hydrant_table #action_header{
+    width: 70px !important;
 }
 
-#hydrant_table tbody .odd td:nth-child(1), 
-#hydrant_table tbody .even td:nth-child(1){
-width: 120px !important;
-}
+#hydrant_table #long_header, #hydrant_table #lat_header{
+    width: 0px !important;
+    margin: 0;
+} 
 
 .editColHydrant, .deleteColHydrant {
 cursor: pointer;
@@ -120,4 +145,97 @@ cursor: pointer;
     align-self: flex-start;
     margin: 6% 1% 0 1%;
     background-color: #f1f1f1;
+  }
+
+  /* Modal styles */
+.addFireHydrantModal .modal-body .row, 
+.editFireHydrantModal .modal-body .row{
+      margin-bottom: 3%;
+      font-weight: bold;
+}
+
+.head-icon{
+	margin-right: 3px;
+}
+
+#modal-head {
+    background-repeat: no-repeat;
+    background-size: 60% 150px;
+	background-position: right;
+    height: 150px;
+}
+
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+	padding: 20px 30px;
+}
+
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+
+.btn-cancel{
+	background-color: white;
+	border: solid #CDCDCD 2px;
+	border-radius: 5px;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+.btn-cancel:hover{
+	background-color: #e1e1e1;
+}
+
+.btn-add-hydrant, .btn-edit-hydrant{
+	background-color: #6B66F5;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+.btn-add-hydrant:hover, .btn-edit-hydrant:hover{
+	color:#fff;
+	background-color:#483dff;
+	border-color:#3c30ff;
+}
+
+.addFireHydrantModal form input, .addFireHydrantModal form select, 
+.editFireHydrantModal form input, .editFireHydrantModal form select{
+	border-radius: 5px !important;
+}
+
+.addFireHydrantModal form input:focus, .addFireHydrantModal form select:focus,
+.editFireHydrantModal form input:focus, .editFireHydrantModal form select:focus{
+	box-shadow: none;
+	outline: none;
+	border: 2px solid #6c63ff;
+}
+
+.editFireHydrantModal .edit-hydrant-longlat{
+    width: 100%;
+}
+
+.deleteHydrantModal .text-warning-title,
+.deleteHydrantModal .text-warning{
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.deleteHydrantModal #deleteHydrantBtn{
+	width: 100%;
+	border: none;
+	height: 40px;
+	border-radius: 5px;
+}
+
+#alertTable td {
+    border: none;
   }

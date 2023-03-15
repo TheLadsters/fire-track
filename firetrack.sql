@@ -161,7 +161,6 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `users` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -181,17 +180,17 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `username`, `fname`, `lname`, `contact_no`, `password`, `birthday`, `gender`, `img_url`, `role`, `status`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`user_id`, `email`, `fname`, `lname`, `contact_no`, `password`, `birthday`, `gender`, `img_url`, `role`, `status`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'robbie84@example.net', 'Juvenal Ledner', 'Alfredo', 'Cole', '22330', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '37035', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'active', '2023-02-05 04:26:43', 'pTKElCqyL2', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
 (2, 'mallory.walsh@example.net', 'Amina O\'Connell V', 'Franz', 'Auer', '45794', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '22328', 'male', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'TfcHKX6SW9', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(3, 'lenore.hills@example.org', 'Kirk Witting', 'Monroe', 'Jerde', '78250', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '54610', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'active', '2023-02-05 04:26:43', 'zPMUtuymLF', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(4, 'lucius54@example.com', 'Cecilia Satterfield II', 'Freddy', 'Hill', '21439', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '62774', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'wsSsI97Lo6', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(5, 'johnston.vida@example.net', 'Charley Kunde', 'Chase', 'Carter', '342', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '41200', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-05 04:26:43', 'oqXlf7ARCI', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(6, 'sadye36@example.net', 'Barry Homenick IV', 'Laverna', 'Koelpin', '68472', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '68556', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'hGzNu8uNaA', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(7, 'mills.theresia@example.com', 'Euna Kuhic PhD', 'Wilbert', 'Welch', '72788', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '44311', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'Y6J0BkZSWg', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(8, 'kris.labadie@example.com', 'Prof. Berta Howe', 'Efrain', 'Pacocha', '3119', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '709', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'SdvudR0OqE', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(9, 'sporer.jamal@example.org', 'Dominique Abshire', 'Laron', 'Cruickshank', '68862', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '43976', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'rlMMqL3FoL', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
-(10, 'zane.krajcik@example.net', 'Margie Goyette', 'Marquis', 'Beer', '85421', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '80671', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'DNrHsPWEzQ', '2023-02-05 04:26:44', '2023-02-05 04:26:44');
+(3, 'lenore.hills@example.org',  'Monroe', 'Jerde', '78250', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '54610', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'active', '2023-02-05 04:26:43', 'zPMUtuymLF', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(4, 'lucius54@example.com',  'Freddy', 'Hill', '21439', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '62774', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'wsSsI97Lo6', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(5, 'johnston.vida@example.net',  'Chase', 'Carter', '342', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '41200', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'inactive', '2023-02-05 04:26:43', 'oqXlf7ARCI', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(6, 'sadye36@example.net', 'Laverna', 'Koelpin', '68472', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '68556', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'hGzNu8uNaA', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(7, 'mills.theresia@example.com', 'Wilbert', 'Welch', '72788', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '44311', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'Y6J0BkZSWg', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(8, 'kris.labadie@example.com', 'Efrain', 'Pacocha', '3119', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '709', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'SdvudR0OqE', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(9, 'sporer.jamal@example.org', 'Laron', 'Cruickshank', '68862', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '43976', 'female', '92IXUNpkjO0rOQ5b.png', 'admin', 'inactive', '2023-02-05 04:26:43', 'rlMMqL3FoL', '2023-02-05 04:26:44', '2023-02-05 04:26:44'),
+(10, 'zane.krajcik@example.net', 'Marquis', 'Beer', '85421', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '80671', 'male', '92IXUNpkjO0rOQ5b.png', 'firefighter', 'active', '2023-02-05 04:26:43', 'DNrHsPWEzQ', '2023-02-05 04:26:44', '2023-02-05 04:26:44');
 
 --
 -- Indexes for dumped tables

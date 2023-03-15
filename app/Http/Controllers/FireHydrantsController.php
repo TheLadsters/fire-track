@@ -56,7 +56,7 @@ class FireHydrantsController extends Controller
             'address' => 'required',
             'status' => 'required',
             'user_id' => 'required',
-            'img_url' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
           ]);
           
           if ($validator->fails()) {
@@ -72,7 +72,7 @@ class FireHydrantsController extends Controller
                 'address' => 'required',
                 'status' => 'required',
                 'user_id' => 'required',
-                'img_url' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
             ]);
 
             if($request->hasFile('img_url')){
@@ -81,7 +81,7 @@ class FireHydrantsController extends Controller
             }
 
             fireHydrantAdmin::create($formFields);
-            Alert::success('Added Fire Hydrant Successfully!');
+            Alert::success('Added Fire Hydrant Successfully.');
 
           }
 
@@ -97,7 +97,7 @@ class FireHydrantsController extends Controller
             'address' => 'required',
             'status' => 'required',
             'user_id' => 'required',
-            'img_url' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
             'hydrant_id' => 'required'
           ]);
 
@@ -139,7 +139,7 @@ class FireHydrantsController extends Controller
                 ]);
             }
     
-            Alert::success('Updated Fire Hydrant Successfully!');
+            Alert::success('Updated Fire Hydrant Successfully.');
         }
   
 
@@ -152,13 +152,13 @@ class FireHydrantsController extends Controller
         $fireHydrant = fireHydrantAdmin::find($firehydrant_id);
         if($fireHydrant){
         $fireHydrant->delete();
-        Alert::success('Fire Hydrant deleted Successfully!');
+        Alert::success('Fire Hydrant deleted Successfully.');
         }else
         {
             Alert::error('Fire Hydrant deletion was not successful.');
         }
 
-        return redirect('admin/admin-hydrant-map')->with('message', 'Fire Hydrant Deleted Successfully!');   
+        return redirect('admin/admin-hydrant-map')->with('message', 'Fire Hydrant Deleted Successfully.');   
     }
 
     public function export_FH_pdf(){

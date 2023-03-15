@@ -29,12 +29,17 @@ class FireAlertsController extends Controller
 
     // show all alerts in table
     public function getMapAlertTable(){
-        $alerts = fireAlertAdmin::all();
+    //     $alerts = fireAlertAdmin::all();
     
-    // Fetch all records
-     $response['data'] = $alerts;
+    // // Fetch all records
+    //  $response['data'] = $alerts;
  
-     return response()->json($response);
+    $allAlerts = DB::table('fire_alarm')
+    ->join('users', 'fire_alarm.user_id', '=', 'users.user_id')
+    ->select('fire_alarm.*', 'users.email')
+    ->get();
+    $response['data'] = $allAlerts;
+    return response()->json($response);
     }
 
     public function getOneMapAlert($id){
@@ -70,7 +75,7 @@ class FireAlertsController extends Controller
                 'fire_location' => 'required'
             ]);
             fireAlertAdmin::create($formFields);
-            Alert::success('Added Fire Alarm Successfully!');
+            Alert::success('Added Fire Alarm Successfully.');
         }
        
         return redirect('admin/fire-alert-management');
@@ -109,12 +114,12 @@ class FireAlertsController extends Controller
                 'status' => $status,
                 'fire_location' => $fire_location,
             ]);
-            Alert::success('Updated Fire Alarm Successfully!');
+            Alert::success('Updated Fire Alarm Successfully.');
 
         }
        
 
-        return redirect('admin/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully!');
+        return redirect('admin/fire-alert-management')->with('message', 'Fire Alarm Updated Successfully.');
 
     }
 
@@ -125,12 +130,12 @@ class FireAlertsController extends Controller
         $fireAlert = fireAlertAdmin::find($firealarm_id);
         if($fireAlert){
             $fireAlert->delete();
-            Alert::success('Fire Alarm deleted Successfully!');
+            Alert::success('Fire Alarm deleted Successfully.');
 
         }else{
             Alert::error('Fire Alarm deletion was not successful.');
         }
         
-        return redirect('admin/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully!');
+        return redirect('admin/fire-alert-management')->with('message', 'Fire Alert Deleted Successfully.');
     }
 }

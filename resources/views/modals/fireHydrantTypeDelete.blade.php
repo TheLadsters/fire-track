@@ -1,21 +1,58 @@
 <!-- Delete Modal HTML -->
-<div id="deleteFireHydrantTypeModal" class="modal fade">
-	<div class="modal-dialog">
+<div id="deleteFireHydrantTypeModal" class="modal fade deleteFireHydrantTypeModal" >
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Delete Fire Hydrant</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>				</div>
+			<div id="modal-head" style="background-image:url('images/rectangles_background.png');">
+				<div class="row py-2 px-2">
+				  <div class="col-12">
+					<button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>		
+				  </div>	
 				</div>
-				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
+		
+				<div class="row" style="margin-left: 3%;">	
+					<h4 class="modal-title col-12">
+					  <i class='bx bxs-trash-alt bx-md head-icon'></i>
+					  Delete Hydrant Type
+					</h4>
 				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+				
+				<div class="row" style="margin-left: 9%;">
+				  <div class="col-12">
+					Delete an existing fire hydrant type from the FireTrack App.
+				  </div>
 				</div>
-			</form>
+			  </div>
+
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12 text-warning-title">
+							Are you sure you want to delete this fire hydrant type?
+						</div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-12">
+							<p class="text-warning">This action cannot be undone.</p>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-6">
+						<form method="POST" action="{{ route('admin.fireHTypeDelete')}}">
+							@csrf
+							@METHOD('DELETE')	
+							<input type="hidden" name="htype_id" id="htype_id_delete" value="1">
+							<input type="button" class="btn-cancel mb-2" data-bs-dismiss="modal" value="Cancel">
+						</div>
+						<div class="col-md-6">
+							<input type="submit" class="btn btn-danger" id="deleteHydrantTypeBtn" value="Delete">   
+						</div>
+
+					</div>
+				</form> 
+				</div>
+				
 		</div>
 	</div>
 </div>
