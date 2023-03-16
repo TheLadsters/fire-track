@@ -44,7 +44,7 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> 
+            <div> <a class="nav_logo"> 
               <?php
               if(Auth::user()->img_url)
               {
@@ -81,7 +81,7 @@
                     <span class="nav_name">Bulletin</span> 
                   </a> 
                 </div>  <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                                        @csrf
+                        @csrf
                                    
                         <button type="submit" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </button>
                         </form>

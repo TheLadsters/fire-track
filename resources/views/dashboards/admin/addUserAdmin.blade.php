@@ -19,7 +19,7 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">	
-							<a href="{{route('admin.userManagementUser')}}"style="color:white;"><i class='bx bx-arrow-back' style='color:#ffffff'  ></i> Back</a>	
+							<a href="{{route('admin.userManagementUser')}}"style="color:white;"><i class='bx bx-arrow-back' style='color:#ffffff'></i> Back</a>	
 					</div>
 				</div>
 			</div> <br>
