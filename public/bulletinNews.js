@@ -110,3 +110,7 @@ const newsList = document.querySelector('.news-list');
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
       }
+
+      $("#addAnnouncement").click(function(){
+        $(".addAnnouncement").modal('show');
+      });

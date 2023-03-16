@@ -3,7 +3,14 @@
 
 @section('content')
 
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+
 <style>
+
 
 </style>
 
@@ -16,10 +23,10 @@
 
 <div id="Announcements" class="tabcontent">
   <div class="addManagerGroup">
-    <button class="btn btn-primary addBtn">
-      <i class='bx bxs-message-square-add'></i>      
+    <a class="btn btn-primary addBtn"  id="addAnnouncement">
+      <i class='bx bxs-message-square-add' ></i>
       Add New
-    </button>
+    </a>
 
     <button class="btn btn-success managerBtn">
       <i class='bx bxs-bar-chart-alt-2'></i>
@@ -39,6 +46,8 @@
       <p>{{$announcement->summary}}</p>
     </div>
 
+
+
     <div class="second-content">
       <div class="btn-group mb-3">
         <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" data-toggle="tooltip" title="Edit"></i>
@@ -46,7 +55,8 @@
       </div>
 
       <div>
-        <img src="{{$announcement->img_url}}" width="200" height="200" />
+        <img src="{{$announcement->img_url}}" width="200" height="200"  />
+
       </div>
     </div>
   </div>
@@ -65,7 +75,7 @@
         </div>
 </div>
 
-
+@include("modals.addAnnouncement")
 
 
 

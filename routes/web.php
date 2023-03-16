@@ -98,7 +98,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     // BULLETIN MANAGEMENT
     // Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
     Route::get('bulletinManagement', [BulletinController::class, 'index'])->name('admin.bulletinManagement');
-
+    Route::post('bulletinManagement/addAnnouncement',[BulletinController::class, 'add'])->name('admin.addAnnouncement');
 });
 
 // Route::get('/',function(){
