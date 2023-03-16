@@ -23,7 +23,7 @@
         </div>
 
         <div class="modal-body">
-          <form method="POST" action="{{ route('admin.addAnnouncement')}}">
+          <form method="POST" action="{{ route('admin.addAnnouncement')}}" enctype="multipart/form-data">
             @csrf
             <div>
 
@@ -52,14 +52,13 @@
 </br>
             <label for="Article_url">
             Article URL<span style="color:red;">*</span>
-             <input type="text"  class="form-control" name="articleURL"  id="articleURL-input" placeholder="Article Link" >
-
+             <input type="text"  class="form-control" name="article_url"  id="articleURL-input" placeholder="Article Link" >
               </input>
             </label>
 </br>
             <label for="Image_url">
             Article URL<span style="color:red;">*</span>
-             <input type="file"  class="form-control" name="imageURL"  id="imageURL-input" >
+             <input type="file"  class="form-control" name="image_url"  id="imageURL-input" >
 
               </input>
             </label>

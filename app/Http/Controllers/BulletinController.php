@@ -22,7 +22,8 @@ class BulletinController extends Controller
             'author' => 'required',
             'title' => 'required',
             'summary' => 'required',
-            'articleURL' => 'required',
+            'article_url' => 'required',
+            'image_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
           ]);
 
           if ($validator->fails()) {
@@ -37,12 +38,13 @@ class BulletinController extends Controller
                 'author' => 'required',
                 'title' => 'required',
                 'summary' => 'required',
-                'articleURL' => 'required',
+                'article_url' => 'required',
+                'image_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
             ]);
 
-            if($request->hasFile('imgURL')){
-                $formFields['imgURL'] = $request->file('imgURL')->store('bulletin-images', 
-                'public');
+            if($request->hasFile('image_url')){
+
+                $formFields['image_url'] = $request->file('image_url')->store('public/images');
             }
 
             bulletinManagement::create($formFields);
