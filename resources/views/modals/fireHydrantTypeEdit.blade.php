@@ -39,7 +39,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Image</label>
+										<label>Image (.jpeg, .jpg, .png)</label>
 										<input type="file" name="img_url" id="hydrantImg"class="form-control">
 									</div>
 								</div>

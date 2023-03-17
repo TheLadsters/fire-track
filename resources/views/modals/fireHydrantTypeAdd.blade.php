@@ -36,7 +36,7 @@
 					</div>
 					<div class="col-md-6">
 						<label for="hydrantTypeImg" class="form-label">
-							Image
+							Image (.jpeg, .jpg, .png)
 						</label>
 						<input class="form-control" name="hydrant_img" type="file" id="hydrantTypeImg">
 					</div>
