@@ -1,4 +1,4 @@
-<div class="modal fade editAnnouncement" tabindex="-1" role="dialog" aria-labelledby="editAnnouncementCenter" aria-hidden="true">
+<div class="modal fade editAnnouncementmodal" tabindex="-1" role="dialog" aria-labelledby="editAnnouncementCenter" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content px-3">
         <div id="modal-head" style="background-image:url('images/rectangles_background.png');">
@@ -26,38 +26,38 @@
           <form method="POST" action="{{route('admin.editAnnouncement')}}" enctype="multipart/form-data">
             @csrf
             <div>
-
-            <input type="text" style="display: none;" class="form-control" name="user_id" value="{{Auth::user()->user_id}}">
+            <input type="hidden" style="display: none;" class="form-control" name="bulletinID" id="bulletin_id" >
+            <input type="hidden" style="display: none;" class="form-control" name="user_id" id="user_id" value="{{Auth::user()->user_id}}">
 
             <label for="Author">
             Author<span style="color:red;">*</span>
-             <input type="text"  class="form-control" name="author_name"  id="author-input" placeholder="Author" >
+             <input type="text"  class="form-control" name="author_name"  id="author_input" placeholder="Author" >
               </input>
             </label>
 
             <label for="Title">
             Title<span style="color:red;">*</span>
-             <input type="text"  class="form-control" name="title"  id="title-input" placeholder="Title" >
+             <input type="text"  class="form-control" name="title"  id="title_input" placeholder="Title" >
 
               </input>
             </label>
 </br>
             <label for="Summary">
             Summary<span style="color:red;">*</span>
-             <input type="text"  class="form-control" name="summary"  id="summary-input" placeholder="Article Summary" >
+             <input type="text"  class="form-control" name="summary"  id="summary_input" placeholder="Article Summary" >
 
               </input>
             </label>
 </br>
             <label for="Article_url">
             Article URL<span style="color:red;">*</span>
-             <input type="text"  class="form-control" name="article_url"  id="articleURL-input" placeholder="Article Link" >
+             <input type="text"  class="form-control" name="article_url"  id="articleURL_input" placeholder="Article Link" >
               </input>
             </label>
 </br>
             <label for="Image_url">
             Image URL<span style="color:red;">*</span>
-             <input type="file"  class="form-control" name="img_url"  id="imageURL-input" >
+             <input type="file"  class="form-control" name="img_url"  id="imageURL_input" >
 
               </input>
             </label>

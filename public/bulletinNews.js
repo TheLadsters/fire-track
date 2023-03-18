@@ -115,12 +115,12 @@ const newsList = document.querySelector('.news-list');
         $(".addAnnouncement").modal('show');
       });
 
-      $("#editAnnouncement").click(function(){
-        $(".editAnnouncement").modal('show');
+      /* Edit Announcement*/ 
+      $(".editAnnouncement").click(function(){
+        editAnnouncement();
+        $(".editAnnouncementmodal").modal('show');
       });
 
-
-      $("#editAnnouncement").on('click', editAnnouncement)
 
       function editAnnouncement(){
 
@@ -129,13 +129,30 @@ const newsList = document.querySelector('.news-list');
           type: 'get',
           dataType: 'json',
           success: function(response){
-            console.log(response);
-            for (let i = 0; i < markerArr.length; i++){
+            // console.log(response);
 
-              let bulletin_id = response['announce'][i].bulletin_id;
-              console.log(bulletin_id);
+              var id = $(".bulletin_ID").val();
+              console.log(id);
 
-            }
+              id--;
+
+              let bulletin_id = response['announce'][id].bulletin_id;
+              let user_id = response['announce'][id].user_id;
+              let author_name = response['announce'][id].author_name;
+              let title = response['announce'][id].title;
+              let summary = response['announce'][id].summary;
+              let article_url = response['announce'][id].article_url;
+              
+              console.log(response);
+
+                $(".editAnnouncement #bulletin_id").val(bulletin_id);
+                $(".editAnnouncement #user_id").val(user_id);
+                $(".editAnnouncement #author_input").val(author_name);
+                $(".editAnnouncement #title_input").val(title);
+                $(".editAnnouncement #summary_input").val(summary);
+                $(".editAnnouncement #articleURL_input").val(article_url);
+
+  
            
         },
           error: function(xhr, status, error) {

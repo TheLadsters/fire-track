@@ -40,17 +40,16 @@
 
   <div class="announce-container">
     <div class="first-content">
+      <input type="hidden" class="bulletin_ID" id="bulletinID_{{$announcement->bulletin_id}}" value="{{$announcement->bulletin_id}}"></input>
       <h2><b>{{$announcement->title}}</b></h2>
       <h5>Posted on: {{$announcement->created_at->format('m-d-Y')}}</h5>
       <h5>by: {{$announcement->author_name}}</h5>
       <p>{{$announcement->summary}}</p>
     </div>
 
-
-
     <div class="second-content">
       <div class="btn-group mb-3">
-        <a id="editAnnouncement">  
+        <a class="editAnnouncement" data-id="{{$announcement->bulletin_id}}">  
           <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
         </a>
 
