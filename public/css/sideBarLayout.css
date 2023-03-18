@@ -91,6 +91,29 @@ a{text-decoration: none !important}
 }
 
 
+.btnLogout{
+  color: var(--first-color-light) !important;
+  transition: .3s; 
+  /* margin-left: 5% !important; */
+  background-color: #6c63ff;
+  text-align: left;
+  width: 100%;
+  border: none;
+}
+
+.btnLogout:hover{
+  color: var(--white-color) !important
+}
+
+.btnLogout .logoutContent{
+  margin-left: 10%;
+}
+
+.btnLogout .nav_name{
+  margin-left: 7%;
+}
+
+
 @media screen and (min-width: 768px)
 {
   body{margin: calc(var(--header-height) + 1rem) 0 0 0;padding-left: calc(var(--nav-width) + 2rem)}

@@ -77,15 +77,14 @@
                     </span> 
                   </a> 
                   
-                  <!-- <a href="{{ route('logout') }}" class="nav_link {{ (request()->is('logout*')) ? 'active' : '' }}"> 
-                    <i class='bx bx-log-out nav_icon'></i>
-                    <span class="nav_name">Sign Out
-                    </span> 
-                  </a> -->
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                                        @csrf
-                  <button type="submit" class="btn btn-outline-light"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </button>
-                  </form> 
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button type="submit" class="btnLogout"> 
+                    <i class='bx bx-log-out nav_icon logoutContent'></i>
+                    <span class="nav_name">
+                      Sign Out
+                    </span>
+                  </button>
                   </form> 
                 </div>
             </div> 
