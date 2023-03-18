@@ -114,3 +114,35 @@ const newsList = document.querySelector('.news-list');
       $("#addAnnouncement").click(function(){
         $(".addAnnouncement").modal('show');
       });
+
+      $("#editAnnouncement").click(function(){
+        $(".editAnnouncement").modal('show');
+      });
+
+
+      $("#editAnnouncement").on('click', editAnnouncement)
+
+      function editAnnouncement(){
+
+        $.ajax({
+          url: 'admin/bulletinManagement/getAnnouncement',
+          type: 'get',
+          dataType: 'json',
+          success: function(response){
+            console.log(response);
+            for (let i = 0; i < markerArr.length; i++){
+
+              let bulletin_id = response['announce'][i].bulletin_id;
+              console.log(bulletin_id);
+
+            }
+           
+        },
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert("Error");
+          }
+      });
+
+    }
+      

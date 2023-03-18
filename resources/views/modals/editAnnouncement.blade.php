@@ -1,4 +1,4 @@
-<div class="modal fade addAnnouncement" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementCenter" aria-hidden="true">
+<div class="modal fade editAnnouncement" tabindex="-1" role="dialog" aria-labelledby="editAnnouncementCenter" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content px-3">
         <div id="modal-head" style="background-image:url('images/rectangles_background.png');">
@@ -11,19 +11,19 @@
           <div class="row" style="margin-left: 3%;">	
               <h4 class="modal-title col-12">
                 <i class='bx bxs-hot head-icon'></i>
-                Add Announcement
+                Edit Announcement
               </h4>
           </div>
           
           <div class="row" style="margin-left: 7.5%;">
             <div class="col-12">
-              Add new Annoucement to be posted on Bulletin Page.
+                Edit Annoucement to be posted on Bulletin Page.
             </div>
           </div>
         </div>
 
         <div class="modal-body">
-          <form method="POST" action="{{ route('admin.addAnnouncement')}}" enctype="multipart/form-data">
+          <form method="POST" action="{{route('admin.editAnnouncement')}}" enctype="multipart/form-data">
             @csrf
             <div>
 

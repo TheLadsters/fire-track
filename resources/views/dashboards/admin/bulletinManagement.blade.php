@@ -50,8 +50,12 @@
 
     <div class="second-content">
       <div class="btn-group mb-3">
-        <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" data-toggle="tooltip" title="Edit"></i>
+        <a id="editAnnouncement">  
+          <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
+        </a>
+
         <i class="bx bxs-x-circle bx-sm deleteBtn" style="color:#ff0000" data-toggle="tooltip" title="Delete"></i>
+    
       </div>
 
       <div>
@@ -76,6 +80,7 @@
 </div>
 
 @include("modals.addAnnouncement")
+@include("modals.editAnnouncement")
 
 
 
