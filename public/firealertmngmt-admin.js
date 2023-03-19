@@ -276,12 +276,13 @@ $.ajax({
 
       let location_title = response['alert'][i].fire_location;
 
-      if(response['alert'][i].status != "Fire Out"){
-        marker = createMarker(longitude, latitude, location_title);
-    
-        addMarkerListener(marker, markerContent);
-        markerArr.push(marker);
+      marker = createMarker(longitude, latitude, location_title);
+      if(response['alert'][i].status == "Fire Out"){
+        marker.setVisible(false);
       }
+      addMarkerListener(marker, markerContent);
+      markerArr.push(marker);
+
   
 }
 
@@ -413,7 +414,7 @@ function editCancelFcn(){
       let fireStatus = "<b>Status: </b> " + response['alert'][i].status;
       let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
       let markerContent = `
-        <div style="max-width: 300px;">
+        <div style="max-width: 200px;">
           <p>
             ${fireStatus}
           </p>

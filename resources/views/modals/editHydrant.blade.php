@@ -97,7 +97,7 @@
             
             <div class="col-md-6">
               <label for="hydrantImg" class="form-label">
-                Image of Location
+                Image of Location (.jpeg, .jpg, .png)
               </label>
               <input class="form-control hydrantImg" name="img_url" type="file" id="hydrantImg">
             </div>

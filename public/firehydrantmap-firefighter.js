@@ -55,7 +55,7 @@ function initMap(){
 
 
        let markerContent = `
-        <div class="text-center">
+        <div>
             <p>
             <img src="${hydrantPhoto}" id="imageMarker" class="responsive-img" />
             </p>
