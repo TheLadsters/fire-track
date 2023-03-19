@@ -38,7 +38,7 @@
 						<label for="hydrantTypeImg" class="form-label">
 							Image
 						</label>
-						<input class="form-control" name="hydrant_img" type="file" id="hydrantTypeImg">
+						<input class="form-control hydrantImg" name="hydrant_img" type="file" id="hydrantTypeImg">
 					</div>
 
 				</div>
@@ -49,7 +49,7 @@
 						<input type="button" class="btn-cancel mb-2" data-bs-dismiss="modal" value="Cancel">
 					</div>
 					<div class="col-md-6">
-						<button type="submit" class="btn-add-htype">Submit</button>
+						<button type="submit" class="btn-add-htype hydrantTypeSubmit" id="hydrantTypeSubmit">Submit</button>
 					</div>
 
 				</div>
@@ -60,3 +60,4 @@
       </div>
     </div>
   </div>
+

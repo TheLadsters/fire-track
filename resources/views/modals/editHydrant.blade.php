@@ -1,4 +1,4 @@
-<div class="modal fade editFireHydrantModal" tabindex="-1" role="dialog" aria-labelledby="editFireHydrantModalCenter" aria-hidden="true">
+<div class="modal fade editFireHydrantModal" id="editFireHydrantModal" tabindex="-1" role="dialog" aria-labelledby="editFireHydrantModalCenter" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content px-3">
         <div id="modal-head" style="background-image:url('images/rectangles_background.png');">
@@ -99,7 +99,7 @@
               <label for="hydrantImg" class="form-label">
                 Image of Location
               </label>
-              <input class="form-control" name="img_url" type="file" id="hydrantImg">
+              <input class="form-control hydrantImg" name="img_url" type="file" id="hydrantImg">
             </div>
 
           </div>
@@ -117,7 +117,7 @@
                 <input type="button" class="btn-cancel mb-2" data-bs-dismiss="modal" value="Cancel">
               </div>
               <div class="col-md-6">
-                <button type="submit" class="btn-edit-hydrant send-edit-alert">Submit</button>
+                <button type="submit" class="btn-edit-hydrant send-edit-alert" id="HydrantSubmit">Submit</button>
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-<div class="modal fade addFireHydrantModal" tabindex="-1" role="dialog" aria-labelledby="addFireHydrantModalCenter" aria-hidden="true">
+<div class="modal fade addFireHydrantModal" id="addFireHydrantModal" tabindex="-1" role="dialog" aria-labelledby="addFireHydrantModalCenter" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content px-3">
 
@@ -102,7 +102,7 @@
               </div>
   
               <div class="col-md-6">
-                <button type="submit" class="btn-add-hydrant send-alert">Submit</button>
+                <button type="submit" class="btn-add-hydrant send-alert" id="hydrantSubmit">Submit</button>
               </div>
             </div>
 

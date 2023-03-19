@@ -13,7 +13,7 @@
 	/>
 	
 </head>
-<div class="container-xl">
+<div class="container">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -39,7 +39,7 @@
 			</div>
 			<form action="{{ route('admin.addAdminUser')}}" class="my-login-validation" method="post" enctype="multipart/form-data">
 				@csrf
-				<div class="modal-body mt-4">
+				<div class="modal-body mt-0">
 
 					<div class="row justify-content-center">
 						<div class="form-group col-md-5 mb-4">
@@ -98,7 +98,7 @@
 							</select>
 						</div>		
 					</div>	
-					<!-- <br><br> -->
+					
 					<div class="row justify-content-center">
 						<div class="col-md-5 mb-3">
 							<button type="submit" class="btn-add-user" id="form-submit">Submit</button>

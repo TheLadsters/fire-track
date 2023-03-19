@@ -59,7 +59,7 @@
 									<input type="button" class="btn-cancel mb-2" data-bs-dismiss="modal" value="Cancel">
 								</div>
 								<div class="col-md-6">
-									<input type="submit" class="btn-edit-htype" value="Submit">
+									<input type="submit" class="btn-edit-htype" value="Submit" id="hydrantTypeSubmit">
 
 								</div>
 

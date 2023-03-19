@@ -78,5 +78,51 @@ $(document).ready(function() {
     });
     
     ////// GET FIRE HYDRANT TYPE TABLE END OF CODE //////
+
+    
+    $('.hydrantTypeSubmit').on('click', function() {
+        var fileInput = $('.hydrantImg');
+        var file = fileInput[0].files[0];
+        var maxSize = 2 * 1024 * 1024; // 2MB
+        var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+        if (file && file.size > maxSize) {
+            alert('File size must be less than 2MB');
+            fileInput.val('');
+            return false;
+        }
+
+        if (file && !allowedTypes.includes(file.type)) {
+            alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+            fileInput.val('');
+            return false;
+        }
+
+        $('.hydrantImg').val(file.name);
+        $('#addFireHydrantTypeModal').modal('hide');
+    });
+
+    $('#hydrantTypeSubmit').on('click', function() {
+      var fileInput = $('#hydrantImg');
+      var file = fileInput[0].files[0];
+      var maxSize = 2 * 1024 * 1024; // 2MB
+      var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+      if (file && file.size > maxSize) {
+          alert('File size must be less than 2MB');
+          fileInput.val('');
+          return false;
+      }
+
+      if (file && !allowedTypes.includes(file.type)) {
+          alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+          fileInput.val('');
+          return false;
+      }
+
+      $('#hydrantImg').val(file.name);
+      $('#editFireHydrantTypeModal').modal('hide');
+  });
+
     
 })
