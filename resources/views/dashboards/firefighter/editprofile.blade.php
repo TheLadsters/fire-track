@@ -20,37 +20,41 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="css/firefighterCSS/editprofile-firefighter.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="css/adminCSS/userManagementUser-admin.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
 </head>
-
+   
 <!-- Edit Modal HTML -->
 <div id="ChangePasswordModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
             <form class="form-horizontal" action="{{ route('firefighterChangePassword') }}" method="POST" id="changePasswordFirefighterForm">
-				<div class="modal-header">						
-					<h4 class="modal-title">Change Password</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-				<div class="modal-body">					
-					<div class="form-group">
-						<label>Current Password</label>
-						<input type="password" class="form-control" required name="oldpassword">
-                        <span class="text-danger error-text oldpassword_error"></span>
-					</div>
-                    <div class="form-group">
-						<label>New Password</label>
-						<input type="password" class="form-control" required name="newpassword"> 
-                        <span class="text-danger error-text newpassword_error"></span>
-					</div>
-					<div class="form-group">
-						<label>Confirm New Password</label>
-                        <input type="password" class="form-control" required name="cnewpassword">
-                        <span class="text-danger error-text cnewpassword_error"></span>
-					</div>	
-				</div>
-				<div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Update password</button>
-				</div>
+                @csrf
+                <div class="modal-header">						
+                        <h4 class="modal-title">Change Password</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body">					
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" class="form-control" required name="oldpassword">
+                            <span class="text-danger error-text oldpassword_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" class="form-control" required name="newpassword"> 
+                            <span class="text-danger error-text newpassword_error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm New Password</label>
+                            <input type="password" class="form-control" required name="cnewpassword">
+                            <span class="text-danger error-text cnewpassword_error"></span>
+                        </div>	
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update password</button>
+                    </div>
 			</form>
 		</div>
 	</div>
@@ -63,29 +67,22 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                 <!-- Profile picture card-->    
                 <div class="card mb-4"> 
                     <div class="card-header" style="background-color:#6c63ff; color:white">Profile Picture</div>
-                    <h3 class="profile-username text-center mt-3 user_name" style="padding: 0px 10px 0px;">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
+                    <h3 class="profile-username text-center mt-3 user_name" style="padding: 0px 18px 0px;">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <!-- <php $user_img = Auth::user()->img_url > 
-                        src="<php echo asset("storage/$user_img")>" -->
-                        <img class="img-account-profile rounded-circle mb-2 user_picture" src="{{Auth::user()->img_url}}" alt="User profile picture">
+                        <img class="img-account-profile rounded-circle mb-2 user_picture" src="{{ asset('storage/' . Auth::user()->img_url) }}" alt="User profile picture" id="responsive-image">
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
                    
-                            <!-- <form action="upload" method="POST" enctype="multipart/form-data">
-                                 @csrf 
-                                <input type="file" name="file"  name="img_url" id="user_image"> <br><br> -->
-                            <!-- <input type="file" name="img_url" id="img_url" style="opacity: 0;height:1px;display:none">    
-                            <a href="javascript:void(0)" class="btn btn-primary btn-block" id="change_picture_btn"  style="background-color:#6c63ff;"><b>Change picture</b></a> -->
-                                <!-- <button type="submit"> Upload File</button>
-                            </form> -->
                             <form action="{{route('firefighterPictureUpdate')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Change Profile Picture</label>
-                                    <input type="text" style="display: none;" class="form-control" name="user_id" value="{{Auth::user()->user_id}}">
-                                    <input class="form-control" type="file" name="img_url">
+                                    <input class="form-control" type="file" name="img_url"> <br>
+                                    @error('img_url')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>    
                                 <div class="mb-3">   
                                     <input type="submit" class="btn btn-primary"  style="background-color:#6c63ff;" value="Upload">
@@ -102,57 +99,59 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                     <div class="card-header "  style="background-color:#6c63ff; color:white">Account Details</div>
                     <div class="card-body">
                         <form class="form-horizontal" method="POST" action="{{ route('firefighterUpdateInfo') }}" id="UserInfoForm">
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                                
-                                <!-- Form Group (first name)-->
-                                <div class="col-md-6">
-                                    <label class="large mb-1" for="fname">First Name:</label>
-                                    <input class="form-control" id="fname" type="text" placeholder="Enter your first name" value="{{ Auth::user()->fname }}" name="fname" >
+                             @csrf
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>First Name:</label>
+                                    <input type="text" class="form-control" id="fname"  name="fname" value="{{ Auth::user()->fname }}" >
                                     <span class="text-danger error-text fname_error"></span>
                                 </div>
-                                <!-- Form Group (last name)-->
-                                <div class="col-md-6">
-                                    <label class="large mb-1" for="lname">Last Name:</label>
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="{{ Auth::user()->lname }}" name="lname">
+                                <div class="form-group col-md-6">
+                                    <label>Last Name:</label>
+                                    <input type="text" class="form-control" id="lname"  name="lname"value="{{ Auth::user()->lname }}">
                                     <span class="text-danger error-text lname_error"></span>
                                 </div>
                             </div>
-                            <!-- Form Group (Address)-->
-                            <div class="mb-3">
-                                <label class="large mb-1" for="address">Address:</label>
-                                <input class="form-control" id="address" type="text" placeholder="Enter your address" value="{{ Auth::user()->address }}" name="address">
-                                <span class="text-danger error-text address_error"></span>
-                            </div>
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3   ">
-                                <!-- Form Group (phone number)-->
-                                <div class="col-md-6">
-                                    <label class="large mb-1" for="contact_no">Phone number:</label>
-                                    <input class="form-control" id="contact_no" type="tel" placeholder="Enter your phone number" value="{{ Auth::user()->contact_no }}" name="contact_no">
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Email:</label>
+                                    <input type="email" class="form-control" id="email"  name="email" value="{{ Auth::user()->email }}">		
+                                    <span class="text-danger error-text email_error"></span>	
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Mobile Number:</label>
+                                    <input type="number" class="form-control" id="contact_no" name="contact_no" value="{{ Auth::user()->contact_no }}">
                                     <span class="text-danger error-text contact_no_error"></span>
                                 </div>
-                                <!-- Form Group (Email address-->
-                                <div class="col-md-6">
-                                    <label class="large mb-1" for="email">Email Address:</label>
-                                    <input class="form-control" id="email" type="text" placeholder="Enter your email address" value="{{ Auth::user()->email }}" name="email">
-                                    <span class="text-danger error-text email_error"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <br><a data-bs-toggle="modal" data-bs-target="#changePasswordModal" id="changePass"><label class="large mb-1">Change Password</label></a>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Address:</label>
+                                    <input class="form-control" type="text" id="address"  name="address" value="{{ Auth::user()->address }}">
+                                    <span class="text-danger error-text address_error"></span>
                                 </div>
                             </div>
-                            <!-- Save changes button-->
-                            
-                            <button class="btn btn-primary"  style="background-color:#6c63ff;" type="submit">Save changes</button>
-                            
-                            
 
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                <a data-bs-toggle="modal" data-bs-target="#changePasswordModal" id="changePass"><label class="large mb-1">Change Password</label></a>
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                <div class="col-md-6 mt-4">
+                                    <button type="submit" class="btn-add-user">Save changes</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 @endsection

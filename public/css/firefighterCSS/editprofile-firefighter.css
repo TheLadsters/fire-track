@@ -10,6 +10,13 @@
     /* width: 50%; */
     height: 10rem;
 } 
+
+#responsive-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Optional, to prevent images from scaling up beyond their original size */
+}
+
 .rounded-circle {
     border-radius: 50% !important;
 }
@@ -20,6 +27,7 @@
     
 .card .card-header {
     font-weight: 500;
+    overflow: hidden;
 }
     
 #changePass{
