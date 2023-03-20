@@ -40,7 +40,7 @@
 
   <div class="announce-container">
     <div class="first-content">
-      <input type="hidden" class="bulletin_ID" id="bulletinID_{{$announcement->bulletin_id}}" value="{{$announcement->bulletin_id}}"></input>
+      <input type="hidden" class="bulletin_ID" id="bulletinID" value="{{$announcement->bulletin_id}}"></input>
       <h2><b>{{$announcement->title}}</b></h2>
       <h5>Posted on: {{$announcement->created_at->format('m-d-Y')}}</h5>
       <h5>by: {{$announcement->author_name}}</h5>
