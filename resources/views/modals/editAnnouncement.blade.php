@@ -26,7 +26,7 @@
           <form method="POST" action="{{route('admin.editAnnouncement')}}" enctype="multipart/form-data">
             @csrf
             <div>
-            <input type="hidden" style="display: none;" class="form-control" name="bulletinID" id="bulletin_id" >
+            <input type="hidden" style="display: none;" class="form-control" name="bulletin_id" id="bulletin_id" >
             <input type="hidden" style="display: none;" class="form-control" name="user_id" id="user_id" value="{{Auth::user()->user_id}}">
 
             <label for="Author">

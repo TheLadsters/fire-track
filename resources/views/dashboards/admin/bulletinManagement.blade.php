@@ -16,7 +16,7 @@
 
 
 
-<div class="tab">
+<div class="tab" style="margin-top: 58px;">
   <button class="tablinks" id="announcement_tab" onclick="openCity(event, 'Announcements')">Announcements</button>
   <button class="tablinks" onclick="openCity(event, 'News')">News</button>
 </div>
@@ -49,12 +49,13 @@
 
     <div class="second-content">
       <div class="btn-group mb-3">
-        <a class="editAnnouncement" data-id="{{$announcement->bulletin_id}}">  
+        <a class="editAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">  
           <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
         </a>
 
+        <a class="deleteAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">
         <i class="bx bxs-x-circle bx-sm deleteBtn" style="color:#ff0000" data-toggle="tooltip" title="Delete"></i>
-    
+        </a>
       </div>
 
       <div>
@@ -80,6 +81,7 @@
 
 @include("modals.addAnnouncement")
 @include("modals.editAnnouncement")
+@include("modals.deleteAnnouncement")
 
 
 

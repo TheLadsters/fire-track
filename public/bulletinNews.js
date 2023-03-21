@@ -111,15 +111,23 @@ const newsList = document.querySelector('.news-list');
         evt.currentTarget.className += " active";
       }
 
+
+
       $("#addAnnouncement").click(function(){
         $(".addAnnouncement").modal('show');
       });
 
       /* Edit Announcement*/ 
       $(".editAnnouncement").click(function(){
-        var id = $("#bulletinID").val();  
-        editAnnouncement(id);     
+        var id =  $(this).attr('id');
+        id = id-1;
+        console.log(id);
+        editAnnouncement(id);
         $(".editAnnouncementmodal").modal('show');
+      });
+
+      $(".deleteAnnouncement").click(function(){
+        $(".deleteAnnouncementModal").modal('show');
       });
 
 
@@ -135,12 +143,12 @@ const newsList = document.querySelector('.news-list');
               
               console.log(response);
 
-              let bulletin_id = response['announce'][id].bulletin_id;
-              let user_id = response['announce'][id].user_id;
-              let author_name = response['announce'][id].author_name;
-              let title = response['announce'][id].title;
-              let summary = response['announce'][id].summary;
-              let article_url = response['announce'][id].article_url;
+              let bulletin_id = response['announce'][IDnumber].bulletin_id;
+              let user_id = response['announce'][IDnumber].user_id;
+              let author_name = response['announce'][IDnumber].author_name;
+              let title = response['announce'][IDnumber].title;
+              let summary = response['announce'][IDnumber].summary;
+              let article_url = response['announce'][IDnumber].article_url;
               
               console.log(response);
 
@@ -150,9 +158,7 @@ const newsList = document.querySelector('.news-list');
                 $(".editAnnouncementmodal #title_input").val(title);
                 $(".editAnnouncementmodal #summary_input").val(summary);
                 $(".editAnnouncementmodal #articleURL_input").val(article_url);
-
   
-           
         },
           error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");
@@ -161,4 +167,4 @@ const newsList = document.querySelector('.news-list');
       });
 
     }
-      
+

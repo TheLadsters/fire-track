@@ -68,11 +68,12 @@ class BulletinController extends Controller
         'title' => 'required',
         'summary' => 'required',
         'article_url' => 'required',
-        'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
-        'bulletin_id' => 'require'
+        'bulletin_id' => 'required'
         ]);
 
       if($validator->fails()){
+        $allErrors = $validator->errors();
+        dd($allErrors);
           Alert::error('Editing Announcement was not successful.', 
           'Please fill up required fields.');
       }else{
@@ -85,19 +86,6 @@ class BulletinController extends Controller
 
           $bulletin = bulletinManagement::find($bulletin_id);
 
-          $bulletinImg = ($request->hasFile('img_url')) ? 
-          $request->file('img_url')->store('public/images') : $bulletin->img_url;
-  
-          if($bulletinImg){
-              $bulletin = bulletinManagement::where('bulletin_id', $bulletin_id)->update([
-                  'user_id' => $user_id,
-                  'author_name' => $author_name,
-                  'title' => $title,
-                  'summary' => $summary,
-                  'article_url' => $article_url,
-                  'img_url' => $bulletinImg
-              ]);
-          }else{
               $bulletin = bulletinManagement::where('bulletin_id', $bulletin_id)->update([
                 'user_id' => $user_id,
                 'author_name' => $author_name,
@@ -105,7 +93,6 @@ class BulletinController extends Controller
                 'summary' => $summary,
                 'article_url' => $article_url,
               ]);
-          }
   
           Alert::success('Updated Bulletin Successfully.');
       }
