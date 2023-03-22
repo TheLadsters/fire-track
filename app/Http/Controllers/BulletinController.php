@@ -104,12 +104,13 @@ class BulletinController extends Controller
 /* Delete announcement */
 
    public function delete(Request $request){
-    $bulletin_id = $request->input('bulletin_key_id');
-    
+    $bulletin_id = $request->input('bulletin_id');
+
     $bulletin = bulletinManagement::find($bulletin_id);
     if($bulletin){
       $bulletin->delete();
     Alert::success('Announcement deleted Successfully.');
+    
     }else
     {
         Alert::error('Announcement deletion was not successful.');

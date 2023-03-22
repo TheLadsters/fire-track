@@ -127,6 +127,9 @@ const newsList = document.querySelector('.news-list');
       });
 
       $(".deleteAnnouncement").click(function(){
+        var id =  $(this).attr('id');
+        console.log(id);
+        $(".deleteAnnouncementModal #bulletin_key_ID").val(id);
         $(".deleteAnnouncementModal").modal('show');
       });
 
