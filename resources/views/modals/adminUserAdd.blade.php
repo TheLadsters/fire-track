@@ -1,4 +1,4 @@
-<!-- Add Modal HTML -->
+<!-- 
 <div id="adminUserAddModal" class="modal fade adminUserAddModal">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -23,8 +23,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="alert alert-danger" style="display:none"></div>
-			<form action="{{ route('admin.addAdminUser')}}" method="post" enctype="multipart/form-data">
+			
+			<form action="{{ route('admin.addAdminUser')}}" method="post" enctype="multipart/form-data" id="addAdminUserForm">
 				@csrf
 				<div class="modal-body mt-4">
 
@@ -32,27 +32,21 @@
 						<div class="form-group col-md-6">
 							<label>First Name<span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="fname"  name="fname" value="{{ old('fname') }}">
-							<!-- <div><span class="text-danger">@error('fname'){{ $message }}@enderror</span></div> -->
 						</div>
 						<div class="form-group col-md-6">
 							<label>Last Name<span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="lname"  name="lname" value="{{ old('lname') }}">
-							<!-- <div><span class="text-danger">@error('lname'){{ $message }}@enderror</span></div> -->
 						</div>
-						
-						
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label>Password<span style="color:red;">*</span></label>
 							<input type="password" class="form-control" id="password"  name="password" value="{{ old('password') }}">
-							<!-- <div><span class="text-danger">@error('password'){{ $message }}@enderror</span></div> -->
 						</div>
 						<div class="form-group col-md-6">
 							<label>Email<span style="color:red;">*</span></label>
-							<input type="email" class="form-control" id="email"  name="email" value="{{ old('email') }}">
-							<!-- <div><span class="text-danger">@error('email'){{ $message }}@enderror</span></div> -->
+							<input type="email" class="form-control" id="email"  name="email" value="{{ old('email') }}">			
 						</div>
 					
 					</div>
@@ -62,12 +56,10 @@
 						<div class="form-group col-md-6">
 							<label>Mobile Number<span style="color:red;">*</span></label>
 							<input type="number" class="form-control" id="contact_no" name="contact_no" value="{{ old('contact_no') }}">
-							<!-- <div><span class="text-danger">@error('contact_no'){{ $message }}@enderror</span></div> -->
 						</div>
 						<div class="form-group col-md-6">
 							<label>Address<span style="color:red;">*</span></label>
 							<input class="form-control" type="text" id="address"  name="address" value="{{ old('address') }}">
-							<!-- <div><span class="text-danger">@error('address'){{ $message }}@enderror</span></div> -->
 						</div>
 					</div>
 
@@ -98,3 +90,12 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+ -->

@@ -50,7 +50,7 @@
               {
               ?>
                   <span class="user_img_url">
-                    <img src="{{Auth::user()->img_url}}" width="20" height="20" class="rounded-circle">
+                    <img src="{{ asset('storage/' . Auth::user()->img_url) }}" width="20" height="20" class="rounded-circle">
                   </span>
               <?php
               }else{
@@ -80,13 +80,18 @@
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin</span> 
                   </a> 
-                </div>  <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                        @csrf
-                                   
-                        <button type="submit" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </button>
-                        </form>
 
-                </div>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btnLogout"> 
+                      <i class='bx bx-log-out nav_icon logoutContent'></i>
+                      <span class="nav_name">
+                        Sign Out
+                      </span>
+                    </button>
+                  </form>
+                </div>   
+              </div>
             
         </nav>
     </div>
@@ -108,12 +113,11 @@
       <script type="text/javascript" src="/firealertmap-firefighter.js"></script>
       <script type="text/javascript" src="/firehydrantmap-firefighter.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap" defer></script>
-
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>       
 
       <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
@@ -150,35 +154,20 @@ $(function(){
                   });
                 }else{
                   $('.user_name').each(function(){
-                     $(this).html( $('#UserInfoForm').find( $('input[fname="fname"]') ).val() );
+                     $(this).html( $('#UserInfoForm').find( $('input[name="fname"]'), $('input[name="lname"]')  ).val() );
                   });
-                  alert(data.msg);
+                  Swal.fire({
+                    text: data.msg,
+                    icon: "success",
+                    confirmButtonText: "OK",
+                   
+                  });
                 }
+                location.reload();
            }
         });
     });
   
-    $(document).on('click','#change_picture_btn', function(){
-      $('#img_url').click();
-    });
-
-
-    $('#img_url').ijaboCropTool({
-          preview : '.user_picture',
-          setRatio:1,
-          allowedExtensions: ['jpg', 'jpeg','png'],
-          buttonsText:['CROP','QUIT'],
-          buttonsColor:['#30bf7d','#ee5155', -15],
-          processUrl:'{{ route("firefighterPictureUpdate") }}',
-          // withCSRF:['_token','{{ csrf_token() }}'],
-          onSuccess:function(message, element, status){
-             alert(message);
-          },
-          onError:function(message, element, status){
-            alert(message);
-          }
-       });
-
 
     $('#changePasswordFirefighterForm').on('submit', function(e){
          e.preventDefault();
@@ -200,7 +189,11 @@ $(function(){
                 });
               }else{
                 $('#changePasswordFirefighterForm')[0].reset();
-                alert(data.msg);
+                Swal.fire({
+                  text: data.msg,
+                  icon: "success",
+                  confirmButtonText: "OK",
+                });
               }
             }
          });
