@@ -102,7 +102,7 @@ class RegisterController extends Controller
          $user->role = 'firefighter';
          $user->birthday = 03102001;
          $user->address = $request->address;
-         $user->img_url = "images/no_img_available.png";
+         $user->img_url = NULL;
          $user->password = \Hash::make($request->password);
          $user->status = 'active';
 

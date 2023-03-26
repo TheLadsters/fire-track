@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('birthday');
             $table->enum('gender', ['male', 'female'])->default('male');
             $table->string('address');
-            $table->string('img_url')->default(NULL);
+            $table->string('img_url')->nullable()->default(NULL);
             $table->enum('role', ['firefighter', 'admin'])->default('admin');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('email_verified_at')->nullable();
