@@ -35,7 +35,21 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                     <h3 class="profile-username text-center mt-3 user_name" style="padding: 0px 18px 0px;">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2 user_picture" src="{{ asset('storage/' . Auth::user()->img_url) }}" alt="User profile picture" id="responsive-image">
+                        <img class="img-account-profile rounded-circle mb-2 user_picture" 
+                        
+                        <?php 
+                            if(Auth::user()->img_url == NULL){  
+                        ?>
+                            src= "images/no_img_available.png"
+                        <?php
+                            }else{
+                        ?>
+                            src= {{ asset('storage/' . Auth::user()->img_url) }}
+                        <?php
+                            }
+                        ?>
+                                             
+                        alt="User profile picture" id="responsive-image">
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
