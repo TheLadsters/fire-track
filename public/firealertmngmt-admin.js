@@ -82,7 +82,7 @@ $.ajaxSetup({
         messageBottom: `${stringDate}`,
         text: `<i class='bx bxs-file-export'></i> Export as Excel`,
         exportOptions: {
-          columns: [ 0, 1, 2, 3, 4]
+          columns: [ 0, 1, 2, 3, 4, 5]
       }
     }),
         $.extend( true, {}, {
@@ -97,7 +97,7 @@ $.ajaxSetup({
           messageBottom:`${stringDate}`,
           text: `<i class='bx bxs-file-pdf' ></i> Export as PDF`,
           exportOptions: {
-            columns: [ 0, 1, 2, 3, 4]
+            columns: [ 0, 1, 2, 3, 4, 5]
         }
       }),
     ],
@@ -107,6 +107,7 @@ $.ajaxSetup({
         {'data': 'latitude'},
         {'data': 'status'},
         {'data' : 'created_at', visible: true, searchable: true},
+        {'data': 'updated_at'},
         {
           "mData": null,
           "bSortable": false,
