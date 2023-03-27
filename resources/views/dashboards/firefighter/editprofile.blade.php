@@ -25,41 +25,6 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
 </head>
    
-<!-- Edit Modal HTML -->
-<div id="ChangePasswordModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-            <form class="form-horizontal" action="{{ route('firefighterChangePassword') }}" method="POST" id="changePasswordFirefighterForm">
-                @csrf
-                <div class="modal-header">						
-                        <h4 class="modal-title">Change Password</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                    <div class="modal-body">					
-                        <div class="form-group">
-                            <label>Current Password</label>
-                            <input type="password" class="form-control" required name="oldpassword">
-                            <span class="text-danger error-text oldpassword_error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>New Password</label>
-                            <input type="password" class="form-control" required name="newpassword"> 
-                            <span class="text-danger error-text newpassword_error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Confirm New Password</label>
-                            <input type="password" class="form-control" required name="cnewpassword">
-                            <span class="text-danger error-text cnewpassword_error"></span>
-                        </div>	
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Update password</button>
-                    </div>
-			</form>
-		</div>
-	</div>
-</div>
-
 
     <div class="container-xl px-4 mt-5">
         <div class="row">
@@ -70,7 +35,21 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                     <h3 class="profile-username text-center mt-3 user_name" style="padding: 0px 18px 0px;">{{Auth::user()->fname}} {{Auth::user()->lname}} </h3>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2 user_picture" src="{{ asset('storage/' . Auth::user()->img_url) }}" alt="User profile picture" id="responsive-image">
+                        <img class="img-account-profile rounded-circle mb-2 user_picture" 
+                        
+                        <?php 
+                            if(Auth::user()->img_url == NULL){  
+                        ?>
+                            src= "images/no_img_available.png"
+                        <?php
+                            }else{
+                        ?>
+                            src= {{ asset('storage/' . Auth::user()->img_url) }}
+                        <?php
+                            }
+                        ?>
+                                             
+                        alt="User profile picture" id="responsive-image">
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
@@ -152,6 +131,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
         </div>
     </div>
 
+@include("modals.firefightereditprofile")
 
 
 @endsection

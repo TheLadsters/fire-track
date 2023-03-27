@@ -157,8 +157,14 @@ class AdminController extends Controller
         
         $user = User::find($user_id);
         if($user){
-        $user->delete();
-        Alert::success('User deleted Successfully.');
+            if($user->email == Auth::user()->email){
+                Alert::error('Current User', 'The user you are deleting is the current logged in user!');
+            }
+            else{
+                $user->delete();
+                Alert::success('User deleted Successfully.');
+            }
+        
         }else
         {
             Alert::error('Deletion was not successful.');
@@ -166,22 +172,6 @@ class AdminController extends Controller
 
         return redirect('admin/userManagementUser')->with('message', 'User Deleted Successfully.');   
     }
-
-    // public function export_users_pdf(){
-
-    //     $users = User::all();
-    //     // $pdf = Pdf::loadView('pdf.users',   [
-    //     //     'users'=>$users
-    //     // ]);
-    //     // return $pdf->download('users.pdf');
-    //     view()->share('users',$users);
-    //     $pdf = PDF::loadView('pdf.Users', [
-    //         'users'=>$users
-    //     ]);
-    //     // download PDF file with download method
-    //     return $pdf->download('users.pdf');
-        
-    // }
 
 
 }

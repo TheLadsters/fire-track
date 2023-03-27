@@ -36,6 +36,7 @@
                                     <th>Latitude</th>
                                     <th id="status_col">Status</th>
                                     <th id="created_col">Created At</th>
+                                    <th id="updated_col">Updated At</th>
                                     <th id="action_col">Action</th>
                                 </tr>
                             </thead>

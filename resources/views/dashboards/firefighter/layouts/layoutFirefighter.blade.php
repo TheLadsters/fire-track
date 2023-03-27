@@ -46,7 +46,7 @@
         <nav class="nav">
             <div> <a class="nav_logo"> 
               <?php
-              if(Auth::user()->img_url)
+              if(Auth::user()->img_url != NULL)
               {
               ?>
                   <span class="user_img_url">
