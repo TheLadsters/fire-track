@@ -120,7 +120,6 @@ const newsList = document.querySelector('.news-list');
       /* Edit Announcement*/ 
       $(".editAnnouncement").click(function(){
         var id =  $(this).attr('id');
-        id = id-1;
         console.log(id);
         editAnnouncement(id);
         $(".editAnnouncementmodal").modal('show');
@@ -137,8 +136,8 @@ const newsList = document.querySelector('.news-list');
       function editAnnouncement(IDnumber){
 
         $.ajax({
-          url: 'admin/bulletinManagement/getAnnouncement',
-          type: 'get',
+          url: 'admin/bulletinManagement/getAnnouncement/' + IDnumber,
+          type: 'post',
           dataType: 'json',
           success: function(response){
             // console.log(response);
@@ -146,14 +145,12 @@ const newsList = document.querySelector('.news-list');
               
               console.log(response);
 
-              let bulletin_id = response['announce'][IDnumber].bulletin_id;
-              let user_id = response['announce'][IDnumber].user_id;
-              let author_name = response['announce'][IDnumber].author_name;
-              let title = response['announce'][IDnumber].title;
-              let summary = response['announce'][IDnumber].summary;
-              let article_url = response['announce'][IDnumber].article_url;
-              
-              console.log(response);
+              let bulletin_id = response['announce'].bulletin_id;
+              let user_id = response['announce'].user_id;
+              let author_name = response['announce'].author_name;
+              let title = response['announce'].title;
+              let summary = response['announce'].summary;
+              let article_url = response['announce'].article_url;
 
                 $(".editAnnouncementmodal #bulletin_id").val(bulletin_id);
                 $(".editAnnouncementmodal #user_id").val(user_id);

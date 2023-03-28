@@ -119,14 +119,19 @@ class BulletinController extends Controller
     return redirect('admin/bulletinManagement')->with('message', 'Announcement Deleted Successfully.');   
 }
 
-public function getAnnouncement(){
-    $announcements = bulletinManagement::all();
+
+
+public function getAnnouncement($bulletin_id){
+
+    $announcements = bulletinManagement::findOrFail($bulletin_id);
 
     // Fetch all records
     $response['announce'] = $announcements;
 
     return response()->json($response);
+
 }
+
 
 
 }
