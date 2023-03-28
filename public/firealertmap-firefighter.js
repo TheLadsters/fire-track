@@ -57,7 +57,7 @@ $(document).ready(function() {
         let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
         let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
         let markerContent = `
-        <div style="max-width: 200px;" class="text-center">
+        <div style="max-width: 200px;">
           <p>
             ${fireStatus}
           </p>
@@ -68,8 +68,6 @@ $(document).ready(function() {
         </div>
         `;
 
-
-    if(response['alert'][i].status != "Fire Out"){
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(longitude, latitude),
           map: map,
@@ -81,6 +79,10 @@ $(document).ready(function() {
           animation: google.maps.Animation.DROP
     });
 
+    if(response['alert'][i].status == "Fire Out"){
+      marker.setVisible(false);
+    }
+
       var infowindow = new google.maps.InfoWindow({
             content: markerContent,
             ariaLabel: "Uluru",
@@ -88,8 +90,7 @@ $(document).ready(function() {
         
         addMarkerListener(marker, infowindow);
         }
-        
-  }
+
   
     },
       error: function(xhr, status, error) {

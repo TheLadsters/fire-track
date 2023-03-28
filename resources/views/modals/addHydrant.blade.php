@@ -1,4 +1,4 @@
-<div class="modal fade addFireHydrantModal" tabindex="-1" role="dialog" aria-labelledby="addFireHydrantModalCenter" aria-hidden="true">
+<div class="modal fade addFireHydrantModal" id="addFireHydrantModal" tabindex="-1" role="dialog" aria-labelledby="addFireHydrantModalCenter" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content px-3">
 
@@ -87,7 +87,7 @@
               
               <div class="col-md-6">
                 <label for="hydrantImg" class="form-label">
-                  Image of Location
+                  Image of Location (.jpeg, .jpg, .png)
                 </label>
                 <input class="form-control" name="img_url" type="file" id="hydrantImg">
               </div>
@@ -102,7 +102,7 @@
               </div>
   
               <div class="col-md-6">
-                <button type="submit" class="btn-add-hydrant send-alert">Submit</button>
+                <button type="submit" class="btn-add-hydrant send-alert" id="hydrantSubmit">Submit</button>
               </div>
             </div>
 

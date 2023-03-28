@@ -82,7 +82,7 @@ $.ajaxSetup({
         messageBottom: `${stringDate}`,
         text: `<i class='bx bxs-file-export'></i> Export as Excel`,
         exportOptions: {
-          columns: [ 0, 1, 2, 3, 4]
+          columns: [ 0, 1, 2, 3, 4, 5]
       }
     }),
         $.extend( true, {}, {
@@ -97,7 +97,7 @@ $.ajaxSetup({
           messageBottom:`${stringDate}`,
           text: `<i class='bx bxs-file-pdf' ></i> Export as PDF`,
           exportOptions: {
-            columns: [ 0, 1, 2, 3, 4]
+            columns: [ 0, 1, 2, 3, 4, 5]
         }
       }),
     ],
@@ -107,6 +107,7 @@ $.ajaxSetup({
         {'data': 'latitude'},
         {'data': 'status'},
         {'data' : 'created_at', visible: true, searchable: true},
+        {'data': 'updated_at'},
         {
           "mData": null,
           "bSortable": false,
@@ -276,12 +277,13 @@ $.ajax({
 
       let location_title = response['alert'][i].fire_location;
 
-      if(response['alert'][i].status != "Fire Out"){
-        marker = createMarker(longitude, latitude, location_title);
-    
-        addMarkerListener(marker, markerContent);
-        markerArr.push(marker);
+      marker = createMarker(longitude, latitude, location_title);
+      if(response['alert'][i].status == "Fire Out"){
+        marker.setVisible(false);
       }
+      addMarkerListener(marker, markerContent);
+      markerArr.push(marker);
+
   
 }
 
@@ -413,7 +415,7 @@ function editCancelFcn(){
       let fireStatus = "<b>Status: </b> " + response['alert'][i].status;
       let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
       let markerContent = `
-        <div style="max-width: 300px;">
+        <div style="max-width: 200px;">
           <p>
             ${fireStatus}
           </p>

@@ -31,7 +31,7 @@ class UserController extends Controller
     }
 
     function updateInfo(Request $request){
-           
+
         $validator = \Validator::make($request->all(),[
             'fname'=>'required',
             'lname'=>'required',
@@ -56,10 +56,7 @@ class UserController extends Controller
              if(!$query){
                  return response()->json(['status'=>0,'msg'=>'Something went wrong.']);
              }else{
-                return response()->json(['status'=>1,'msg'=>'Your profile info has been update successfuly.']);
-                // Alert::success('Your profile info has been updated successfully.');
-    
-    
+                return response()->json(['status'=>1,'msg'=>'Your profile info has been updated successfully.']);
              }
         }
     }
@@ -104,37 +101,29 @@ class UserController extends Controller
     }
 
     function updatePicture(Request $request){
-        $path = 'storage/users/images/';
-        $file = $request->file('img_url');
-        $new_name = 'storage/users/images/UIMG_'.date('Ymd').uniqid().'.jpg';
-
-        //Upload new image
-        $upload = $file->move(public_path($path), $new_name);
         
-        if( !$upload ){
-            return response()->json(['status'=>0,'msg'=>'Something went wrong, upload new picture failed.']);
-        }else{
-            //Get Old picture
-            $oldPicture = User::find(Auth::user()->user_id)->getAttributes()['img_url'];
-
-            if( $oldPicture != '' ){
-                if( \File::exists(public_path($path.$oldPicture))){
-                    \File::delete(public_path($path.$oldPicture));
-                }
-            }
-
-            //Update DB
-            $update = User::find(Auth::user()->user_id)->update(['img_url'=>$new_name]);
-
-            if( !$upload ){
-                return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
-            }else{
-                return redirect('user/editprofile');
-                Alert::success('Profile picture changed successfully.');
-            }
-        }
-           
-        }
+        $request->validate([
+            'img_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
     
+        $user = Auth::user();
     
+        $path = $request->file('img_url')->store('public/users/images');
+        $path = str_replace('public/', '', $path); // Remove the "public/" prefix from the path
+    
+        $user->img_url = $path;
+
+        // if( $user->save() ){
+        //     Alert::success('Profile picture updated successfully.');
+        //     return redirect('user/editprofile');
+        // }
+        $user->save();
+
+        return redirect()->route('firefighter.editprofile')->with('success', 'Profile picture updated.');
+        alert::success('Profile picture updated successfully.');
+
+
+       
+        
+    }
 }

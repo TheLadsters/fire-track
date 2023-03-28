@@ -39,7 +39,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Image</label>
+										<label>Image (.jpeg, .jpg, .png)</label>
 										<input type="file" name="img_url" id="hydrantImg"class="form-control">
 									</div>
 								</div>
@@ -59,7 +59,7 @@
 									<input type="button" class="btn-cancel mb-2" data-bs-dismiss="modal" value="Cancel">
 								</div>
 								<div class="col-md-6">
-									<input type="submit" class="btn-edit-htype" value="Submit">
+									<input type="submit" class="btn-edit-htype" value="Submit" id="hydrantTypeSubmit">
 
 								</div>
 

@@ -682,5 +682,59 @@ function deleteHydrantFcn(){
   
   ////// DELETE FIRE HYDRANT FUNCTION CODE END //////
 
+//UPLOADED IMAGE VALIDATIONS
+$('#hydrantSubmit').on('click', function() {
+
+  var fileInput = $('#hydrantImg');
+  var file = fileInput[0].files[0];
+  var maxSize = 2 * 1024 * 1024; // 2MB
+  var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+  if (file && file.size > maxSize) {
+      alert('File size must be less than 2MB');
+      fileInput.val('');
+      return false;
+  }
+
+  if (file && !allowedTypes.includes(file.type)) {
+      alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+      fileInput.val('');
+      return false;
+  }
+
+
+  $('#hydrantImg').val(file.name);
+  $('#addFireHydrantModal').modal('hide');
 
 });
+
+$('#HydrantSubmit').on('click', function() {
+
+  var fileInput = $('.hydrantImg');
+  var file = fileInput[0].files[0];
+  var maxSize = 2 * 1024 * 1024; // 2MB
+  var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+  if (file && file.size > maxSize) {
+      alert('File size must be less than 2MB');
+      fileInput.val('');
+      return false;
+  }  
+
+  if (file && !allowedTypes.includes(file.type)) {
+      alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+      fileInput.val('');
+      return false;
+  }
+
+
+  $('.hydrantImg').val(file.name);
+  $('#editFireHydrantModal').modal('hide');
+});
+
+
+
+});
+
+
+

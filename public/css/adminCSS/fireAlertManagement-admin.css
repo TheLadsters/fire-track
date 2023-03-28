@@ -448,7 +448,7 @@ color: white;
 	border-radius: 5px;
 }
 
-#alertTable #action_col, #alertTable #created_col,
+#alertTable #action_col, #alertTable #created_col, #updated_col,
 #alertTable #status_col{
   width: 80px !important;
 }
