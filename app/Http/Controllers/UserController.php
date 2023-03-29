@@ -115,8 +115,9 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('firefighter.editprofile')->with('success', 'Your profile picture has been updated.');
+        Alert::success('Your profile picture has been updated.');
         
+        return redirect('user/editprofile');
         
 
        
