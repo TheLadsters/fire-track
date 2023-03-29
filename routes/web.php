@@ -105,12 +105,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
 
 });
 
-// Route::get('/',function(){
-//     return view('editprofile');
-// });
-
-// Route::view('upload','upload');
-// Route::post('upload',[UploadController::class,'index']);
 
 
 
