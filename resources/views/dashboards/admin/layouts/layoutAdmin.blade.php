@@ -120,6 +120,7 @@
       <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
       <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.3.1/js/dataTables.dateTime.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       @include('sweetalert::alert')
 
 
