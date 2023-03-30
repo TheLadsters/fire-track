@@ -15,6 +15,7 @@ class BulletinController extends Controller
 
     }
 
+
 /* Add Announcement*/
 
     public function add(Request $request){
@@ -58,6 +59,8 @@ class BulletinController extends Controller
           
           return redirect('admin/bulletinManagement');
     }
+
+
 /* Edit Announcement*/
 
     public function edit(Request $request){
@@ -131,6 +134,62 @@ public function getAnnouncement($bulletin_id){
     return response()->json($response);
 
 }
+
+/*FIREFIGHTER*/
+
+/*POST BULLETIN*/
+
+public function index_firefighter(){
+  $allAnnouncements = bulletinManagement::all();
+  return view('dashboards.firefighter.bulletinfirefighter', compact('allAnnouncements'));
+}
+
+/*ADD ANNOUNCEMENT*/
+
+public function add_firefighter(Request $request){
+
+  $validator = Validator::make($request->all(), [
+      'user_id' => 'required',
+      'author_name' => 'required',
+      'title' => 'required',
+      'summary' => 'required',
+      'article_url' => 'required',
+      'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+    ]);
+
+    if ($validator->fails()) {
+      $allErrors = $validator->errors();
+      // dd($allErrors);
+      Alert::error('Adding the Announcement was not successful.', 
+      'Please fill up required fields.');
+    }else{
+
+      $formFields = $request->validate([
+          'user_id' => 'required',
+          'author_name' => 'required',
+          'title' => 'required',
+          'summary' => 'required',
+          'article_url' => 'required',
+          'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+      ]);
+
+      if($request->hasFile('img_url')){
+
+          $formFields['img_url'] = $request->file('img_url')->store('public/images');
+      }
+
+      bulletinManagement::create($formFields);
+      Alert::success('Added Announcement Successfully.');
+
+
+
+    }
+    
+    return redirect('firefighter/bulletinfirefighter');
+}
+
+/*EDIT*/
+
 
 
 

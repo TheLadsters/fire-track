@@ -55,6 +55,8 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
     Route::post('change-profile-picture',[UserController::class,'updatePicture'])->name('firefighterPictureUpdate');
     Route::post('change-password',[UserController::class,'changePassword'])->name('firefighterChangePassword');
     
+    Route::get('bulletinfirefighter', [BulletinController::class, 'index_firefighter'])->name('firefighter.bulletinfirefighter');
+    Route::post('firefighter/addAnnouncement',[BulletinController::class, 'add_firefighter'])->name('firefighter.addAnnouncement');
     
 });
 
