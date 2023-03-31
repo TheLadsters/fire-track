@@ -26,7 +26,7 @@ class BulletinController extends Controller
             'title' => 'required',
             'summary' => 'required',
             'article_url' => 'required',
-            'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+            'img_url' => 'required'
           ]);
 
           if ($validator->fails()) {
@@ -42,13 +42,13 @@ class BulletinController extends Controller
                 'title' => 'required',
                 'summary' => 'required',
                 'article_url' => 'required',
-                'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+                'img_url' => 'required'
             ]);
 
-            if($request->hasFile('img_url')){
+            // if($request->hasFile('img_url')){
 
-                $formFields['img_url'] = $request->file('img_url')->store('public/images');
-            }
+            //     $formFields['img_url'] = $request->file('img_url')->store('public/images');
+            // }
 
             bulletinManagement::create($formFields);
             Alert::success('Added Announcement Successfully.');
@@ -154,7 +154,7 @@ public function add_firefighter(Request $request){
       'title' => 'required',
       'summary' => 'required',
       'article_url' => 'required',
-      'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+      'img_url' => 'required'
     ]);
 
     if ($validator->fails()) {
@@ -170,13 +170,13 @@ public function add_firefighter(Request $request){
           'title' => 'required',
           'summary' => 'required',
           'article_url' => 'required',
-          'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+          'img_url' => 'required'
       ]);
 
-      if($request->hasFile('img_url')){
+      // if($request->hasFile('img_url')){
 
-          $formFields['img_url'] = $request->file('img_url')->store('public/images');
-      }
+      //     $formFields['img_url'] = $request->file('img_url')->store('public/images');
+      // }
 
       bulletinManagement::create($formFields);
       Alert::success('Added Announcement Successfully.');

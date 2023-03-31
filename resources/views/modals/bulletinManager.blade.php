@@ -1,4 +1,4 @@
-<div class="modal fade fireAlertManagerModal" tabindex="-1" role="dialog" aria-labelledby="fireAlertManagerModalCenter" aria-hidden="true">
+<div class="modal fade bulletinManagerModal" tabindex="-1" role="dialog" aria-labelledby="bulletinManagerModalCenter" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header forgetPasswordHeader">
@@ -10,7 +10,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h2>Fire Alert Manager</h2>
+                                    <h2>Bulletin Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
                                     <a class="btn btn-success addNewAlert" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Alert</span></a>

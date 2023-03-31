@@ -33,6 +33,11 @@ const newsList = document.querySelector('.news-list');
             let para = document.createElement('p');
             let read  = document.createElement('a');
 
+            h.style.fontSize="140%";
+
+            para.style.marginTop="20px";
+            para.style.marginRight="100px";
+
             divMain.classList.add('child');
             divBg.classList.add('background-blur');
             divContent.classList.add('content');
@@ -50,7 +55,7 @@ const newsList = document.querySelector('.news-list');
             divContent.style.marginLeft = "2%";
             vhTotal += 38.5;
 
-            h.setAttribute('target', '_blank');
+            read.setAttribute('target', '_blank');
             h.textContent = article.title;
             h.style.fontWeight = "bold";
             para.textContent = article.description;
@@ -111,6 +116,9 @@ const newsList = document.querySelector('.news-list');
         evt.currentTarget.className += " active";
       }
 
+      $("#OpenManager").click(function(){
+        $(".bulletinManagerModal").modal('show');
+      });
 
 
       $("#addAnnouncement").click(function(){
