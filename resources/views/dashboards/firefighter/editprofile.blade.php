@@ -131,7 +131,10 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
         </div>
     </div>
 
+
 @include("modals.firefightereditprofile")
+
+@include('sweetalert::alert')
 
 
 @endsection
