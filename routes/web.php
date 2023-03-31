@@ -110,12 +110,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     Route::post('bulletinManagement/getAnnouncement/{bulletin_id}', [BulletinController::class, 'getAnnouncement'])->name('admin.getAnnouncement');
 });
 
-// Route::get('/',function(){
-//     return view('editprofile');
-// });
-
-// Route::view('upload','upload');
-// Route::post('upload',[UploadController::class,'index']);
 
 
 

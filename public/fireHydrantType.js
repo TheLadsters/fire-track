@@ -87,13 +87,21 @@ $(document).ready(function() {
         var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
         if (file && file.size > maxSize) {
-            alert('File size must be less than 2MB');
+            //alert('File size must be less than 2MB');
+            Swal.fire({
+              icon: 'error',
+              title: 'File size must be less than 2MB',
+            })
             fileInput.val('');
             return false;
         }
 
         if (file && !allowedTypes.includes(file.type)) {
-            alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+            //alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+            Swal.fire({
+              icon: 'error',
+              title: 'Invalid file type. Allowed types: JPG, PNG, GIF',
+            })
             fileInput.val('');
             return false;
         }
@@ -109,13 +117,21 @@ $(document).ready(function() {
       var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
       if (file && file.size > maxSize) {
-          alert('File size must be less than 2MB');
+          //alert('File size must be less than 2MB');
+          Swal.fire({
+            icon: 'error',
+            title: 'File size must be less than 2MB',
+          })
           fileInput.val('');
           return false;
       }
 
       if (file && !allowedTypes.includes(file.type)) {
-          alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+          //alert('Invalid file type. Allowed types: JPG, PNG, GIF');
+          Swal.fire({
+            icon: 'error',
+            title: 'Invalid file type. Allowed types: JPG, PNG, GIF',
+          })
           fileInput.val('');
           return false;
       }

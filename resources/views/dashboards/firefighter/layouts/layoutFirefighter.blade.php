@@ -26,13 +26,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-   <link rel="stylesheet" href="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.css') }}">
-   <link rel="stylesheet" href="path/to/ijaboCropTool.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    
-    
-
+  
     <title>FireTrack App</title>
     
 </head>
@@ -95,14 +89,8 @@
             
         </nav>
     </div>
-    <!--Container Main start-->
-        <!-- @yield('editProfile')
-        @yield('fireHydrantMap')
-        @yield('fireAlertMap')
-        @yield('reportsPage')
-        @yield('bulletinfirefighter') -->
+
         @yield('content')
-    <!--Container Main end-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
@@ -114,6 +102,7 @@
       <script type="text/javascript" src="/firehydrantmap-firefighter.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap" defer></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>       
+      <script type="text/javascript" src="/ff-editprofile.js"></script>   
 
       <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -121,86 +110,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-{{-- CUSTOM JS CODES --}}
-<script>
 
-  $.ajaxSetup({
-     headers:{
-       'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-     }
-  });
-  
-$(function(){
-
-    /* UPDATE USER PERSONAL INFO */
-
-    $('#UserInfoForm').on('submit', function(e){
-        e.preventDefault();
-
-        $.ajax({
-           url:$(this).attr('action'),
-           method:$(this).attr('method'),
-           data:new FormData(this),
-           processData:false,
-           dataType:'json',
-           contentType:false,
-           beforeSend:function(){
-               $(document).find('span.error-text').text('');
-           },
-           success:function(data){
-                if(data.status == 0){
-                  $.each(data.error, function(prefix, val){
-                    $('span.'+prefix+'_error').text(val[0]);
-                  });
-                }else{
-                  $('.user_name').each(function(){
-                     $(this).html( $('#UserInfoForm').find( $('input[name="fname"]'), $('input[name="lname"]')  ).val() );
-                  });
-                  Swal.fire({
-                    text: data.msg,
-                    icon: "success",
-                    confirmButtonText: "OK",
-                   
-                  });
-                }
-                location.reload();
-           }
-        });
-    });
-  
-
-    $('#changePasswordFirefighterForm').on('submit', function(e){
-         e.preventDefault();
-
-         $.ajax({
-            url:$(this).attr('action'),
-            method:$(this).attr('method'),
-            data:new FormData(this),
-            processData:false,
-            dataType:'json',
-            contentType:false,
-            beforeSend:function(){
-              $(document).find('span.error-text').text('');
-            },
-            success:function(data){
-              if(data.status == 0){
-                $.each(data.error, function(prefix, val){
-                  $('span.'+prefix+'_error').text(val[0]);
-                });
-              }else{
-                $('#changePasswordFirefighterForm')[0].reset();
-                Swal.fire({
-                  text: data.msg,
-                  icon: "success",
-                  confirmButtonText: "OK",
-                });
-              }
-            }
-         });
-    });
-
-  })  
-</script>
 </body>
 
 

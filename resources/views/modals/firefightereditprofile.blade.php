@@ -25,7 +25,7 @@
         </div>
 
         <div class="modal-body">
-          <form method="POST" action="{{ route('firefighterChangePassword') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('firefighterChangePassword') }}" enctype="multipart/form-data" id="changePasswordFirefighterForm">
             @csrf
             <div class="form-group">
                 <label>Current Password</label>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="col-6">
-                    <button type="submit" class="btn-change-pass">Update password</button>                
+                    <button type="submit" class="btn-change-pass" id="password-id">Update password</button>                
                 </div>
             </div>
         </div>
