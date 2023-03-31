@@ -26,7 +26,8 @@ use App\Http\Controllers\UploadController;
 
 
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+    $request->session()->flush();        
     return view('home');
 });
 

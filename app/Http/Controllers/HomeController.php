@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->regenerate();        
+        $request->session()->flush();        
         return view('layouts.app');
     }
 }
