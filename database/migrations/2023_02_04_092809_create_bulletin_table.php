@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bulletin', function (Blueprint $table) {
             $table->id('bulletin_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('author_name');
+            $table->string('author_name')->default('admin');
             $table->string('title');
             $table->mediumText('summary');
             $table->string('article_url');
