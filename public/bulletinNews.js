@@ -33,6 +33,11 @@ const newsList = document.querySelector('.news-list');
             let para = document.createElement('p');
             let read  = document.createElement('a');
 
+            h.style.fontSize="140%";
+
+            para.style.marginTop="20px";
+            para.style.marginRight="100px";
+
             divMain.classList.add('child');
             divBg.classList.add('background-blur');
             divContent.classList.add('content');
@@ -50,7 +55,7 @@ const newsList = document.querySelector('.news-list');
             divContent.style.marginLeft = "2%";
             vhTotal += 38.5;
 
-            h.setAttribute('target', '_blank');
+            read.setAttribute('target', '_blank');
             h.textContent = article.title;
             h.style.fontWeight = "bold";
             para.textContent = article.description;
@@ -110,3 +115,64 @@ const newsList = document.querySelector('.news-list');
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
       }
+
+      $("#OpenManager").click(function(){
+        $(".bulletinManagerModal").modal('show');
+      });
+
+
+      $("#addAnnouncement").click(function(){
+        $(".addAnnouncement").modal('show');
+      });
+
+      /* Edit Announcement*/ 
+      $(".editAnnouncement").click(function(){
+        var id =  $(this).attr('id');
+        console.log(id);
+        editAnnouncement(id);
+        $(".editAnnouncementmodal").modal('show');
+      });
+
+      $(".deleteAnnouncement").click(function(){
+        var id =  $(this).attr('id');
+        console.log(id);
+        $(".deleteAnnouncementModal #bulletin_key_ID").val(id);
+        $(".deleteAnnouncementModal").modal('show');
+      });
+
+
+      function editAnnouncement(IDnumber){
+
+        $.ajax({
+          url: 'admin/bulletinManagement/getAnnouncement/' + IDnumber,
+          type: 'post',
+          dataType: 'json',
+          success: function(response){
+            // console.log(response);
+              console.log(IDnumber);
+              
+              console.log(response);
+
+              let bulletin_id = response['announce'].bulletin_id;
+              let user_id = response['announce'].user_id;
+              let author_name = response['announce'].author_name;
+              let title = response['announce'].title;
+              let summary = response['announce'].summary;
+              let article_url = response['announce'].article_url;
+
+                $(".editAnnouncementmodal #bulletin_id").val(bulletin_id);
+                $(".editAnnouncementmodal #user_id").val(user_id);
+                $(".editAnnouncementmodal #author_input").val(author_name);
+                $(".editAnnouncementmodal #title_input").val(title);
+                $(".editAnnouncementmodal #summary_input").val(summary);
+                $(".editAnnouncementmodal #articleURL_input").val(article_url);
+  
+        },
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert("Error");
+          }
+      });
+
+    }
+
