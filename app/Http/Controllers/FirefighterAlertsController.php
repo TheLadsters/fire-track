@@ -22,4 +22,13 @@ class FirefighterAlertsController extends Controller
     
         return response()->json($response);
     }
+
+    public function showMapAlertPublic(){
+        $mapAlerts = fireAlertFirefighter::all();
+    
+        // Fetch all records
+        $response['alert'] = $mapAlerts;
+    
+        return response()->json($response);
+    }
 }

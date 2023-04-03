@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FireHydrantsController;
 use App\Http\Controllers\FireHydrantsTypeController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\FirefighterBulletinController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UploadController;
 
@@ -49,14 +50,15 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
     Route::get('/fire-alert-map', [FirefighterAlertsController::class, 'index'])->name('firefighter.fireAlertMap');
     Route::get('fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts'])->name('firefighter.showMapAlerts');
 
-    Route::get('bulletinfirefighter',[UserController::class,'bulletinfirefighter'])->name('firefighter.bulletinfirefighter');
+    Route::get('/bulletinfirefighter',[FirefighterBulletinController::class,'bulletinfirefighter'])->name('firefighter.bulletinfirefighter');
 
     Route::post('update-profile-info',[UserController::class,'updateInfo'])->name('firefighterUpdateInfo');
     Route::post('change-profile-picture',[UserController::class,'updatePicture'])->name('firefighterPictureUpdate');
     Route::post('change-password',[UserController::class,'changePassword'])->name('firefighterChangePassword');
-    
+ 
     
 });
+    Route::get('showMapAlerts', [FirefighterAlertsController::class, 'showMapAlertsPublic']);
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     
@@ -102,8 +104,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     // BULLETIN MANAGEMENT
     // Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
     Route::get('bulletinManagement', [BulletinController::class, 'index'])->name('admin.bulletinManagement');
-
+    
+    
 });
+   
 
 
 
