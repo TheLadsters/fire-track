@@ -1,5 +1,5 @@
 @extends('dashboards.firefighter.layouts.layoutFirefighter')
-@section('title','bulletinfirefighter')
+@section('title','Bulletin')
 
 @section('content')
 
