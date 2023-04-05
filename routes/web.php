@@ -55,7 +55,9 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
     Route::post('update-profile-info',[UserController::class,'updateInfo'])->name('firefighterUpdateInfo');
     Route::post('change-profile-picture',[UserController::class,'updatePicture'])->name('firefighterPictureUpdate');
     Route::post('change-password',[UserController::class,'changePassword'])->name('firefighterChangePassword');
- 
+    
+    Route::get('bulletinfirefighter', [BulletinController::class, 'index_firefighter'])->name('firefighter.bulletinfirefighter');
+    Route::post('firefighter/addAnnouncement',[BulletinController::class, 'add_firefighter'])->name('firefighter.addAnnouncement');
     
 });
     Route::get('showMapAlerts', [FirefighterAlertsController::class, 'showMapAlertsPublic']);
@@ -104,8 +106,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     // BULLETIN MANAGEMENT
     // Route::get('bulletinManagement',[AdminController::class,'bulletinManagement'])->name('admin.bulletinManagement');
     Route::get('bulletinManagement', [BulletinController::class, 'index'])->name('admin.bulletinManagement');
-    
-    
+    Route::post('bulletinManagement/addAnnouncement',[BulletinController::class, 'add'])->name('admin.addAnnouncement');
+    Route::post('bulletinManagement/editAnnouncement',[BulletinController::class, 'edit'])->name('admin.editAnnouncement');
+    Route::post('bulletinManagement/deleteAnnouncement', [BulletinController::class, 'delete'])->name('admin.deleteAnnouncement');
+    Route::post('bulletinManagement/getAnnouncement/{bulletin_id}', [BulletinController::class, 'getAnnouncement'])->name('admin.getAnnouncement');
 });
    
 

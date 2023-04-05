@@ -46,6 +46,7 @@ html,body{
 .forms-inputs label{position: absolute;top:-18px;left: 10px;background-color: #fff;padding: 5px 10px;font-size: 15px}
 .forms-inputs input{height: 50px;border: 2px solid #eee;}
 .forms-inputs input:focus{box-shadow: none;outline: none;border: 2px solid #6c63ff;}
+.forms-inputs select:focus{box-shadow: none;outline: none;border: 2px solid #6c63ff;}
 #button {background-color: #6c63ff;;}
 span {
   font-size:13px;

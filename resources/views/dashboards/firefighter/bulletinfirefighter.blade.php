@@ -1,19 +1,32 @@
 @extends('dashboards.firefighter.layouts.layoutFirefighter')
-@section('title','bulletinfirefighter')
+@section('title','Bulletin Management')
 
 @section('content')
 
-<div class="tab">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+
+<style>
+
+
+</style>
+
+
+
+<div class="tab" style="margin-top: 58px;">
   <button class="tablinks" id="announcement_tab" onclick="openCity(event, 'Announcements')">Announcements</button>
   <button class="tablinks" onclick="openCity(event, 'News')">News</button>
 </div>
 
 <div id="Announcements" class="tabcontent">
   <div class="addManagerGroup">
-    <button class="btn btn-primary addBtn">
-      <i class='bx bxs-message-square-add'></i>      
+    <a class="btn btn-primary addBtn"  id="addAnnouncement">
+      <i class='bx bxs-message-square-add' ></i>
       Add New
-    </button>
+    </a>
 
     <button class="btn btn-success managerBtn">
       <i class='bx bxs-bar-chart-alt-2'></i>
@@ -27,6 +40,7 @@
 
   <div class="announce-container">
     <div class="first-content">
+      <input type="hidden" class="bulletin_ID" id="bulletinID" value="{{$announcement->bulletin_id}}"></input>
       <h2><b>{{$announcement->title}}</b></h2>
       <h5>Posted on: {{$announcement->created_at->format('m-d-Y')}}</h5>
       <h5>by: {{$announcement->author_name}}</h5>
@@ -35,12 +49,18 @@
 
     <div class="second-content">
       <div class="btn-group mb-3">
-        <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" data-toggle="tooltip" title="Edit"></i>
+        <a class="editAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">  
+          <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
+        </a>
+
+        <a class="deleteAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">
         <i class="bx bxs-x-circle bx-sm deleteBtn" style="color:#ff0000" data-toggle="tooltip" title="Delete"></i>
+        </a>
       </div>
 
       <div>
-        <img src="{{$announcement->img_url}}" width="200" height="200" />
+        <img src="{{$announcement->img_url}}" width="200" height="200"  />
+
       </div>
     </div>
   </div>
@@ -58,6 +78,16 @@
 
         </div>
 </div>
+
+@include("modals.addAnnouncement")
+@include("modals.editAnnouncement")
+@include("modals.deleteAnnouncement")
+
+
+
+
+
+
 
 
 @endsection

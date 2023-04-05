@@ -29,17 +29,17 @@
             @csrf
             <div class="form-group">
                 <label>Current Password</label>
-                <input type="password" class="form-control" required name="oldpassword">
+                <input type="password" class="form-control" name="oldpassword">
                 <span class="text-danger error-text oldpassword_error"></span>
             </div>
             <div class="form-group">
                 <label>New Password</label>
-                <input type="password" class="form-control" required name="newpassword"> 
+                <input type="password" class="form-control" name="newpassword"> 
                 <span class="text-danger error-text newpassword_error"></span>
             </div>
             <div class="form-group">
                 <label>Confirm New Password</label>
-                <input type="password" class="form-control" required name="cnewpassword">
+                <input type="password" class="form-control"  name="cnewpassword">
                 <span class="text-danger error-text cnewpassword_error"></span>
             </div>	
 
