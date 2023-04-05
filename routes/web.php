@@ -107,6 +107,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     Route::post('bulletinManagement/addAnnouncement',[BulletinController::class, 'add'])->name('admin.addAnnouncement');
     Route::post('bulletinManagement/editAnnouncement',[BulletinController::class, 'edit'])->name('admin.editAnnouncement');
     Route::post('bulletinManagement/deleteAnnouncement', [BulletinController::class, 'delete'])->name('admin.deleteAnnouncement');
+    Route::get('bulletinManagement/getBulletinTable', [BulletinController::class, 'getBulletinTable'])->name('admin.getBulletinTable');
     Route::post('bulletinManagement/getAnnouncement/{bulletin_id}', [BulletinController::class, 'getAnnouncement'])->name('admin.getAnnouncement');
 });
 

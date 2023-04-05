@@ -13,11 +13,11 @@
                                     <h2>Bulletin Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="btn btn-success addNewAlert" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Alert</span></a>
+                                    <a class="btn btn-success addNewAnnounce" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Alert</span></a>
                                 </div>
                             </div>
                         </div>
-                        <table id="alertTable" class="table table-striped table-hover alert-table">
+                        <table id="bulletinTable" class="table table-striped table-hover alert-table">
                             <thead>
                                 <tr>
                                     <td><b>Minimum date:</b> <input type="text" id="minAlert" name="minAlert"></td>
@@ -31,10 +31,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Fire Location</th>
-                                    <th>Longitude</th>
-                                    <th>Latitude</th>
-                                    <th id="status_col">Status</th>
+                                    <th>Title</th>
+                                    <th>Author</th>
                                     <th id="created_col">Created At</th>
                                     <th id="updated_col">Updated At</th>
                                     <th id="action_col">Action</th>
