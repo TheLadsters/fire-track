@@ -1,19 +1,19 @@
-<div class="modal fade bulletinManagerModal" tabindex="-1" role="dialog" aria-labelledby="bulletinManagerModalCenter" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-      <div class="modal-content">
+<div class="modal fade bulletinManagerModal center" tabindex="-1" role="dialog" aria-labelledby="bulletinManagerModalCenter" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" >
+      <div class="modal-content"  style="width: 750px;">
         <div class="modal-header forgetPasswordHeader">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-                <div class="table-responsive">
+                <div class="table-responsive" >
                     <div class="table-wrapper">
-                        <div class="table-title">
-                            <div class="row">
+                        <div class="table-title" >
+                            <div class="row" style="width: 570px;">
                                 <div class="col-sm-6">
                                     <h2>Bulletin Manager</h2>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="btn btn-success addNewAnnounce" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Alert</span></a>
+                                    <a class="btn btn-success addNewAnnounce" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Announcement</span></a>
                                 </div>
                             </div>
                         </div>
