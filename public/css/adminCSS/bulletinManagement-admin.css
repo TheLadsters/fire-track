@@ -118,6 +118,8 @@ body {font-family: Roboto;}
 /* For announcement container */
 .announce-container{
   display:flex;
+  justify-content: flex-start;
+  gap: 40px;
   border-radius: 15px;
   background-color: #d7e5ee;
   padding: 20px 20px;
