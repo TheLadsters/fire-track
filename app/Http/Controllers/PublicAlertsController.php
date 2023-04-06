@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class FirefighterAlertsController extends Controller
+class PublicAlertsController extends Controller
 {
-    // show all alerts in google maps
     public function index(){
-        return view('dashboards.firefighter.firealertmap');
+        return view('layouts.app.firealertmap');
     }
 
     // show all alerts in google maps

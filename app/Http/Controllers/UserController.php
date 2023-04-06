@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
-
+use \App\Models\bulletinManagement;
 
 class UserController extends Controller
 {
@@ -27,7 +27,8 @@ class UserController extends Controller
         return view ('dashboards.firefighter.reports');
     }
     function bulletinfirefighter(){
-        return view ('dashboards.firefighter.bulletinfirefighter');
+        $allAnnouncements = bulletinManagement::all();
+        return view('dashboards.firefighter.bulletinfirefighter', compact('allAnnouncements'));
     }
 
     function updateInfo(Request $request){

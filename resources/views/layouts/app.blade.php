@@ -7,16 +7,21 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
     <title>FireTrack App</title>
 
 
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap"  defer></script>   
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">    
+    <link rel="stylesheet" href="css/firefighterCSS/firealertmap-firefighter.css">
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
 
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
@@ -25,7 +30,7 @@
 <body id="page-top">
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
                     <div class="container">
-                        <a class="navbar-brand" href="page-top">FIRETRACK</a>
+                        <img src="images/fire_track_logo_clear.png" alt="firetracklogo" class="fireTrackLogo"/>
                         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             Menu
                             <i class="fas fa-bars"></i>
@@ -55,76 +60,71 @@
             
        <!-- Masthead-->   
        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <!-- <img class="" src="images/avatar.png" class="img-fluid" alt="..."> -->
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">NEWS</h1>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light"></div>
-                </div>
-                <!-- Masthead Subheading-->
-            </div>
+            
+       
         </header>
         <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
+        <section class="page-section" id="portfolio">
+            <div class="container position-relative"> 
+                <div id="firealertmap"></div>
+                <input id="searchAlertMap" class="position-absolute top-0 start-50 translate-middle-x" type="text" placeholder="Search Box"/>
+            
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">FUNCTIONALITY</h2>
+                <!-- <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">FUNCTIONALITY</h2> -->
                 <!-- Icon Divider-->
-                <div class="divider-custom">
+                <!-- <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
-                </div>
+                </div> -->
                 <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
+                <!-- <div class="row justify-content-center"> -->
                     <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
+                    <!-- <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="images/user.png" alt="..." />
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
+                    <!-- <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="images/report.png" alt="..." />
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
+                    <!-- <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="images/hydrant.png" alt="..." />
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                    <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="images/fire.png" alt="..." />
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+                    <!-- <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="images/bulletin3.png" alt="..." />
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -149,7 +149,7 @@
                  
                        
                       
-                    </a>
+                    
                 </div>
             </div>
         </section>
@@ -187,82 +187,82 @@
         </div>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
+        <!-- <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     <div class="modal-body text-center pb-5">
                         <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
+                            <div class="row justify-content-center"> -->
+                                <!-- <div class="col-lg-8"> -->
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">USER</h2>
+                                    <!-- <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">USER</h2> -->
                                     <!-- Icon Divider-->
-                                    <div class="divider-custom">
+                                    <!-- <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
-                                    </div>
+                                    </div> -->
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="images/user.png" alt="..." />
+                                    <!-- <img class="img-fluid rounded mb-5" src="images/user.png" alt="..." /> -->
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">It contains the list of Registered ADMIN and Firefighter it also contains all the personal information of the user.</p>
+                                    <!-- <p class="mb-4">It contains the list of Registered ADMIN and Firefighter it also contains all the personal information of the user.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Portfolio Modal 2-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
+        <!-- <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     <div class="modal-body text-center pb-5">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-lg-8">
+                                <div class="col-lg-8"> -->
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">GENERATE REPORT</h2>
+                                    <!-- <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">GENERATE REPORT</h2> -->
                                     <!-- Icon Divider-->
-                                    <div class="divider-custom">
+                                    <!-- <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
-                                    </div>
+                                    </div> -->
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="images/report.png" alt="..." />
+                                    <!-- <img class="img-fluid rounded mb-5" src="images/report.png" alt="..." /> -->
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Provide insight that would be beneficial for the fire department of Cebu City upon clicking the drop-down menu in the system it will generate the fire fighter desired report.</p>
+                                    <!-- <p class="mb-4">Provide insight that would be beneficial for the fire department of Cebu City upon clicking the drop-down menu in the system it will generate the fire fighter desired report.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Portfolio Modal 3-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
+        <!-- <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     <div class="modal-body text-center pb-5">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-lg-8">
+                                <div class="col-lg-8"> -->
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Fire Hydrant Management</h2>
+                                    <!-- <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Fire Hydrant Management</h2> -->
                                     <!-- Icon Divider-->
-                                    <div class="divider-custom">
+                                    <!-- <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
-                                    </div>
+                                    </div> -->
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="images/hydrant.png" alt="..." />
+                                    <!-- <img class="img-fluid rounded mb-5" src="images/hydrant.png" alt="..." /> -->
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Manage details are  provided for the location using google map API to pinpoint the  location of the hydrant.
+                                    <!-- <p class="mb-4">Manage details are  provided for the location using google map API to pinpoint the  location of the hydrant.
                                     </p>
                                 </div>
                             </div>
@@ -270,66 +270,66 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Portfolio Modal 4-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
+        <!-- <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     <div class="modal-body text-center pb-5">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-lg-8">
+                                <div class="col-lg-8"> -->
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">FIRE ALERT MANAGEMENT</h2>
+                                    <!-- <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">FIRE ALERT MANAGEMENT</h2> -->
                                     <!-- Icon Divider-->
-                                    <div class="divider-custom">
+                                    <!-- <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
-                                    </div>
+                                    </div> -->
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="images/fire.png" alt="..." />
+                                    <!-- <img class="img-fluid rounded mb-5" src="images/fire.png" alt="..." /> -->
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Fire Alert Management pertains to the location of fire incidents in Cebu City. it also contains CRUD functionality, create, read, update delete.</p>
+                                    <!-- <p class="mb-4">Fire Alert Management pertains to the location of fire incidents in Cebu City. it also contains CRUD functionality, create, read, update delete.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Portfolio Modal 5-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
+        <!-- <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     <div class="modal-body text-center pb-5">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-lg-8">
+                                <div class="col-lg-8"> -->
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Bulletin Management Report</h2>
+                                    <!-- <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Bulletin Management Report</h2> -->
                                     <!-- Icon Divider-->
-                                    <div class="divider-custom">
+                                    <!-- <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
-                                    </div>
+                                    </div> -->
 
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="images/bulletin3.png" alt="..." />
+                                    <!-- <img class="img-fluid rounded mb-5" src="images/bulletin3.png" alt="..." /> -->
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Provide updates or announcements for the fighters about what event is going to happen and at the same time it provides news to become aware of what is happening within the City.</p>
+                                    <!-- <p class="mb-4">Provide updates or announcements for the fighters about what event is going to happen and at the same time it provides news to become aware of what is happening within the City.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Portfolio Modal 6-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
+        <!-- <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
@@ -342,7 +342,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -351,8 +351,13 @@
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>               
-
+                 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script type="text/javascript" src="/firealertmap-landing.js"></script>
+        <script type="text/javascript" src="/firealertmap-marker-landing.js"></script>
+        <!-- <script type="text/javascript" src="/firealertmap-firefighter.js"></script> -->
     
 </body>
 </html>
