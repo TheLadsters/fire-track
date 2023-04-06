@@ -190,6 +190,7 @@ class BulletinController extends Controller
     /*EDIT*/
     public function editFirefighter(Request $request){
 
+<<<<<<< HEAD
           $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'author_name' => 'required',
@@ -224,6 +225,27 @@ class BulletinController extends Controller
       
               Alert::success('Updated Bulletin Successfully.');
           }
+=======
+<<<<<<< HEAD
+public function getBulletinTable(){
+
+
+  $allAlerts = DB::table('bulletin')
+  ->join('users', 'bulletin.user_id', '=', 'users.user_id')
+  ->select('bulletin.*', 'users.email')
+  ->get();
+  $response['data'] = $allAlerts;
+  return response()->json($response);
+  }
+
+
+
+
+
+=======
+/*EDIT*/
+>>>>>>> 24436e23021e8e527e1789f44861b4d915cc79b4
+>>>>>>> 799eb4c1268e43d7b692b11b935e6f036c7c25a8
 
 
 
