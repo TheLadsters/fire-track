@@ -60,16 +60,8 @@
             
        <!-- Masthead-->   
        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <!-- <img class="" src="images/avatar.png" class="img-fluid" alt="..."> -->
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">NEWS</h1>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light"></div>
-                </div>
-                <!-- Masthead Subheading-->
-            </div>
+            
+       
         </header>
         <!-- Portfolio Section-->
         <section class="page-section" id="portfolio">

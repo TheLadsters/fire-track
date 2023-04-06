@@ -1,6 +1,7 @@
- $(document).ready(function() {
+  $(document).ready(function() {
     // CODE FOR MARKERS TO SHOW ON MAP
     var marker;
+
       function addMarkerListener(marker, infowindow) {
     
         marker.addListener('click', function(e) {
@@ -41,10 +42,67 @@
           }
   
         })
-  
+
+     
+
+        $.ajax({
+          url: '/showMapAlerts',
+          type: 'get',
+          dataType: 'json',
+          success: function(response){
+      
+          for (let i = 0; i < response['alert'].length; i++) {
+      
+            let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
+            let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
+            let location_title = response['alert'][i].fire_location;
+            let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
+            let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
+            let markerContent = `
+            <div style="max-width: 200px;">
+              <p>
+                ${fireStatus}
+              </p>
+    
+              <p>
+                ${fireLocation}
+              </p>
+            </div>
+            `;
+    
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(longitude, latitude),
+              map: map,
+              title: location_title,
+              icon: {
+                      url: fireImg,
+                      scaledSize: new google.maps.Size(38, 31)
+                    },
+              animation: google.maps.Animation.DROP
+        });
+    
+        if(response['alert'][i].status == "Fire Out"){
+          marker.setVisible(false);
+        }
+    
+          var infowindow = new google.maps.InfoWindow({
+                content: markerContent,
+                ariaLabel: "Uluru",
+              });
+            
+            addMarkerListener(marker, infowindow);
+            }
+    
+      
+        },
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(error);
+          }
+      });
       
     
     
     
       
- });
+  });

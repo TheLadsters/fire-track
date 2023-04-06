@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PublicAlertsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FireAlertsController;
@@ -34,8 +35,9 @@ Route::get('/', function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('guest');
-
-
+// Route::get('/landing/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
+Route::get('/showMapAlerts', [PublicAlertsController::class, 'showMapAlertsPublic']);
+Route::get('/bulletinfirefighter', [PublicBulletinController::class, 'index_firefighter']);
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
@@ -57,10 +59,12 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
     Route::post('change-password',[UserController::class,'changePassword'])->name('firefighterChangePassword');
     
     Route::get('bulletinfirefighter', [BulletinController::class, 'index_firefighter'])->name('firefighter.bulletinfirefighter');
-    Route::post('firefighter/addAnnouncement',[BulletinController::class, 'add_firefighter'])->name('firefighter.addAnnouncement');
-    
+    Route::post('firefighter/addAnnouncementFirefighter',[BulletinController::class, 'add_firefighter'])->name('firefighter.addAnnouncementFirefighter');
+    Route::get('bulletinManagement', [BulletinController::class, 'index'])->name('firefighter.bulletinManagement');
+    Route::post('bulletinManagement/editAnnoucementFirefighter',[BulletinController::class, 'edit'])->name('firefighter.editAnnoucementFirefighter');
+    Route::post('bulletinManagement/deleteAnnoucementFirefighter', [BulletinController::class, 'delete'])->name('firefighter.deleteAnnoucementFirefighter');
 });
-    Route::get('showMapAlerts', [FirefighterAlertsController::class, 'showMapAlertsPublic']);
+    
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin']], function(){
     

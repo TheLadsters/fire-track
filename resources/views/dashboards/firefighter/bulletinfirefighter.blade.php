@@ -23,15 +23,15 @@
 
 <div id="Announcements" class="tabcontent">
   <div class="addManagerGroup">
-    <a class="btn btn-primary addBtn"  id="addAnnouncement">
+    <a class="btn btn-primary addBtn"  id="addAnnouncementFirefighter">
       <i class='bx bxs-message-square-add' ></i>
       Add New
     </a>
-
-    <button class="btn btn-success managerBtn">
+    <!-- to be fixed -->
+    <!-- <a class="btn btn-success managerBtn" id="OpenManager">
       <i class='bx bxs-bar-chart-alt-2'></i>
       Manager
-    </button>
+    </a> -->
   </div>
 
   <h3 class="mb-4">Announcements</h3>
@@ -43,8 +43,8 @@
       <input type="hidden" class="bulletin_ID" id="bulletinID" value="{{$announcement->bulletin_id}}"></input>
       <h2><b>{{$announcement->title}}</b></h2>
       <h5>Posted on: {{$announcement->created_at->format('m-d-Y')}}</h5>
-      <h5>by: {{$announcement->author_name}}</h5>
-      <p>{{$announcement->summary}}</p>
+      <h6>by: {{$announcement->author_name}}</h6>
+      <p class="summary-content">{{$announcement->summary}}</p>
     </div>
 
     <div class="second-content">
@@ -58,7 +58,7 @@
         </a>
       </div>
 
-      <div>
+      <div class="img_bulletin">
         <img src="{{$announcement->img_url}}" width="200" height="200"  />
 
       </div>
@@ -79,12 +79,11 @@
         </div>
 </div>
 
+@include("modals.addAnnouncementFirefighter")
+@include("modals.bulletinManager")
 @include("modals.addAnnouncement")
 @include("modals.editAnnouncement")
 @include("modals.deleteAnnouncement")
-
-
-
 
 
 

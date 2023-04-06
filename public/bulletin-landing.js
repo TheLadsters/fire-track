@@ -113,8 +113,8 @@ const newsList = document.querySelector('.news-list');
 
 
 
-      $("#addAnnouncementFirefighter").click(function(){
-        $(".addAnnouncementFirefighter").modal('show');
+      $("#addAnnouncement").click(function(){
+        $(".addAnnouncement").modal('show');
       });
 
       /* Edit Announcement*/ 
