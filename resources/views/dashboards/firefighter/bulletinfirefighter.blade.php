@@ -23,15 +23,8 @@
 
 <div id="Announcements" class="tabcontent">
   <div class="addManagerGroup">
-    <a class="btn btn-primary addBtn"  id="addAnnouncementFirefighter">
-      <i class='bx bxs-message-square-add' ></i>
-      Add New
-    </a>
-    <!-- to be fixed -->
-    <!-- <a class="btn btn-success managerBtn" id="OpenManager">
-      <i class='bx bxs-bar-chart-alt-2'></i>
-      Manager
-    </a> -->
+    
+
   </div>
 
   <h3 class="mb-4">Announcements</h3>
@@ -48,7 +41,7 @@
     </div>
 
     <div class="second-content">
-      <div class="btn-group mb-3">
+      {{-- <div class="btn-group mb-3">
         <a class="editAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">  
           <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
         </a>
@@ -56,7 +49,7 @@
         <a class="deleteAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">
         <i class="bx bxs-x-circle bx-sm deleteBtn" style="color:#ff0000" data-toggle="tooltip" title="Delete"></i>
         </a>
-      </div>
+      </div> --}}
 
       <div class="img_bulletin">
         <img src="{{$announcement->img_url}}" width="200" height="200"  />
