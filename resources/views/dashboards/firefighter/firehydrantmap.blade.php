@@ -1,5 +1,5 @@
 @extends('dashboards.firefighter.layouts.layoutFirefighter')
-@section('title','firehydrantmap')
+@section('title','Fire Hydrant Map')
 
 @section('content')
 <head>

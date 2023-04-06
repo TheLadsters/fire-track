@@ -188,6 +188,7 @@ public function add_firefighter(Request $request){
     return redirect('firefighter/bulletinfirefighter');
 }
 
+<<<<<<< HEAD
 public function getBulletinTable(){
 
 
@@ -203,6 +204,9 @@ public function getBulletinTable(){
 
 
 
+=======
+/*EDIT*/
+>>>>>>> 24436e23021e8e527e1789f44861b4d915cc79b4
 
 
 

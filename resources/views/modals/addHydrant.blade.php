@@ -89,7 +89,7 @@
                 <label for="hydrantImg" class="form-label">
                   Image of Location (.jpeg, .jpg, .png)
                 </label>
-                <input class="form-control" name="img_url" type="file" id="hydrantImg">
+                <input class="form-control" name="img_url" type="file" id="hydrantImg" required>
               </div>
 
             </div>
