@@ -192,4 +192,33 @@ textarea {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background:#2e2b6f; 
+<<<<<<< HEAD
+}
+
+#bulletinTable_wrapper{
+  width: 550px;
+}
+
+ .bulletinManagerModal .table-title {
+  padding-bottom: 15px;
+  background: #6B66F5;
+  color: #fff;
+  padding: 16px 30px;
+  width: 12%;
+  margin: -20px -25px 10px;
+  border-radius: 3px 3px 0 0;
+}
+
+.bulletinManagerModal .table-wrapper {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 3px;
+  min-width: 653px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.bulletinManagerModal{
+  margin-left: 17%;
+=======
+>>>>>>> 24436e23021e8e527e1789f44861b4d915cc79b4
 }

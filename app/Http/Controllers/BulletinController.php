@@ -188,7 +188,25 @@ public function add_firefighter(Request $request){
     return redirect('firefighter/bulletinfirefighter');
 }
 
+<<<<<<< HEAD
+public function getBulletinTable(){
+
+
+  $allAlerts = DB::table('bulletin')
+  ->join('users', 'bulletin.user_id', '=', 'users.user_id')
+  ->select('bulletin.*', 'users.email')
+  ->get();
+  $response['data'] = $allAlerts;
+  return response()->json($response);
+  }
+
+
+
+
+
+=======
 /*EDIT*/
+>>>>>>> 24436e23021e8e527e1789f44861b4d915cc79b4
 
 
 

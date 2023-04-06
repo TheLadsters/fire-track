@@ -28,10 +28,10 @@
       Add New
     </a>
     <!-- to be fixed -->
-    <!-- <a class="btn btn-success managerBtn" id="OpenManager">
+    <a class="btn btn-success managerBtn" id="OpenManager">
       <i class='bx bxs-bar-chart-alt-2'></i>
       Manager
-    </a> -->
+    </a>
   </div>
 
   <h3 class="mb-4">Announcements</h3>
