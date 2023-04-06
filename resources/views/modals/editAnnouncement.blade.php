@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <div class="modal-body">
+        <div class="modal-body-Announcement">
           <form method="POST" action="{{route('admin.editAnnouncement')}}" enctype="multipart/form-data">
             @csrf
             <div>
@@ -34,7 +34,7 @@
              <input type="text"  class="form-control" name="author_name"  id="author_input" placeholder="Author" >
               </input>
             </label>
-
+</br>
             <label for="Title">
             Title<span style="color:red;">*</span>
              <input type="text"  class="form-control" name="title"  id="title_input" placeholder="Title" >
@@ -44,9 +44,9 @@
 </br>
             <label for="Summary">
             Summary<span style="color:red;">*</span>
-             <input type="text"  class="form-control" name="summary"  id="summary_input" placeholder="Article Summary" >
+             <textarea type="text"  class="form-control" name="summary"  id="summary_input" placeholder="Article Summary" style="resize: none; width:220%;">
 
-              </input>
+              </textarea>
             </label>
 </br>
             <label for="Article_url">
@@ -55,9 +55,9 @@
               </input>
             </label>
 </br>
-            <label for="Image_url">
+            <!-- <label for="Image_url">
             Image URL<span style="color:red;">*</span>
-             <input type="file"  class="form-control" name="img_url"  id="imageURL_input" >
+             <input type="text"  class="form-control" name="img_url"  id="imageURL_input" > -->
 
               </input>
             </label>

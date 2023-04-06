@@ -16,8 +16,7 @@ return new class extends Migration
 
         Schema::create('fire_alarm', function (Blueprint $table) {
             $table->id('firealarm_id');
-            $table->unsignedBigInteger('user_id')->default(1);
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->unsignedBigInteger('user_id');
             $table->string('fire_location');
             $table->string('longitude');
             $table->string('latitude');

@@ -15,6 +15,7 @@ class BulletinController extends Controller
 
     }
 
+
 /* Add Announcement*/
 
     public function add(Request $request){
@@ -25,7 +26,7 @@ class BulletinController extends Controller
             'title' => 'required',
             'summary' => 'required',
             'article_url' => 'required',
-            'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+            'img_url' => 'required'
           ]);
 
           if ($validator->fails()) {
@@ -41,13 +42,13 @@ class BulletinController extends Controller
                 'title' => 'required',
                 'summary' => 'required',
                 'article_url' => 'required',
-                'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+                'img_url' => 'required'
             ]);
 
-            if($request->hasFile('img_url')){
+            // if($request->hasFile('img_url')){
 
-                $formFields['img_url'] = $request->file('img_url')->store('public/images');
-            }
+            //     $formFields['img_url'] = $request->file('img_url')->store('public/images');
+            // }
 
             bulletinManagement::create($formFields);
             Alert::success('Added Announcement Successfully.');
@@ -58,6 +59,8 @@ class BulletinController extends Controller
           
           return redirect('admin/bulletinManagement');
     }
+
+
 /* Edit Announcement*/
 
     public function edit(Request $request){
@@ -119,14 +122,89 @@ class BulletinController extends Controller
     return redirect('admin/bulletinManagement')->with('message', 'Announcement Deleted Successfully.');   
 }
 
-public function getAnnouncement(){
-    $announcements = bulletinManagement::all();
+
+
+public function getAnnouncement($bulletin_id){
+
+    $announcements = bulletinManagement::findOrFail($bulletin_id);
 
     // Fetch all records
     $response['announce'] = $announcements;
 
     return response()->json($response);
+
 }
+
+/*FIREFIGHTER*/
+
+/*POST BULLETIN*/
+
+public function index_firefighter(){
+  $allAnnouncements = bulletinManagement::all();
+  return view('dashboards.firefighter.bulletinfirefighter', compact('allAnnouncements'));
+}
+
+/*ADD ANNOUNCEMENT*/
+
+public function add_firefighter(Request $request){
+
+  $validator = Validator::make($request->all(), [
+      'user_id' => 'required',
+      'author_name' => 'required',
+      'title' => 'required',
+      'summary' => 'required',
+      'article_url' => 'required',
+      'img_url' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+      $allErrors = $validator->errors();
+      // dd($allErrors);
+      Alert::error('Adding the Announcement was not successful.', 
+      'Please fill up required fields.');
+    }else{
+
+      $formFields = $request->validate([
+          'user_id' => 'required',
+          'author_name' => 'required',
+          'title' => 'required',
+          'summary' => 'required',
+          'article_url' => 'required',
+          'img_url' => 'required'
+      ]);
+
+      // if($request->hasFile('img_url')){
+
+      //     $formFields['img_url'] = $request->file('img_url')->store('public/images');
+      // }
+
+      bulletinManagement::create($formFields);
+      Alert::success('Added Announcement Successfully.');
+
+
+
+    }
+    
+    return redirect('firefighter/bulletinfirefighter');
+}
+
+public function getBulletinTable(){
+
+
+  $allAlerts = DB::table('bulletin')
+  ->join('users', 'bulletin.user_id', '=', 'users.user_id')
+  ->select('bulletin.*', 'users.email')
+  ->get();
+  $response['data'] = $allAlerts;
+  return response()->json($response);
+  }
+
+
+
+
+
+
+
 
 
 }
