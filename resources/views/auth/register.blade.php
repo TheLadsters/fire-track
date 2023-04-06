@@ -80,7 +80,7 @@
                                                     <div class="forms-inputs row">
                                                         <div class="forms-inputs col-md-6 mb-4">
                                                         <label for="contact_no">Contact Number</label>
-                                                        <input type="text" class="form-control" id="contact_no" name="contact_no" value="{{ old('contact_no')}}"> 
+                                                        <input type="number" class="form-control" id="contact_no" name="contact_no" value="{{ old('contact_no')}}"> 
                                                         <span class="text-danger">@error('contact_no'){{ $message }}@enderror</span>                                                        
                                                     </div>                                                        
                                                                                             
@@ -100,7 +100,7 @@
 
                                                     <div class="row mb-2 forms-inputs">
                                                         <div class="col-md-6 mb-4">
-                                                            <select class="form-select" name="gender" id="gender" required>
+                                                            <select class="form-select" name="gender" id="gender">
                                                                 <option value="">Select Gender</option>
                                                                 <option value="male">Male</option>
                                                                 <option value="female">Female</option>
