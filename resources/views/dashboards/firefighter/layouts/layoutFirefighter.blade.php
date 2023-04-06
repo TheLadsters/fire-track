@@ -97,7 +97,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/app.js"></script>
-      <script type="text/javascript" src="/bulletin-firefighter.js"></script>      
+      <script type="text/javascript" src="/bulletin-firefighter.js"></script>
+      <script type="text/javascript" src="/bulletinNews.js"></script>
       <script type="text/javascript" src="/firealertmap-firefighter.js"></script>
       <script type="text/javascript" src="/firehydrantmap-firefighter.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap" defer></script>

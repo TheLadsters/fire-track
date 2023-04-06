@@ -192,7 +192,6 @@ textarea {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background:#2e2b6f; 
-<<<<<<< HEAD
 }
 
 #bulletinTable_wrapper{
@@ -219,6 +218,4 @@ textarea {
 
 .bulletinManagerModal{
   margin-left: 17%;
-=======
->>>>>>> 24436e23021e8e527e1789f44861b4d915cc79b4
 }
