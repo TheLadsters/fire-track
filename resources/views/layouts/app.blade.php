@@ -86,41 +86,17 @@
             
        <!-- Masthead-->   
        <header class="masthead bg-primary text-white text-center">
-
-       
+        <div class="container position-relative"> 
+            <!-- <h1>Fire Alert Map</h1> -->
+            <h1 class="text-center text-uppercase text-white mb-3">Fire Alert Map</h1>
+           
+            <div id="firealertmap"></div>
+            <input id="searchAlertMap" class="position-absolute top-0 start-50 translate-middle-x" type="text" placeholder="Search Box"/>
+        </div>
         </header>
         <!-- Portfolio Section-->
 
-
-        
-<div class="tab" style="margin-top: 58px;">
-  <button class="tablinks" onclick="openCity(event, 'Announcements')"  style="visibility: hidden">Announcements</button>
-  <button class="tablinks" id="announcement_tab" onclick="openCity(event, 'News')" style="visibility: hidden">News</button>
-</div>
-
-
-<div id="News" class="tabcontent">
-        <div class="container-news">
-
-            <div class="news-list">
-               {{-- <ul class="news-list">
-                </ul> --}}
-            </div>
-
-        </div>
-</div>
-
-
-
-
-        <section class="page-section" id="portfolio">
-            <div class="container position-relative"> 
-                <!-- <h1>Fire Alert Map</h1> -->
-                <h1 class="text-center text-uppercase text-black mb-3">Fire Alert Map</h1>
-               
-                <div id="firealertmap"></div>
-                <input id="searchAlertMap" class="position-absolute top-0 start-50 translate-middle-x" type="text" placeholder="Search Box"/>
-            
+    {{-- <section class="page-section" id="portfolio"> 
                 <!-- Portfolio Section Heading-->
                 <!-- <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">FUNCTIONALITY</h2> -->
                 <!-- Icon Divider-->
@@ -179,7 +155,28 @@
                     </div> -->
                 </div>
             </div>
-        </section>
+    </section> --}}
+
+        
+<div class="tab" style="margin-top: 58px;">
+  <button class="tablinks" onclick="openCity(event, 'Announcements')"  style="visibility: hidden">Announcements</button>
+  <button class="tablinks" id="announcement_tab" onclick="openCity(event, 'News')" style="visibility: hidden">News</button>
+</div>
+
+<h1 class="text-center text-uppercase text-black mb-3">News</h1>
+
+<div id="News" class="tabcontent">
+        <div class="container-news">
+
+            <div class="news-list">
+               {{-- <ul class="news-list">
+                </ul> --}}
+            </div>
+
+        </div>
+</div>
+
+
         <!-- About Section-->
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
@@ -235,7 +232,7 @@
         </footer> -->
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Your Website 2022</small></div>
+            <div class="container"><small>Copyright &copy; FireTrack Team 2023</small></div>
         </div>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
