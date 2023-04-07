@@ -46,7 +46,7 @@
               <form method="POST" action="{{route('admin.deleteAnnouncement')}}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="bulletin_id" id="bulletin_key_ID">
-                <input type="submit" class="btn btn-danger" id="deleteUser" value="Delete"> 
+                <input type="submit" class="btn btn-danger" id="deleteAnnouncementBtn" value="Delete"> 
               </form>
             </div>
           </div>
