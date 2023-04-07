@@ -64,6 +64,45 @@
        
         </header>
         <!-- Portfolio Section-->
+
+
+        <div id="Announcements" class="tabcontent">
+
+  <h3 class="mb-4">Announcements</h3>
+  
+  @foreach($allAnnouncements as $announcement)
+
+  <div class="announce-container">
+    <div class="first-content">
+      <input type="hidden" class="bulletin_ID" id="bulletinID" value="{{$announcement->bulletin_id}}"></input>
+      <h2><b>{{$announcement->title}}</b></h2>
+      <h5>Posted on: {{$announcement->created_at->format('m-d-Y')}}</h5>
+      <h6>by: {{$announcement->author_name}}</h6>
+      <p class="summary-content">{{$announcement->summary}}</p>
+    </div>
+
+    <div class="second-content">
+      <div class="btn-group mb-3">
+        <a class="editAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">  
+          <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
+        </a>
+
+        <a class="deleteAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">
+        <i class="bx bxs-x-circle bx-sm deleteBtn" style="color:#ff0000" data-toggle="tooltip" title="Delete"></i>
+        </a>
+      </div>
+
+      <div class="img_bulletin">
+        <img src="{{$announcement->img_url}}" width="200" height="200"  />
+
+      </div>
+    </div>
+  </div>
+
+  @endforeach
+</div>
+
+
         <section class="page-section" id="portfolio">
             <div class="container position-relative"> 
                 <!-- <h1>Fire Alert Map</h1> -->

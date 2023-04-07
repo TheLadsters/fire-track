@@ -40,6 +40,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/fire-alert-map', [PublicAlertsController::class, 'index']);
 Route::get('/fire-alert-map/showMapAlerts', [PublicAlertsController::class, 'showMapAlertPublic']);
 Route::get('/bulletinfirefighter', [PublicBulletinController::class, 'index_firefighter']);
+
+Route::get('', [BulletinController::class, 'index_public']);
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
