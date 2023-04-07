@@ -29,35 +29,35 @@
             <input type="hidden" style="display: none;" class="form-control" name="bulletin_id" id="bulletin_id" >
             <input type="hidden" style="display: none;" class="form-control" name="user_id" id="user_id" value="{{Auth::user()->user_id}}">
 
-            <label for="Author">
+            <label for="Author" class="author">
             Author<span style="color:red;">*</span>
              <input type="text"  class="form-control" name="author_name"  id="author_input" placeholder="Author" >
               </input>
             </label>
-</br>
-            <label for="Title">
+<!-- </br> -->
+            <label for="Title" class="title">
             Title<span style="color:red;">*</span>
              <input type="text"  class="form-control" name="title"  id="title_input" placeholder="Title" >
 
               </input>
             </label>
 </br>
-            <label for="Summary">
+            <label for="Summary" class="summary">
             Summary<span style="color:red;">*</span>
              <textarea type="text"  class="form-control" name="summary"  id="summary_input" placeholder="Article Summary" style="resize: none; width:220%;">
 
               </textarea>
             </label>
 </br>
-            <label for="Article_url">
+            <label for="Article_url" class="article_url">
             Article URL<span style="color:red;">*</span>
              <input type="text"  class="form-control" name="article_url"  id="articleURL_input" placeholder="Article Link" >
               </input>
             </label>
 </br>
-            <!-- <label for="Image_url">
+            <label for="Image_url" class="image_url">
             Image URL<span style="color:red;">*</span>
-             <input type="text"  class="form-control" name="img_url"  id="imageURL_input" > -->
+             <input type="text"  class="form-control" name="img_url"  id="imageURL_input" >
 
               </input>
             </label>

@@ -129,14 +129,22 @@ body {font-family: Roboto;}
   margin-top: 7px;
 }
 
+.first-content{
+  width:80%;
+}
+
 .second-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: block;
+  float:right;
+  
 }
 
 .second-content .btn-group{
+  cursor: pointer;
+  margin-left: 73%;
+}
+
+.btn-group{
   cursor: pointer;
 }
 
@@ -196,28 +204,23 @@ textarea {
   background:#2e2b6f; 
 }
 
-#bulletinTable_wrapper{
-  width: 550px;
+.author{
+  width:20%;
 }
 
- .bulletinManagerModal .table-title {
-  padding-bottom: 15px;
-  background: #6B66F5;
-  color: #fff;
-  padding: 16px 30px;
-  width: 12%;
-  margin: -20px -25px 10px;
-  border-radius: 3px 3px 0 0;
+.title{
+  margin-left: 23%;
+  width:20%;
 }
 
-.bulletinManagerModal .table-wrapper {
-  background: #fff;
-  padding: 20px 25px;
-  border-radius: 3px;
-  min-width: 653px;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+.summary{
+  width:38%;
 }
 
-.bulletinManagerModal{
-  margin-left: 17%;
+.article_url{
+  width:33%;
+}
+
+.image_url{
+  width:33%;
 }

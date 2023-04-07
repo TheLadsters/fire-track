@@ -34,7 +34,7 @@
              <input type="text"  class="form-control" name="author_name"  id="author-input" placeholder="Author" >
               </input>
             </label>
-</br>
+<!-- </br> -->
             <label for="Title" class="title">
             Title<span style="color:red;">*</span>
              <input type="text"  class="form-control" name="title"  id="title-input" placeholder="Title" >
@@ -42,20 +42,20 @@
               </input>
             </label>
 </br>
-            <label for="Summary">
+            <label for="Summary" class="summary">
             Summary<span style="color:red;">*</span>
              <textarea type="text"  class="form-control" name="summary"  id="summary-input" placeholder="Article Summary" style="resize: none; width:220%;" >
 
               </textarea>
             </label>
 </br>
-            <label for="Article_url">
+            <label for="Article_url" class="article_url">
             Article URL<span style="color:red;">*</span>
              <input type="text"  class="form-control" name="article_url"  id="articleURL-input" placeholder="Article Link" >
               </input>
             </label>
 </br>
-            <label for="Image_url">
+            <label for="Image_url" class="image_url">
             Image URL<span style="color:red;">*</span>
              <input type="text"  class="form-control" name="img_url"  id="imageURL-input" placeholder="Image URL" >
 

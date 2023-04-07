@@ -111,11 +111,11 @@ $.ajaxSetup({
           "bSortable": false,
           "mRender": function(alert, type, full) {
             return `
-                    <a class="edit editColBulletin editAnnouncement" data-bs-toggle="modal" id="${alert['bulletin_id']}" data-bs-target=".editAnnouncementmodal">
+                    <a class="edit editColBulletin editAnnouncement btn-group" data-bs-toggle="modal" id="${alert['bulletin_id']}" data-bs-target=".editAnnouncementmodal">
                     <i class='bx bxs-edit-alt' style='color:#6b66f5' data-toggle="tooltip" title="Edit" ></i>                      </i>
                     </a>
 
-                    <a class="delete deleteColBulletin deleteAnnouncement" data-bs-toggle="modal" id="${alert['bulletin_id']}" data-bs-target=".deleteAnnouncementModal">
+                    <a class="delete deleteColBulletin deleteAnnouncement btn-group" data-bs-toggle="modal" id="${alert['bulletin_id']}" data-bs-target=".deleteAnnouncementModal">
                     <i class='bx bxs-x-circle' style='color:#ff0000' data-toggle="tooltip" title="Delete">
                     </i>
                   </a>
@@ -165,6 +165,9 @@ $('#bulletinTable tbody').on('click', '.editColBulletin', function(){
           let title = response['announce'].title;
           let summary = response['announce'].summary;
           let article_url = response['announce'].article_url;
+          let image_url = response['announce'].img_url;
+
+          console.log(image_url);
 
             $(".editAnnouncementmodal #bulletin_id").val(bulletin_id);
             $(".editAnnouncementmodal #user_id").val(user_id);
@@ -172,6 +175,7 @@ $('#bulletinTable tbody').on('click', '.editColBulletin', function(){
             $(".editAnnouncementmodal #title_input").val(title);
             $(".editAnnouncementmodal #summary_input").val(summary);
             $(".editAnnouncementmodal #articleURL_input").val(article_url);
+            $(".editAnnouncementmodal #imageURL_input").val(image_url);
 
     },
       error: function(xhr, status, error) {
@@ -358,13 +362,16 @@ const newsList = document.querySelector('.news-list');
               let title = response['announce'].title;
               let summary = response['announce'].summary;
               let article_url = response['announce'].article_url;
-
+              let image_url = response['announce'].img_url;
+    
+    
                 $(".editAnnouncementmodal #bulletin_id").val(bulletin_id);
                 $(".editAnnouncementmodal #user_id").val(user_id);
                 $(".editAnnouncementmodal #author_input").val(author_name);
                 $(".editAnnouncementmodal #title_input").val(title);
                 $(".editAnnouncementmodal #summary_input").val(summary);
                 $(".editAnnouncementmodal #articleURL_input").val(article_url);
+                $(".editAnnouncementmodal #imageURL_input").val(image_url);
   
         },
           error: function(xhr, status, error) {
