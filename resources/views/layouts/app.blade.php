@@ -7,6 +7,30 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <style>
+       
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+
+::-webkit-scrollbar-thumb {
+  background:#6c63ff; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:#2e2b6f; 
+}
+
+        </style>
+
     <title>FireTrack App</title>
 
 
@@ -68,41 +92,25 @@
         <!-- Portfolio Section-->
 
 
-        <div id="Announcements" class="tabcontent">
-
-  <h3 class="mb-4">Announcements</h3>
-  
-  @foreach($allAnnouncements as $announcement)
-
-  <div class="announce-container">
-    <div class="first-content">
-      <input type="hidden" class="bulletin_ID" id="bulletinID" value="{{$announcement->bulletin_id}}"></input>
-      <h2><b>{{$announcement->title}}</b></h2>
-      <h5>Posted on: {{$announcement->created_at->format('m-d-Y')}}</h5>
-      <h6>by: {{$announcement->author_name}}</h6>
-      <p class="summary-content">{{$announcement->summary}}</p>
-    </div>
-
-    <div class="second-content">
-      <div class="btn-group mb-3">
-        <a class="editAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">  
-          <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
-        </a>
-
-        <a class="deleteAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">
-        <i class="bx bxs-x-circle bx-sm deleteBtn" style="color:#ff0000" data-toggle="tooltip" title="Delete"></i>
-        </a>
-      </div>
-
-      <div class="img_bulletin">
-        <img src="{{$announcement->img_url}}" width="200" height="200"  />
-
-      </div>
-    </div>
-  </div>
-
-  @endforeach
+        
+<div class="tab" style="margin-top: 58px;">
+  <button class="tablinks" onclick="openCity(event, 'Announcements')"  style="visibility: hidden">Announcements</button>
+  <button class="tablinks" id="announcement_tab" onclick="openCity(event, 'News')" style="visibility: hidden">News</button>
 </div>
+
+
+<div id="News" class="tabcontent">
+        <div class="container-news">
+
+            <div class="news-list">
+               {{-- <ul class="news-list">
+                </ul> --}}
+            </div>
+
+        </div>
+</div>
+
+
 
 
         <section class="page-section" id="portfolio">
