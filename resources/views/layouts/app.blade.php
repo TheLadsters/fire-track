@@ -67,7 +67,7 @@
         <section class="page-section" id="portfolio">
             <div class="container position-relative"> 
                 <!-- <h1>Fire Alert Map</h1> -->
-                <h2 class="text-center text-uppercase text-black mb-3">Fire Alert Map</h2>
+                <h1 class="text-center text-uppercase text-black mb-3">Fire Alert Map</h1>
                
                 <div id="firealertmap"></div>
                 <input id="searchAlertMap" class="position-absolute top-0 start-50 translate-middle-x" type="text" placeholder="Search Box"/>
