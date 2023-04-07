@@ -60,12 +60,15 @@
             
        <!-- Masthead-->   
        <header class="masthead bg-primary text-white text-center">
-            
+
        
         </header>
         <!-- Portfolio Section-->
         <section class="page-section" id="portfolio">
             <div class="container position-relative"> 
+                <!-- <h1>Fire Alert Map</h1> -->
+                <h2 class="text-center text-uppercase text-black mb-3">Fire Alert Map</h2>
+               
                 <div id="firealertmap"></div>
                 <input id="searchAlertMap" class="position-absolute top-0 start-50 translate-middle-x" type="text" placeholder="Search Box"/>
             
@@ -357,6 +360,8 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script type="text/javascript" src="/firealertmap-landing.js"></script>
         <script type="text/javascript" src="/firealertmap-marker-landing.js"></script>
+        <script type="text/javascript" src="/bulletin-firefighter.js"></script>
+        <script type="text/javascript" src="/bulletinNews.js"></script>
         <!-- <script type="text/javascript" src="/firealertmap-firefighter.js"></script> -->
     
 </body>

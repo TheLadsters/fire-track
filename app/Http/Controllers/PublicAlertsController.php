@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class PublicAlertsController extends Controller
 {
     public function index(){
-        return view('layouts.app.firealertmap');
+        return view('layouts.app');
     }
 
     // show all alerts in google maps

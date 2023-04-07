@@ -46,7 +46,7 @@
      
 
         $.ajax({
-          url: '/showMapAlerts',
+          url: 'fire-alert-map/showMapAlerts',
           type: 'get',
           dataType: 'json',
           success: function(response){
