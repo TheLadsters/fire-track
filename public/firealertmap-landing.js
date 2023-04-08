@@ -38,34 +38,24 @@ function initMap(){
         success: function(response){
             console.log(response);
     
-        for (let i = 0; i < response['hydrant'].length; i++) {
-    
-          let longitude = parseFloat(response['hydrant'][i].longitude).toFixed(15);
-          let latitude = parseFloat(response['hydrant'][i].latitude).toFixed(15);
-          let hydrantAddress = response['hydrant'][i].address;
-          let hydrantType = response['hydrant'][i].name;
-          let hydrantStatus = response['hydrant'][i].status;
-          let hydrantImgUrl = response['hydrant'][i].img_url;
-
-          let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['hydrant'][i].img_url : "images/no_img_available.png";
-
-
-       let markerContent = `
-        <div>
-            <p>
-            <img src="${hydrantPhoto}" id="imageMarker" class="responsive-img" />
-            </p>
-            <p style="max-width: 250px;">
-            <b>Address:</b> ${hydrantAddress}
-            </p>
-            <p>
-            <b>Type:</b> ${hydrantType}
-            </p>
-            <p>
-            <b>Status:</b> ${hydrantStatus}
-            </p>
-        </div>
-        `;
+            for (let i = 0; i < response['alert'].length; i++) {
+  
+              let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
+              let latitude = parseFloat(response['alert'][i].latitude).toFixed(15);
+              let location_title = response['alert'][i].fire_location;
+              let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
+              let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
+              let markerContent = `
+              <div style="max-width: 200px;">
+                <p>
+                  ${fireStatus}
+                </p>
+      
+                <p>
+                  ${fireLocation}
+                </p>
+              </div>
+              `;
     
         let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(longitude, latitude),
