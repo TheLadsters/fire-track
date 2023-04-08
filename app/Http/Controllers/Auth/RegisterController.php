@@ -98,7 +98,7 @@ class RegisterController extends Controller
          $user->email = $request->email;
          $user->contact_no = $request->contact_no;
          $user->gender = $request->gender;
-         $user->role = 'admin';
+         $user->role = 'firefighter';
          $user->birthday = 03102001;
          $user->address = $request->address;
          $user->img_url = NULL;
