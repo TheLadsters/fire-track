@@ -57,7 +57,7 @@ $(document).ready(function() {
         let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
         let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
         let markerContent = `
-        <div style="max-width: 200px; color:black;">
+        <div style="max-width: 200px;">
           <p>
             ${fireStatus}
           </p>
