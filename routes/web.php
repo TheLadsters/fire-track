@@ -32,6 +32,11 @@ Route::get('/', function (Request $request) {
     $request->session()->flush();        
     return view('home');
 });
+Route::get('/artisan/storage', function() {
+    $command = 'storage:link';
+    $result = Artisan::call($command);
+    return Artisan::output();
+});
 
 
 
