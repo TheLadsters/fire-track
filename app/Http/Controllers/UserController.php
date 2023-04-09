@@ -109,7 +109,7 @@ class UserController extends Controller
     
         $user = Auth::user();
     
-        $path = $request->file('img_url')->store('public/users/images');
+        $path = $request->file('img_url')->store('users/images');
         $path = str_replace('public/', '', $path); // Remove the "public/" prefix from the path
     
         $user->img_url = $path;
