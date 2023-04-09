@@ -39,6 +39,7 @@
   @foreach($allAnnouncements as $announcement)
 
   <div class="announce-container">
+    <a href="{{$announcement->article_url}}" target="_blank">
     <div class="first-content">
       <input type="hidden" class="bulletin_ID" id="bulletinID" value="{{$announcement->bulletin_id}}"></input>
       <h2><b>{{$announcement->title}}</b></h2>
@@ -48,7 +49,9 @@
     </div>
 
     <div class="second-content">
+
       <div class="btn-group mb-3">
+
         <a class="editAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">  
           <i class="bx bxs-edit-alt bx-sm" style="color:#6b66f5" title="Edit"></i>
         </a>
@@ -58,11 +61,15 @@
         </a>
       </div>
 
-      <div class="img_bulletin">
+        <div class="img_bulletin">
+
         <img src="{{$announcement->img_url}}" width="200" height="200"  />
 
+       </div>
+
       </div>
-    </div>
+      
+    </a>
   </div>
 
   @endforeach
