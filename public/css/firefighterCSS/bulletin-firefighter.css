@@ -130,14 +130,15 @@ body {font-family: Roboto;}
 }
 
 .first-content{
-  width:80%;
+  width: 70%;
+  margin-right:-65%;
 }
 
 .second-content{
-  display: block;
-  float:right;
-  
+display: fix;
+margin-left:75%;
 }
+
 
 .second-content .btn-group{
   cursor: pointer;
