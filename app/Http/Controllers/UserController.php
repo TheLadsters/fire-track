@@ -103,25 +103,58 @@ class UserController extends Controller
 
     function updatePicture(Request $request){
         
-        $request->validate([
-            'img_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // $request->validate([
+        //     'img_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // ]);
+    
+        // $user = Auth::user();
+    
+        // $path = $request->file('img_url')->store('users/images');
+        // $path = str_replace('public/', '', $path); // Remove the "public/" prefix from the path
+    
+        // $user->img_url = $path;
+
+        // $user->save();
+
+        // Alert::success('Your profile picture has been updated.');
+        
+        // return redirect('user/editprofile');
+        $path = 'users/images/';
+        $file = $request->file('img_url');
+    
+        // Validate the uploaded image
+        $validatedData = $request->validate([
+            'img_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
-        $user = Auth::user();
+        $new_name = 'UIMG_'.date('Ymd').uniqid().'.jpg';
     
-        $path = $request->file('img_url')->store('users/images');
-        $path = str_replace('public/', '', $path); // Remove the "public/" prefix from the path
+        //Upload new image
+        $upload = $file->move(public_path($path), $new_name);
+        
+        if( !$upload ){
+            return response()->json(['status'=>0,'msg'=>'Something went wrong, upload new picture failed.']);
+        }else{
+            //Get Old picture
+            $oldPicture = User::find(Auth::user()->user_id)->getAttributes()['img_url'];
     
-        $user->img_url = $path;
-
-        $user->save();
-
-        Alert::success('Your profile picture has been updated.');
+            if( $oldPicture != '' ){
+                if( \File::exists(public_path($path.$oldPicture))){
+                    \File::delete(public_path($path.$oldPicture));
+                }
+            }
+    
+            //Update DB
+            $update = User::find(Auth::user()->user_id)->update(['img_url'=>$new_name]);
+    
+            if( !$update ){
+                Alert::success('Your profile picture has been updated.');
         
-        return redirect('user/editprofile');
-        
+                return redirect('user/editprofile');
+         
+        }
 
        
-        
+    }
     }
 }
