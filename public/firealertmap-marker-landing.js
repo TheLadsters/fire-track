@@ -50,6 +50,13 @@
           type: 'get',
           dataType: 'json',
           success: function(response){
+
+            if(response['alert'].length > 0){
+              let long= parseFloat(response['alert'][0].longitude).toFixed(15);
+              let lat = parseFloat(response['alert'][0].latitude).toFixed(15);
+              let pos = new google.maps.LatLng(long, lat);
+              map.setCenter(pos);
+            }
       
           for (let i = 0; i < response['alert'].length; i++) {
       
@@ -59,7 +66,7 @@
             let fireStatus = "<b>Status: </b>" + response['alert'][i].status;
             let fireLocation = "<b>Address: </b>" + response['alert'][i].fire_location;
             let markerContent = `
-            <div style="max-width: 200px;">
+            <div style="max-width: 200px; color:black;">
               <p>
                 ${fireStatus}
               </p>

@@ -248,6 +248,9 @@ let alertGeocoder;
 
   })
 
+  // let long = parseFloat(response['alert'][0].longitude).toFixed(15);
+  // let lat = parseFloat(response['alert'][0].latitude).toFixed(15);
+
   // creation of GEOCODER
   alertGeocoder = new google.maps.Geocoder();
 // end of creation of GEOCODER
@@ -257,6 +260,13 @@ $.ajax({
     type: 'get',
     dataType: 'json',
     success: function(response){
+      if(response['alert'].length > 0){
+        let long= parseFloat(response['alert'][0].longitude).toFixed(15);
+        let lat = parseFloat(response['alert'][0].latitude).toFixed(15);
+        let pos = new google.maps.LatLng(long, lat);
+        map.setCenter(pos);
+      }
+
     for (let i = 0; i < response['alert'].length; i++) {
 
       let longitude = parseFloat(response['alert'][i].longitude).toFixed(15);
