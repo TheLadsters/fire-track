@@ -88,7 +88,7 @@
        <header class="masthead bg-primary text-white text-center">
         <div class="container position-relative"> 
             <!-- <h1>Fire Alert Map</h1> -->
-            <h1 class="text-center text-uppercase text-white mb-3">Fire A Map</h1>
+            <h1 class="text-center text-uppercase text-white mb-3">Fire Alert Map</h1>
            
             <div id="firealertmap"></div>
             <input id="searchAlertMap" class="position-absolute top-0 start-50 translate-middle-x" type="text" placeholder="Search Box"/>

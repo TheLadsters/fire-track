@@ -34,7 +34,6 @@ Route::get('/', function (Request $request) {
 });
 
 
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('guest');
 // Route::get('/landing/fire-alert-map/showMapAlerts', [FirefighterAlertsController::class, 'showMapAlerts']);
 Route::get('/fire-alert-map', [PublicAlertsController::class, 'index']);

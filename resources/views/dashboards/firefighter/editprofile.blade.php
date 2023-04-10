@@ -44,7 +44,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                         <?php
                             }else{
                         ?>
-                            src= {{ asset('storage/' . Auth::user()->img_url) }}
+                            src= {{Auth::user()->img_url }}
                         <?php
                             }
                         ?>
