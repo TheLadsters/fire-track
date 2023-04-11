@@ -288,12 +288,11 @@ $.ajax({
       let location_title = response['alert'][i].fire_location;
 
       marker = createMarker(longitude, latitude, location_title);
+      addMarkerListener(marker, markerContent);
+      markerArr.push(marker);
       if(response['alert'][i].status == "Fire Out"){
         marker.setVisible(false);
       }
-      addMarkerListener(marker, markerContent);
-      markerArr.push(marker);
-
   
 }
 
