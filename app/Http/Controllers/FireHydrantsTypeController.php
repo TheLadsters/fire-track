@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class FireHydrantsTypeController extends Controller
@@ -35,11 +37,21 @@ class FireHydrantsTypeController extends Controller
             ]);
 
             if($request->hasFile('hydrant_img')){
-                $formFields['img_url'] = $request->file('hydrant_img')->store('hydrant-types', 
-                'public');
+
+                // $originalImage = $request->file('hydrant_img');
+                $imagePath = $request->file('hydrant_img')->move('images' , $img = 'img_'.Str::random(15).'.jpg');
+                // $imagePath = $originalImage->move(public_path().'/images/');
+                
+                // $imageUrl = Storage::url($imagePath);
+                $model = new fireHydrantTypeAdmin;
+                $model->name = $formFields['name'];
+                $model->img_url = $imagePath;
+                $model->save();
+                // $formFields['img_url'] = $request->file('hydrant_img')->store('hydrant-types', 
+                // 'public');
             }
 
-            fireHydrantTypeAdmin::create($formFields);
+            // fireHydrantTypeAdmin::create($formFields);
             Alert::success('Added Fire Hydrant Type Successfully.');
 
           }
