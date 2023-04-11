@@ -52,7 +52,6 @@
           success: function(response){
 
             if(response['alert'].length > 0){
-              console.log("I moved!");
               let long= parseFloat(response['alert'][0].longitude).toFixed(15);
               let lat = parseFloat(response['alert'][0].latitude).toFixed(15);
               let pos = new google.maps.LatLng(long, lat);
