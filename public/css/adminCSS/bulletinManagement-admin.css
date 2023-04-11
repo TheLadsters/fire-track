@@ -15,7 +15,7 @@ position: relative;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
-}
+} 
 
 .news-list{
   margin-top: 2%;
@@ -155,6 +155,49 @@ body {font-family: Roboto;}
   width:200%;
 }
 
+
+/* FOR MODALS */
+.addAnnouncement .modal-body .row, 
+.editAnnouncementmodal .modal-body .row{
+      margin-bottom: 3%;
+      font-weight: bold;
+}
+
+.head-icon{
+	margin-right: 3px;
+}
+
+#modal-head {
+    background-repeat: no-repeat;
+    background-size: 60% 150px;
+	background-position: right;
+    height: 150px;
+}
+
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+	padding: 20px 30px;
+}
+
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+
+.btn-cancel{
+	background-color: white;
+	border: solid #CDCDCD 2px;
+	border-radius: 5px;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+.btn-cancel:hover{
+	background-color: #e1e1e1;
+}
 .modal-body-Announcement #summary-input{
   width:200%;
   height: 80px;
@@ -171,6 +214,55 @@ textarea {
 #deleteUser{
   width: 100%;
 }
+
+.btn-add-announcement, .btn-edit-announcement{
+	background-color: #6B66F5;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	width:100%;
+	height: 40px;
+	font-weight: bold;
+}
+
+.btn-add-announcement:hover, .btn-edit-announcement:hover{
+	color:#fff;
+	background-color:#483dff;
+	border-color:#3c30ff;
+}
+
+.addAnnouncement form input, .addFireHydrantModal form select, 
+.editAnnouncementmodal form input, .editAnnouncementmodal form select{
+	border-radius: 5px !important;
+}
+
+.addAnnouncement form input:focus, .addAnnouncement form select:focus,
+.editAnnouncementmodal form input:focus, .editAnnouncementmodal form select:focus{
+	box-shadow: none;
+	outline: none;
+	border: 2px solid #6c63ff;
+}
+
+.editAnnouncementmodal .edit-hydrant-longlat{
+    width: 100%;
+}
+
+.deleteAnnouncementModal .text-warning-title,
+.deleteAnnouncementModal .text-warning{
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.deleteAnnouncementModal #deleteAnnouncementBtn{
+	width: 100%;
+	border: none;
+	height: 40px;
+	border-radius: 5px;
+}
+
+
+/* END OF FOR MODALS */
 
 
 
@@ -198,7 +290,7 @@ textarea {
   background:#2e2b6f; 
 }
 
-#bulletinTable_wrapper{
+/* #bulletinTable_wrapper{
   width: 550px;
 }
 
@@ -222,4 +314,22 @@ textarea {
 
 .bulletinManagerModal{
   margin-left: 17%;
+} */
+
+
+.author{
+  width:20%;
+}
+.title{
+  margin-left: 23%;
+  width:20%;
+}
+.summary{
+  width:38%;
+}
+.article_url{
+  width:33%;
+}
+.image_url{
+  width:33%;
 }
