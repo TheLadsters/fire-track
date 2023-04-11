@@ -36,7 +36,6 @@ function initMap(){
         type: 'get',
         dataType: 'json',
         success: function(response){
-            console.log(response);
     
             for (let i = 0; i < response['alert'].length; i++) {
   
