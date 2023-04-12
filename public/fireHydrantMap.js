@@ -181,8 +181,9 @@ $('#hydrant_table tbody').on('click', '.editColHydrant', function(){
         let status = response['data'].status;
         let hydrantType = response['data'].hydrant_type_id;
         let hydrantImgUrl = response['data'].img_url;
-        let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['data'].img_url : 
-        "images/no_img_available.png";
+        // let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['data'].img_url : 
+        // "images/no_img_available.png";
+        let hydrantPhoto = (hydrantImgUrl) ? response['data'].img_url : "images/no_img_available.png";
 
         $("#edit-longitude").val(longitude);
         $("#edit-latitude").val(latitude);
