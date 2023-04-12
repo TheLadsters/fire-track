@@ -69,7 +69,7 @@ else{
 
 ////// GET FIRE HYDRANT TABLE START OF CODE //////
 function checkImg(hydrant){
-  let imgUrl = (hydrant.img_url) ? assetUrl + '/' + hydrant['img_url'] : "images/no_img_available.png";
+  let imgUrl = (hydrant.img_url) ? hydrant['img_url'] : "images/no_img_available.png";
 return imgUrl;
 }
 
@@ -337,7 +337,8 @@ $.ajax({
       let hydrantStatus = response['hydrant'][i].status;
       let hydrantImgUrl = response['hydrant'][i].img_url;
 
-      let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['hydrant'][i].img_url : "images/no_img_available.png";
+      //let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['hydrant'][i].img_url : "images/no_img_available.png";
+      let hydrantPhoto = (hydrantImgUrl) ? response['hydrant'][i].img_url : "images/no_img_available.png";
 
 
       let markerContent = `
