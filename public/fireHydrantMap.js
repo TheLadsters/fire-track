@@ -505,7 +505,7 @@ function editHydrantFcn(){
         let hydrantType = response['hydrant'][i].hydrant_type_id;
         let hydrantStatus = response['hydrant'][i].status;
         let hydrantImgUrl = response['hydrant'][i].img_url;
-        let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['hydrant'][i].img_url : 
+        let hydrantPhoto = (hydrantImgUrl) ? response['hydrant'][i].img_url : 
                           "images/no_img_available.png";
 
         google.maps.event.clearListeners(hydrantMarkerArr[i], "click");
