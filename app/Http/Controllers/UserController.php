@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use \App\Models\bulletinManagement;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -107,15 +108,20 @@ class UserController extends Controller
             'img_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
-        $user = Auth::user();
+        // $user = Auth::user();
+      
     
-        $path = $request->file('img_url')->store('public/users/images');
-        $path = str_replace('public/', '', $path); // Remove the "public/" prefix from the path
+        // $path = $request->file('img_url')->store('public/users/images');
+        // $path = str_replace('public/', '', $path); // Remove the "public/" prefix from the path
+        $imagePath =  $request->file('img_url')->move('users/images' , $img = 'users/images/img_'.Str::random(15).'.jpg');
     
-        $user->img_url = $path;
+        // $user->img_url = $path;
 
-        $user->save();
-
+        // $user->save();
+        // $model = new User;
+        // $model->img_url = $imagePath;
+        // $model->save();
+        $update = User::find(Auth::user()->user_id)->update(['img_url'=>$img]);
         Alert::success('Your profile picture has been updated.');
         
         return redirect('user/editprofile');
