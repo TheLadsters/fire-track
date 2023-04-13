@@ -407,7 +407,7 @@
         <script type="text/javascript" src="/firealertmap-landing.js"></script>
         <script type="text/javascript" src="/firealertmap-marker-landing.js"></script>
         <script type="text/javascript" src="/bulletin-firefighter.js"></script>
-        <script type="text/javascript" src="/bulletinNews.js"></script>
+        <!-- <script type="text/javascript" src="/bulletinNews.js"></script> -->
         <!-- <script type="text/javascript" src="/firealertmap-firefighter.js"></script> -->
     
 </body>
