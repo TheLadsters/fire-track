@@ -1,99 +1,99 @@
 
-document.getElementById('announcement_tab').click();
+// document.getElementById('announcement_tab').click();
 
-const newsList = document.querySelector('.news-list');
+// const newsList = document.querySelector('.news-list');
 
-    newsList.innerHTML = '';
+//     newsList.innerHTML = '';
 
     
-    const apiKey = '3bd9123369d54e9794bb2063d731de85';
+//     const apiKey = '3bd9123369d54e9794bb2063d731de85';
 
 
-    let url = `https://newsapi.org/v2/everything?q=Cebu sunog&apiKey=${apiKey}`;
-    let vhTotal = 3;
+//     let url = `https://newsapi.org/v2/everything?q=Cebu sunog&apiKey=${apiKey}`;
+//     let vhTotal = 3;
 
-    fetch(url).then((res)=>{
-        return res.json()
-    }).then((data)=>{
-        console.log(data)
-        data.articles.forEach(article =>{
+//     fetch(url).then((res)=>{
+//         return res.json()
+//     }).then((data)=>{
+//         console.log(data)
+//         data.articles.forEach(article =>{
 
-            let image = article.urlToImage;
-            if(image == null){
-                image = 'images/santonino.png';
-            }   
+//             let image = article.urlToImage;
+//             if(image == null){
+//                 image = 'images/santonino.png';
+//             }   
 
-            // image.style.filter = "blur(5px)";            
+//             // image.style.filter = "blur(5px)";            
 
-            // let li = document.createElement('li');
-            let divMain = document.createElement('div');
-            let divBg = document.createElement('div');
-            let divContent = document.createElement('div');
-            let h = document.createElement('h5');
-            let para = document.createElement('p');
-            let read  = document.createElement('a');
+//             // let li = document.createElement('li');
+//             let divMain = document.createElement('div');
+//             let divBg = document.createElement('div');
+//             let divContent = document.createElement('div');
+//             let h = document.createElement('h5');
+//             let para = document.createElement('p');
+//             let read  = document.createElement('a');
 
-            divMain.classList.add('child');
-            divBg.classList.add('background-blur');
-            divContent.classList.add('content');
+//             divMain.classList.add('child');
+//             divBg.classList.add('background-blur');
+//             divContent.classList.add('content');
 
-            divMain.appendChild(divBg);
+//             divMain.appendChild(divBg);
 
-            divMain.style.backgroundImage= `url('${image}')`;
-            divMain.style.height = "35vh";
-            divMain.style.width = "auto";
-            divMain.style.backgroundRepeat = "no-repeat";
-            divMain.style.backgroundSize = "cover";
-            divMain.style.backgroundPosition = "center center";
+//             divMain.style.backgroundImage= `url('${image}')`;
+//             divMain.style.height = "35vh";
+//             divMain.style.width = "auto";
+//             divMain.style.backgroundRepeat = "no-repeat";
+//             divMain.style.backgroundSize = "cover";
+//             divMain.style.backgroundPosition = "center center";
             
-            divContent.style.top = `${vhTotal}vh`;
-            divContent.style.marginLeft = "2%";
-            vhTotal += 38.5;
+//             divContent.style.top = `${vhTotal}vh`;
+//             divContent.style.marginLeft = "2%";
+//             vhTotal += 38.5;
 
-            h.setAttribute('target', '_blank');
-            h.textContent = article.title;
-            h.style.fontWeight = "bold";
-            para.textContent = article.description;
-            read.textContent = "Read More Here...";
-            read.setAttribute('href', `${article.url}`);
-            read.style.color = "white";
+//             h.setAttribute('target', '_blank');
+//             h.textContent = article.title;
+//             h.style.fontWeight = "bold";
+//             para.textContent = article.description;
+//             read.textContent = "Read More Here...";
+//             read.setAttribute('href', `${article.url}`);
+//             read.style.color = "white";
 
 
-            divContent.appendChild(h);
-            divContent.appendChild(para);
-            divContent.appendChild(read);
+//             divContent.appendChild(h);
+//             divContent.appendChild(para);
+//             divContent.appendChild(read);
 
-            // li.style.display = "block";
-            // li.style.width = "100%";
-            // li.style.height = "200px";
-            // li.style.padding = "10px";
-            // li.style.border = "1px solid blue";
-            // li.style.borderRadius = "15px";
-            // li.style.marginTop = "20px";
-            // li.style.color = "white";
-            // li.style.backgroundRepeat = "no-repeat";
-            // li.style.backgroundSize = "100%";
+//             // li.style.display = "block";
+//             // li.style.width = "100%";
+//             // li.style.height = "200px";
+//             // li.style.padding = "10px";
+//             // li.style.border = "1px solid blue";
+//             // li.style.borderRadius = "15px";
+//             // li.style.marginTop = "20px";
+//             // li.style.color = "white";
+//             // li.style.backgroundRepeat = "no-repeat";
+//             // li.style.backgroundSize = "100%";
 
-            // h.style.marginLeft ="5%";
+//             // h.style.marginLeft ="5%";
 
-            // li.appendChild(h);
+//             // li.appendChild(h);
 
-            // para.style.marginLeft ="5%";
-            // para.style.marginRight ="15%";
-            // para.style.marginTop = "3%";
+//             // para.style.marginLeft ="5%";
+//             // para.style.marginRight ="15%";
+//             // para.style.marginTop = "3%";
                          
-            // li.appendChild(para);
+//             // li.appendChild(para);
 
 
 
-            // read.style.marginLeft ="5%";
+//             // read.style.marginLeft ="5%";
 
             
-            newsList.appendChild(divMain);
-            newsList.appendChild(divContent);
-        })
+//             newsList.appendChild(divMain);
+//             newsList.appendChild(divContent);
+//         })
 
-    })
+//     })
 
     /*for tabs*/ 
 

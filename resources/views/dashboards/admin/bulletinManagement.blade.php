@@ -39,7 +39,7 @@
   @foreach($allAnnouncements as $announcement)
 
   <div class="announce-container">
-    <a href="{{$announcement->article_url}}" target="_blank">
+    <!-- <a href="{{$announcement->article_url}}" target="_blank"> -->
     <div class="first-content">
       <input type="hidden" class="bulletin_ID" id="bulletinID" value="{{$announcement->bulletin_id}}"></input>
       <h2><b>{{$announcement->title}}</b></h2>
@@ -69,7 +69,7 @@
 
       </div>
       
-    </a>
+    <!-- </a> -->
   </div>
 
   @endforeach
