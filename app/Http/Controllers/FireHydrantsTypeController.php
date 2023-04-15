@@ -49,6 +49,10 @@ class FireHydrantsTypeController extends Controller
                 $model->save();
                 // $formFields['img_url'] = $request->file('hydrant_img')->store('hydrant-types', 
                 // 'public');
+            }else{
+                $model = new fireHydrantTypeAdmin;
+                $model->name = $formFields['name'];
+                $model->save();
             }
 
             // fireHydrantTypeAdmin::create($formFields);
@@ -89,10 +93,10 @@ class FireHydrantsTypeController extends Controller
           $hydrant_type_id = $request->input('hydrant_type_id');
           $name = $request->input('name');
         
-          $hydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
+          $hydrantType = fireHydrantTypeAdmin::findOrFail($hydrant_type_id);
 
           $hydrantImg = ($request->hasFile('img_url')) ? 
-          $request->file('img_url')->store('hydrant-types', 'public') : $hydrantType->img_url;
+          $request->file('img_url')->move('images' , $img = 'img_'.Str::random(15).'.jpg') : $hydrantType->img_url;
   
           if($hydrantImg){
               $hydrantType = fireHydrantTypeAdmin::where('hydrant_type_id', $hydrant_type_id)->update([
