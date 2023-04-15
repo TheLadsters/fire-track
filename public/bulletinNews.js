@@ -205,19 +205,19 @@ const newsList = document.querySelector('.news-list');
     newsList.innerHTML = '';
 
     
-    const apiKey = '3bd9123369d54e9794bb2063d731de85';
+    const apiKey = 'i6KxPRwuXpxQrOIlFIcgs9LLMBVBdG';
 
 
-    let url = `https://newsapi.org/v2/everything?q=Cebu sunog&apiKey=${apiKey}`;
+    let url = `https://newsapi.in/newsapi/search.php?key=${apiKey}&q=fire%20cebu`;
     let vhTotal = 3;
 
     fetch(url).then((res)=>{
         return res.json()
     }).then((data)=>{
         console.log(data)
-        data.articles.forEach(article =>{
+        data.News.forEach(News =>{
 
-            let image = article.urlToImage;
+            let image = News.image;
             if(image == null){
                 image = 'images/santonino.png';
             }   
@@ -255,11 +255,11 @@ const newsList = document.querySelector('.news-list');
             vhTotal += 38.5;
 
             read.setAttribute('target', '_blank');
-            h.textContent = article.title;
+            h.textContent = News.title;
             h.style.fontWeight = "bold";
-            para.textContent = article.description;
+            para.textContent = News.description;
             read.textContent = "Read More Here...";
-            read.setAttribute('href', `${article.url}`);
+            read.setAttribute('href', `${News.url}`);
             read.style.color = "white";
 
 
