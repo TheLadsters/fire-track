@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use \App\Models\fireHydrantTypeAdmin;
+use \App\Models\fireHydrantAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -121,12 +122,19 @@ class FireHydrantsTypeController extends Controller
   public function deleteFireHydrantType(Request $request){
       $hydrant_type_id = $request->input('htype_id');
       $HydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
-      if($HydrantType){
-      $HydrantType->delete();
-      Alert::success('Fire Hydrant Type deleted Successfully.');
+      $hydrantUsed = fireHydrantAdmin::where('hydrant_type_id' ,$hydrant_type_id);
+
+      if($hydrantUsed){
+        Alert::error('Fire Hydrant Type is currently in use by a fire hydrant.');
       }else{
-          Alert::error('Fire Hydrant Type deletion was not successful.');
+        if($HydrantType){
+            $HydrantType->delete();
+            Alert::success('Fire Hydrant Type deleted Successfully.');
+            }else{
+                Alert::error('Fire Hydrant Type deletion was not successful.');
+            }
       }
+    
 
       return redirect('admin/fire-hydrant-type-management')->with('message', 'Fire Hydrant Type Deleted Successfully.');   
   }
