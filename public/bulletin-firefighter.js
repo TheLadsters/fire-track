@@ -1,3 +1,7 @@
+function truncate(str, maxlength) {
+  return (str.length > maxlength) ?
+    str.slice(0, maxlength - 1) + '…' : str;
+}
 
 document.getElementById('announcement_tab').click();
 
@@ -20,7 +24,7 @@ const newsList = document.querySelector('.news-list');
 
             let image = news.image;
             if(image == null){
-                image = 'images/santonino.png';
+                image = 'https://motionarray.imgix.net/preview-195598-wSPLWjfONB-high_0000.jpg?w=660&q=60&fit=max&auto=format';
             }   
 
             // image.style.filter = "blur(5px)";            
@@ -58,7 +62,7 @@ const newsList = document.querySelector('.news-list');
             read.setAttribute('target', '_blank');
             h.textContent = news.title;
             h.style.fontWeight = "bold";
-            para.textContent = news.text;
+            para.textContent = truncate(news.text, 450);
             read.textContent = "Read More Here...";
             read.setAttribute('href', `${news.url}`);
             read.style.color = "white";
