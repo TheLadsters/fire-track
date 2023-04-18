@@ -9,8 +9,7 @@ $(document).ready(function() {
     
     ////// GET FIRE HYDRANT TABLE START OF CODE //////
     function checkImg(hydrantType){
-      let imgUrl = (hydrantType.img_url) ? assetUrl + '/' + hydrantType['img_url'] : "images/no_img_available.png";
-      // let imgUrl = (hydrantType.img_url) ? hydrantType['img_url'] : "images/no_img_available.png";
+      let imgUrl = (hydrantType.img_url) ? hydrantType['img_url'] : "images/no_img_available.png";
     return imgUrl;
     }
 
@@ -58,8 +57,7 @@ $(document).ready(function() {
           success: function(response){ 
             let name = response['data'].name;
             let hydrantImgUrl = response['data'].img_url;
-            let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['data'].img_url : 
-          //  let hydrantPhoto = (hydrantImgUrl) ? response['data'].img_url : 
+            let hydrantPhoto = (hydrantImgUrl) ? response['data'].img_url : 
             "images/no_img_available.png";
     
             $("#name-edit").val(name);

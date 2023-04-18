@@ -38,28 +38,24 @@ class FireHydrantsTypeController extends Controller
 
             if($request->hasFile('hydrant_img')){
 
-                $formFields['img_url'] = $request->file('hydrant_img')->store('hydrant-types', 
-                'public');
-
                 // $originalImage = $request->file('hydrant_img');
-                //$imagePath = $request->file('hydrant_img')->move('images' , $img = 'img_'.Str::random(15).'.jpg');
+                $imagePath = $request->file('hydrant_img')->move('images/hydrant-type' , $img = 'img_'.Str::random(15).'.jpg');
                 // $imagePath = $originalImage->move(public_path().'/images/');
                 
                 // $imageUrl = Storage::url($imagePath);
-                // $model = new fireHydrantTypeAdmin;
-                // $model->name = $formFields['name'];
-                // $model->img_url = $imagePath;
-                // $model->save();
+                $model = new fireHydrantTypeAdmin;
+                $model->name = $formFields['name'];
+                $model->img_url = $imagePath;
+                $model->save();
                 // $formFields['img_url'] = $request->file('hydrant_img')->store('hydrant-types', 
                 // 'public');
+            }else{
+                $model = new fireHydrantTypeAdmin;
+                $model->name = $formFields['name'];
+                $model->save();
             }
-            // }else{
-            //     $model = new fireHydrantTypeAdmin;
-            //     $model->name = $formFields['name'];
-            //     $model->save();
-            // }
 
-            fireHydrantTypeAdmin::create($formFields);
+            // fireHydrantTypeAdmin::create($formFields);
             Alert::success('Added Fire Hydrant Type Successfully.');
 
           }
