@@ -76,21 +76,22 @@ class FireHydrantsController extends Controller
             ]);
 
             if($request->hasFile('img_url')){
-                $formFields['img_url'] = $request->file('img_url')->store('hydrant-images', 'public');
-                // $imagePath = $request->file('img_url')->move('hydrants/images' , $img = 'img_'.Str::random(15).'.jpg');
+                // $formFields['img_url'] = $request->file('img_url')->store('hydrant-images', 
+                // 'public')
+                $imagePath = $request->file('img_url')->move('hydrants/images' , $img = 'img_'.Str::random(15).'.jpg');
               
-                // $model = new fireHydrantAdmin;
-                // $model->longitude = $formFields['longitude'];
-                // $model->latitude = $formFields['latitude'];
-                // $model->hydrant_type_id = $formFields['hydrant_type_id'];
-                // $model->address = $formFields['address'];
-                // $model->status = $formFields['status'];
-                // $model->user_id = $formFields['user_id'];
-                // $model->img_url = $imagePath;
-                // $model->save();
+                $model = new fireHydrantAdmin;
+                $model->longitude = $formFields['longitude'];
+                $model->latitude = $formFields['latitude'];
+                $model->hydrant_type_id = $formFields['hydrant_type_id'];
+                $model->address = $formFields['address'];
+                $model->status = $formFields['status'];
+                $model->user_id = $formFields['user_id'];
+                $model->img_url = $imagePath;
+                $model->save();
             }
 
-            fireHydrantAdmin::create($formFields);
+           // fireHydrantAdmin::create($formFields);
             Alert::success('Added Fire Hydrant Successfully.');
 
           }

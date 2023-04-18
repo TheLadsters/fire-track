@@ -44,8 +44,7 @@
               {
               ?>
                   <span class="user_img_url">
-                  <img src="{{ asset('storage/' . Auth::user()->img_url) }}" width="20" height="20" class="rounded-circle">  
-                  <!-- <img src="{{ Auth::user()->img_url }}" width="20" height="20" class="rounded-circle"> -->
+                    <img src="{{ Auth::user()->img_url }}" width="20" height="20" class="rounded-circle">
                   </span>
               <?php
               }else{
