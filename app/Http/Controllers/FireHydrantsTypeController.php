@@ -126,7 +126,7 @@ class FireHydrantsTypeController extends Controller
       $HydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
       $hydrantUsed = fireHydrantAdmin::where('hydrant_type_id' ,$hydrant_type_id);
 
-      $oldImgUrl = $hydrantType->img_url;
+      $oldImgUrl = $HydrantType->img_url;
 
       if($hydrantUsed){
         Alert::error('Fire Hydrant Type is currently in use by a fire hydrant.');
