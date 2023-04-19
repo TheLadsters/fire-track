@@ -90,14 +90,13 @@ class AdminController extends Controller
          $user->email = $request->email;
          $user->contact_no = $request->contact_no;
          $user->gender = $request->gender;
-         $user->role = 'admin';
-         $user->birthday = 03102001;
+         $user->role = 'firefighter';
          $user->address = $request->address;
          $user->img_url = "images/no_img_available.png";
          $user->password = \Hash::make($request->password);
 
          if( $user->save() ){
-            Alert::success('Added Successfully!');
+            Alert::success('Added Successfully.');
              return redirect('admin/userManagementUser');
         }
 
@@ -119,8 +118,8 @@ class AdminController extends Controller
 
 
         if($validator->fails()){
-            Alert::error('Not successful');
-        }else{
+            Alert::error($validator->errors()->first());
+        }else{          
             $user_id = $request->input('user_id');
             $fname = $request->input('fname');
             $lname = $request->input('lname');
@@ -131,7 +130,23 @@ class AdminController extends Controller
             $status = $request->input('status');
 
             $user = User::find($user_id);
+            $existEmail = User::where('email',$email)->first();
             
+            if(($email != $user['email']) && ($existEmail == null)){
+                $user = User::where('user_id', $user_id)->update([
+                    'user_id' => $user_id,
+                    'fname' => $fname,
+                    'lname' => $lname,
+                    'email' => $email,
+                    'contact_no' => $contact_no,
+                    'address' => $address,
+                    'gender' => $gender,
+                    'status' => $status
+                ]);
+
+                Alert::success('User Updated Successfully.');
+
+            }else if(($email == $user['email']) && ($existEmail != null)){
                 $user = User::where('user_id', $user_id)->update([
                     'user_id' => $user_id,
                     'fname' => $fname,
@@ -143,8 +158,10 @@ class AdminController extends Controller
                     'status' => $status
                 ]);
             
-    
-            Alert::success('Updated User Successfully.');
+                Alert::success('User Updated Successfully.');
+            }else if(($email != $user['email']) && ($existEmail != null)){
+                Alert::error('Email already in use.');
+            }
         }
   
 
@@ -158,7 +175,7 @@ class AdminController extends Controller
         $user = User::find($user_id);
         if($user){
             if($user->email == Auth::user()->email){
-                Alert::error('Current User', 'The user you are deleting is the current logged in user!');
+                Alert::error('Current User', 'The user you are deleting is the current logged in user.');
             }
             else{
                 $user->delete();
