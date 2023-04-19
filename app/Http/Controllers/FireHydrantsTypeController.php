@@ -122,7 +122,7 @@ class FireHydrantsTypeController extends Controller
   public function deleteFireHydrantType(Request $request){
       $hydrant_type_id = $request->input('htype_id');
       $HydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
-      $hydrantUsed = fireHydrantAdmin::where('hydrant_type_id' ,$hydrant_type_id);
+      $hydrantUsed = fireHydrantAdmin::where('hydrant_type_id' ,$hydrant_type_id)->first();
 
       if($hydrantUsed){
         Alert::error('Fire Hydrant Type is currently in use by a fire hydrant.');
