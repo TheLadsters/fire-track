@@ -10,6 +10,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+
 
 
 class FireHydrantsTypeController extends Controller
@@ -39,17 +41,13 @@ class FireHydrantsTypeController extends Controller
 
             if($request->hasFile('hydrant_img')){
 
-                // $originalImage = $request->file('hydrant_img');
                 $imagePath = $request->file('hydrant_img')->move('images/hydrant-type' , $img = 'img_'.Str::random(15).'.jpg');
-                // $imagePath = $originalImage->move(public_path().'/images/');
-                
-                // $imageUrl = Storage::url($imagePath);
+
                 $model = new fireHydrantTypeAdmin;
                 $model->name = $formFields['name'];
                 $model->img_url = $imagePath;
                 $model->save();
-                // $formFields['img_url'] = $request->file('hydrant_img')->store('hydrant-types', 
-                // 'public');
+        
             }else{
                 $model = new fireHydrantTypeAdmin;
                 $model->name = $formFields['name'];
@@ -79,55 +77,62 @@ class FireHydrantsTypeController extends Controller
       return response()->json($response);
   }
 
-  public function updateFireHydrantType(Request $request){
+  public function updateFireHydrantType(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'hydrant_type_id' => 'required',
+        'name' => 'required',
+        'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
+    ]);
 
-      $validator = Validator::make($request->all(), [
-          'hydrant_type_id' => 'required',
-          'name' => 'required',
-          'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
-         
-        ]);
+    if ($validator->fails()) {
+        Alert::error('Editing Fire Hydrant Type was not successful.');
+    } else {
+        $hydrant_type_id = $request->input('hydrant_type_id');
+        $name = $request->input('name');
 
-      if($validator->fails()){
-          Alert::error('Editing Fire Hydrant Type was not successful.');
-      }else{
-          $hydrant_type_id = $request->input('hydrant_type_id');
-          $name = $request->input('name');
-        
-          $hydrantType = fireHydrantTypeAdmin::findOrFail($hydrant_type_id);
+        $hydrantType = fireHydrantTypeAdmin::findOrFail($hydrant_type_id);
 
-          $hydrantImg = ($request->hasFile('img_url')) ? 
-          $request->file('img_url')->move('images/hydrant-type' , $img = 'img_'.Str::random(15).'.jpg') : $hydrantType->img_url;
-  
-          if($hydrantImg){
-              $hydrantType = fireHydrantTypeAdmin::where('hydrant_type_id', $hydrant_type_id)->update([
-                  'name' => $name,
-                  'img_url' => $hydrantImg,
-                  'hydrant_type_id' => $hydrant_type_id,
-              ]);
-          }else{
-              $hydrant = fireHydrantTypeAdmin::where('hydrant_type_id', $hydrant_type_id)->update([
-                  'name' => $name,
-                  'hydrant_type_id' => $hydrant_type_id,
-              ]);
-          }
-  
-          Alert::success('Updated Fire Hydrant Type Successfully.');
-      }
+        $oldImgUrl = $hydrantType->img_url; // store the old image URL
 
+        $hydrantImg = ($request->hasFile('img_url')) ?
+            $request->file('img_url')->move('hydrant-type/images', $img = 'img_' . Str::random(15) . '.jpg') :
+            $hydrantType->img_url;
 
-      return redirect('admin/fire-hydrant-type-management');
-  }
+        if ($hydrantImg) {
+            $hydrantType = fireHydrantTypeAdmin::where('hydrant_type_id', $hydrant_type_id)->update([
+                'name' => $name,
+                'img_url' => $hydrantImg,
+                'hydrant_type_id' => $hydrant_type_id,
+            ]);
+            // delete the old image file
+            unlink(public_path($oldImgUrl));
+        } else {
+            $hydrant = fireHydrantTypeAdmin::where('hydrant_type_id', $hydrant_type_id)->update([
+                'name' => $name,
+                'hydrant_type_id' => $hydrant_type_id,
+            ]);
+        }
+
+        Alert::success('Updated Fire Hydrant Type Successfully.');
+    }
+
+    return redirect('admin/fire-hydrant-type-management');
+}
+
 
   public function deleteFireHydrantType(Request $request){
       $hydrant_type_id = $request->input('htype_id');
       $HydrantType = fireHydrantTypeAdmin::find($hydrant_type_id);
       $hydrantUsed = fireHydrantAdmin::where('hydrant_type_id' ,$hydrant_type_id);
 
+      $oldImgUrl = $hydrantType->img_url;
+
       if($hydrantUsed){
         Alert::error('Fire Hydrant Type is currently in use by a fire hydrant.');
       }else{
         if($HydrantType){
+            unlink(public_path($oldImgUrl));
             $HydrantType->delete();
             Alert::success('Fire Hydrant Type deleted Successfully.');
             }else{
