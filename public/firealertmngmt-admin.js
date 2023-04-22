@@ -23,7 +23,7 @@ var maxDateAlert;
 
 
 $(document).ready( function () {
-  var listenerHandler = initMap();
+  var editAlertFcn = initMap();
 
   let date_now = new Date(Date.now());
   let stringDate = `Date Accessed: ${(date_now.getMonth()+1)}/${date_now.getDate()}/${date_now.getFullYear()}`;
@@ -170,9 +170,7 @@ $('#alertTable tbody').on('click', '.editColAlert', function(){
        }
     });
 
-    // $(`.fa-sharp .fa-solid`).click(function(){
-    //     google.maps.event.removeListener(listenerHandler);
-    // });
+    editAlertFcn();
 });
 
 // delete alert in fire alert manager
@@ -642,7 +640,7 @@ function cancelForDeleteFcn(){
 $("#delete-firealert").on('click', deleteAlertFcn);
 
 ////// DELETE FIRE ALERT FUNCTION CODE END //////
-return listenerHandler;
+return editAlertFcn;
 };
 
 

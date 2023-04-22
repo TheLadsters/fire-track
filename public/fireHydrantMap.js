@@ -182,8 +182,6 @@ $('#hydrant_table tbody').on('click', '.editColHydrant', function(){
         let status = response['data'].status;
         let hydrantType = response['data'].hydrant_type_id;
         let hydrantImgUrl = response['data'].img_url;
-        // let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['data'].img_url : 
-        // "images/no_img_available.png";
         let hydrantPhoto = (hydrantImgUrl) ? response['data'].img_url : "images/no_img_available.png";
 
         $("#edit-longitude").val(longitude);
@@ -199,6 +197,8 @@ $('#hydrant_table tbody').on('click', '.editColHydrant', function(){
            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
        }
     });
+
+    editHydrantFcn();
 });
 
 // delete hydrant in fire hydrant manager
@@ -546,14 +546,7 @@ cancelHydrantTemplate("any hydrant icon to EDIT",
 $(".edit-hydrant-longlat").click(function(){
 
   $(".editFireHydrantModal").modal("hide");
-  // $(".middle-details-hydrant").empty();
-  // $(".middle-details-hydrant").append(
-  //   `
-  //   <div class="alarm-notif">
-  //     <h5>Click on new location to EDIT longitude and latitude of the fire hydrant.</h5>
-  //   </div>
-  //   `
-  // );
+
   cancelHydrantTemplate(`new location to EDIT longitude and latitude of`,
   ["#add-firehydrant", "#delete-firehydrant"], "#edit-firehydrant");
 
