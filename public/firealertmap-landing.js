@@ -1,7 +1,11 @@
 function initMap(){
 
   const fireImg = "images/fire.png";
-
+  var marker;
+  let markerArr = [];
+  let listenerHandler;
+  let alertGeocoder;
+  
     map = new google.maps.Map(document.getElementById("firealertmap"), {
         center: new google.maps.LatLng(10.352029690791822, 123.91910785394363),
         zoom: 16,

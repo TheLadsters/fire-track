@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(1)->create();    
-        
+        $hashPass = \Hash::make('admin123');
         DB::table('users')->insert([
             'email' => 'firetrackCapstone@gmail.com',
             'fname' => 'admin',
             'lname' => 'admin',
             'contact_no' => '12345678',
-            'password' => 'admin123',
+            'password' => $hashPass,
             'birthday' => '04082000',
             'gender' => 'male',
             'address' => 'Cebu City, Philippines',
