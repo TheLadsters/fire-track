@@ -19,7 +19,6 @@ const newsList = document.querySelector('.news-list');
     fetch(url).then((res)=>{
         return res.json()
     }).then((data)=>{
-        console.log(data)
         data.news.forEach(news =>{
 
             let image = news.image;
@@ -129,14 +128,12 @@ const newsList = document.querySelector('.news-list');
       /* Edit Announcement*/ 
       $(".editAnnouncement").click(function(){
         var id =  $(this).attr('id');
-        console.log(id);
         editAnnouncement(id);
         $(".editAnnouncementmodal").modal('show');
       });
 
       $(".deleteAnnouncement").click(function(){
         var id =  $(this).attr('id');
-        console.log(id);
         $(".deleteAnnouncementModal #bulletin_key_ID").val(id);
         $(".deleteAnnouncementModal").modal('show');
       });
@@ -149,10 +146,6 @@ const newsList = document.querySelector('.news-list');
           type: 'post',
           dataType: 'json',
           success: function(response){
-            // console.log(response);
-              console.log(IDnumber);
-              
-              console.log(response);
 
               let bulletin_id = response['announce'].bulletin_id;
               let user_id = response['announce'].user_id;
