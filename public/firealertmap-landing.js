@@ -1,4 +1,7 @@
 function initMap(){
+
+  const fireImg = "images/fire.png";
+
     map = new google.maps.Map(document.getElementById("firealertmap"), {
         center: new google.maps.LatLng(10.352029690791822, 123.91910785394363),
         zoom: 16,
@@ -65,7 +68,7 @@ function initMap(){
                 position: new google.maps.LatLng(longitude, latitude),
                 map: map,
                 icon: {
-                        url: hydrantImg,
+                        url: fireImg,
                         scaledSize: new google.maps.Size(28, 28)
                       },
                 animation: google.maps.Animation.DROP
