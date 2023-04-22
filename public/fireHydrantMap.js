@@ -33,12 +33,6 @@ maxDate = new DateTime($('#max'), {
 }
 newDateInputs();
    
-  
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
 
 
 // Get current date (for excel and pdf access dates)
@@ -66,6 +60,13 @@ else{
   minMaxDateText = `Time Period From: "${minDateInput}" to "${maxDateInput}"`;
 }
 });
+
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
 
 ////// GET FIRE HYDRANT TABLE START OF CODE //////
 function checkImg(hydrant){
@@ -545,19 +546,22 @@ cancelHydrantTemplate("any hydrant icon to EDIT",
 $(".edit-hydrant-longlat").click(function(){
 
   $(".editFireHydrantModal").modal("hide");
-  $(".middle-details-hydrant").empty();
-  $(".middle-details-hydrant").append(
-    `
-    <div class="alarm-notif">
-      <h5>Click on new location to EDIT longitude and latitude of the fire hydrant.</h5>
-    </div>
-    `
-  );
+  // $(".middle-details-hydrant").empty();
+  // $(".middle-details-hydrant").append(
+  //   `
+  //   <div class="alarm-notif">
+  //     <h5>Click on new location to EDIT longitude and latitude of the fire hydrant.</h5>
+  //   </div>
+  //   `
+  // );
+  cancelHydrantTemplate(`new location to EDIT longitude and latitude of`,
+  ["#add-firehydrant", "#delete-firehydrant"], "#edit-firehydrant");
+
 
   for (let i = 0; i < hydrantMarkerArr.length; i++) {
     google.maps.event.clearListeners(hydrantMarkerArr[i], "click");
 }
-  hyrantListenerHandler = hydrantMap.addListener("click", (mapsMouseEvent) => {
+  hydrantListenerHandler = hydrantMap.addListener("click", (mapsMouseEvent) => {
  
 
     let newLongLat = mapsMouseEvent.latLng.toJSON();

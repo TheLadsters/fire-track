@@ -1,27 +1,30 @@
 var minDateAlert;
 var maxDateAlert;
 
+// DO NOT UNCOMMENT
 // Custom filtering function which will search data in column four between two values
-$.fn.dataTable.ext.search.push(
-  function( settings, data, dataIndex ) {
-      var min = minDateAlert.val();
-      var max = maxDateAlert.val();
-      var date = new Date( data[4] );
+// $.fn.dataTable.ext.search.push(
+//   function( settings, data, dataIndex ) {
+//       var min = minDateAlert.val();
+//       var max = maxDateAlert.val();
+//       var date = new Date( data[4] );
 
-      if (
-          ( min === null && max === null ) ||
-          ( min === null && date <= max ) ||
-          ( min <= date   && max === null ) ||
-          ( min <= date   && date <= max )
-      ) {
-          return true;
-      }
-      return false;
-  }
-);
+//       if (
+//           ( min === null && max === null ) ||
+//           ( min === null && date <= max ) ||
+//           ( min <= date   && max === null ) ||
+//           ( min <= date   && date <= max )
+//       ) {
+//           return true;
+//       }
+//       return false;
+//   }
+// );
 
 
 $(document).ready( function () {
+  var listenerHandler = initMap();
+
   let date_now = new Date(Date.now());
   let stringDate = `Date Accessed: ${(date_now.getMonth()+1)}/${date_now.getDate()}/${date_now.getFullYear()}`;
 
@@ -166,6 +169,10 @@ $('#alertTable tbody').on('click', '.editColAlert', function(){
            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
        }
     });
+
+    // $(`.fa-sharp .fa-solid`).click(function(){
+    //     google.maps.event.removeListener(listenerHandler);
+    // });
 });
 
 // delete alert in fire alert manager
@@ -335,6 +342,12 @@ function cancelTemplate(middleText, hiddenOptions, appendClass){
       <i class="fa-sharp fa-solid fa-ban"></i>
       Cancel
     `);
+
+    $(`.fa-sharp .fa-solid`).click(function(){
+      // if(listenerHandler){
+        google.maps.event.removeListener(listenerHandler);
+      // }
+    });
 }
 
 // Template for when after cancel is pressed, CRUD buttons are shown
@@ -504,14 +517,11 @@ function editAlertFcn(){
 $(".edit-longlat").click(function(){
 
   $(".editFireAlertModal").modal("hide");
-  $(".middle-details").empty();
-  $(".middle-details").append(
-    `
-    <div class="alarm-notif">
-      <h5>Click on new location to EDIT longitude and latitude of the fire alert.</h5>
-    </div>
-    `
-  );
+
+  cancelTemplate(`new location to EDIT longitude and latitude of`,
+  ["#add-firealert", "#delete-firealert"], "#edit-firealert");
+
+
   for (let i = 0; i < markerArr.length; i++) {
     google.maps.event.clearListeners(markerArr[i], "click");
 }
@@ -632,7 +642,7 @@ function cancelForDeleteFcn(){
 $("#delete-firealert").on('click', deleteAlertFcn);
 
 ////// DELETE FIRE ALERT FUNCTION CODE END //////
-
+return listenerHandler;
 };
 
 
