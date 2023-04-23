@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        // Invalidate the current session
+        Session::invalidate();
+
+        // Regenerate the session ID
+        Session::regenerate();
         $request->session()->flush();        
         return view('layouts.app');
     }

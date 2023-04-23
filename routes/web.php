@@ -14,6 +14,7 @@ use App\Http\Controllers\BulletinController;
 use App\Http\Controllers\FirefighterBulletinController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UploadController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,11 @@ use App\Http\Controllers\UploadController;
 
 
 Route::get('/', function (Request $request) {
+     // Invalidate the current session
+     Session::invalidate();
+
+     // Regenerate the session ID
+     Session::regenerate();
     $request->session()->flush();        
     return view('home');
 });
