@@ -106,7 +106,9 @@ class FireHydrantsTypeController extends Controller
                 'hydrant_type_id' => $hydrant_type_id,
             ]);
             // delete the old image file
-            unlink(public_path($oldImgUrl));
+            if($hydrantImg != $oldImgUrl){
+                unlink(public_path($oldImgUrl));
+            }
         } else {
             $hydrant = fireHydrantTypeAdmin::where('hydrant_type_id', $hydrant_type_id)->update([
                 'name' => $name,
@@ -132,7 +134,9 @@ class FireHydrantsTypeController extends Controller
         Alert::error('Fire Hydrant Type is currently in use by a fire hydrant.');
       }else{
         if($HydrantType){
-            unlink(public_path($oldImgUrl));
+            if($oldImgUrl){
+                unlink(public_path($oldImgUrl));
+            }
             $HydrantType->delete();
             Alert::success('Fire Hydrant Type deleted Successfully.');
             }else{

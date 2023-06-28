@@ -167,7 +167,9 @@ class FireHydrantsController extends Controller
         $fireHydrant = fireHydrantAdmin::find($firehydrant_id);
         $oldImgPath = $fireHydrant->img_url;
         if($fireHydrant){
-         unlink(public_path($oldImgPath));
+            if($oldImgPath){
+                unlink(public_path($oldImgPath));
+            }
         $fireHydrant->delete();
         Alert::success('Fire Hydrant deleted Successfully.');
         }else
