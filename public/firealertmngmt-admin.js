@@ -471,10 +471,8 @@ function editAlertFcn(){
     type: 'get',
     dataType: 'json',
     success: function(response){
-      console.log(response);
       for (let i = 0; i < markerArr.length; i++) {
         let firealert_id = response['alert'][i].firealarm_id;
-        // temporary user_id
         let user_id = response['alert'][i].user_id;
         let fire_location = response['alert'][i].fire_location;
         let longitude = response['alert'][i].longitude;
