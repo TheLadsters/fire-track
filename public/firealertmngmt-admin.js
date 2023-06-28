@@ -473,7 +473,6 @@ function editAlertFcn(){
     success: function(response){
       for (let i = 0; i < markerArr.length; i++) {
         let firealert_id = response['alert'][i].firealarm_id;
-        let user_id = response['alert'][i].user_id;
         let fire_location = response['alert'][i].fire_location;
         let longitude = response['alert'][i].longitude;
         let latitude = response['alert'][i].latitude;
@@ -485,7 +484,6 @@ function editAlertFcn(){
         listenerHandler = markerArr[i].addListener("click", (mapsMouseEvent) => {
 
           $("#firealert_hidden_id").val(firealert_id);
-          $("#user_id").val(user_id);
           $("#edit-longitude").val(longitude);
           $("#edit-latitude").val(latitude);
           $("#edit-location").val(fire_location);

@@ -97,9 +97,6 @@
             </div>
 
           </div>
-  
-          <input type="text" style="display: none;" class="form-control" name="user_id" value="1">
-
                  
           </form>
         </div>
