@@ -140,7 +140,11 @@ class FireHydrantsController extends Controller
                 'hydrant_type_id' => $hydrant_type,
                 'img_url' => $hydrantImg
             ]);
-            unlink(public_path($oldImgPath));
+            
+            if($hydrantImg != $oldImgPath){
+                unlink(public_path($oldImgPath));
+            }
+
         }else{
             $hydrant = fireHydrantAdmin::where('hydrant_id', $firehydrant_id)->update([
                 'user_id' => $user_id,
