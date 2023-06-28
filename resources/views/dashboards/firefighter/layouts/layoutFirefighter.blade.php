@@ -101,7 +101,7 @@
       <script type="text/javascript" src="/bulletinNews.js"></script>
       <script type="text/javascript" src="/firealertmap-firefighter.js"></script>
       <script type="text/javascript" src="/firehydrantmap-firefighter.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA99w4u68A-ong_I5xg9gs88aYKHntFRQ0&map_ids=c887c451d0ae25a6&callback=initMap" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCTlPLuYKbfZ9k5kbW8unSjRxJ9bsp8zz4&map_ids=c887c451d0ae25a6&callback=initMap" defer></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>       
       <script type="text/javascript" src="/ff-editprofile.js"></script>   
 

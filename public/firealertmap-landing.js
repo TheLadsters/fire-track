@@ -9,7 +9,7 @@ function initMap(){
     map = new google.maps.Map(document.getElementById("firealertmap"), {
         center: new google.maps.LatLng(10.352029690791822, 123.91910785394363),
         zoom: 16,
-        mapId: 'c887c451d0ae25a6',
+        mapId: '8e3fd305cac0bf6',
         disableDefaultUI: true,
         zoomControl: true
       });
