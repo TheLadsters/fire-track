@@ -17,6 +17,16 @@ position: relative;
     margin-bottom: 10px;
 }
 
+.announce-container{
+  display:flex;
+  border-radius: 15px;
+  background-color: #d7e5ee;
+  padding: 20px 20px;
+  top: 50%;
+  left: 24%;
+}
+
+
 .news-list{
   margin-top: 2%;
   color: white;

@@ -211,7 +211,7 @@ const newsList = document.querySelector('.news-list');
     newsList.innerHTML = '';
 
     
-    const apiKey = '7cc0f3982bea4527bc3b09f042707579';
+    const apiKey = '7a7f73e9d19b4b8797ade66e731dad10';
 
 
     let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
@@ -221,6 +221,13 @@ const newsList = document.querySelector('.news-list');
         return res.json()
     }).then((data)=>{
         console.log(data)
+
+        data.news.slice()
+        data.news.reverse()
+
+        let arrNEws = data.news.length
+        console.log(data.news.length)
+
         data.news.forEach(news =>{
 
             let image = news.image;
@@ -273,32 +280,7 @@ const newsList = document.querySelector('.news-list');
             divContent.appendChild(para);
             divContent.appendChild(read);
 
-            // li.style.display = "block";
-            // li.style.width = "100%";
-            // li.style.height = "200px";
-            // li.style.padding = "10px";
-            // li.style.border = "1px solid blue";
-            // li.style.borderRadius = "15px";
-            // li.style.marginTop = "20px";
-            // li.style.color = "white";
-            // li.style.backgroundRepeat = "no-repeat";
-            // li.style.backgroundSize = "100%";
-
-            // h.style.marginLeft ="5%";
-
-            // li.appendChild(h);
-
-            // para.style.marginLeft ="5%";
-            // para.style.marginRight ="15%";
-            // para.style.marginTop = "3%";
-                         
-            // li.appendChild(para);
-
-
-
-            // read.style.marginLeft ="5%";
-
-            
+   
             newsList.appendChild(divMain);
             newsList.appendChild(divContent);
         })
