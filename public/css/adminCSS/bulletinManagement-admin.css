@@ -2,6 +2,15 @@
     
 } */
 
+.btn-group{
+  justify-content: flex-end;
+
+}
+
+.content-ann{
+  margin-top: -7vh;
+}
+
 #modal-head{
   height: 120px;
 }
@@ -121,30 +130,19 @@ body {font-family: Roboto;}
   border-radius: 15px;
   background-color: #d7e5ee;
   padding: 20px 20px;
+  top: 50%;
+  left: 24%;
 }
 
 .announce-container+.announce-container{
-  margin-top: 7px;
+  margin-top: 10px;
 }
 
-
-.first-content{
-    width: 70%;
-    margin-right:-65%;
+.card-img-top {
+  border-bottom-right-radius: var(--bs-card-inner-border-radius);
+  border-bottom-left-radius: var(--bs-card-inner-border-radius);
 }
 
-.second-content{
-  display: fix;
-  margin-left:75%;
-}
-
-.second-content .btn-group{
-  cursor: pointer;
-}
-
-.second-content .deleteBtn{
-  margin-left: 15%;
-}
 
 .img_bulletin{
   display: -webkit-box;
