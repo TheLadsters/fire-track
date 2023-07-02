@@ -16,6 +16,10 @@ let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%
 fetch(url)
   .then((res) => res.json())
   .then((data) => {
+
+    data.news.slice()
+    data.news.reverse()
+
     data.news.forEach((news) => {
       let image = news.image;
       if (image == null) {
