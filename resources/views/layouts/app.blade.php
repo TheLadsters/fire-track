@@ -40,6 +40,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">    
+    <script type="text/javascript" src="/bulletin-firefighter.js"></script>
+ 
     <link rel="stylesheet" href="css/firefighterCSS/firealertmap-firefighter.css">
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -119,7 +121,7 @@
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
                 <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">ABOUT US</h2>
+                <h2 class="page-section-heading aboutUs text-center text-uppercase text-white">ABOUT US</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -160,7 +162,6 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script type="text/javascript" src="/firealertmap-landing.js"></script>
         <script type="text/javascript" src="/firealertmap-marker-landing.js"></script>
-        <script type="text/javascript" src="/bulletin-firefighter.js"></script>
         <!-- <script type="text/javascript" src="/bulletinNews.js"></script> -->
         <!-- <script type="text/javascript" src="/firealertmap-firefighter.js"></script> -->
     

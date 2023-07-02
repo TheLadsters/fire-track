@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function() {
+
 function truncate(str, maxlength) {
   return (str.length > maxlength) ?
     str.slice(0, maxlength - 1) + '…' : str;
@@ -6,102 +8,57 @@ function truncate(str, maxlength) {
 document.getElementById('announcement_tab').click();
 
 const newsList = document.querySelector('.news-list');
+newsList.innerHTML = '';
 
-    newsList.innerHTML = '';
+const apiKey = '982a644381824f6ebe4cf82d84118bd9';
+let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
 
-    
-    const apiKey = '7cc0f3982bea4527bc3b09f042707579';
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    data.news.forEach((news) => {
+      let image = news.image;
+      if (image == null) {
+        image =
+          'https://motionarray.imgix.net/preview-195598-wSPLWjfONB-high_0000.jpg?w=660&q=60&fit=max&auto=format';
+      }
 
+      let divMain = document.createElement('div');
+      let divContent = document.createElement('div');
+      let h = document.createElement('h5');
+      let para = document.createElement('p');
+      let read = document.createElement('a');
 
-    let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
-    let vhTotal = 3;
+      h.style.fontSize = '140%';
+      para.style.marginRight = '80px';
 
-    fetch(url).then((res)=>{
-        return res.json()
-    }).then((data)=>{
-        data.news.forEach(news =>{
+      divMain.classList.add('child');
+      divMain.classList.add('container');
+      divContent.classList.add('content');
 
-            let image = news.image;
-            if(image == null){
-                image = 'https://motionarray.imgix.net/preview-195598-wSPLWjfONB-high_0000.jpg?w=660&q=60&fit=max&auto=format';
-            }   
+      divMain.style.backgroundImage = `url('${image}')`;
 
-            // image.style.filter = "blur(5px)";            
+      h.textContent = news.title;
+      h.style.fontWeight = 'bold';
+      para.textContent = truncate(news.text, 450);
+      read.textContent = 'Read More Here...';
+      read.setAttribute('target', '_blank');
+      read.setAttribute('href', `${news.url}`);
 
-            // let li = document.createElement('li');
-            let divMain = document.createElement('div');
-            let divBg = document.createElement('div');
-            let divContent = document.createElement('div');
-            let h = document.createElement('h5');
-            let para = document.createElement('p');
-            let read  = document.createElement('a');
+      divContent.appendChild(h);
+      divContent.appendChild(para);
+      divContent.appendChild(read);
 
-            h.style.fontSize="140%";
+      divMain.appendChild(divContent);
+      divMain.addEventListener('click', () => {
+        window.open(news.url, '_blank');
+      });
 
-            para.style.marginTop="20px";
-            para.style.marginRight="100px";
-
-            divMain.classList.add('child');
-            divBg.classList.add('background-blur');
-            divContent.classList.add('content');
-
-            divMain.appendChild(divBg);
-
-            divMain.style.backgroundImage= `url('${image}')`;
-            divMain.style.height = "35vh";
-            divMain.style.width = "auto";
-            divMain.style.backgroundRepeat = "no-repeat";
-            divMain.style.backgroundSize = "cover";
-            divMain.style.backgroundPosition = "center center";
-            
-            divContent.style.top = `${vhTotal}vh`;
-            divContent.style.marginLeft = "2%";
-            vhTotal += 38.5;
-
-            read.setAttribute('target', '_blank');
-            h.textContent = news.title;
-            h.style.fontWeight = "bold";
-            para.textContent = truncate(news.text, 450);
-            read.textContent = "Read More Here...";
-            read.setAttribute('href', `${news.url}`);
-            read.style.color = "white";
+      newsList.appendChild(divMain);
+    });
+  });
 
 
-            divContent.appendChild(h);
-            divContent.appendChild(para);
-            divContent.appendChild(read);
-
-            // li.style.display = "block";
-            // li.style.width = "100%";
-            // li.style.height = "200px";
-            // li.style.padding = "10px";
-            // li.style.border = "1px solid blue";
-            // li.style.borderRadius = "15px";
-            // li.style.marginTop = "20px";
-            // li.style.color = "white";
-            // li.style.backgroundRepeat = "no-repeat";
-            // li.style.backgroundSize = "100%";
-
-            // h.style.marginLeft ="5%";
-
-            // li.appendChild(h);
-
-            // para.style.marginLeft ="5%";
-            // para.style.marginRight ="15%";
-            // para.style.marginTop = "3%";
-                         
-            // li.appendChild(para);
-
-
-
-            // read.style.marginLeft ="5%";
-
-            
-            newsList.appendChild(divMain);
-            newsList.appendChild(divContent);
-        })
-
-    })
 
     /*for tabs*/ 
 
@@ -170,3 +127,4 @@ const newsList = document.querySelector('.news-list');
 
     }
 
+  });
