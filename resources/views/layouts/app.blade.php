@@ -84,10 +84,16 @@
                             <li class="nav-item">
                                 <a class="nav-link"> Hello, {{Auth::user()->fname}} {{Auth::user()->lname}}! </a>
                             </li>
+                            
                             <li class="nav-item">
+                                @if(Auth::user()->role === "admin")
                                 <a class="nav-link" href="{{ route('admin.userManagementUser')}}">Dashboard</a>
+                                @endif
+
+                                @if(Auth::user()->role === "firefighter")
+                                <a class="nav-link" href="{{ route('firefighter.editprofile')}}">Dashboard</a>
+                                @endif
                             </li>
-                 
                         @endguest
       
                             </ul>
