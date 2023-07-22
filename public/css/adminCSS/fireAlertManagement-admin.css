@@ -68,8 +68,6 @@
 
 } */
 
-/* for screens wider than 821px or has vertical orientation*/
-@media screen and (min-width: 821px){
   .container-firealert{
     margin-top: 0 !important;
     display: flex;
@@ -179,7 +177,6 @@
     margin: 0;
     padding:0;
   }
-}
 
 
 /* table for fire alert management */
