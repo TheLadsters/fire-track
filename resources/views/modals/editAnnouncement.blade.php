@@ -66,15 +66,17 @@
             </div>
 
             <div class="row">
-            
-              <div class="col-md-10 d-flex justify-content-center">
-                <label for="Summary" class="summary">
-                  Summary<span style="color:red;">*</span>
-                </label>
-                <textarea type="text"  class="form-control" name="summary"  id="summary_input" placeholder="Article Summary">
-                </textarea>
+
+               <div class="col-md-6 d-flex justify-content-center">
+                 <label for="Summary" class="summary">
+                   Summary<span style="color:red;">*</span>
+                 </label>
+                  <textarea type="text" class="form-control" name="summary" id="summary_input" placeholder="Article Summary"></textarea>
               </div>
-           
+
+                <div class="col-md-6 text-center">
+                    <img class="img-fluid img-thumbnail" id="imageURL" height="200" width="150">
+                </div>
             </div>
 
             <div class="row">

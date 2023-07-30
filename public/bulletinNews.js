@@ -175,7 +175,7 @@ $('#bulletinTable tbody').on('click', '.editColBulletin', function(){
             $(".editAnnouncementmodal #title_input").val(title);
             $(".editAnnouncementmodal #summary_input").val(summary);
             $(".editAnnouncementmodal #articleURL_input").val(article_url);
-            $(".editAnnouncementmodal #imageURL_input").val(image_url);
+            $(".editAnnouncementmodal #imageURL").attr("src", image_url);
 
     },
       error: function(xhr, status, error) {

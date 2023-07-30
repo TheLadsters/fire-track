@@ -72,54 +72,53 @@ class BulletinController extends Controller
 
 /* Edit Announcement*/
 
-    public function edit(Request $request){
+public function edit(Request $request) {
+  // Check if the required fields are present in the request
+  $request->validate([
+      'user_id' => 'required',
+      'author_name' => 'required',
+      'title' => 'required',
+      'summary' => 'required',
+      'article_url' => 'required',
+      'bulletin_id' => 'required',
+  ]);
 
-      $validator = Validator::make($request->all(), [
-        'user_id' => 'required',
-        'author_name' => 'required',
-        'title' => 'required',
-        'summary' => 'required',
-        'article_url' => 'required',
-        'bulletin_id' => 'required',
-        'img_url' => 'required'
-        ]);
+  $bulletin_id = $request->input('bulletin_id');
+  $user_id = $request->input('user_id');
+  $author_name = $request->input('author_name');
+  $title = $request->input('title');
+  $summary = $request->input('summary');
+  $article_url = $request->input('article_url');
 
-      if($validator->fails()){
-        $allErrors = $validator->errors();
-        dd($allErrors);
-          Alert::error('Editing Announcement was not successful.', 
-          'Please fill up required fields.');
-      }else{
-          $bulletin_id = $request->input('bulletin_id');
-          $user_id = $request->input('user_id');
-          $author_name = $request->input('author_name');
-          $title = $request->input('title');
-          $summary = $request->input('summary');
-          $article_url = $request->input('article_url');
+  // Initialize $formFields array
+  $formFields = [];
 
-          if($request->hasFile('img_url')){
+  if ($request->hasFile('img_url')) {
+      $formFields['img_url'] = $request->file('img_url')->move('images/announcementIMG', 'img_' . Str::random(15) . '.jpg');
+  }
 
-            $formFields['img_url'] = $request->file('img_url')->move('images/announcementIMG' , $img = 'img_'.Str::random(15).'.jpg');
+  // Check if the bulletin with the given ID exists before updating
+  $bulletin = bulletinManagement::find($bulletin_id);
 
-          }
+  if ($bulletin) {
+      // Update the bulletin fields
+      $bulletin->update([
+          'user_id' => $user_id,
+          'author_name' => $author_name,
+          'title' => $title,
+          'summary' => $summary,
+          'article_url' => $article_url,
+          'img_url' => isset($formFields['img_url']) ? $formFields['img_url'] : $bulletin->img_url // Use the existing img_url if no new image is uploaded
+      ]);
 
-          $bulletin = bulletinManagement::find($bulletin_id);
+      Alert::success('Updated Bulletin Successfully.');
+  } else {
+      // Handle the case where the bulletin with the given ID does not exist
+      Alert::error('Bulletin not found.', 'Please check the provided bulletin ID.');
+  }
 
-              $bulletin = bulletinManagement::where('bulletin_id', $bulletin_id)->update([
-                'user_id' => $user_id,
-                'author_name' => $author_name,
-                'title' => $title,
-                'summary' => $summary,
-                'article_url' => $article_url,
-                'img_url' => $formFields['img_url']
-              ]);
-  
-          Alert::success('Updated Bulletin Successfully.');
-      }
-
-
-      return redirect('admin/bulletinManagement');
-   }
+  return redirect('admin/bulletinManagement');
+}
 
 /* Delete announcement */
 
