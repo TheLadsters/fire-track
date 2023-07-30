@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class BulletinController extends Controller
 {
-    public function index(){
-        $allAnnouncements = bulletinManagement::all();
-        return view('dashboards.admin.bulletinManagement', compact('allAnnouncements'));
+  public function index() {
+    // Fetch all announcements from the database and order them by ID in descending order (latest first)
+    $allAnnouncements = bulletinManagement::orderBy('bulletin_id', 'desc')->get();
 
-    }
+    return view('dashboards.admin.bulletinManagement', compact('allAnnouncements'));
+}
 
     public function index_public(){
       $allAnnouncements = bulletinManagement::all();
@@ -51,10 +53,11 @@ class BulletinController extends Controller
                 'img_url' => 'required'
             ]);
 
-            // if($request->hasFile('img_url')){
+            if($request->hasFile('img_url')){
 
-            //     $formFields['img_url'] = $request->file('img_url')->store('public/images');
-            // }
+                $formFields['img_url'] = $request->file('img_url')->move('images/announcementIMG' , $img = 'img_'.Str::random(15).'.jpg');
+
+            }
 
             bulletinManagement::create($formFields);
             Alert::success('Added Announcement Successfully.');
@@ -77,7 +80,8 @@ class BulletinController extends Controller
         'title' => 'required',
         'summary' => 'required',
         'article_url' => 'required',
-        'bulletin_id' => 'required'
+        'bulletin_id' => 'required',
+        'img_url' => 'required'
         ]);
 
       if($validator->fails()){
@@ -93,6 +97,12 @@ class BulletinController extends Controller
           $summary = $request->input('summary');
           $article_url = $request->input('article_url');
 
+          if($request->hasFile('img_url')){
+
+            $formFields['img_url'] = $request->file('img_url')->move('images/announcementIMG' , $img = 'img_'.Str::random(15).'.jpg');
+
+          }
+
           $bulletin = bulletinManagement::find($bulletin_id);
 
               $bulletin = bulletinManagement::where('bulletin_id', $bulletin_id)->update([
@@ -101,6 +111,7 @@ class BulletinController extends Controller
                 'title' => $title,
                 'summary' => $summary,
                 'article_url' => $article_url,
+                'img_url' => $formFields['img_url']
               ]);
   
           Alert::success('Updated Bulletin Successfully.');

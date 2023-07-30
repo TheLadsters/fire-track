@@ -27,10 +27,7 @@ class UserController extends Controller
     function reports(){
         return view ('dashboards.firefighter.reports');
     }
-    function bulletinfirefighter(){
-        $allAnnouncements = bulletinManagement::all();
-        return view('dashboards.firefighter.bulletinfirefighter', compact('allAnnouncements'));
-    }
+
 
     function updateInfo(Request $request){
 
