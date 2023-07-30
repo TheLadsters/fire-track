@@ -27,8 +27,12 @@ public function getAnnouncement($bulletin_id){
 /*POST BULLETIN*/
 
 public function index_firefighter(){
-  $allAnnouncements = bulletinManagement::all();
-  return view('layouts.app', compact('allAnnouncements'));
+  // $allAnnouncements = bulletinManagement::all();
+  // return view('layouts.app', compact('allAnnouncements'));
+
+  $allAnnouncements = bulletinManagement::orderBy('bulletin_id', 'desc')->get();
+
+    return view('layouts.app', compact('allAnnouncements'));
 }
 
 

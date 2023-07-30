@@ -60,7 +60,7 @@
                 <label for="Image_url" class="image_url">
                   Image URL<span style="color:red;">*</span>
                 </label>
-                <input type="text"  class="form-control" name="img_url"  id="imageURL_input" />
+                <input type="file"  class="form-control" name="img_url"  id="imageURL_input" />
               </div>
 
             </div>

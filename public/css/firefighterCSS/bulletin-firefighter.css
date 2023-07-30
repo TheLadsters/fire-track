@@ -235,3 +235,8 @@ textarea {
 .image_url{
   width:33%;
 }
+
+.card-img-top {
+  border-bottom-right-radius: var(--bs-card-inner-border-radius);
+  border-bottom-left-radius: var(--bs-card-inner-border-radius);
+}
