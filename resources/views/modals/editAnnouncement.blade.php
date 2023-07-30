@@ -58,7 +58,7 @@
 
               <div class="col-md-6">
                 <label for="Image_url" class="image_url">
-                  Image URL<span style="color:red;">*</span>
+                  Image (.jpeg, .jpg, .png)<span style="color:red;">*</span>
                 </label>
                 <input type="text"  class="form-control" name="img_url"  id="imageURL_input" />
               </div>

@@ -138,6 +138,14 @@ body {font-family: Roboto;}
   margin-top: 10px;
 }
 
+
+.announce-container .btn-group .editAnnouncement:hover{
+  cursor: pointer;
+}
+.announce-container .btn-group .deleteAnnouncement:hover{
+  cursor: pointer;
+}
+
 .card-img-top {
   border-bottom-right-radius: var(--bs-card-inner-border-radius);
   border-bottom-left-radius: var(--bs-card-inner-border-radius);
@@ -329,5 +337,5 @@ textarea {
   width:33%;
 }
 .image_url{
-  width:33%;
+  width:100%;
 }
