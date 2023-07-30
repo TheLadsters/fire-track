@@ -11173,6 +11173,28 @@ html {
     overflow: hidden;
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 764px) {
+    .child .content p{
+      display: none;
+    }
+    
+    
+  }
+
+  @media only screen and (max-height: 550px) {
+    .child .content p{
+      display: none;
+    }
+  
+    @media only screen and (orientation: landscape) {
+      .child .content p{
+        display: none;
+      }
+    }
+  }
+
+
   
   .child::before {
     content: '';

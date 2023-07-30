@@ -10,7 +10,7 @@ document.getElementById('announcement_tab').click();
 const newsList = document.querySelector('.news-list');
 newsList.innerHTML = '';
 
-const apiKey = '982a644381824f6ebe4cf82d84118bd9';
+const apiKey = '272521ae53704265bd97a60c8e74fcee';
 let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
 
 fetch(url)
@@ -44,7 +44,7 @@ fetch(url)
 
       h.textContent = news.title;
       h.style.fontWeight = 'bold';
-      para.textContent = truncate(news.text, 450);
+      para.textContent = truncate(news.text, 230);
       read.textContent = 'Read More Here...';
       read.setAttribute('target', '_blank');
       read.setAttribute('href', `${news.url}`);
