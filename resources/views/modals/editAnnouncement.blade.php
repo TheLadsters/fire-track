@@ -75,7 +75,7 @@
               </div>
 
                 <div class="col-md-6 text-center">
-                    <img class="img-fluid img-thumbnail" id="imageURL" height="200" width="150">
+                    <img class="img-fluid img-thumbnail" id="imageURL_input" height="200" width="150">
                 </div>
             </div>
 
