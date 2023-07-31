@@ -339,3 +339,7 @@ textarea {
 .image_url{
   width:100%;
 }
+
+.tbl-body-user .editColBulletin, .tbl-body-user .deleteColBulletin:hover{
+  cursor: pointer;
+}
