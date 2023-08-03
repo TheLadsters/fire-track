@@ -38,7 +38,7 @@
 
   @foreach($allAnnouncements as $announcement)
 
-      <!-- <a href="{{$announcement->article_url}}" target="_blank"> -->
+
       <div class="card announce-container" style="width: 50%;">
             <div class="btn-group mb-3">
               <a class="editAnnouncement" value="{{$announcement->bulletin_id}}" id="{{$announcement->bulletin_id}}">  
@@ -55,7 +55,9 @@
            
 
            <p class="card-text">by: {{$announcement->author_name}}</p>
+           <a href="{{$announcement->article_url}}" target="_blank"> 
             <img class="card-img-top" src="{{$announcement->img_url}}" alt="Card image cap">
+           </a>
               <div class="card-body">
                 <p class="card-text"><b>Posted on:</b> {{$announcement->created_at->format('m-d-Y')}}</p>
                 <p class="card-text">{{$announcement->summary}}</p>
