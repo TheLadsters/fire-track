@@ -38,7 +38,9 @@
            
 
            <p class="card-text">by: {{$announcement->author_name}}</p>
+           <a href="{{$announcement->article_url}}" target="_blank"> 
             <img class="card-img-top" src="{{$announcement->img_url}}" alt="Card image cap">
+           </a>
               <div class="card-body">
                 <p class="card-text">Posted on: {{$announcement->created_at->format('m-d-Y')}}</p>
                 <p class="card-text">{{$announcement->summary}}</p>

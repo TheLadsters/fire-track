@@ -10,7 +10,7 @@ document.getElementById('announcement_tab').click();
 const newsList = document.querySelector('.news-list');
 newsList.innerHTML = '';
 
-const apiKey = '272521ae53704265bd97a60c8e74fcee';
+const apiKey = '0e94dcfdcf594da88bdc11c49fbfa5de';
 let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
 
 fetch(url)

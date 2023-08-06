@@ -27,36 +27,120 @@ position: relative;
 }
 
 
-.news-list{
-  margin-top: 2%;
-  color: white;
-}
+.container-news{
+  position: relative;
+  }
+  
+  .container-news .news-list{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 10px;
+  }
+  
+  .news-list{
+    margin-top: 2%;
+    color: white;
+  }
+  
+  .news-list .child{
+    margin-bottom: 2%;
+    border: 1px solid blue;
+    border-radius: 8px;
+   position: relative;
+   z-index: -1;
+  }
+  
+  .news-list .background-blur{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 5;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 34.7vh;
+  }
+  
+  .news-list .content{
+    position: absolute;
+    /* top: 50%;
+    left:50%; */
+  
+  }
 
-.news-list .child{
-  margin-bottom: 2%;
-  border: 1px solid blue;
-  border-radius: 8px;
- position: relative;
- z-index: -1;
-}
+  .container .containernews{
+    position: relative;
+  }
+  
+  .child {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 35vh;
+    overflow: hidden;
+    cursor: pointer;
+  }
 
-.news-list .background-blur{
-  position: absolute;
-  top:0;
-  left:0;
-  z-index: 5;
-  border-radius: 8px;
-  background-color: rgba(0,0,0,0.6);
-  width: 100%;
-  height: 34.7vh;
-}
+  @media only screen and (max-width: 764px) {
+    .child .content p{
+      display: none;
+    }
+    
+    
+  }
 
-.news-list .content{
-  position: absolute;
-  /* top: 50%;
-  left:50%; */
+  @media only screen and (max-height: 550px) {
+    .child .content p{
+      display: none;
+    }
+  
+    @media only screen and (orientation: landscape) {
+      .child .content p{
+        display: none;
+      }
+    }
+  }
 
-}
+
+  
+  .child::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+  
+  .content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: white;
+  }
+  
+  .content a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .news-list .child {
+    z-index: 1;
+  }
+  
+  .news-list .child a {
+    pointer-events: auto;
+  }
 
 .addManagerGroup{
   display: flex;

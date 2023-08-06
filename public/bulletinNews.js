@@ -198,7 +198,7 @@ $('#bulletinTable tbody').on('click', '.deleteColBulletin', function(){
 
 
 /*sepppp */
-
+document.addEventListener("DOMContentLoaded", function() {
 function truncate(str, maxlength) {
   return (str.length > maxlength) ?
     str.slice(0, maxlength - 1) + '…' : str;
@@ -207,85 +207,60 @@ function truncate(str, maxlength) {
 document.getElementById('announcement_tab').click();
 
 const newsList = document.querySelector('.news-list');
+newsList.innerHTML = '';
 
-    newsList.innerHTML = '';
+const apiKey = '0e94dcfdcf594da88bdc11c49fbfa5de';
+let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
 
-    
-    const apiKey = '7a7f73e9d19b4b8797ade66e731dad10';
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
 
+    data.news.slice()
+    data.news.reverse()
 
-    let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
-    let vhTotal = 3;
+    data.news.forEach((news) => {
+      let image = news.image;
+      if (image == null) {
+        image =
+          'https://motionarray.imgix.net/preview-195598-wSPLWjfONB-high_0000.jpg?w=660&q=60&fit=max&auto=format';
+      }
 
-    fetch(url).then((res)=>{
-        return res.json()
-    }).then((data)=>{
-        console.log(data)
+      let divMain = document.createElement('div');
+      let divContent = document.createElement('div');
+      let h = document.createElement('h5');
+      let para = document.createElement('p');
+      let read = document.createElement('a');
 
-        data.news.slice()
-        data.news.reverse()
+      h.style.fontSize = '140%';
+      para.style.marginRight = '80px';
 
-        let arrNEws = data.news.length
-        console.log(data.news.length)
+      divMain.classList.add('child');
+      divMain.classList.add('container');
+      divContent.classList.add('content');
 
-        data.news.forEach(news =>{
+      divMain.style.backgroundImage = `url('${image}')`;
 
-            let image = news.image;
-            if(image == null){
-                image = 'images/santonino.png';
-            }   
+      h.textContent = news.title;
+      h.style.fontWeight = 'bold';
+      para.textContent = truncate(news.text, 230);
+      read.textContent = 'Read More Here...';
+      read.setAttribute('target', '_blank');
+      read.setAttribute('href', `${news.url}`);
 
-            // image.style.filter = "blur(5px)";            
+      divContent.appendChild(h);
+      divContent.appendChild(para);
+      divContent.appendChild(read);
 
-            // let li = document.createElement('li');
-            let divMain = document.createElement('div');
-            let divBg = document.createElement('div');
-            let divContent = document.createElement('div');
-            let h = document.createElement('h5');
-            let para = document.createElement('p');
-            let read  = document.createElement('a');
+      divMain.appendChild(divContent);
+      divMain.addEventListener('click', () => {
+        window.open(news.url, '_blank');
+      });
 
-            h.style.fontSize="140%";
-
-            para.style.marginTop="20px";
-            para.style.marginRight="100px";
-
-            divMain.classList.add('child');
-            divBg.classList.add('background-blur');
-            divContent.classList.add('content');
-
-            divMain.appendChild(divBg);
-
-            divMain.style.backgroundImage= `url('${image}')`;
-            divMain.style.height = "35vh";
-            divMain.style.width = "auto";
-            divMain.style.backgroundRepeat = "no-repeat";
-            divMain.style.backgroundSize = "cover";
-            divMain.style.backgroundPosition = "center center";
-            
-            divContent.style.top = `${vhTotal}vh`;
-            divContent.style.marginLeft = "2%";
-            vhTotal += 38.5;
-
-            read.setAttribute('target', '_blank');
-            h.textContent = news.title;
-            h.style.fontWeight = "bold";
-            para.textContent = truncate(news.text, 450);
-            read.textContent = "Read More Here...";
-            read.setAttribute('href', `${news.url}`);
-            read.style.color = "white";
-
-
-            divContent.appendChild(h);
-            divContent.appendChild(para);
-            divContent.appendChild(read);
-
-   
-            newsList.appendChild(divMain);
-            newsList.appendChild(divContent);
-        })
-
-    })
+      newsList.appendChild(divMain);
+    });
+  });
+});
 
     /*for tabs*/ 
 
@@ -370,5 +345,4 @@ const newsList = document.querySelector('.news-list');
 
     }
 
-/*Management Modal*/
 
