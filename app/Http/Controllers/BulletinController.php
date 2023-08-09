@@ -156,8 +156,13 @@ public function getAnnouncement($bulletin_id){
 /*POST BULLETIN*/
 
 public function index_firefighter(){
-  $allAnnouncements = bulletinManagement::all();
+
+  $allAnnouncements = bulletinManagement::orderBy('bulletin_id', 'desc')->get();
+
   return view('dashboards.firefighter.bulletinfirefighter', compact('allAnnouncements'));
+
+  // $allAnnouncements = bulletinManagement::all();
+  // return view('dashboards.firefighter.bulletinfirefighter', compact('allAnnouncements'));
 }
 
 /*ADD ANNOUNCEMENT*/
