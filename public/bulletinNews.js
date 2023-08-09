@@ -209,18 +209,18 @@ document.getElementById('announcement_tab').click();
 const newsList = document.querySelector('.news-list');
 newsList.innerHTML = '';
 
-const apiKey = '0e94dcfdcf594da88bdc11c49fbfa5de';
-let url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}&text=cebu%20fire`;
+const apiKey = '3bd9123369d54e9794bb2063d731de85';
+let url = `https://newsapi.org/v2/everything?q=Cebu%20fire%20sunog&apiKey=${apiKey}`;
 
 fetch(url)
   .then((res) => res.json())
   .then((data) => {
 
-    data.news.slice()
-    data.news.reverse()
+    data.articles.slice()
+    data.articles.reverse()
 
-    data.news.forEach((news) => {
-      let image = news.image;
+    data.articles.forEach((articles) => {
+      let image = articles.urlToImage;
       if (image == null) {
         image =
           'https://motionarray.imgix.net/preview-195598-wSPLWjfONB-high_0000.jpg?w=660&q=60&fit=max&auto=format';
@@ -241,12 +241,12 @@ fetch(url)
 
       divMain.style.backgroundImage = `url('${image}')`;
 
-      h.textContent = news.title;
+      h.textContent = articles.title;
       h.style.fontWeight = 'bold';
-      para.textContent = truncate(news.text, 230);
+      para.textContent = truncate(articles.description, 230);
       read.textContent = 'Read More Here...';
       read.setAttribute('target', '_blank');
-      read.setAttribute('href', `${news.url}`);
+      read.setAttribute('href', `${articles.url}`);
 
       divContent.appendChild(h);
       divContent.appendChild(para);
@@ -254,7 +254,7 @@ fetch(url)
 
       divMain.appendChild(divContent);
       divMain.addEventListener('click', () => {
-        window.open(news.url, '_blank');
+        window.open(articles.url, '_blank');
       });
 
       newsList.appendChild(divMain);
