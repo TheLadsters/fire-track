@@ -240,6 +240,8 @@ fetch(url)
       divContent.classList.add('content');
 
       divMain.style.backgroundImage = `url('${image}')`;
+      divMain.style.backgroundSize = 'cover';
+      divMain.style.backgroundPosition = 'center';
 
       h.textContent = articles.title;
       h.style.fontWeight = 'bold';

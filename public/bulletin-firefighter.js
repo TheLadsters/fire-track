@@ -16,7 +16,6 @@ let url = `https://newsapi.org/v2/everything?q=Cebu%20fire%20sunog&apiKey=${apiK
 fetch(url)
   .then((res) => res.json())
   .then((data) => {
-    console.log(data)
     data.articles.slice()
     data.articles.reverse()
 
@@ -41,6 +40,9 @@ fetch(url)
       divContent.classList.add('content');
 
       divMain.style.backgroundImage = `url('${image}')`;
+      divMain.style.backgroundSize = 'cover';
+      divMain.style.backgroundPosition = 'center';
+
 
       h.textContent = articles.title;
       h.style.fontWeight = 'bold';

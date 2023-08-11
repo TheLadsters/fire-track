@@ -11179,7 +11179,10 @@ html {
       display: none;
     }
     
-    
+    .news-list{
+      margin-left: 2vh;
+      margin-right: 2vh;
+    }
   }
 
   @media only screen and (max-height: 550px) {
@@ -11187,6 +11190,11 @@ html {
       display: none;
     }
   
+    .news-list{
+      margin-left: 2vh;
+      margin-right: 2vh;
+    }
+    
     @media only screen and (orientation: landscape) {
       .child .content p{
         display: none;
