@@ -209,8 +209,8 @@ document.getElementById('announcement_tab').click();
 const newsList = document.querySelector('.news-list');
 newsList.innerHTML = '';
 
-const apiKey = '3bd9123369d54e9794bb2063d731de85';
-let url = `https://newsapi.org/v2/everything?q=Cebu%20fire%20sunog&apiKey=${apiKey}`;
+const apiKey = '8ad51087c3ab0b49db8cefc210186e95';
+let url = `https://gnews.io/api/v4/top-headlines?country=ph&category=general&apikey=${apiKey}`;
 
 fetch(url)
   .then((res) => res.json())
@@ -220,7 +220,7 @@ fetch(url)
     data.articles.reverse()
 
     data.articles.forEach((articles) => {
-      let image = articles.urlToImage;
+      let image = articles.image;
       if (image == null) {
         image =
           'https://motionarray.imgix.net/preview-195598-wSPLWjfONB-high_0000.jpg?w=660&q=60&fit=max&auto=format';
