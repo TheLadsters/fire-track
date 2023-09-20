@@ -449,7 +449,8 @@ function addHydrantFcn(){
       let hydrantType = response['hydrant'][i].name;
       let hydrantStatus = response['hydrant'][i].status;
       let hydrantImgUrl = response['hydrant'][i].img_url;
-      let hydrantPhoto = (hydrantImgUrl) ? assetUrl + '/' + response['hydrant'][i].img_url : "images/no_img_available.png";
+      let hydrantPhoto = (hydrantImgUrl) ? response['hydrant'][i].img_url : 
+      "images/no_img_available.png";
       
       let markerContent = 
         `
