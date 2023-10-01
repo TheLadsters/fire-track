@@ -105,7 +105,7 @@
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" src="/app.js"></script>      
       <script type="text/javascript" src="/firealertmngmt-admin.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCTlPLuYKbfZ9k5kbW8unSjRxJ9bsp8zz4&map_ids=8e3fd305cac0bf6&callback=initMap"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDMVLxaSrMMk_3ko0bw81JQDV8doi9A0yc&map_ids=2f892cd49e6fa90f&callback=initMap"></script>
       <script type="text/javascript">let assetUrl = '{{ URL::asset('storage') }}';</script>
       <script type="text/javascript" src="/fireHydrantMap.js"></script>
       <script type="text/javascript" src="/fireHydrantType.js"></script>

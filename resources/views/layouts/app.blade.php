@@ -34,7 +34,7 @@
     <title>FireTrack App</title>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCTlPLuYKbfZ9k5kbW8unSjRxJ9bsp8zz4&map_ids=8e3fd305cac0bf6&callback=initMap"  defer></script>   
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDMVLxaSrMMk_3ko0bw81JQDV8doi9A0yc&map_ids=2f892cd49e6fa90f&callback=initMap"  defer></script>   
     
     <link rel="icon" href="images/Firetrack.png" type="image">
 

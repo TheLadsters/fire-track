@@ -224,7 +224,7 @@ let alertGeocoder;
   var map = new google.maps.Map(document.getElementById("firelertmapmanagement"), {
     center: centerPoint,
     zoom: 16,
-    mapId: '8e3fd305cac0bf6',
+    mapId: '2f892cd49e6fa90f',
     disableDefaultUI: true,
     zoomControl: true
   });
