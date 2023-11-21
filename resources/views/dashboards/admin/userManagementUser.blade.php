@@ -37,6 +37,7 @@
 						<th style="font-weight: bold;">Address</th>
 						<th style="font-weight: bold;">Role</th>
                         <th style="font-weight: bold;">Status</th>
+                        <th style="font-weight: bold; display: hidden;">Created At</th>
                         <th style="font-weight: bold;">Action</th>
 					</tr>
 				</thead>

@@ -20,8 +20,8 @@
                         <table id="hydrant_table" class="table table-striped table-hover hydrant-table">
                             <thead>                               
                                 <tr>
-                                    <td><b>Minimum date:</b> <input type="text" id="min" name="min"></td>
-                                    <td><b>Maximum date:</b> <input type="text" id="max" name="max"></td>
+                                    <td><b>Start date:</b> <input type="text" id="min" name="min"></td>
+                                    <td><b>End date:</b> <input type="text" id="max" name="max"></td>
                                 </tr>
                                 <tr>
                                     <td> 

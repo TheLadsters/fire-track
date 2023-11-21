@@ -51,7 +51,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                                              
                         alt="User profile picture" id="responsive-image">
                         <!-- Profile picture help block-->
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 2 MB</div>
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 2 MB <span style="color: red">*</span></div>
                         <!-- Profile picture upload button-->
                    
                             <form action="{{route('firefighterPictureUpdate')}}" method="POST" enctype="multipart/form-data" id="firefighterPictureUpdate">

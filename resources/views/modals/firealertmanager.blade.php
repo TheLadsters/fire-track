@@ -20,8 +20,8 @@
                         <table id="alertTable" class="table table-striped table-hover alert-table">
                             <thead>
                                 <tr>
-                                    <td><b>Minimum date:</b> <input type="text" id="minAlert" name="minAlert"></td>
-                                    <td><b>Maximum date:</b> <input type="text" id="maxAlert" name="maxAlert"></td>
+                                    <td><b>Start date:</b> <input type="text" id="minAlert" name="minAlert"></td>
+                                    <td><b>End date:</b> <input type="text" id="maxAlert" name="maxAlert"></td>
                                 </tr>
                                 <tr>
                                     <td> 

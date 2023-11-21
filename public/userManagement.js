@@ -64,6 +64,7 @@ let strDate = `Date Accessed: ${(d.getMonth()+1)}/${d.getDate()}/${d.getFullYear
         {'data': 'address'},
         {'data': 'role'},
         {'data': 'status'},
+        {'data': 'created_at', visible: false, searchable: true},
         {
           "mData": null,
           "bSortable": false,
@@ -77,7 +78,7 @@ let strDate = `Date Accessed: ${(d.getMonth()+1)}/${d.getDate()}/${d.getFullYear
           }
         }
       ],
-      "order": [5, 'desc']
+      "order": [6, 'desc']
     });
 
 

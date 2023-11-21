@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('lname');
             $table->string('contact_no');
             $table->string('password');
-            $table->string('birthday');
             $table->enum('gender', ['male', 'female'])->default('male');
             $table->string('address');
             $table->string('img_url')->nullable()->default(NULL);
