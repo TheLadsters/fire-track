@@ -79,14 +79,14 @@ public function edit(Request $request) {
     'title' => 'required',
     'summary' => 'required',
     'article_url' => 'required',
-    'img_url' => 'required'
+    'img_url' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
   ]);
 
   if ($validator->fails()) {
     $allErrors = $validator->errors();
     Alert::error('Editing the Announcement was not successful.', 
     'Please fill up required fields.');
-  } else{
+  }
 
     $bulletin_id = $request->input('bulletin_id');
     $user_id = $request->input('user_id');
@@ -126,7 +126,7 @@ public function edit(Request $request) {
       // Handle the case where the bulletin with the given ID does not exist
       Alert::error('Bulletin not found.', 'Please check the provided bulletin ID.');
   }
-}
+
   return redirect('admin/bulletinManagement');
 }
 
