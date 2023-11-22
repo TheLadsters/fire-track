@@ -1,6 +1,8 @@
 var minDate, maxDate;
+const hydrantSideOption = $('.hmngmt');
  
 // Custom filtering function which will search data in column four between two values
+if(hydrantSideOption.hasClass('active')){
 $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
         var min = minDate.val();
@@ -18,20 +20,26 @@ $.fn.dataTable.ext.search.push(
         return false;
     }
 );
-
+  }
+  
 $(document).ready(function() {
 
-// Create date inputs
+
+if(hydrantSideOption.hasClass('active')){
+  // Create date inputs
 function newDateInputs(){
   minDate = new DateTime($('#min'), {
-    format: 'YYYY Do MMMM HH:mm:ss'
+    format: 'YYYY-MM-DD'
 });
 maxDate = new DateTime($('#max'), {
-    format: 'YYYY Do MMMM HH:mm:ss'
+    format: 'YYYY-MM-DD'
 });
 
 }
 newDateInputs();
+}
+
+
    
 
 
@@ -117,7 +125,13 @@ let htable = $('#hydrant_table').DataTable({
     {'data': 'latitude', "bSortable": false},
     {'data': 'name'},
     {'data': 'status'},
-    {'data': 'created_at', visible: true, searchable: true},
+    {'data': 'created_at', 
+      visible: true, 
+      searchable: true,
+      "render": function (data) {
+        return moment(data).format('YYYY-MM-DD HH:mm:ss');
+    }
+    },
     {
       "mData": null,
       "bSortable": false,
@@ -152,6 +166,8 @@ let htable = $('#hydrant_table').DataTable({
 // Refilter the table
 $('#min, #max').on('change', function () {
   htable.draw();
+  console.log(minDate);
+  console.log(maxDate);
 });
 
 $("#clearDates").click(function(){

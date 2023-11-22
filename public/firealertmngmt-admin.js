@@ -1,72 +1,24 @@
-var minDateAlert;
-var maxDateAlert;
-
-// DO NOT UNCOMMENT
-// Custom filtering function which will search data in column four between two values
-// $.fn.dataTable.ext.search.push(
-//   function( settings, data, dataIndex ) {
-//       var min = minDateAlert.val();
-//       var max = maxDateAlert.val();
-//       var date = new Date( data[4] );
-
-//       if (
-//           ( min === null && max === null ) ||
-//           ( min === null && date <= max ) ||
-//           ( min <= date   && max === null ) ||
-//           ( min <= date   && date <= max )
-//       ) {
-//           return true;
-//       }
-//       return false;
-//   }
-// );
-
 
 $(document).ready( function () {
   var editAlertFcn = initMap();
+  var minDateAlert, maxDateAlert;
 
   let date_now = new Date(Date.now());
   let stringDate = `Date Accessed: ${(date_now.getMonth()+1)}/${date_now.getDate()}/${date_now.getFullYear()}`;
 
-// Create date inputs
-function newAlertDateInputs(){
-  minDateAlert = new DateTime($('#minAlert'), {
-    format: 'YYYY Do MMMM HH:mm:ss'
-});
-maxDateAlert = new DateTime($('#maxAlert'), {
-    format: 'YYYY Do MMMM HH:mm:ss'
-});
+  function newAlertDateInputs(){
+    minDateAlert = new DateTime($('#minAlert'), {
+      format: 'YYYY-MM-DD'
+  });
+  
+  maxDateAlert = new DateTime($('#maxAlert'), {
+      format: 'YYYY-MM-DD'
+  });
+  
+  }
+  newAlertDateInputs();
 
-}
-newAlertDateInputs();
-
-let minMaxAlertDateText = "";
-
-$('#minAlert, #maxAlert').on('change', function () {
-  // Gets the current daterange if there are and places it in excel and pdf
-let minAlertDateInput = $("#minAlert").val();
-let maxAlertDateInput =  $("#maxAlert").val();
-
-if(minAlertDateInput == "" && maxAlertDateInput != ""){
-  minMaxAlertDateText = `Time Period: Before "${maxAlertDateInput}"`;
-}
-else if(minAlertDateInput != "" && maxAlertDateInput ==""){
-  minMaxAlertDateText = `Time Period: After "${minAlertDateInput}"`;
-}
-else if(minAlertDateInput == "" && maxAlertDateInput == ""){
-  minMaxAlertDateText = ``;
-}
-else{
-  minMaxAlertDateText = `Time Period From: "${minAlertDateInput}" to "${maxAlertDateInput}"`;
-}
-});
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
+  
   let aTable= $('#alertTable').DataTable({
     'ajax': 'admin/fire-alert-management/getAlertTable',
     dom: 'Bfrtip',
@@ -110,7 +62,7 @@ $.ajaxSetup({
         {'data': 'latitude'},
         {'data': 'status'},
         {'data' : 'created_at', visible: true, searchable: true},
-        {'data': 'updated_at'},
+        {'data': 'updated_at',  visible: true, searchable: true },
         {
           "mData": null,
           "bSortable": false,
@@ -131,6 +83,55 @@ $.ajaxSetup({
 
     order : [[4, 'desc']],
   });
+
+  $.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = minDateAlert.val();
+        var max = maxDateAlert.val();
+        var date = new Date( data[4] );
+ 
+        if (
+            ( min === null && max === null ) ||
+            ( min === null && date <= max ) ||
+            ( min <= date   && max === null ) ||
+            ( min <= date   && date <= max )
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
+
+
+let minMaxAlertDateText = "";
+
+$('#minAlert, #maxAlert').on('change', function () {
+  // Gets the current daterange if there are and places it in excel and pdf
+let minAlertDateInput = $("#minAlert").val();
+let maxAlertDateInput =  $("#maxAlert").val();
+
+if(minAlertDateInput == "" && maxAlertDateInput != ""){
+  minMaxAlertDateText = `Time Period: Before "${maxAlertDateInput}"`;
+}
+else if(minAlertDateInput != "" && maxAlertDateInput ==""){
+  minMaxAlertDateText = `Time Period: After "${minAlertDateInput}"`;
+}
+else if(minAlertDateInput == "" && maxAlertDateInput == ""){
+  minMaxAlertDateText = ``;
+}
+else{
+  minMaxAlertDateText = `Time Period From: "${minAlertDateInput}" to "${maxAlertDateInput}"`;
+}
+aTable.draw();
+
+});
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 
 // Refilter the table
 $('#minAlert, #maxAlert').on('change', function () {
@@ -170,7 +171,7 @@ $('#alertTable tbody').on('click', '.editColAlert', function(){
        }
     });
 
-    editAlertFcn();
+    // editAlertFcn();
 });
 
 // delete alert in fire alert manager

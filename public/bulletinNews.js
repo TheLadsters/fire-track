@@ -1,62 +1,4 @@
-var minDateBulletin;
-var maxDateBulletin;
-
-// Custom filtering function which will search data in column four between two values
-$.fn.dataTable.ext.search.push(
-  function( settings, data, dataIndex ) {
-      var min = minDateBulletin.val();
-      var max = maxDateBulletin.val();
-      var date = new Date( data[4] );
-
-      if (
-          ( min === null && max === null ) ||
-          ( min === null && date <= max ) ||
-          ( min <= date   && max === null ) ||
-          ( min <= date   && date <= max )
-      ) {
-          return true;
-      }
-      return false;
-  }
-);
-
-
 $(document).ready( function () {
-  let date_now = new Date(Date.now());
-  let stringDate = `Date Accessed: ${(date_now.getMonth()+1)}/${date_now.getDate()}/${date_now.getFullYear()}`;
-
-// Create date inputs
-function newAlertDateInputs(){
-  minDateBulletin = new DateTime($('#minAlert'), {
-    format: 'YYYY Do MMMM HH:mm:ss'
-});
-maxDateBulletin = new DateTime($('#maxAlert'), {
-    format: 'YYYY Do MMMM HH:mm:ss'
-});
-
-}
-newAlertDateInputs();
-
-let minMaxAlertDateText = "";
-
-$('#minAlert, #maxAlert').on('change', function () {
-  // Gets the current daterange if there are and places it in excel and pdf
-let minAlertDateInput = $("#minAlert").val();
-let maxAlertDateInput =  $("#maxAlert").val();
-
-if(minAlertDateInput == "" && maxAlertDateInput != ""){
-  minMaxAlertDateText = `Time Period: Before "${maxAlertDateInput}"`;
-}
-else if(minAlertDateInput != "" && maxAlertDateInput ==""){
-  minMaxAlertDateText = `Time Period: After "${minAlertDateInput}"`;
-}
-else if(minAlertDateInput == "" && maxAlertDateInput == ""){
-  minMaxAlertDateText = ``;
-}
-else{
-  minMaxAlertDateText = `Time Period From: "${minAlertDateInput}" to "${maxAlertDateInput}"`;
-}
-});
 
 $.ajaxSetup({
     headers: {
@@ -64,43 +6,9 @@ $.ajaxSetup({
     }
 });
 
-  let aTable= $('#bulletinTable').DataTable({
+  let bulletinTable = $('#bulletinTable').DataTable({
     'ajax': 'admin/bulletinManagement/getBulletinTable',
     dom: 'Bfrtip',
-    buttons: [
-      $.extend( true, {}, {
-        extend: 'excelHtml5',
-        title: 'Bulletin Manager - FireTrack App',
-        filename: 'Bulletin Manager - FireTrack App',
-        sheetName:'Bulletins in FireTrack',
-        messageTop: function(){
-          return `List of all the Bulletins that are inputted in the FireTrack App.
-          ${minMaxAlertDateText}
-          `
-        } 
-      ,
-        messageBottom: `${stringDate}`,
-        text: `<i class='bx bxs-file-export'></i> Export as Excel`,
-        exportOptions: {
-          columns: [ 0, 1, 2, 3]
-      }
-    }),
-        $.extend( true, {}, {
-          extend: 'pdfHtml5',
-          title: 'Bulletin Manager - FireTrack App',
-          filename: 'Bulletin Manager - FireTrack App',
-          messageTop: function(){
-            return `List of all the Bulletins that are inputted in the FireTrack App.
-            ${minMaxAlertDateText}
-            `
-          },
-          messageBottom:`${stringDate}`,
-          text: `<i class='bx bxs-file-pdf' ></i> Export as PDF`,
-          exportOptions: {
-            columns: [ 0, 1, 2, 3]
-        }
-      }),
-    ],
     'columns': [
         {'data': 'title', "width": "20%"},
         {'data': 'author_name', "width": "20%"},
@@ -131,20 +39,6 @@ $.ajaxSetup({
  
   table.buttons( '.dt-button' ).remove();
 
-
-// Refilter the table
-$('#minAlert, #maxAlert').on('change', function () {
-  aTable.draw();
-});
-
-$("#clearAlertDates").click(function(){
-  $('#minAlert, #maxAlert').val("");
-  newAlertDateInputs();
-  aTable.clear().draw();
-  aTable.ajax.reload();
-  minMaxAlertDateText = "";
-});
-
   // on clicking edit alert in Bulletin management
 $('#bulletinTable tbody').on('click', '.editColBulletin', function(){
     let bull_id = $(this).attr('id');
@@ -155,7 +49,6 @@ $('#bulletinTable tbody').on('click', '.editColBulletin', function(){
       type: 'post',
       dataType: 'json',
       success: function(response){
-        // console.log(response);
           
           console.log(response);
 
@@ -204,7 +97,11 @@ function truncate(str, maxlength) {
     str.slice(0, maxlength - 1) + '…' : str;
 }
 
-document.getElementById('announcement_tab').click();
+const bulletin = $('.bulletinmngmt');
+
+if(bulletin.hasClass('active')){
+  document.getElementById('announcement_tab').click();
+}
 
 const newsList = document.querySelector('.news-list');
 newsList.innerHTML = '';
