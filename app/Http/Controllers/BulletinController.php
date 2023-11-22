@@ -39,7 +39,6 @@ class BulletinController extends Controller
 
           if ($validator->fails()) {
             $allErrors = $validator->errors();
-            // dd($allErrors);
             Alert::error('Adding the Announcement was not successful.', 
             'Please fill up required fields.');
           }else{
@@ -73,32 +72,39 @@ class BulletinController extends Controller
 /* Edit Announcement*/
 
 public function edit(Request $request) {
-  // Check if the required fields are present in the request
-  $request->validate([
-      'user_id' => 'required',
-      'author_name' => 'required',
-      'title' => 'required',
-      'summary' => 'required',
-      'article_url' => 'required',
-      'bulletin_id' => 'required',
+
+  $validator = Validator::make($request->all(), [
+    'user_id' => 'required',
+    'author_name' => 'required',
+    'title' => 'required',
+    'summary' => 'required',
+    'article_url' => 'required',
+    'img_url' => 'required'
   ]);
 
-  $bulletin_id = $request->input('bulletin_id');
-  $user_id = $request->input('user_id');
-  $author_name = $request->input('author_name');
-  $title = $request->input('title');
-  $summary = $request->input('summary');
-  $article_url = $request->input('article_url');
+  if ($validator->fails()) {
+    $allErrors = $validator->errors();
+    Alert::error('Editing the Announcement was not successful.', 
+    'Please fill up required fields.');
+  } else{
 
+    $bulletin_id = $request->input('bulletin_id');
+    $user_id = $request->input('user_id');
+    $author_name = $request->input('author_name');
+    $title = $request->input('title');
+    $summary = $request->input('summary');
+    $article_url = $request->input('article_url');
+
+    // Check if the bulletin with the given ID exists before updating
+    $bulletin = bulletinManagement::find($bulletin_id);
   // Initialize $formFields array
   $formFields = [];
 
-  if ($request->hasFile('img_url')) {
-      $formFields['img_url'] = $request->file('img_url')->move('images/announcementIMG', 'img_' . Str::random(15) . '.jpg');
-  }
+  $oldImgPath = $bulletin->img_url;
 
-  // Check if the bulletin with the given ID exists before updating
-  $bulletin = bulletinManagement::find($bulletin_id);
+
+  $announcementImg =  ($request->hasFile('img_url')) ? $request->file('img_url')->move('images/announcementIMG', $img = 'img_' . Str::random(15) . '.jpg') : $oldImgPath;
+
 
   if ($bulletin) {
       // Update the bulletin fields
@@ -108,15 +114,19 @@ public function edit(Request $request) {
           'title' => $title,
           'summary' => $summary,
           'article_url' => $article_url,
-          'img_url' => isset($formFields['img_url']) ? $formFields['img_url'] : $bulletin->img_url // Use the existing img_url if no new image is uploaded
+          'img_url' => $announcementImg
       ]);
+
+      if($announcementImg != $oldImgPath){
+        unlink(public_path($oldImgPath));
+    }
 
       Alert::success('Updated Bulletin Successfully.');
   } else {
       // Handle the case where the bulletin with the given ID does not exist
       Alert::error('Bulletin not found.', 'Please check the provided bulletin ID.');
   }
-
+}
   return redirect('admin/bulletinManagement');
 }
 
@@ -126,7 +136,11 @@ public function edit(Request $request) {
     $bulletin_id = $request->input('bulletin_id');
 
     $bulletin = bulletinManagement::find($bulletin_id);
+    $oldImgPath = $bulletin->img_url;
     if($bulletin){
+      if($oldImgPath){
+        unlink(public_path($oldImgPath));
+      }
       $bulletin->delete();
     Alert::success('Announcement deleted Successfully.');
     
