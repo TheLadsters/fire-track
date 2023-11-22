@@ -58,7 +58,7 @@
                   </a> 
 
                   <div class="dropdown-container-firealert mb-3 d-none" id="dropdown-firealert">
-                  <a href="{{ route('admin.fireHManagement')}}" class="{{ (request()->is('admin/admin-hydrant-map*')) ? 'active' : '' }}">Hydrant Map</a>
+                  <a href="{{ route('admin.fireHManagement')}}" class="hmngmt {{ (request()->is('admin/admin-hydrant-map*')) ? 'active' : '' }}">Hydrant Map</a>
                     <br>
                     <a href="{{ route('admin.fireHTypeManagement')}}" class="{{ (request()->is('admin/fire-hydrant-type-management*')) ? 'active' : '' }}">Add Hydrant Type</a>
                   </div>
@@ -70,7 +70,7 @@
                     </span> 
                   </a> 
              
-                  <a href="{{ route('admin.bulletinManagement')}}" class="nav_link {{ (request()->is('admin/bulletinManagement*')) ? 'active' : '' }}"> 
+                  <a href="{{ route('admin.bulletinManagement')}}" class="bulletinmngmt nav_link {{ (request()->is('admin/bulletinManagement*')) ? 'active' : '' }}"> 
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin 
                       <br>Management
@@ -120,6 +120,7 @@
       <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
       <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.3.1/js/dataTables.dateTime.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.25/sorting/datetime-moment.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       @include('sweetalert::alert')
 

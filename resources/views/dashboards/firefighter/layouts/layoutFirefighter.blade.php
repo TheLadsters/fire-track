@@ -70,7 +70,7 @@
                     <span class="nav_name">Fire Alert Map</span> 
                   </a> 
                   
-                  <a href="{{ route('firefighter.bulletinfirefighter')}}" class="nav_link {{ (request()->is('firefighter/bulletinfirefighter*')) ? 'active' : '' }}">
+                  <a href="{{ route('firefighter.bulletinfirefighter')}}" class="bulletinmngmt nav_link {{ (request()->is('firefighter/bulletinfirefighter*')) ? 'active' : '' }}">
                     <i class='bx bx-news nav_icon'></i>
                     <span class="nav_name">Bulletin</span> 
                   </a> 
